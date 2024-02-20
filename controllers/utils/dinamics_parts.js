@@ -9,3 +9,5 @@ footer.innerHTML = `<div class="social-icons-container ">
 <ul class="footer-menu-conteiner">
 </ul>
 <span class="copyright">&copy;2024, IVANE CARE. All rights reserved</span>`
+
+const nav = document.querySelector("nav");
