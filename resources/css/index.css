@@ -6,10 +6,13 @@
     transition: 0.5s;
 }
 
+main{
+    margin:0px 10px 10px 10px;
+}
+
 
  /* Navbar */
-
- .navbar{  
+.navbar-expand-lg{  
     background-color: #1F1B47 !important;
     color: #fefefe !important;
 }
@@ -19,9 +22,14 @@
     font-size: 30px !important;
     
 }
+.iconoder{
+    position: relative;
+    margin-right: 10px;
+}
+
 
 .boton{
-    background-color: #000000;
+    background-color: #fefefe;
 }
 
 .navbar-brand{
@@ -32,7 +40,6 @@
 span{
     color: #f3fefe;
 }
-
  /*Fin Navbar */
 
 
