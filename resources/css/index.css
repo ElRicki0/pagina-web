@@ -60,6 +60,17 @@ section button{
     color: #fefefe !important;
 }
 
+.botonAgreUsuario{
+    text-align: center;
+}
+
+.container-usuarios{
+    padding: 2rem 2%;
+}
+.usuusu{
+    text-align:left;
+    padding:  1rem 1%;
+}
 .text_menu{
     text-align: center;
     color: white !important;
