@@ -1,0 +1,26 @@
+
+
+
+.navbar{  
+    background-color: #1F1B47 !important;
+    color: #fefefe !important;
+}
+
+.nav-link.active{
+    color: #f3fefe !important;
+    font-size: 30px !important;
+    
+}
+
+.boton{
+    background-color: #f3fefe;
+}
+
+.navbar-brand{
+    color: #f3fefe !important;
+    font-size: 30px !important;
+}
+
+span{
+    color: #f3fefe;
+}
