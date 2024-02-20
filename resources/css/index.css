@@ -67,22 +67,50 @@ section button{
     color: #fefefe !important;
 }
 
-.botonAgreUsuario{
-    text-align: center;
-}
+/*zona usuarios*/
+ 
 
-.container-usuarios{
-    padding: 2rem 2%;
-}
+.btnUsuAgregar {
+    position: absolute;
+    right: 20px;
+    background-color: #1D1C6A;
+    color: white;
+    padding: 20px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px; 
+     text-decoration: none;
+     display: inline-block;
+     font-size: 16px;
+     margin: 4px 35px;
+     
+  }
+  
+  .container-usuarios{
+    padding: 2rem 3%;
+  }
+
+  .container-usuarios button {
+    border-radius: 20px;
+    background-color: #1D1C6A;
+    color: white;
+    padding: 15px 15px; 
+    margin: 7px; 
+    border: none; 
+    cursor: pointer; 
+  }
+
 .usuusu{
     text-align:left;
-    padding:  1rem 1%;
+    padding:  1rem 3%;
 }
 .text_menu{
     text-align: center;
     color: white !important;
     font: 150% sans-serif;
 }
+
+/*footer*/
 
 footer{
     color: aliceblue;
