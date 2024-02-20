@@ -36,8 +36,7 @@ span{
  /*Fin Navbar */
 
 
-body{
-    
+.Fondo{
     background: url(../img/fondo_inicio.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
