@@ -16,30 +16,35 @@
         <!--Navbar-->
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="mb-6 xs-6 xl-6 col-12">
-                <div>
-                    <div class="iconoder">
-                        <ul class="navbar-nav ms-auto align-items-right" style="align-items: flex-end;">
-                            <p class="ms-auto">HOLA</p>
-                        </ul>
+                <div class="row">
+                    <div class="col-6">
+                        <button class="boton navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Alternar navegación">
+                            <span class="navbar-toggler-icon "></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav  mb-2 mb-lg-0">
+                                <a class="navbar-brand align-items-right"
+                                    href="https://www.instagram.com/ivanecare/"><img src="../../resources/img/logo.png"
+                                        width="60px"></a>
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="#">Productos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="#">Usuarios</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="#">Lista de Pedidos</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <button class="boton navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Alternar navegación">
-                        <span class="navbar-toggler-icon "></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav  mb-2 mb-lg-0">
-                            <a class="navbar-brand align-items-right" href="https://www.instagram.com/ivanecare/"><img
-                                    src="../../resources/img/logo.png" width="60px"></a>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Productos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Usuarios</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Lista de Pedidos</a>
-                            </li>
+                    <div class="iconoder col-5 d-flex">
+                        <ul class="navbar-nav ms-auto align-items-right" style="align-items: flex-end;">
+                            <button class="rounded-circle border border-dark" type="button" data-bs-toggle="modal" data-bs-target="#perfil">
+                                <img class="tamañoImagenPerfil rounded-circle" src="../../resources/img/iconoPerfil.jpg" alt="" width="60px">
+                            </button>   
                         </ul>
                     </div>
                 </div>
@@ -47,6 +52,28 @@
         </nav>
     </main>
 </body>
+
+ <!--Modal-->
+ <div class="modal fade" id="perfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
     crossorigin="anonymous"></script>
@@ -55,6 +82,8 @@
     crossorigin="anonymous"></script>
 
 </html>
+
+
 
 <!--  <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
