@@ -8,6 +8,9 @@
 
 main{
     margin:0px 10px 10px 10px;
+    position: absolute;
+    min-height: 100vh;
+    position: sticky;
 }
 
 
@@ -125,6 +128,9 @@ footer{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    position: fixed;
+    
+    
 }
 
 
