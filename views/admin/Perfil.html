@@ -12,85 +12,53 @@
 
 <body>
     <!--Navbar-->
-    <!--Clase para medidas y tamaños de navbar-->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="mb-6 xs-6 xl-6 col-12">
-            <div class="row">
-                <div class="col-6">
-                    <!--Clase donde se encuentra el navbar-->
-                    <button class="boton navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Alternar navegación">
-                        <span class="navbar-toggler-icon "></span>
-                    </button>
-                    <!--Clase donde se encuentra el navbar cuando colisiona-->
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav  mb-2 mb-lg-0">
-                            <a class="navbar-brand align-items-right" href="https://www.instagram.com/ivanecare/"><img
-                                    src="../../resources/img/logo.png" width="60px"></a>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Productos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Usuarios</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Lista de Pedidos</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!--Clase donde se encuentra la imagen de perfil-->
-                <div class="iconoder col-5 d-flex">
-                    <ul class="navbar-nav ms-auto align-items-right" style="align-items: flex-end;">
-                        <button class="rounded-circle border border-dark" type="button" data-bs-toggle="modal"
-                            data-bs-target="#perfil">
-                            <img class=" rounded-circle" src="../../resources/img/iconoPerfil.jpg" alt="" width="60px">
-                        </button>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <header></header>
     <!--Cuerpo de la pagina-->
     <main>
-        <!--Aca solo es un simple texto-->
-        <p class="text-center fs-1">Perfil</p>
+        <!--Aca solo es el un tipo titulo-->
+        <p class="TituPerfi text-center fs-1">Perfil</p>
         <!--Clase para poder alinear todo en una sola linea-->
         <div class="row">
             <div class="row">
                 <!--Imagen de perfil-->
-                <div class=" col-md-4 rounded  mx-auto d-block"><img src="../../resources/img/iconoPerfil.jpg" alt="..."
+                <div class=" col-md-4">
+                    <img class="rounded  mx-auto d-block" src="../../resources/img/iconoPerfil.jpg" alt="..."
                         width="300px">
                     <br>
                     <br>
-                    <br>
-                    <button type="button" class="btn btn-outline-dark col-md-8 btn-lg btn-block  mx-auto d-block">Agregar Imagen</button>
+                    <button type="button"
+                        class="btn btn-outline-dark col-md-8 btn-lg btn-block  mx-auto d-block">Agregar Imagen</button>
 
                 </div>
                 <div class="col">
-                    <br>
                     <div class="letraPer col-md-4 fs-3 ">Nombre</div>
-                    <div id="CuadroNom" class="letraPer col-md-6 fs-3 border border-dark rounded">Veronica</div>
+                    <div id="CuadroNom" class="cuadroText col-md-8 fs-3 border border-dark rounded">Veronica</div>
                     <div class="letraPer col-md-4 fs-3" style="margin-top: 20px;">Apellido</div>
-                    <div id="CuadroApel" class="letraPer col-md-6 fs-3 border border-dark rounded">Sánchez</div>
+                    <div id="CuadroApel" class="cuadroText col-md-8 fs-3 border border-dark rounded">Sánchez</div>
                     <div class="letraPer col-md-4 fs-3 " style="margin-top: 20px;">Correo Electrónico</div>
-                    <div id="CuadroCorreo" class="letraPer col-md-6 fs-3 border border-dark rounded">
-                        Verititito@gmail.com
-                    </div>
+                    <div id="CuadroCorreo" class="cuadroText col-md-8 fs-3 border border-dark rounded">
+                        Verititito@gmail.com</div>
                     <div class="letraPer col-md-4 fs-3 " style="margin-top: 20px;">Nivel del Empleado</div>
-                    <div id="CuadroNiveEmp" class="letraPer col-md-6 fs-3 border border-dark rounded">Administrador
+                    <div id="CuadroNiveEmp" class="cuadroText col-md-8 fs-3 border border-dark rounded">Administrador
                     </div>
                     <div class="letraPer col-md-4 fs-3 " style="margin-top: 20px;">Contraseña</div>
-                    <div id="CuadroPass" type="password" class="letraPer col-md-6 fs-3 border border-dark rounded">
+                    <div id="CuadroPass" type="password" class="cuadroText col-md-8 fs-3 border border-dark rounded">
                         ........
+                    </div>
+                    <div class="col">
+                        <div class="botoncitoMas btn btn-outline-warning btn-lg btn-block" >
+                            <img src="../../resources/img/iconos/lapPerf.png" class="botones_productos" style="width: 55px;">
+                        </div>
+                        <div class="botoncitoMas btn btn-outline-primary btn-lg btn-block ">
+                            <img src="../../resources/img/iconos/mas.png" class="botones_productos" style="width: 55px;"
+                                data-bs-toggle="modal" data-bs-target="#masInfo">
+                        </div>
+                        <div class="col-md-4 ">
+                            <h5>Más información de usuario</h5>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <!--Clase para poder alinear todo en una sola columna-->
-
-
         </div>
 
 
@@ -98,6 +66,44 @@
     <footer class="test">
 
     </footer>
+
+
+
+    <!--Modal para ver mas información del usuario-->
+    <div class="modal fade" id="masInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width: 100%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title  w-100 text-center" id="exampleModalLabel">información de usuario</h6>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="letraPer col-md-6 fs-3 ">Nombre</div>
+                            <div id="CuadroNom" class="cuadroText col-md-9 fs-2 border border-dark rounded">Veronica
+                            </div>
+                            <div class="letraPer col-md-4 fs-3 ">Nombre</div>
+                            <div id="CuadroNom" class="cuadroText col-md-9 fs-2 border border-dark rounded">Veronica
+                            </div>
+                            <div class="letraPer col-md-4 fs-3 ">Nombre</div>
+                            <div id="CuadroNom" class="cuadroText col-md-9 fs-2 border border-dark rounded">Veronica
+                            </div>
+                            <div class="letraPer col-md-4 fs-3 ">Nombre</div>
+                            <div id="CuadroNom" class="cuadroText col-md-9 fs-2 border border-dark rounded">Veronica
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="letraPer col-md-4 fs-3 ">Nombre</div>
+                            <div id="CuadroNom" class="cuadroText col-md-9 fs-2 border border-dark rounded">Veronica
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 
