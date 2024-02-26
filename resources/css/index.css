@@ -215,3 +215,8 @@ footer{
         filter:invert(40)
     
   }
+
+  /*zona pedidos*/
+  .imagen-pedido:hover{
+    filter:invert(40)
+  }
