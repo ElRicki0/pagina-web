@@ -8,6 +8,10 @@
 
 main{
     margin:0px 10px 10px 10px;
+    position: absolute;
+    min-height: 100vh;
+    position: sticky;
+    padding-bottom: 50px;
 }
 
 
@@ -123,15 +127,18 @@ section button{
 footer{
     color: aliceblue;
     width: 100%;
-    bottom:   fixed;
+    bottom: fixed;
     bottom: 0;
     left: 0;
-    padding: 10px;
+    padding: 1px;
     background-color: #1F1B47 !important;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    
+    
 }
 
 
@@ -157,7 +164,7 @@ footer{
 }
 
 .social-icons:hover{
-    background-color: #030208;
+    background-color: #000000;
     filter:invert(40)
 }
 
@@ -218,4 +225,9 @@ footer{
   .botones_productos:hover{
         filter:invert(40)
     
+  }
+
+  /*zona pedidos*/
+  .imagen-pedido:hover{
+    filter:invert(40)
   }
