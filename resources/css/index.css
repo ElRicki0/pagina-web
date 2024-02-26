@@ -30,6 +30,9 @@ main{
     margin-left: 10px;
 }
 
+.imagPer {
+    margin-left: 60px;
+}
 
 
 .boton{
@@ -217,4 +220,9 @@ footer{
   .botones_productos:hover{
         filter:invert(40)
     
+  }
+
+  /*zona pedidos*/
+  .imagen-pedido:hover{
+    filter:invert(40)
   }
