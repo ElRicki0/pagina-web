@@ -8,6 +8,57 @@
 
 body{
     
+<<<<<<< Updated upstream
+=======
+}
+.iconoder{
+    margin-top: 0px;
+    margin-left: 10px;
+}
+
+
+.boton{
+    background-color: #fefefe;
+}
+
+.navbar-brand{
+    color: #f3fefe !important;
+    font-size: 30px !important;
+}
+
+span{
+    color: #f3fefe;
+}
+ /*Fin Navbar */
+
+
+ 
+ /* Perfil */
+ .TituPerfi{
+    color:#3D0059;
+ }
+.imagPer {
+    margin-left: 70px;
+}
+
+.cuadroText{
+    margin-left: 50px;
+    color: #352E77;
+}
+.letraPer{
+    color: #000055;
+    margin-top: 25px;
+    margin-left: 50px;
+}
+
+.botoncitoMas{
+    margin-left: 50px;
+    margin-top: 40px;
+}
+ /* fin de Perfil */
+
+.Fondo{
+>>>>>>> Stashed changes
     background: url(../img/fondo_inicio.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -103,4 +154,56 @@ footer p{
     color: #fefefe;
     opacity: 0.3;
     text-align: center;
+<<<<<<< Updated upstream
 }
+=======
+}
+
+/*zona productos (admin)*/
+
+.btn_producto_agregar {
+    position: absolute;
+    right: 20px;
+    background-color: #1D1C6A;
+    color: white;
+    padding: 20px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px; 
+     text-decoration: none;
+     display: inline-block;
+     font-size: 16px;
+     margin: 4px 35px;
+     
+  }
+
+  .imagen-producto{
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    border: 1px solid #fefefe;
+    background-image: url(../img/imagen_f.png);
+    background-position: center;
+    background-size: 40%;
+    background-repeat: no-repeat;
+    margin: 1rem;
+
+  }
+
+  .botones_productos:hover{
+        filter:invert(40);     
+  }
+
+  /*zona pedidos*/
+  .imagen-pedido:hover{
+    filter:invert(40)
+  }
+
+  /*modal*/
+  .modal-header{
+    background-color: #1F1B47;
+    color: white;
+  }
+
+  /*Fin del modal*/
+>>>>>>> Stashed changes
