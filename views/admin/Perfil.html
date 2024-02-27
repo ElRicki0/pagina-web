@@ -28,7 +28,6 @@
                     <br>
                     <button type="button"
                         class="btn btn-outline-dark col-md-8 btn-lg btn-block  mx-auto d-block">Agregar Imagen</button>
-
                 </div>
                 <div class="col">
                     <div class="letraPer col-md-4 fs-3 ">Nombre</div>
@@ -46,14 +45,16 @@
                         ........
                     </div>
                     <div class="col">
-                        <div class="botoncitoMas btn btn-outline-warning btn-lg btn-block" >
-                            <img src="../../resources/img/iconos/lapPerf.png" class="botones_productos" style="width: 55px;">
+                        <div class="botoncitoMas btn btn-outline-warning btn-lg btn-block" data-bs-toggle="modal"
+                            data-bs-target="#EditUsu">
+                            <img src="../../resources/img/iconos/lapPerf.png" class="botones_productos"
+                                style="width: 50px;" data-bs-toggle="modal" data-bs-target="#EditUsu">
+                            <h4>Editar datos del usuario</h4>
                         </div>
-                        <div class="botoncitoMas btn btn-outline-primary btn-lg btn-block ">
-                            <img src="../../resources/img/iconos/mas.png" class="botones_productos" style="width: 55px;"
+                        <div class="botoncitoMas btn btn-outline-primary btn-lg btn-block" data-bs-toggle="modal"
+                            data-bs-target="#masInfo">
+                            <img src="../../resources/img/iconos/mas.png" class="botones_productos" style="width: 50px;"
                                 data-bs-toggle="modal" data-bs-target="#masInfo">
-                        </div>
-                        <div class="col-md-4 ">
                             <h5>Más información de usuario</h5>
                         </div>
                     </div>
@@ -70,31 +71,123 @@
 
 
     <!--Modal para ver mas información del usuario-->
-    <div class="modal fade" id="masInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="masInfo" tabindex="-1" aria-labelledby="modal" aria-hidden="true">
         <div class="modal-dialog modal-lg" style="width: 100%;">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h6 class="modal-title  w-100 text-center" id="exampleModalLabel">información de usuario</h6>
+                    <h6 class="modal-title  w-100 text-center" id="modal">información de usuario</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col">
                             <div class="letraPer col-md-6 fs-3 ">Nombre</div>
-                            <div id="CuadroNom" class="cuadroText col-md-9 fs-2 border border-dark rounded">Veronica
+                            <div id="CuadroNomModa" class="cuadroText col-md-9 fs-4  border border-dark rounded">
+                                Verónica
                             </div>
-                            <div class="letraPer col-md-4 fs-3 ">Nombre</div>
-                            <div id="CuadroNom" class="cuadroText col-md-9 fs-2 border border-dark rounded">Veronica
+                            <div class="letraPer col-md-4 fs-3 ">Apellido</div>
+                            <div id="CuadroApelModa" class="cuadroText col-md-9 fs-4 border border-dark rounded">Sánchez
                             </div>
-                            <div class="letraPer col-md-4 fs-3 ">Nombre</div>
-                            <div id="CuadroNom" class="cuadroText col-md-9 fs-2 border border-dark rounded">Veronica
+                            <div class="letraPer col-md-8 fs-3 ">Número de teléfono</div>
+                            <div id="CuadroTelModa" type="number"
+                                class="cuadroText col-md-9 fs-4 border border-dark rounded">1234-5678
                             </div>
-                            <div class="letraPer col-md-4 fs-3 ">Nombre</div>
-                            <div id="CuadroNom" class="cuadroText col-md-9 fs-2 border border-dark rounded">Veronica
+                            <div class="letraPer col-md-10 fs-3 ">Teléfono de emergencia</div>
+                            <div id="CuadroTelEmerModa" type="number"
+                                class="cuadroText col-md-9 fs-4 border border-dark rounded">8765-4321
+                            </div>
+                            <div class="letraPer col-md-10 fs-3 ">Contraseña</div>
+                            <div id="CuadroContraModa" type="password"
+                                class="cuadroText col-md-9 fs-4 border border-dark rounded">8765-4321
                             </div>
                         </div>
                         <div class="col">
-                            <div class="letraPer col-md-4 fs-3 ">Nombre</div>
-                            <div id="CuadroNom" class="cuadroText col-md-9 fs-2 border border-dark rounded">Veronica
+                            <div class="letraPer col-md-10 fs-3 ">Correo electrónico</div>
+                            <div id="CuadroCorreEleModa" class="cuadroText col-md-9 fs-4  border border-dark rounded">
+                                Verititito@gmail.com
+                            </div>
+                            <div class="letraPer col-md-10 fs-3 ">DUI empleado</div>
+                            <div id="CuadroDUIModa" type="number"
+                                class="cuadroText col-md-9 fs-4  border border-dark rounded">12345678-9
+                            </div>
+                            <div class="letraPer col-md-10 fs-3 ">Nivel de usuario</div>
+                            <div id="CuadroNivelModa" class="cuadroText col-md-9 fs-4  border border-dark rounded">
+                                Administrador
+                            </div>
+                            <div class="letraPer col-md-10 fs-3 ">Edad del empleado</div>
+                            <div id="CuadroEdadModa" type="number"
+                                class="cuadroText col-md-9 fs-4 border border-dark rounded">18
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Modal para editar datos del usuario-->
+    <div class="modal fade" id="EditUsu" tabindex="-1" aria-labelledby="modal" aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width: 100%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title  w-100 text-center" id="modal">Editar datos del usuario</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group col-md-11">
+                                <label for="NombreInputModal" class="letraPer col-md-6 fs-3">Nombre</label>
+                                <input type="text" class="form-control fs-4 " id="NombreInputModal"
+                                    placeholder="Nombre">
+                            </div>
+                            <div class="form-group col-md-11">
+                                <label for="ApellidoInputModal" class="letraPer col-md-6 fs-3">Apellido</label>
+                                <input type="text" class="form-control fs-4" id="ApellidoInputModal"
+                                    placeholder="Apellido">
+                            </div>
+                            <div class="form-group col-md-11">
+                                <label for="TelefonoInputModal" class="letraPer col-md-10 fs-3">Número de teléfono
+                                </label>
+                                <input type="number" class="form-control fs-4" id="TelefonoInputModal"
+                                    placeholder="Telefono">
+                            </div>
+                            <div class="form-group col-md-11">
+                                <label for="TelefonoEmerInputModal" class="letraPer col-md-11 fs-3">Teléfono de
+                                    emergencia</label>
+                                <input type="number" class="form-control fs-4" id="TelefonoEmerInputModal"
+                                    placeholder="Telefono">
+                            </div>
+                            <div class="form-group col-md-11">
+                                <label for="ContraInputModal" class="letraPer col-md-6 fs-3">Contraseña</label>
+                                <input type="password" class="form-control fs-4" id="ContraInputModal"
+                                    placeholder="Contraseña">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group col-md-11">
+                                <label for="CorreoInputModal" class="letraPer col-md-10 fs-3">Correo Electrónico</label>
+                                <input type="email" class="form-control fs-4" id="CorreoInputModal"
+                                    aria-describedby="emailHelp" placeholder="Correo">
+                            </div>
+                            <div class="form-group col-md-11">
+                                <label for="DuiInputModal" class="letraPer col-md-8 fs-3">DUI empleado</label>
+                                <input type="number" class="form-control fs-4" id="DuiInputModal" placeholder="DUI">
+                            </div>
+                            <div class="form-group  col-md-11">
+                                <label for="NivelEmpleInputModal" class="letraPer col-md-8 fs-3">Nivel empleado</label>
+                                <select class="form-control fs-4" id="NivelEmpleInputModal">
+                                    <option>Administrador</option>
+                                    <option>Empleado</option>
+                                    <option>Repartidor</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="EdadInputModal" class="letraPer col-md-12 fs-3">Edad empleado</label>
+                                <input type="number" class="form-control fs-4" id="EdadInputModal" placeholder="Edad">
                             </div>
                         </div>
                     </div>

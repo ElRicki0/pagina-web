@@ -61,10 +61,22 @@ span{
 
 .cuadroText{
     margin-left: 50px;
+    color: #352E77;
 }
 .letraPer{
     color: #000055;
+    margin-top: 25px;
     margin-left: 50px;
+}
+
+.botoncitoMas{
+    margin-left: 50px;
+    margin-top: 40px;
+}
+
+select{
+    border-color: blueviolet !important;
+
 }
 
 .botoncitoMas{
