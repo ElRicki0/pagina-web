@@ -7,9 +7,6 @@
 }
 
 body{
-    
-<<<<<<< Updated upstream
-=======
 }
 .iconoder{
     margin-top: 0px;
@@ -58,7 +55,6 @@ span{
  /* fin de Perfil */
 
 .Fondo{
->>>>>>> Stashed changes
     background: url(../img/fondo_inicio.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -154,9 +150,6 @@ footer p{
     color: #fefefe;
     opacity: 0.3;
     text-align: center;
-<<<<<<< Updated upstream
-}
-=======
 }
 
 /*zona productos (admin)*/
@@ -206,4 +199,3 @@ footer p{
   }
 
   /*Fin del modal*/
->>>>>>> Stashed changes
