@@ -1,3 +1,6 @@
+
+// Codigo para tener el footer, para luego mandarlo a llamar
+
 const footer = document.querySelector("footer");
 
 footer.innerHTML = `<div class="social-icons-container ">
@@ -9,6 +12,8 @@ footer.innerHTML = `<div class="social-icons-container ">
 <ul class="footer-menu-conteiner">
 </ul>
 <span class="copyright">&copy;2024, IVANE CARE. All rights reserved</span>`
+
+// Codigo para tener el header, para luego mandarlo a llamar
 
 const header = document.querySelector("header");
 
@@ -48,3 +53,8 @@ header.innerHTML = `<nav class="navbar navbar-expand-lg bg-body-tertiary">
     </div>
 </div>
 </nav>`
+
+
+
+
+
