@@ -642,3 +642,438 @@ $('#btn_editar1').click(function () {
         </div> `
   })
 })
+
+$('#btn_editar1').click(function () {
+  Swal.fire({
+    title: "Editar producto",
+    titleText: 'Sombras de ojos',
+    text: "No podras recuperar los datos",
+    padding: '1rem',
+    showConfirmButton: 'true',
+    confirmButtonText: 'Confirmar',
+    showCancelButton: 'true',
+    cancelButtonText: 'Cancelar',
+    width: '70%',
+    html: `<div class="container text-center">
+    <div class="row">
+        <div class="row">
+
+        </div>
+        <div class=" col-md-4">
+            <img class="rounded  mx-auto d-block" src="../../resources/img/productos/pd2.jpg" alt="..."
+                width="300px">
+            <br>
+            <br>
+
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <div class="letraPer col-md-4 fs-3">Nombre producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" value="paletas de frutas">
+                    </div>
+                    <div class="letraPer col-md-4 fs-3">Precio producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" value="$3.50">
+                    </div>
+
+
+                    <div class="letraPer col-md-4 fs-3">Marca producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" value="Columbia">
+                    </div>
+
+                    <div class="letraPer col-md-4 fs-3">Descripción producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            style="height: 200px;" aria-describedby="inputGroup-sizing-default">
+                            ¡Sumérgete en la dulzura exótica con nuestra paleta de colores inspirada en fresitas
+                            chinas!</textarea>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div> `
+  })
+})
+
+$('#btn_editar2').click(function () {
+  Swal.fire({
+    title: "Editar producto",
+    titleText: 'Sombras de ojos',
+    text: "No podras recuperar los datos",
+    padding: '1rem',
+    showConfirmButton: 'true',
+    confirmButtonText: 'Confirmar',
+    showCancelButton: 'true',
+    cancelButtonText: 'Cancelar',
+    width: '70%',
+    html: `<div class="container text-center">
+            <div class="row">
+                <div class="row">
+
+                </div>
+                <div class=" col-md-4">
+                    <img class="rounded  mx-auto d-block" src="../../resources/img/productos/pd2.jpg" alt="..."
+                        width="300px">
+                    <br>
+                    <br>
+
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <div class="letraPer col-md-4 fs-3">Nombre producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="paletas de frutas">
+                            </div>
+                            <div class="letraPer col-md-4 fs-3">Precio producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="$3.50">
+                            </div>
+
+
+                            <div class="letraPer col-md-4 fs-3">Marca producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="Columbia">
+                            </div>
+
+                            <div class="letraPer col-md-4 fs-3">Descripción producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    style="height: 200px;" aria-describedby="inputGroup-sizing-default">
+                                    ¡Sumérgete en la dulzura exótica con nuestra paleta de colores inspirada en fresitas
+                                    chinas!</textarea>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div> `
+  })
+})
+
+$('#btn_editar1').click(function () {
+  Swal.fire({
+    title: "Editar producto",
+    titleText: 'Sombras de ojos',
+    text: "No podras recuperar los datos",
+    padding: '1rem',
+    showConfirmButton: 'true',
+    confirmButtonText: 'Confirmar',
+    showCancelButton: 'true',
+    cancelButtonText: 'Cancelar',
+    width: '70%',
+    html: `<div class="container text-center">
+    <div class="row">
+        <div class="row">
+
+        </div>
+        <div class=" col-md-4">
+            <img class="rounded  mx-auto d-block" src="../../resources/img/productos/pd2.jpg" alt="..."
+                width="300px">
+            <br>
+            <br>
+
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <div class="letraPer col-md-4 fs-3">Nombre producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" value="paletas de frutas">
+                    </div>
+                    <div class="letraPer col-md-4 fs-3">Precio producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" value="$3.50">
+                    </div>
+
+
+                    <div class="letraPer col-md-4 fs-3">Marca producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" value="Columbia">
+                    </div>
+
+                    <div class="letraPer col-md-4 fs-3">Descripción producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            style="height: 200px;" aria-describedby="inputGroup-sizing-default">
+                            ¡Sumérgete en la dulzura exótica con nuestra paleta de colores inspirada en fresitas
+                            chinas!</textarea>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div> `
+  })
+})
+
+$('#btn_editar1').click(function () {
+  Swal.fire({
+    title: "Editar producto",
+    titleText: 'Sombras de ojos',
+    text: "No podras recuperar los datos",
+    padding: '1rem',
+    showConfirmButton: 'true',
+    confirmButtonText: 'Confirmar',
+    showCancelButton: 'true',
+    cancelButtonText: 'Cancelar',
+    width: '70%',
+    html: `<div class="container text-center">
+    <div class="row">
+        <div class="row">
+
+        </div>
+        <div class=" col-md-4">
+            <img class="rounded  mx-auto d-block" src="../../resources/img/productos/pd2.jpg" alt="..."
+                width="300px">
+            <br>
+            <br>
+
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <div class="letraPer col-md-4 fs-3">Nombre producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" value="paletas de frutas">
+                    </div>
+                    <div class="letraPer col-md-4 fs-3">Precio producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" value="$3.50">
+                    </div>
+
+
+                    <div class="letraPer col-md-4 fs-3">Marca producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" value="Columbia">
+                    </div>
+
+                    <div class="letraPer col-md-4 fs-3">Descripción producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            style="height: 200px;" aria-describedby="inputGroup-sizing-default">
+                            ¡Sumérgete en la dulzura exótica con nuestra paleta de colores inspirada en fresitas
+                            chinas!</textarea>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div> `
+  })
+})
+
+$('#btn_editar1').click(function () {
+  Swal.fire({
+    title: "Editar producto",
+    titleText: 'Sombras de ojos',
+    text: "No podras recuperar los datos",
+    padding: '1rem',
+    showConfirmButton: 'true',
+    confirmButtonText: 'Confirmar',
+    showCancelButton: 'true',
+    cancelButtonText: 'Cancelar',
+    width: '70%',
+    html: `<div class="container text-center">
+    <div class="row">
+        <div class="row">
+
+        </div>
+        <div class=" col-md-4">
+            <img class="rounded  mx-auto d-block" src="../../resources/img/productos/pd2.jpg" alt="..."
+                width="300px">
+            <br>
+            <br>
+
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <div class="letraPer col-md-4 fs-3">Nombre producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" value="paletas de frutas">
+                    </div>
+                    <div class="letraPer col-md-4 fs-3">Precio producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" value="$3.50">
+                    </div>
+
+
+                    <div class="letraPer col-md-4 fs-3">Marca producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" value="Columbia">
+                    </div>
+
+                    <div class="letraPer col-md-4 fs-3">Descripción producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            style="height: 200px;" aria-describedby="inputGroup-sizing-default">
+                            ¡Sumérgete en la dulzura exótica con nuestra paleta de colores inspirada en fresitas
+                            chinas!</textarea>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div> `
+  })
+})
+
+$('#btn_editar1').click(function () {
+  Swal.fire({
+    title: "Editar producto",
+    titleText: 'Sombras de ojos',
+    text: "No podras recuperar los datos",
+    padding: '1rem',
+    showConfirmButton: 'true',
+    confirmButtonText: 'Confirmar',
+    showCancelButton: 'true',
+    cancelButtonText: 'Cancelar',
+    width: '70%',
+    html: `<div class="container text-center">
+    <div class="row">
+        <div class="row">
+
+        </div>
+        <div class=" col-md-4">
+            <img class="rounded  mx-auto d-block" src="../../resources/img/productos/pd2.jpg" alt="..."
+                width="300px">
+            <br>
+            <br>
+
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <div class="letraPer col-md-4 fs-3">Nombre producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" value="paletas de frutas">
+                    </div>
+                    <div class="letraPer col-md-4 fs-3">Precio producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" value="$3.50">
+                    </div>
+
+
+                    <div class="letraPer col-md-4 fs-3">Marca producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" value="Columbia">
+                    </div>
+
+                    <div class="letraPer col-md-4 fs-3">Descripción producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            style="height: 200px;" aria-describedby="inputGroup-sizing-default">
+                            ¡Sumérgete en la dulzura exótica con nuestra paleta de colores inspirada en fresitas
+                            chinas!</textarea>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div> `
+  })
+})
+
+$('#btn_editar1').click(function () {
+  Swal.fire({
+    title: "Editar producto",
+    titleText: 'Sombras de ojos',
+    text: "No podras recuperar los datos",
+    padding: '1rem',
+    showConfirmButton: 'true',
+    confirmButtonText: 'Confirmar',
+    showCancelButton: 'true',
+    cancelButtonText: 'Cancelar',
+    width: '70%',
+    html: `<div class="container text-center">
+    <div class="row">
+        <div class="row">
+
+        </div>
+        <div class=" col-md-4">
+            <img class="rounded  mx-auto d-block" src="../../resources/img/productos/pd2.jpg" alt="..."
+                width="300px">
+            <br>
+            <br>
+
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <div class="letraPer col-md-4 fs-3">Nombre producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" value="paletas de frutas">
+                    </div>
+                    <div class="letraPer col-md-4 fs-3">Precio producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" value="$3.50">
+                    </div>
+
+
+                    <div class="letraPer col-md-4 fs-3">Marca producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" value="Columbia">
+                    </div>
+
+                    <div class="letraPer col-md-4 fs-3">Descripción producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            style="height: 200px;" aria-describedby="inputGroup-sizing-default">
+                            ¡Sumérgete en la dulzura exótica con nuestra paleta de colores inspirada en fresitas
+                            chinas!</textarea>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div> `
+  })
+})
+
