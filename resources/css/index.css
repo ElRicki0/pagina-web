@@ -269,6 +269,33 @@ footer {
     filter: invert(40)
 }
 
+
+.cuadroTextPedi {
+    margin-left: 70px;
+}
+
+.btnPed{
+    margin-left: 50px;
+}
+
+.estadousu {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(49, 21, 177);
+    /* Estado inactivo */
+}
+
+.estadousu:active {
+    background-color: red;
+    /* Estado activo al hacer clic */
+}
+
+.estadousu.online {
+    border: 2px solid rgb(41, 255, 98);
+    /* Estilo para el estado en línea */
+}
+
 /*modal*/
 .modal-header {
     background-color: #1F1B47;
