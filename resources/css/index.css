@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -6,86 +6,92 @@
     transition: 0.5s;
 }
 
-main{
-    margin:0px 10px 10px 10px;
+main {
+    margin: 0px 10px 10px 10px;
     position: absolute;
     min-height: 100vh;
     position: sticky;
     padding-bottom: 50px;
 }
-.container{
+
+.container {
     padding-bottom: 50px;
 }
 
 
- /* Navbar */
-.navbar-expand-lg{  
+/* Navbar */
+.navbar-expand-lg {
     background-color: #1F1B47 !important;
     color: #fefefe !important;
 }
 
-.nav-link.active{
+.nav-link.active {
     color: #f3fefe !important;
     font-size: 30px !important;
-    
+
 }
-.iconoder{
+
+.iconoder {
     margin-top: 0px;
     margin-left: 10px;
 }
 
 
-.boton{
+.boton {
     background-color: #fefefe;
 }
 
-.navbar-brand{
+.navbar-brand {
     color: #f3fefe !important;
     font-size: 30px !important;
 }
 
-span{
+span {
     color: #f3fefe;
 }
- /*Fin Navbar */
+
+/*Fin Navbar */
 
 
- 
- /* Perfil */
- .TituPerfi{
-    color:#3D0059;
- }
+
+/* Perfil */
+.TituPerfi {
+    color: #3D0059;
+}
+
 .imagPer {
     margin-left: 70px;
 }
 
-.cuadroText{
+.cuadroText {
     margin-left: 50px;
     color: #352E77;
 }
-.letraPer{
+
+.letraPer {
     color: #000055;
     margin-top: 25px;
     margin-left: 50px;
 }
 
-.botoncitoMas{
+.botoncitoMas {
     margin-left: 50px;
     margin-top: 40px;
 }
 
-select{
+select {
     border-color: blueviolet !important;
 
 }
 
-.botoncitoMas{
+.botoncitoMas {
     margin-left: 80px;
     margin-top: 40px;
 }
- /* fin de Perfil */
 
-.Fondo{
+/* fin de Perfil */
+
+.Fondo {
     background: url(../img/fondo_inicio.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -93,24 +99,25 @@ select{
     align-items: center;
 }
 
-input{
+input {
     border-color: blueviolet !important;
 }
 
-.test{
-  border-radius : 100px 100px 0 0;
+.test {
+    border-radius: 100px 100px 0 0;
 }
-.oscuro{
+
+.oscuro {
     background-color: #1F1B47 !important;
 }
-    
-section button{
+
+section button {
     background-color: #1D1C6A !important;
     color: #fefefe !important;
 }
 
 /*zona usuarios*/
- 
+
 
 .btnUsuAgregar {
     position: absolute;
@@ -120,33 +127,34 @@ section button{
     padding: 20px 20px;
     border: none;
     cursor: pointer;
-    border-radius: 20px; 
-     text-decoration: none;
-     display: inline-block;
-     font-size: 16px;
-     margin: 4px 35px;
-     
-  }
-  
-  .container-usuarios{
-    padding: 2rem 3%;
-  }
+    border-radius: 20px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 35px;
 
-  .container-usuarios button {
+}
+
+.container-usuarios {
+    padding: 2rem 3%;
+}
+
+.container-usuarios button {
     border-radius: 20px;
     background-color: #1D1C6A;
     color: white;
-    padding: 15px 15px; 
-    margin: 7px; 
-    border: none; 
-    cursor: pointer; 
-  }
-
-.usuusu{
-    text-align:left;
-    padding:  1rem 3%;
+    padding: 15px 15px;
+    margin: 7px;
+    border: none;
+    cursor: pointer;
 }
-.text_menu{
+
+.usuusu {
+    text-align: left;
+    padding: 1rem 3%;
+}
+
+.text_menu {
     text-align: center;
     color: white !important;
     font: 150% sans-serif;
@@ -154,7 +162,7 @@ section button{
 
 /*footer*/
 
-footer{
+footer {
     color: aliceblue;
     width: 100%;
     bottom: fixed;
@@ -166,11 +174,12 @@ footer{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    
+
 }
 
 
-.social-icons-container, .footer-menu-conteiner{
+.social-icons-container,
+.footer-menu-conteiner {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -179,7 +188,7 @@ footer{
 }
 
 
-.social-icons{
+.social-icons {
     height: 50px;
     width: 50px;
     border-radius: 50px;
@@ -191,30 +200,30 @@ footer{
     margin: 1rem;
 }
 
-.social-icons:hover{
+.social-icons:hover {
     background-color: #000000;
-    filter:invert(40)
+    filter: invert(40)
 }
 
-.social-icons:nth-last-of-type(2){
+.social-icons:nth-last-of-type(2) {
     background-image: url(../img/imagen_c.png);
 }
 
-.social-icons:nth-last-of-type(3){
+.social-icons:nth-last-of-type(3) {
     background-image: url(../img/imagen_i.png);
 }
 
-.social-icons:nth-last-of-type(4){
+.social-icons:nth-last-of-type(4) {
     background-image: url(../img/imagen_x.png);
 }
 
-.footer-menu-conteiner{
+.footer-menu-conteiner {
     list-style-type: none;
     color: #fefefe;
     font-size: 18px;
 }
 
-.copyright{
+.copyright {
     color: #fefefe;
     opacity: 0.3;
     text-align: center;
@@ -230,15 +239,15 @@ footer{
     padding: 20px 20px;
     border: none;
     cursor: pointer;
-    border-radius: 20px; 
-     text-decoration: none;
-     display: inline-block;
-     font-size: 16px;
-     margin: 4px 35px;
-     
-  }
+    border-radius: 20px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 35px;
 
-  .imagen-producto{
+}
+
+.imagen-producto {
     height: 50px;
     width: 50px;
     border-radius: 50px;
@@ -249,19 +258,19 @@ footer{
     background-repeat: no-repeat;
     margin: 1rem;
 
-  }
+}
 
-  .botones_productos:hover{
-        filter:invert(40);     
-  }
+.botones_productos:hover {
+    filter: invert(40);
+}
 
-  /*zona pedidos*/
-  .imagen-pedido:hover{
-    filter:invert(40)
-  }
+/*zona pedidos*/
+.imagen-pedido:hover {
+    filter: invert(40)
+}
 
-  /*modal*/
-  .modal-header{
+/*modal*/
+.modal-header {
     background-color: #1F1B47;
     color: white;
-  }
+}

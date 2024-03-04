@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../resources/css/index.css">
+    <!--Enlace para mandar a llamar propiedad de jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--Enlace para poder mostrar alertas-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+<body>
+
+    <!--Navbar-->
+    <header></header>
+    <main>
+        <br>
+        <!-- Botón para agregar producto -->
+        <button type="button" class="btn_producto_agregar">Agregar producto</button>
+        <!-- Título de la página -->
+        <h2 class="usuusu">Productos</h2>
+        <br>
+        <div class="container">
+            <div class="row">
+                <!--Contenedor donde esta la tarjeta-->
+                <div class="col-sm-7 col-md-5 col-lg-3">
+                    <div class="card my-3">
+                        <img src="../../resources/img/productos/pd1.jpg" width="150px" class="rounded mx-auto d-block"
+                            alt="Besos indesentes">
+                        <div class="card-body">
+                            <!-- Título y descripción del producto -->
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the
+                                bulk
+                                of
+                                the
+                                card's content.</p>
+                            <!-- Botones de acción (Eliminar, Editar, Información) -->
+                            <div class="btn btn-outline-danger" id="btn_eliminar1">
+                                <img id="BtnEliminar4" src="../../resources/img/iconos/papelera.png"
+                                    class="botones_productos">
+                            </div>
+                            <div class="btn btn-outline-warning" id="btn_editar1">
+                                <img src="../../resources/img/iconos/lapiz.png" class="botones_productos">
+                            </div>
+                            <div class="btn btn-outline-info" id="btn_info1">
+                                <img src="../../resources/img/iconos/info.png" class="botones_productos">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Contenedor donde esta la tarjeta-->
+                <div class="col-sm-7 col-md-5 col-lg-3">
+                    <div class="card my-3">
+                        <img src="../../resources/img/productos/pd2.jpg" width="113px" class="rounded mx-auto d-block"
+                            alt="Besos indesentes">
+                        <div class="card-body">
+                            <!-- Título y descripción del producto -->
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the
+                                bulk
+                                of
+                                the
+                                card's content.</p>
+                            <!-- Botones de acción (Eliminar, Editar, Información) -->
+                            <div class="btn btn-outline-danger" id="btn_eliminar2">
+                                <img id="BtnEliminar4" src="../../resources/img/iconos/papelera.png"
+                                    class="botones_productos">
+                            </div>
+                            <div class="btn btn-outline-warning" id="btn_editar2">
+                                <img src="../../resources/img/iconos/lapiz.png" class="botones_productos">
+                            </div>
+                            <div class="btn btn-outline-info" id="btn_info2">
+                                <img src="../../resources/img/iconos/info.png" class="botones_productos">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Contenedor donde esta la tarjeta-->
+                <div class="col-sm-7 col-md-5 col-lg-3">
+                    <div class="card my-3">
+                        <img src="../../resources/img/productos/pd3.jpg" width="150px" class="rounded mx-auto d-block"
+                            alt="Besos indesentes">
+                        <div class="card-body">
+                            <!-- Título y descripción del producto -->
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the
+                                bulk
+                                of
+                                the
+                                card's content.</p>
+                            <!-- Botones de acción (Eliminar, Editar, Información) -->
+                            <div class="btn btn-outline-danger" id="btn_eliminar3">
+                                <img id="BtnEliminar4" src="../../resources/img/iconos/papelera.png"
+                                    class="botones_productos">
+                            </div>
+                            <div class="btn btn-outline-warning" id="btn_editar3">
+                                <img src="../../resources/img/iconos/lapiz.png" class="botones_productos">
+                            </div>
+                            <div class="btn btn-outline-info" id="btn_info3">
+                                <img src="../../resources/img/iconos/info.png" class="botones_productos">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Contenedor donde esta la tarjeta-->
+                <div class="col-sm-7 col-md-5 col-lg-3">
+                    <div class="card my-3">
+                        <img src="../../resources/img/productos/pd4.png" width="150px" class="rounded mx-auto d-block"
+                            alt="...">
+                        <div class="card-body">
+                            <!-- Título y descripción del producto -->
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the
+                                bulk
+                                of
+                                the
+                                card's content.</p>
+                            <!-- Botones de acción (Eliminar, Editar, Información) -->
+                            <div class="btn btn-outline-danger" id="btn_eliminar4">
+                                <img id="BtnEliminar4" src="../../resources/img/iconos/papelera.png"
+                                    class="botones_productos">
+                            </div>
+                            <div class="btn btn-outline-warning" id="btn_editar4">
+                                <img src="../../resources/img/iconos/lapiz.png" class="botones_productos">
+                            </div>
+                            <div class="btn btn-outline-info" id="btn_info4">
+                                <img src="../../resources/img/iconos/info.png" class="botones_productos">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Contenedor donde esta la tarjeta-->
+                <div class="col-sm-7 col-md-5 col-lg-3">
+                    <div class="card my-3">
+                        <img src="../../resources/img/productos/pd5.jpg" width="150px" class="rounded mx-auto d-block"
+                            alt="...">
+                        <div class="card-body">
+                            <!-- Título y descripción del producto -->
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the
+                                bulk
+                                of
+                                the
+                                card's content.</p>
+                            <!-- Botones de acción (Eliminar, Editar, Información) -->
+                            <div class="btn btn-outline-danger" id="btn_eliminar5">
+                                <img id="BtnEliminar4" src="../../resources/img/iconos/papelera.png"
+                                    class="botones_productos">
+                            </div>
+                            <div class="btn btn-outline-warning" id="btn_editar5">
+                                <img src="../../resources/img/iconos/lapiz.png" class="botones_productos">
+                            </div>
+                            <div class="btn btn-outline-info" id="btn_info5">
+                                <img src="../../resources/img/iconos/info.png" class="botones_productos">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Contenedor donde esta la tarjeta-->
+                <div class="col-sm-7 col-md-5 col-lg-3">
+                    <div class="card my-3">
+                        <img src="../../resources/img/productos/pd6.jpg" width="150px" class="rounded mx-auto d-block"
+                            alt="...">
+                        <div class="card-body">
+                            <!-- Título y descripción del producto -->
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the
+                                bulk
+                                of
+                                the
+                                card's content.</p>
+                            <!-- Botones de acción (Eliminar, Editar, Información) -->
+                            <div class="btn btn-outline-danger" id="btn_eliminar6">
+                                <img id="BtnEliminar4" src="../../resources/img/iconos/papelera.png"
+                                    class="botones_productos">
+                            </div>
+                            <div class="btn btn-outline-warning" id="btn_editar6">
+                                <img src="../../resources/img/iconos/lapiz.png" class="botones_productos">
+                            </div>
+                            <div class="btn btn-outline-info" id="btn_info6">
+                                <img src="../../resources/img/iconos/info.png" class="botones_productos">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Contenedor donde esta la tarjeta-->
+                <div class="col-sm-7 col-md-5 col-lg-3">
+                    <div class="card my-3">
+                        <img src="../../resources/img/productos/pd7.jpg" width="120px" class="rounded mx-auto d-block"
+                            alt="...">
+                        <div class="card-body">
+                            <!-- Título y descripción del producto -->
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the
+                                bulk
+                                of
+                                the
+                                card's content.</p>
+                            <!-- Botones de acción (Eliminar, Editar, Información) -->
+                            <div class="btn btn-outline-danger"  id="btn_eliminar7">
+                                <img id="BtnEliminar4" src="../../resources/img/iconos/papelera.png"
+                                    class="botones_productos">
+                            </div>
+                            <div class="btn btn-outline-warning" id="btn_editar7">
+                                <img src="../../resources/img/iconos/lapiz.png" class="botones_productos">
+                            </div>
+                            <div class="btn btn-outline-info" id="btn_info7">
+                                <img src="../../resources/img/iconos/info.png" class="botones_productos">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Contenedor donde esta la tarjeta-->
+                <div class="col-sm-7 col-md-5 col-lg-3">
+                    <div class="card my-3">
+                        <img src="../../resources/img/productos/pd8.png" width="150px" class="rounded mx-auto d-block"
+                            alt="...">
+                        <div class="card-body">
+                            <!-- Título y descripción del producto -->
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the
+                                bulk
+                                of
+                                the
+                                card's content.</p>
+                            <!-- Botones de acción (Eliminar, Editar, Información) -->
+                            <div class="btn btn-outline-danger" id="btn_eliminar8">
+                                <img id="BtnEliminar4" src="../../resources/img/iconos/papelera.png"
+                                    class="botones_productos">
+                            </div>
+                            <div class="btn btn-outline-warning" id="btn_editar8">
+                                <img src="../../resources/img/iconos/lapiz.png" class="botones_productos">
+                            </div>
+                            <div class="btn btn-outline-info" id="btn_info8">
+                                <img src="../../resources/img/iconos/info.png" class="botones_productos">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+    </main>
+
+    <footer class="test ">
+
+    </footer>
+    <script src="../../controllers/utils/dinamics_parts.js"></script>
+    <script src="../../controllers/utils/alertas.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../controllers/utils/alertas_productos.js"></script>
+</body>
+
+
+</html>

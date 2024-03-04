@@ -29,16 +29,16 @@ header.innerHTML = `<nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav  mb-2 mb-lg-0">
                     <a class="navbar-brand align-items-right"
-                        href="https://www.instagram.com/ivanecare/"><img src="../../resources/img/logo.png"
+                        href="#"><img src="../../resources/img/logo.png"
                             width="60px"></a>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Productos</a>
+                        <a class="nav-link active" aria-current="page" href="../../views/admin/productos.html">Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Usuarios</a>
+                        <a class="nav-link active" aria-current="page" href="../../views/admin/usuarios.html">Usuarios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Lista de Pedidos</a>
+                        <a class="nav-link active" aria-current="page" href="../../views/admin/pedidos.html">Lista de Pedidos</a>
                     </li>
                 </ul>
             </div>
