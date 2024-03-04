@@ -211,6 +211,51 @@ $('#BtnActualizar').click(function () {
   });
 });
 
+
+
+/*Alerta cheques de detalle de pedidos*/
+$('#BtnCheckSoli').click(function () {
+  Swal.fire({
+    text: "El pedido se ha actualizado a (entregado)" ,
+    imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+    imageWidth: 200,
+    imageHeight: 200,
+    imageAlt: "Custom image"
+  });
+});
+
+$('#BtnCheckSoli2').click(function () {
+  Swal.fire({
+    text: "El pedido se ha actualizado a (entregado)" ,
+    imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+    imageWidth: 200,
+    imageHeight: 200,
+    imageAlt: "Custom image"
+  });
+});
+
+
+$('#BtnCheckSoliAlert').click(function () {
+  Swal.fire({
+    text: "El pedido se ha actualizado a (pendiente)" ,
+    imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
+    imageWidth: 200,
+    imageHeight: 200,
+    imageAlt: "Custom image"
+  });
+});
+
+$('#BtnCheckSoliAlert2').click(function () {
+  Swal.fire({
+    text: "El pedido se ha actualizado a (pendiente)" ,
+    imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
+    imageWidth: 200,
+    imageHeight: 200,
+    imageAlt: "Custom image"
+  });
+});
+
+
 /*producto_editar*/
 document.getElementById('btn_info1').addEventListener('click', function () {
   Swal.fire({
