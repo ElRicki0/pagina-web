@@ -1,8 +1,8 @@
 const usuario       = document.getElementById('usuario');
 const contrasenia   = document.getElementById('contrasenia');
-const btn_inicio    = document.getElementById('btn_inicio');
+const BtnCorrecto    = document.getElementById('BtnCorrecto');
 
-btn_inicio.addEventListener('click', (e)=>{
+BtnCorrecto.addEventListener('click', (e)=>{
     e.preventDefault();
     const data = {
         usuario: usuario.value,
@@ -11,7 +11,7 @@ btn_inicio.addEventListener('click', (e)=>{
 
     console.log(data)
     if(data.usuario=='admin'&&data.contrasenia=='pass123'){
-        window.location.href = '../../views/admin/principal.html';
+        window.location.href = '../../views/admin/Menu.html';
     }
     else{
         window.alert('error')
