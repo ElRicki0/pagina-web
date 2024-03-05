@@ -9,6 +9,18 @@ $('#BtnCorrecto').click(function () {
 });
 */
 
+
+
+$('#btnAgregarusu').click(function () {
+  Swal.fire({
+    title: "Agregar usuario",
+    text: "El usuario se agrego correctamente",
+    imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+    imageWidth: 200,
+    imageHeight: 200,
+  });
+});
+
 // función para botón eliminar 
 $('#BtnEliminar').click(function () {
   Swal.fire({
