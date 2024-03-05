@@ -226,6 +226,27 @@ $('#BtnActualizar').click(function () {
 
 
 /*Alerta cheques de detalle de pedidos*/
+
+$('#BtnCancel').click(function () {
+  Swal.fire({
+    text: "El pedido se ha actualizado a (pendiente)",
+    imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
+    imageWidth: 200,
+    imageHeight: 200,
+    imageAlt: "Custom image"
+  });
+});
+
+$('#BtnCheck').click(function () {
+  Swal.fire({
+    text: "El pedido se ha actualizado a (entregado)",
+    imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+    imageWidth: 200,
+    imageHeight: 200,
+    imageAlt: "Custom image"
+  });
+});
+
 $('#BtnCheckSoli').click(function () {
   Swal.fire({
     text: "El pedido se ha actualizado a (entregado)",
