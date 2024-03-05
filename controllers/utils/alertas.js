@@ -9,6 +9,18 @@ $('#BtnCorrecto').click(function () {
 });
 */
 
+
+
+$('#btnAgregarusu').click(function () {
+  Swal.fire({
+    title: "Agregar usuario",
+    text: "El usuario se agrego correctamente",
+    imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+    imageWidth: 200,
+    imageHeight: 200,
+  });
+});
+
 // función para botón eliminar 
 $('#BtnEliminar').click(function () {
   Swal.fire({
@@ -216,7 +228,7 @@ $('#BtnActualizar').click(function () {
 /*Alerta cheques de detalle de pedidos*/
 $('#BtnCheckSoli').click(function () {
   Swal.fire({
-    text: "El pedido se ha actualizado a (entregado)" ,
+    text: "El pedido se ha actualizado a (entregado)",
     imageUrl: "../../resources/img/alertasImagenes/kirby.png",
     imageWidth: 200,
     imageHeight: 200,
@@ -226,7 +238,27 @@ $('#BtnCheckSoli').click(function () {
 
 $('#BtnCheckSoli2').click(function () {
   Swal.fire({
-    text: "El pedido se ha actualizado a (entregado)" ,
+    text: "El pedido se ha actualizado a (entregado)",
+    imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+    imageWidth: 200,
+    imageHeight: 200,
+    imageAlt: "Custom image"
+  });
+});
+
+$('#BtnCheck').click(function () {
+  Swal.fire({
+    text: "El pedido se ha actualizado a (entregado)",
+    imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+    imageWidth: 200,
+    imageHeight: 200,
+    imageAlt: "Custom image"
+  });
+});
+
+$('#BtnCancel').click(function () {
+  Swal.fire({
+    text: "El pedido se ha actualizado a (pendiente)",
     imageUrl: "../../resources/img/alertasImagenes/kirby.png",
     imageWidth: 200,
     imageHeight: 200,
@@ -237,7 +269,7 @@ $('#BtnCheckSoli2').click(function () {
 
 $('#BtnCheckSoliAlert').click(function () {
   Swal.fire({
-    text: "El pedido se ha actualizado a (pendiente)" ,
+    text: "El pedido se ha actualizado a (pendiente)",
     imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
     imageWidth: 200,
     imageHeight: 200,
@@ -247,7 +279,7 @@ $('#BtnCheckSoliAlert').click(function () {
 
 $('#BtnCheckSoliAlert2').click(function () {
   Swal.fire({
-    text: "El pedido se ha actualizado a (pendiente)" ,
+    text: "El pedido se ha actualizado a (pendiente)",
     imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
     imageWidth: 200,
     imageHeight: 200,
