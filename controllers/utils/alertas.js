@@ -1,17 +1,52 @@
-// sección de alertas generales
-/*
-$('#BtnCorrecto').click(function () {
+
+function alertMine(action) {
+  switch (action) {
+    case 'agregar':
+      Swal.fire({
+      title: "Agregar usuario",
+      text: "El usuario se agrego correctamente",
+      imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+      imageWidth: 200,
+      imageHeight: 200,
+    });
+      break;
+    case 'modificar':
+      message = 'Registro modificar correctamente';
+      break;
+    case 'eliminar':
+      Swal.fire({
+        title: "¿Estas seguro de eliminarlo?",
+        text: "No podras recuperar los datos",
+        imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
+        imageWidth: 200,
+        imageHeight: 200,
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Confirmar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Elemento borrado!",
+            text: "El archivo se ha borrado correctamente",
+            imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+            imageWidth: 200,
+            imageHeight: 200,
+          });
+        }
+      });
+      break;
+  }
   Swal.fire({
-    title: "Sesión iniciada",
-    text: "Iniciaste sesión correctamente",
-    icon: "success"
+    title: "Éxisto",
+    text: message,
+    imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+    imageWidth: 200,
+    imageHeight: 200,
   });
-});
-*/
+}
 
-
-
-$('#btnAgregarusu').click(function () {
+document.getElementById('BtnActualizar').addEventListener('click', function () {
   Swal.fire({
     title: "Agregar usuario",
     text: "El usuario se agrego correctamente",
@@ -22,30 +57,7 @@ $('#btnAgregarusu').click(function () {
 });
 
 // función para botón eliminar 
-$('#BtnEliminar').click(function () {
-  Swal.fire({
-    title: "¿Estas seguro de eliminarlo?",
-    text: "No podras recuperar los datos",
-    imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
-    imageWidth: 200,
-    imageHeight: 200,
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Confirmar"
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "Elemento borrado!",
-        text: "El archivo se ha borrado correctamente",
-        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-        imageWidth: 200,
-        imageHeight: 200,
-      });
-    }
-  });
-});
-$('#BtnEliminar2').click(function () {
+document.getElementById('BtnEliminar1').addEventListener('click', function () {
   Swal.fire({
     title: "¿Estas seguro de eliminarlo?",
     text: "No podras recuperar los datos",
@@ -69,7 +81,7 @@ $('#BtnEliminar2').click(function () {
   });
 });
 
-$('#BtnEliminar3').click(function () {
+document.getElementById('BtnEliminar2').addEventListener('click', function () {
   Swal.fire({
     title: "¿Estas seguro de eliminarlo?",
     text: "No podras recuperar los datos",
@@ -93,7 +105,7 @@ $('#BtnEliminar3').click(function () {
   });
 });
 
-$('#BtnEliminar4').click(function () {
+document.getElementById('BtnEliminar3').addEventListener('click', function () {
   Swal.fire({
     title: "¿Estas seguro de eliminarlo?",
     text: "No podras recuperar los datos",
@@ -117,7 +129,31 @@ $('#BtnEliminar4').click(function () {
   });
 });
 
-$('#BtnEliminar5').click(function () {
+document.getElementById('BtnEliminar4').addEventListener('click', function () {
+  Swal.fire({
+    title: "¿Estas seguro de eliminarlo?",
+    text: "No podras recuperar los datos",
+    imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
+    imageWidth: 200,
+    imageHeight: 200,
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Confirmar"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({
+        title: "Elemento borrado!",
+        text: "El archivo se ha borrado correctamente",
+        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+        imageWidth: 200,
+        imageHeight: 200,
+      });
+    }
+  });
+});
+
+document.getElementById('BtnEliminar5').addEventListener('click', function () {
   SSwal.fire({
     title: "¿Estas seguro de eliminarlo?",
     text: "No podras recuperar los datos",
@@ -141,7 +177,7 @@ $('#BtnEliminar5').click(function () {
   });
 });
 
-$('#BtnEliminar6').click(function () {
+document.getElementById('BtnEliminar6').addEventListener('click', function () {
   Swal.fire({
     title: "¿Estas seguro de eliminarlo?",
     text: "No podras recuperar los datos",
@@ -165,7 +201,7 @@ $('#BtnEliminar6').click(function () {
   });
 });
 
-$('#BtnEliminar7').click(function () {
+document.getElementById('BtnEliminar7').addEventListener('click', function () {
   Swal.fire({
     title: "¿Estas seguro de eliminarlo?",
     text: "No podras recuperar los datos",
@@ -189,7 +225,7 @@ $('#BtnEliminar7').click(function () {
   });
 });
 
-$('#BtnEliminar8').click(function () {
+document.getElementById('BtnEliminar8').addEventListener('click', function () {
   Swal.fire({
     title: "¿Estas seguro de eliminarlo?",
     text: "No podras recuperar los datos",
@@ -213,15 +249,7 @@ $('#BtnEliminar8').click(function () {
   });
 });
 
-$('#BtnActualizar').click(function () {
-  Swal.fire({
-    text: "Se han actualizado los datos.",
-    imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-    imageWidth: 200,
-    imageHeight: 200,
-    imageAlt: "Custom image"
-  });
-});
+
 
 
 
