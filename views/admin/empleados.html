@@ -9,10 +9,6 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" href="../../resources/css/index.css">
-  <!--Enlace para mandar a llamar propiedad de jquery-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!--Enlace para poder mostrar alertas-->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -24,11 +20,12 @@
   <!-- tablas para usuarios -->
 
   <button type="button" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#usu"
-    class="btnUsuAgregar">Agregar usuario</button>
-  <h2 class="usuusu">Usuarios</h2>
+    class="btnUsuAgregar">Agregar empleado</button>
+  <h2 class="usuusu">Empleados</h2>
   <span>
-
-    <!-- tablas para usuarios -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          Apartado de tabla de los empleados
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <div class="container-usuarios mb-5">
       <table class="table table-striped">
         <thead>
@@ -42,44 +39,52 @@
         <tbody>
           <tr>
             <th scope="row">1</th>
+            <td> <img src="../../resources/img/riverss.jpg" alt="" class="tamanioImagenTablaEmpleado img-fluid "> </td>
             <td>Jacob</td>
             <td>Otto</td>
             <td>
-              <button type="button" class="editar-btn"><img src="../../resources/img/iconos/lapiz.png"
-                  class="botones_productos" alt="Editar"></button>
-              <button id="BtnEliminar" type="button" class="borrar-btn"><img
+              <button type="button" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#ediusu"
+                class="editar-btn"><img src="../../resources/img/iconos/lapiz.png" class="botones_productos"
+                  alt="Editar"></button>
+              <button id=" " onclick="alertMine('eliminarUsu')" type="button" class="borrar-btn"><img
                   src="../../resources/img/iconos/papelera.png" class="botones_productos" alt="Borrar"></button>
             </td>
           </tr>
           <tr>
             <th scope="row">2</th>
+            <td> <img src="../../resources/img/riverss.jpg" alt="" class="tamanioImagenTablaEmpleado"> </td>
             <td>Jacob</td>
             <td>Thornton</td>
             <td>
               <button type="button" class="editar-btn"><img src="../../resources/img/iconos/lapiz.png"
-                  class="botones_productos" alt="Editar"></button>
-              <button id="BtnEliminar2" type="button" class="borrar-btn"><img
+                  class="botones_productos" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#ediusu"
+                  alt="Editar"></button>
+              <button id="" onclick="alertMine('eliminarUsu')" type="button" class="borrar-btn"><img
                   src="../../resources/img/iconos/papelera.png" class="botones_productos" alt="Borrar"></button>
             </td>
           </tr>
           <tr>
             <th scope="row">3</th>
+            <td> <img src="../../resources/img/riverss.jpg" alt="" class="tamanioImagenTablaEmpleado"> </td>
             <td>Jacob</td>
             <td>Thornton</td>
             <td>
               <button type="button" class="editar-btn"><img src="../../resources/img/iconos/lapiz.png"
-                  class="botones_productos" alt="Editar"></button>
-              <button id="BtnEliminar3" type="button" class="borrar-btn"><img
+                  class="botones_productos" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#ediusu"
+                  alt="Editar"></button>
+              <button id="" onclick="alertMine('eliminarUsu')" type="button" class="borrar-btn"><img
                   src="../../resources/img/iconos/papelera.png" class="botones_productos" alt="Borrar"></button>
             </td>
           <tr>
             <th scope="row">4</th>
+            <td> <img src="../../resources/img/riverss.jpg" alt="" class="tamanioImagenTablaEmpleado"> </td>
             <td>Jacob</td>
             <td>Thornton</td>
             <td>
-              <button type="button" class="editar-btn"><img src="../../resources/img/iconos/lapiz.png"
-                  class="botones_productos" alt="Editar"></button>
-              <button id="BtnEliminar4" type="button" class="borrar-btn"><img
+              <button type="button" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#ediusu"
+                class="editar-btn"><img src="../../resources/img/iconos/lapiz.png" class="botones_productos"
+                  data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#ediusu" alt="Editar"></button>
+              <button id="" onclick="alertMine('eliminarUsu')" type="button" class="borrar-btn"><img
                   src="../../resources/img/iconos/papelera.png" class="botones_productos" alt="Borrar"></button>
             </td>
           </tr>
@@ -87,23 +92,27 @@
             </td>
           <tr>
             <th scope="row">5</th>
+            <td> <img src="../../resources/img/riverss.jpg" alt="" class="tamanioImagenTablaEmpleado"> </td>
             <td>Jacob</td>
             <td>Thornton</td>
             <td>
               <button type="button" class="editar-btn"><img src="../../resources/img/iconos/lapiz.png"
-                  class="botones_productos" alt="Editar"></button>
-              <button id="BtnEliminar5" type="button" class="borrar-btn"><img
+                  class="botones_productos" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#ediusu"
+                  alt="Editar"></button>
+              <button id="" onclick="alertMine('eliminarUsu')" type="button" class="borrar-btn"><img
                   src="../../resources/img/iconos/papelera.png" class="botones_productos" alt="Borrar"></button>
             </td>
           </tr>
           <tr>
             <th scope="row">6</th>
+            <td> <img src="../../resources/img/riverss.jpg" alt="" class="tamanioImagenTablaEmpleado"> </td>
             <td>Alisson</td>
             <td>Zepeda</td>
             <td>
               <button type="button" class="editar-btn"><img src="../../resources/img/iconos/lapiz.png"
-                  class="botones_productos" alt="Editar"></button>
-              <button id="BtnEliminar6" type="button" class="borrar-btn"><img
+                  class="botones_productos" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#ediusu"
+                  alt="Editar"></button>
+              <button id="" onclick="alertMine('eliminarUsu')" type="button" class="borrar-btn"><img
                   src="../../resources/img/iconos/papelera.png" class="botones_productos" alt="Borrar"></button>
             </td>
           </tr>
@@ -120,14 +129,110 @@
 
     </div>
 
-    <!-- Ventanas flotantes para agregar y editar usuario -->
-
+    <!-- Ventanas flotantes para agregar y editar empleado -->
+    <!-- modal agregar empleado-->
     <div class="modal fade" id="usu" tabindex="-1" aria-labelledby="modal" aria-hidden="true">
       <div class="modal-dialog modal-lg" style="width: 100%;">
         <div class="modal-content">
           <div class="modal-header">
             <!-- Título del modal -->
-            <h6 class="modal-title  w-100 text-center" id="modal">Editar datos del usuario</h6>
+            <h6 class="modal-title  w-100 text-center" id="modal">Agregar datos del empleado</h6>
+            <!-- Botón de cierre del modal -->
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="col">
+              <div class="row">
+                <!--Imagen de perfil-->
+                <div class=" row ">
+                  <div class="row">
+                    <div class="col-md-12 container d-flex flex-column align-items-center justify-content-center">
+                      <img id="modalProfileImage" class="rounded-circle mx-auto d-block order-1"
+                        src="../../resources/img/iconoPerfil.jpg" alt="..." width="300px">
+                      <input type="file" id="modalInputFile" style="display:none;" accept="image/*">
+                      <button type="button"
+                        class="botoncitoPerfilAgre btn btn-outline-dark btn-lg btn-block mx-auto order-2"
+                        onclick="abrirExploradorModal()">Insertar foto de perfil</button>
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <form>
+                      <div class="form-group">
+                        <label for="CuadroNom" class="letraPer col-md-4 fs-3">Nombre</label>
+                        <input type="text" class="form-control cuadroText col-md-8 fs-3" id="CuadroNom"
+                          placeholder="Veronica">
+                      </div>
+                      <div class="form-group">
+                        <label for="CuadroApel" class="letraPer col-md-4 fs-3">Apellido</label>
+                        <input type="text" class="form-control cuadroText col-md-8 fs-3" id="CuadroApel"
+                          placeholder="Sanchez">
+                      </div>
+                      <div class="form-group">
+                        <label for="CuadroCorreo" class="letraPer col-md-8 fs-3">Correo
+                          electrónico</label>
+                        <input type="email" class="form-control cuadroText col-md-8 fs-3" id="CuadroCorreo"
+                          placeholder="Verititito@gmail.com">
+                      </div>
+                      <div class="form-group">
+                        <label for="CuadroTel" class="letraPer col-md-4 fs-3">Telefono</label>
+                        <input type="number" class="form-control cuadroText col-md-8 fs-3" id="CuadroTel"
+                          placeholder="1234-1234">
+                      </div>
+                      <div class="form-group">
+                        <label for="CuadroTelEmer" class="letraPer col-md-10 fs-3">Telefono de
+                          emergencia</label>
+                        <input type="number" class="form-control cuadroText col-md-8 fs-3" id="CuadroTelEmer"
+                          placeholder="1234-1234">
+                      </div>
+                      <div class="form-group">
+                        <label for="CuadroDUI" class="letraPer col-md-10 fs-3">DUI del
+                          empleado</label>
+                        <input type="number" class="form-control cuadroText col-md-8 fs-3" id="CuadroDUI"
+                          placeholder="12345678-9">
+                      </div>
+                      <div class="form-group">
+                        <label for="CuadroNivel" class="letraPer col-md-10 fs-3">Nivel del
+                          empleado</label>
+                        <select class="form-control cuadroText col-md-8 fs-3" id="CuadroNivel">
+                          <option>Administrador</option>
+                          <option>Empleado</option>
+                          <option>Repartidor</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="CuadroPass" class="letraPer col-md-10 fs-3">Contraseña</label>
+                        <input type="password" class="form-control cuadroText col-md-8 fs-3" id="CuadroPass"
+                          placeholder="contraseña">
+                      </div>
+                      <div class="form-group">
+                        <label for="CuadroFecha" class="letraPer col-md-10 fs-3">Fecha de
+                          nacimiento</label>
+                        <input type="date" class="form-control cuadroText col-md-8 fs-3" id="CuadroFecha"
+                          placeholder="12345678-9">
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <!-- Botón para agregar los datos del empleado-->
+              <button id="" onclick="alertMine('agregarUsu')" type="button" type="button" style="font-size: 30px;"
+                class="agreUs btn btn-outline-secondary">Agregar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- modal editar empleado-->
+    <div class="modal fade" id="ediusu" tabindex="-1" aria-labelledby="modal" aria-hidden="true">
+      <div class="modal-dialog modal-lg" style="width: 100%;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <!-- Título del modal -->
+            <h6 class="modal-title  w-100 text-center" id="modal">Editar datos del empleado</h6>
             <!-- Botón de cierre del modal -->
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
@@ -142,86 +247,87 @@
                     <br>
                   </div>
 
-                  <div class="col-6">
-                    <!-- Campo de entrada para el Nombre -->
-                    <div class="form-group">
-                      <label for="NombreInputModal" class="letraPer col-md-6 fs-3">Nombre</label>
-                      <input type="text" class="form-control fs-4 " id="NombreInputModal" placeholder="Nombre">
-                    </div>
-                    <!-- Campo de entrada para el Apellido -->
-                    <div class="form-group col-md-11">
-                      <label for="ApellidoInputModal" class="letraPer col-md-6 fs-3">Apellido</label>
-                      <input type="text" class="form-control fs-4" id="ApellidoInputModal" placeholder="Apellido">
-                    </div>
-                    <!-- Campo de entrada para el Número de teléfono -->
-                    <div class="form-group col-md-11">
-                      <label for="ApellidoInputModal" class="letraPer col-md-6 fs-3">Telefono</label>
-                      <input type="text" class="form-control fs-4" id="ApellidoInputModal" placeholder="tel">
-                    </div>
-                    <!-- Campo de entrada para el Teléfono de emergencia -->
-                    <div class="form-group col-md-11">
-                      <label for="TelefonoEmerInputModal" class="letraPer col-md-11 fs-3">Teléfono de
-                        emergencia</label>
-                      <input type="number" class="form-control fs-4" id="TelefonoEmerInputModal" placeholder="Telefono">
-                    </div>
-                    <!-- Campo de entrada para la Contraseña -->
-                    <div class="form-group col-md-11">
-                      <label for="ContraInputModal" class="letraPer col-md-6 fs-3">Contraseña</label>
-                      <input type="password" class="form-control fs-4" id="ContraInputModal" placeholder="Contraseña">
-                    </div>
-                  </div>
-                  <!-- Columna derecha del formulario -->
-                <div class="col-6 ">
-                  <!-- Campo de entrada para el Correo Electrónico -->
-                  <div class="form-group col-md-11">
-                    <label for="CorreoInputModal" class="letraPer col-md-10 fs-3">Correo Electrónico</label>
-                    <input type="email" class="form-control fs-4" id="CorreoInputModal" aria-describedby="emailHelp"
-                      placeholder="Correo">
-                  </div>
-                  <!-- Campo de entrada para el DUI empleado -->
-                  <div class="form-group col-md-11">
-                    <label for="DuiInputModal" class="letraPer col-md-8 fs-3">DUI empleado</label>
-                    <input type="number" class="form-control fs-4" id="DuiInputModal" placeholder="DUI">
-                  </div>
-                  <!-- Campo de selección para el Nivel empleado -->
-                  <div class="form-group col-md-11">
-                    <label for="NivelEmpleInputModal" class="letraPer col-md-8 fs-3">Nivel empleado</label>
-                    <select class="form-control fs-4" id="NivelEmpleInputModal">
-                      <option>Administrador</option>
-                      <option>Empleado</option>
-                      <option>Repartidor</option>
-                    </select>
-                  </div>
-                  <!-- Campo de entrada para la Edad empleado -->
-                  <div class="form-group col-md-8">
-                    <label for="EdadInputModal" class="letraPer col-md-12 fs-3">Edad empleado</label>
-                    <input type="number" class="form-control fs-4" id="EdadInputModal" placeholder="Edad">
+                  <div class="col">
+                    <form>
+                      <div class="form-group">
+                        <label for="CuadroNom" class="letraPer col-md-4 fs-3">Nombre</label>
+                        <input type="text" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
+                          id="CuadroNom" placeholder="Veronica">
+                      </div>
+                      <div class="form-group">
+                        <label for="CuadroApel" class="letraPer col-md-4 fs-3">Apellido</label>
+                        <input type="text" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
+                          id="CuadroApel" placeholder="Sanchez">
+                      </div>
+                      <div class="form-group">
+                        <label for="CuadroCorreo" class="letraPer col-md-8 fs-3">Correo
+                          electrónico</label>
+                        <input type="email" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
+                          id="CuadroCorreo" placeholder="Verititito@gmail.com">
+                      </div>
+                      <div class="form-group">
+                        <label for="CuadroTel" class="letraPer col-md-4 fs-3">Telefono</label>
+                        <input type="number" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
+                          id="CuadroTel" placeholder="1234-1234">
+                      </div>
+                      <div class="form-group">
+                        <label for="CuadroTelEmer" class="letraPer col-md-10 fs-3">Telefono de
+                          emergencia</label>
+                        <input type="number" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
+                          id="CuadroTelEmer" placeholder="1234-1234">
+                      </div>
+                      <div class="form-group">
+                        <label for="CuadroDUI" class="letraPer col-md-10 fs-3">DUI del
+                          empleado</label>
+                        <input type="number" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
+                          id="CuadroDUI" placeholder="12345678-9">
+                      </div>
+                      <div class="form-group">
+                        <label for="CuadroNivel" class="letraPer col-md-10 fs-3">Nivel del
+                          empleado</label>
+                        <select class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
+                          id="CuadroNivel">
+                          <option>Administrador</option>
+                          <option>Empleado</option>
+                          <option>Repartidor</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="CuadroPass" class="letraPer col-md-10 fs-3">Contraseña</label>
+                        <input type="password" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
+                          id="CuadroPass" placeholder="contraseña">
+                      </div>
+                      <div class="form-group">
+                        <label for="CuadroFecha" class="letraPer col-md-10 fs-3">Fecha de
+                          nacimiento</label>
+                        <input type="date" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
+                          id="CuadroFecha" placeholder="12345678-9">
+                      </div>
+                    </form>
                   </div>
                 </div>
-                </div>
-                
+              </div>
+              <div class="modal-footer">
+                <!-- Botón para actualizar datos en el modal -->
+                <button onclick="alertMine ('modificarUsu')" type="button" type="button" style="font-size: 30px;"
+                  class="agreUs btn btn-outline-secondary">Editar</button>
               </div>
             </div>
-            <div class="modal-footer">
-              <!-- Botón para actualizar datos en el modal -->
-              <button id="btnAgregarusu" type="button" type="button" style="font-size: 30px;"
-                class="agreUs btn btn-outline-secondary">Agregar</button>
-            </div>
           </div>
-        </div>
-
-
-        <script src="../../controllers/utils/dinamics_parts.js"></script>
-        <script src="../../controllers/utils/alertas.js"></script>
-
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-          integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-          crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-          integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-          crossorigin="anonymous"></script>
-
 </body>
+
+<!--Enlaces para archivos javascript-->
+<script src="../../controllers/utils/dinamics_parts.js"></script>
+<script src="../../controllers/utils/alertas.js"></script>
+<script src="../../controllers/utils/explorador_modal.js"></script>
+
+<!--Enlace para poder mostrar alertas-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!--Enlace para elementos del boostrap-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 
 </html>
 

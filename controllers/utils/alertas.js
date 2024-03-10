@@ -1,332 +1,119 @@
 
+
+
+/*
+----------------------------------------
+/// función para alertas generales   ///
+----------------------------------------
+*/
 function alertMine(action) {
-  switch (action) {
-    case 'agregar':
-      Swal.fire({
-      title: "Agregar usuario",
-      text: "El usuario se agrego correctamente",
-      imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-      imageWidth: 200,
-      imageHeight: 200,
-    });
-      break;
-    case 'modificar':
-      message = 'Registro modificar correctamente';
-      break;
-    case 'eliminar':
-      Swal.fire({
-        title: "¿Estas seguro de eliminarlo?",
-        text: "No podras recuperar los datos",
-        imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
+    switch (action) {
+        case 'agregarUsu':
+            Swal.fire({
+                title: "Agregar usuario",
+                text: "El usuario se agrego correctamente",
+                imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+                imageWidth: 200,
+                imageHeight: 200,
+            });
+            break;
+        case 'eliminarUsu':
+            Swal.fire({
+                title: "¿Estas seguro de eliminarlo?",
+                text: "No podras recuperar los datos de este usuario",
+                imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
+                imageWidth: 200,
+                imageHeight: 200,
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Confirmar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Elemento borrado!",
+                        text: "El usuario se ha borrado correctamente",
+                        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+                        imageWidth: 200,
+                        imageHeight: 200,
+                    });
+                }
+            });
+            break;
+        case 'modificar':
+            message = 'Registro modificar correctamente';
+            break;
+        case 'eliminar':
+            Swal.fire({
+                title: "¿Estas seguro de eliminarlo?",
+                text: "No podras recuperar los datos",
+                imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
+                imageWidth: 200,
+                imageHeight: 200,
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Confirmar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Elemento borrado!",
+                        text: "El producto se ha borrado correctamente",
+                        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+                        imageWidth: 200,
+                        imageHeight: 200,
+                    });
+                }
+            });
+            break;
+        case 'entregado':
+            Swal.fire({
+                text: "El pedido se ha actualizado a (entregado)",
+                imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+                imageWidth: 200,
+                imageHeight: 200,
+                imageAlt: "Custom image"
+            });
+            break;
+        case 'pendiente':
+            Swal.fire({
+                text: "El pedido se ha actualizado a (pendiente)",
+                imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
+                imageWidth: 200,
+                imageHeight: 200,
+                imageAlt: "Custom image"
+            });
+        case 'modificarUsu':
+            Swal.fire({
+                text: 'El usuario se ha editado correctamente',
+                imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+                imageWidth: 200,
+                imageHeight: 200,
+                imageAlt: "Custom image"
+            })
+            break;
+    }
+    Swal.fire({
+        title: "Éxisto",
+        text: message,
+        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
         imageWidth: 200,
         imageHeight: 200,
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Confirmar"
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire({
-            title: "Elemento borrado!",
-            text: "El archivo se ha borrado correctamente",
-            imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-            imageWidth: 200,
-            imageHeight: 200,
-          });
-        }
-      });
-      break;
-  }
-  Swal.fire({
-    title: "Éxisto",
-    text: message,
-    imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-    imageWidth: 200,
-    imageHeight: 200,
-  });
+    });
 }
 
-document.getElementById('BtnActualizar').addEventListener('click', function () {
-  Swal.fire({
-    title: "Agregar usuario",
-    text: "El usuario se agrego correctamente",
-    imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-    imageWidth: 200,
-    imageHeight: 200,
-  });
-});
-
-// función para botón eliminar 
-document.getElementById('BtnEliminar1').addEventListener('click', function () {
-  Swal.fire({
-    title: "¿Estas seguro de eliminarlo?",
-    text: "No podras recuperar los datos",
-    imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
-    imageWidth: 200,
-    imageHeight: 200,
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Confirmar"
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "Elemento borrado!",
-        text: "El archivo se ha borrado correctamente",
-        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-        imageWidth: 200,
-        imageHeight: 200,
-      });
-    }
-  });
-});
-
-document.getElementById('BtnEliminar2').addEventListener('click', function () {
-  Swal.fire({
-    title: "¿Estas seguro de eliminarlo?",
-    text: "No podras recuperar los datos",
-    imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
-    imageWidth: 200,
-    imageHeight: 200,
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Confirmar"
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "Elemento borrado!",
-        text: "El archivo se ha borrado correctamente",
-        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-        imageWidth: 200,
-        imageHeight: 200,
-      });
-    }
-  });
-});
-
-document.getElementById('BtnEliminar3').addEventListener('click', function () {
-  Swal.fire({
-    title: "¿Estas seguro de eliminarlo?",
-    text: "No podras recuperar los datos",
-    imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
-    imageWidth: 200,
-    imageHeight: 200,
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Confirmar"
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "Elemento borrado!",
-        text: "El archivo se ha borrado correctamente",
-        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-        imageWidth: 200,
-        imageHeight: 200,
-      });
-    }
-  });
-});
-
-document.getElementById('BtnEliminar4').addEventListener('click', function () {
-  Swal.fire({
-    title: "¿Estas seguro de eliminarlo?",
-    text: "No podras recuperar los datos",
-    imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
-    imageWidth: 200,
-    imageHeight: 200,
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Confirmar"
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "Elemento borrado!",
-        text: "El archivo se ha borrado correctamente",
-        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-        imageWidth: 200,
-        imageHeight: 200,
-      });
-    }
-  });
-});
-
-document.getElementById('BtnEliminar5').addEventListener('click', function () {
-  SSwal.fire({
-    title: "¿Estas seguro de eliminarlo?",
-    text: "No podras recuperar los datos",
-    imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
-    imageWidth: 200,
-    imageHeight: 200,
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Confirmar"
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "Elemento borrado!",
-        text: "El archivo se ha borrado correctamente",
-        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-        imageWidth: 200,
-        imageHeight: 200,
-      });
-    }
-  });
-});
-
-document.getElementById('BtnEliminar6').addEventListener('click', function () {
-  Swal.fire({
-    title: "¿Estas seguro de eliminarlo?",
-    text: "No podras recuperar los datos",
-    imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
-    imageWidth: 200,
-    imageHeight: 200,
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Confirmar"
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "Elemento borrado!",
-        text: "El archivo se ha borrado correctamente",
-        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-        imageWidth: 200,
-        imageHeight: 200,
-      });
-    }
-  });
-});
-
-document.getElementById('BtnEliminar7').addEventListener('click', function () {
-  Swal.fire({
-    title: "¿Estas seguro de eliminarlo?",
-    text: "No podras recuperar los datos",
-    imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
-    imageWidth: 200,
-    imageHeight: 200,
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Confirmar"
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "Elemento borrado!",
-        text: "El archivo se ha borrado correctamente",
-        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-        imageWidth: 200,
-        imageHeight: 200,
-      });
-    }
-  });
-});
-
-document.getElementById('BtnEliminar8').addEventListener('click', function () {
-  Swal.fire({
-    title: "¿Estas seguro de eliminarlo?",
-    text: "No podras recuperar los datos",
-    imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
-    imageWidth: 200,
-    imageHeight: 200,
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Confirmar"
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "Elemento borrado!",
-        text: "El archivo se ha borrado correctamente",
-        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-        imageWidth: 200,
-        imageHeight: 200,
-      });
-    }
-  });
-});
-
-
-
-
-
-/*Alerta cheques de detalle de pedidos*/
-
-$('#BtnCancel').click(function () {
-  Swal.fire({
-    text: "El pedido se ha actualizado a (pendiente)",
-    imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
-    imageWidth: 200,
-    imageHeight: 200,
-    imageAlt: "Custom image"
-  });
-});
-
-$('#BtnCheck').click(function () {
-  Swal.fire({
-    text: "El pedido se ha actualizado a (entregado)",
-    imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-    imageWidth: 200,
-    imageHeight: 200,
-    imageAlt: "Custom image"
-  });
-});
-
-$('#BtnCheckSoli').click(function () {
-  Swal.fire({
-    text: "El pedido se ha actualizado a (entregado)",
-    imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-    imageWidth: 200,
-    imageHeight: 200,
-    imageAlt: "Custom image"
-  });
-});
-
-$('#BtnCheckSoli2').click(function () {
-  Swal.fire({
-    text: "El pedido se ha actualizado a (entregado)",
-    imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-    imageWidth: 200,
-    imageHeight: 200,
-    imageAlt: "Custom image"
-  });
-});
-
-
-$('#BtnCheckSoliAlert').click(function () {
-  Swal.fire({
-    text: "El pedido se ha actualizado a (pendiente)",
-    imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
-    imageWidth: 200,
-    imageHeight: 200,
-    imageAlt: "Custom image"
-  });
-});
-
-$('#BtnCheckSoliAlert2').click(function () {
-  Swal.fire({
-    text: "El pedido se ha actualizado a (pendiente)",
-    imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
-    imageWidth: 200,
-    imageHeight: 200,
-    imageAlt: "Custom image"
-  });
-});
 
 
 /*producto_editar*/
 $('#btn_info1').click(function () {
-  Swal.fire({
-    title: "Información producto",
-    text: "No podras recuperar los datos",
-    padding: '1rem',
-    showConfirmButton: 'true',
-    confirmButtonText: 'Confirmar',
-    width: '70%',
-    html: `
+    Swal.fire({
+        title: "Información producto",
+        text: "No podras recuperar los datos",
+        padding: '1rem',
+        showConfirmButton: 'true',
+        confirmButtonText: 'Confirmar',
+        width: '70%',
+        html: `
     <div class="container text-center">
             <div class="row">
                 <div class="row">
@@ -361,18 +148,18 @@ $('#btn_info1').click(function () {
 
         </div>
     `
-  })
+    })
 })
 
 $('#btn_info2').click(function () {
-  Swal.fire({
-    title: "Información producto",
-    text: "No podras recuperar los datos",
-    padding: '1rem',
-    showConfirmButton: 'true',
-    confirmButtonText: 'Confirmar',
-    width: '70%',
-    html: `
+    Swal.fire({
+        title: "Información producto",
+        text: "No podras recuperar los datos",
+        padding: '1rem',
+        showConfirmButton: 'true',
+        confirmButtonText: 'Confirmar',
+        width: '70%',
+        html: `
     <div class="container text-center">
             <div class="row">
                 <div class="row">
@@ -406,18 +193,18 @@ $('#btn_info2').click(function () {
 
         </div>
     `
-  })
+    })
 })
 
 $('#btn_info3').click(function () {
-  Swal.fire({
-    title: "Información producto",
-    text: "No podras recuperar los datos",
-    padding: '1rem',
-    showConfirmButton: 'true',
-    confirmButtonText: 'Confirmar',
-    width: '70%',
-    html: `
+    Swal.fire({
+        title: "Información producto",
+        text: "No podras recuperar los datos",
+        padding: '1rem',
+        showConfirmButton: 'true',
+        confirmButtonText: 'Confirmar',
+        width: '70%',
+        html: `
     <div class="container text-center">
             <div class="row">
                 <div class="row">
@@ -451,18 +238,18 @@ $('#btn_info3').click(function () {
 
         </div>
     `
-  })
+    })
 })
 
 $('#btn_info4').click(function () {
-  Swal.fire({
-    title: "Información producto",
-    text: "No podras recuperar los datos",
-    padding: '1rem',
-    showConfirmButton: 'true',
-    confirmButtonText: 'Confirmar',
-    width: '70%',
-    html: `
+    Swal.fire({
+        title: "Información producto",
+        text: "No podras recuperar los datos",
+        padding: '1rem',
+        showConfirmButton: 'true',
+        confirmButtonText: 'Confirmar',
+        width: '70%',
+        html: `
     <div class="container text-center">
             <div class="row">
                 <div class="row">
@@ -496,18 +283,18 @@ $('#btn_info4').click(function () {
 
         </div>
     `
-  })
+    })
 })
 
 $('#btn_info5').click(function () {
-  Swal.fire({
-    title: "Información producto",
-    text: "No podras recuperar los datos",
-    padding: '1rem',
-    showConfirmButton: 'true',
-    confirmButtonText: 'Confirmar',
-    width: '70%',
-    html: `
+    Swal.fire({
+        title: "Información producto",
+        text: "No podras recuperar los datos",
+        padding: '1rem',
+        showConfirmButton: 'true',
+        confirmButtonText: 'Confirmar',
+        width: '70%',
+        html: `
     <div class="container text-center">
             <div class="row">
                 <div class="row">
@@ -541,18 +328,18 @@ $('#btn_info5').click(function () {
 
         </div>
     `
-  })
+    })
 })
 
 $('#btn_info6').click(function () {
-  Swal.fire({
-    title: "Información producto",
-    text: "No podras recuperar los datos",
-    padding: '1rem',
-    showConfirmButton: 'true',
-    confirmButtonText: 'Confirmar',
-    width: '70%',
-    html: `
+    Swal.fire({
+        title: "Información producto",
+        text: "No podras recuperar los datos",
+        padding: '1rem',
+        showConfirmButton: 'true',
+        confirmButtonText: 'Confirmar',
+        width: '70%',
+        html: `
     <div class="container text-center">
             <div class="row">
                 <div class="row">
@@ -586,18 +373,18 @@ $('#btn_info6').click(function () {
 
         </div>
     `
-  })
+    })
 })
 
 $('#btn_info7').click(function () {
-  Swal.fire({
-    title: "Información producto",
-    text: "No podras recuperar los datos",
-    padding: '1rem',
-    showConfirmButton: 'true',
-    confirmButtonText: 'Confirmar',
-    width: '70%',
-    html: `
+    Swal.fire({
+        title: "Información producto",
+        text: "No podras recuperar los datos",
+        padding: '1rem',
+        showConfirmButton: 'true',
+        confirmButtonText: 'Confirmar',
+        width: '70%',
+        html: `
     <div class="container text-center">
             <div class="row">
                 <div class="row">
@@ -631,18 +418,18 @@ $('#btn_info7').click(function () {
 
         </div>
     `
-  })
+    })
 })
 
 $('#btn_info8').click(function () {
-  Swal.fire({
-    title: "Información producto",
-    text: "No podras recuperar los datos",
-    padding: '1rem',
-    showConfirmButton: 'true',
-    confirmButtonText: 'Confirmar',
-    width: '70%',
-    html: `
+    Swal.fire({
+        title: "Información producto",
+        text: "No podras recuperar los datos",
+        padding: '1rem',
+        showConfirmButton: 'true',
+        confirmButtonText: 'Confirmar',
+        width: '70%',
+        html: `
     <div class="container text-center">
             <div class="row">
                 <div class="row">
@@ -676,21 +463,21 @@ $('#btn_info8').click(function () {
 
         </div>
     `
-  })
+    })
 })
 
 
 $('#btn_editar1').click(function () {
-  Swal.fire({
-    title: "Editar producto",
-    text: "No podras recuperar los datos",
-    padding: '1rem',
-    showConfirmButton: 'true',
-    confirmButtonText: 'Confirmar',
-    showCancelButton: 'true',
-    cancelButtonText: 'Cancelar',
-    width: '70%',
-    html: `<div class="container text-center">
+    Swal.fire({
+        title: "Editar producto",
+        text: "No podras recuperar los datos",
+        padding: '1rem',
+        showConfirmButton: 'true',
+        confirmButtonText: 'Confirmar',
+        showCancelButton: 'true',
+        cancelButtonText: 'Cancelar',
+        width: '70%',
+        html: `<div class="container text-center">
             <div class="row">
                 <div class="row">
 
@@ -739,44 +526,44 @@ $('#btn_editar1').click(function () {
             </div>
 
         </div> `
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "¿Estas seguro de editarlo?",
-        text: "No podras recuperar los datos",
-        imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
-        imageWidth: 200,
-        imageHeight: 200,
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Confirmar"
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
-          Swal.fire({
-            title: "Elemento Editado!",
-            text: "El archivo se ha Editado correctamente",
-            imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-            imageWidth: 200,
-            imageHeight: 200
-          })
+            Swal.fire({
+                title: "¿Estas seguro de editarlo?",
+                text: "No podras recuperar los datos",
+                imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
+                imageWidth: 200,
+                imageHeight: 200,
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Confirmar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Elemento Editado!",
+                        text: "El archivo se ha Editado correctamente",
+                        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+                        imageWidth: 200,
+                        imageHeight: 200
+                    })
+                }
+            });
         }
-      });
-    }
-  });
+    });
 })
 
 $('#btn_editar2').click(function () {
-  Swal.fire({
-    title: "Editar producto",
-    text: "No podras recuperar los datos",
-    padding: '1rem',
-    showConfirmButton: 'true',
-    confirmButtonText: 'Confirmar',
-    showCancelButton: 'true',
-    cancelButtonText: 'Cancelar',
-    width: '70%',
-    html: `<div class="container text-center">
+    Swal.fire({
+        title: "Editar producto",
+        text: "No podras recuperar los datos",
+        padding: '1rem',
+        showConfirmButton: 'true',
+        confirmButtonText: 'Confirmar',
+        showCancelButton: 'true',
+        cancelButtonText: 'Cancelar',
+        width: '70%',
+        html: `<div class="container text-center">
     <div class="row">
         <div class="row">
 
@@ -825,44 +612,44 @@ $('#btn_editar2').click(function () {
     </div>
 
 </div> `
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "¿Estas seguro de editarlo?",
-        text: "No podras recuperar los datos",
-        imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
-        imageWidth: 200,
-        imageHeight: 200,
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Confirmar"
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
-          Swal.fire({
-            title: "Elemento Editado!",
-            text: "El archivo se ha Editado correctamente",
-            imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-            imageWidth: 200,
-            imageHeight: 200
-          })
+            Swal.fire({
+                title: "¿Estas seguro de editarlo?",
+                text: "No podras recuperar los datos",
+                imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
+                imageWidth: 200,
+                imageHeight: 200,
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Confirmar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Elemento Editado!",
+                        text: "El archivo se ha Editado correctamente",
+                        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+                        imageWidth: 200,
+                        imageHeight: 200
+                    })
+                }
+            });
         }
-      });
-    }
-  });
+    });
 })
 
 $('#btn_editar3').click(function () {
-  Swal.fire({
-    title: "Editar producto",
-    text: "No podras recuperar los datos",
-    padding: '1rem',
-    showConfirmButton: 'true',
-    confirmButtonText: 'Confirmar',
-    showCancelButton: 'true',
-    cancelButtonText: 'Cancelar',
-    width: '70%',
-    html: `<div class="container text-center">
+    Swal.fire({
+        title: "Editar producto",
+        text: "No podras recuperar los datos",
+        padding: '1rem',
+        showConfirmButton: 'true',
+        confirmButtonText: 'Confirmar',
+        showCancelButton: 'true',
+        cancelButtonText: 'Cancelar',
+        width: '70%',
+        html: `<div class="container text-center">
             <div class="row">
                 <div class="row">
 
@@ -909,44 +696,44 @@ $('#btn_editar3').click(function () {
             </div>
 
         </div> `
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "¿Estas seguro de editarlo?",
-        text: "No podras recuperar los datos",
-        imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
-        imageWidth: 200,
-        imageHeight: 200,
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Confirmar"
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
-          Swal.fire({
-            title: "Elemento Editado!",
-            text: "El archivo se ha Editado correctamente",
-            imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-            imageWidth: 200,
-            imageHeight: 200
-          })
+            Swal.fire({
+                title: "¿Estas seguro de editarlo?",
+                text: "No podras recuperar los datos",
+                imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
+                imageWidth: 200,
+                imageHeight: 200,
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Confirmar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Elemento Editado!",
+                        text: "El archivo se ha Editado correctamente",
+                        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+                        imageWidth: 200,
+                        imageHeight: 200
+                    })
+                }
+            });
         }
-      });
-    }
-  });
+    });
 })
 
 $('#btn_editar4').click(function () {
-  Swal.fire({
-    title: "Editar producto",
-    text: "No podras recuperar los datos",
-    padding: '1rem',
-    showConfirmButton: 'true',
-    confirmButtonText: 'Confirmar',
-    showCancelButton: 'true',
-    cancelButtonText: 'Cancelar',
-    width: '70%',
-    html: `<div class="container text-center">
+    Swal.fire({
+        title: "Editar producto",
+        text: "No podras recuperar los datos",
+        padding: '1rem',
+        showConfirmButton: 'true',
+        confirmButtonText: 'Confirmar',
+        showCancelButton: 'true',
+        cancelButtonText: 'Cancelar',
+        width: '70%',
+        html: `<div class="container text-center">
     <div class="row">
         <div class="row">
 
@@ -993,44 +780,44 @@ $('#btn_editar4').click(function () {
     </div>
 
 </div> `
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "¿Estas seguro de editarlo?",
-        text: "No podras recuperar los datos",
-        imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
-        imageWidth: 200,
-        imageHeight: 200,
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Confirmar"
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
-          Swal.fire({
-            title: "Elemento Editado!",
-            text: "El archivo se ha Editado correctamente",
-            imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-            imageWidth: 200,
-            imageHeight: 200
-          })
+            Swal.fire({
+                title: "¿Estas seguro de editarlo?",
+                text: "No podras recuperar los datos",
+                imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
+                imageWidth: 200,
+                imageHeight: 200,
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Confirmar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Elemento Editado!",
+                        text: "El archivo se ha Editado correctamente",
+                        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+                        imageWidth: 200,
+                        imageHeight: 200
+                    })
+                }
+            });
         }
-      });
-    }
-  });
+    });
 })
 
 $('#btn_editar5').click(function () {
-  Swal.fire({
-    title: "Editar producto",
-    text: "No podras recuperar los datos",
-    padding: '1rem',
-    showConfirmButton: 'true',
-    confirmButtonText: 'Confirmar',
-    showCancelButton: 'true',
-    cancelButtonText: 'Cancelar',
-    width: '70%',
-    html: `<div class="container text-center">
+    Swal.fire({
+        title: "Editar producto",
+        text: "No podras recuperar los datos",
+        padding: '1rem',
+        showConfirmButton: 'true',
+        confirmButtonText: 'Confirmar',
+        showCancelButton: 'true',
+        cancelButtonText: 'Cancelar',
+        width: '70%',
+        html: `<div class="container text-center">
     <div class="row">
         <div class="row">
 
@@ -1077,44 +864,44 @@ $('#btn_editar5').click(function () {
     </div>
 
 </div> `
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "¿Estas seguro de editarlo?",
-        text: "No podras recuperar los datos",
-        imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
-        imageWidth: 200,
-        imageHeight: 200,
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Confirmar"
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
-          Swal.fire({
-            title: "Elemento Editado!",
-            text: "El archivo se ha Editado correctamente",
-            imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-            imageWidth: 200,
-            imageHeight: 200
-          })
+            Swal.fire({
+                title: "¿Estas seguro de editarlo?",
+                text: "No podras recuperar los datos",
+                imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
+                imageWidth: 200,
+                imageHeight: 200,
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Confirmar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Elemento Editado!",
+                        text: "El archivo se ha Editado correctamente",
+                        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+                        imageWidth: 200,
+                        imageHeight: 200
+                    })
+                }
+            });
         }
-      });
-    }
-  });
+    });
 })
 
 $('#btn_editar6').click(function () {
-  Swal.fire({
-    title: "Editar producto",
-    text: "No podras recuperar los datos",
-    padding: '1rem',
-    showConfirmButton: 'true',
-    confirmButtonText: 'Confirmar',
-    showCancelButton: 'true',
-    cancelButtonText: 'Cancelar',
-    width: '70%',
-    html: `<div class="container text-center">
+    Swal.fire({
+        title: "Editar producto",
+        text: "No podras recuperar los datos",
+        padding: '1rem',
+        showConfirmButton: 'true',
+        confirmButtonText: 'Confirmar',
+        showCancelButton: 'true',
+        cancelButtonText: 'Cancelar',
+        width: '70%',
+        html: `<div class="container text-center">
     <div class="row">
         <div class="row">
 
@@ -1161,44 +948,44 @@ $('#btn_editar6').click(function () {
     </div>
 
 </div> `
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "¿Estas seguro de editarlo?",
-        text: "No podras recuperar los datos",
-        imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
-        imageWidth: 200,
-        imageHeight: 200,
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Confirmar"
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
-          Swal.fire({
-            title: "Elemento Editado!",
-            text: "El archivo se ha Editado correctamente",
-            imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-            imageWidth: 200,
-            imageHeight: 200
-          })
+            Swal.fire({
+                title: "¿Estas seguro de editarlo?",
+                text: "No podras recuperar los datos",
+                imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
+                imageWidth: 200,
+                imageHeight: 200,
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Confirmar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Elemento Editado!",
+                        text: "El archivo se ha Editado correctamente",
+                        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+                        imageWidth: 200,
+                        imageHeight: 200
+                    })
+                }
+            });
         }
-      });
-    }
-  });
+    });
 })
 
 $('#btn_editar7').click(function () {
-  Swal.fire({
-    title: "Editar producto",
-    text: "No podras recuperar los datos",
-    padding: '1rem',
-    showConfirmButton: 'true',
-    confirmButtonText: 'Confirmar',
-    showCancelButton: 'true',
-    cancelButtonText: 'Cancelar',
-    width: '70%',
-    html: `<div class="container text-center">
+    Swal.fire({
+        title: "Editar producto",
+        text: "No podras recuperar los datos",
+        padding: '1rem',
+        showConfirmButton: 'true',
+        confirmButtonText: 'Confirmar',
+        showCancelButton: 'true',
+        cancelButtonText: 'Cancelar',
+        width: '70%',
+        html: `<div class="container text-center">
     <div class="row">
         <div class="row">
 
@@ -1245,44 +1032,44 @@ $('#btn_editar7').click(function () {
     </div>
 
 </div> `
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "¿Estas seguro de editarlo?",
-        text: "No podras recuperar los datos",
-        imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
-        imageWidth: 200,
-        imageHeight: 200,
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Confirmar"
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
-          Swal.fire({
-            title: "Elemento Editado!",
-            text: "El archivo se ha Editado correctamente",
-            imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-            imageWidth: 200,
-            imageHeight: 200
-          })
+            Swal.fire({
+                title: "¿Estas seguro de editarlo?",
+                text: "No podras recuperar los datos",
+                imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
+                imageWidth: 200,
+                imageHeight: 200,
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Confirmar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Elemento Editado!",
+                        text: "El archivo se ha Editado correctamente",
+                        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+                        imageWidth: 200,
+                        imageHeight: 200
+                    })
+                }
+            });
         }
-      });
-    }
-  });
+    });
 })
 
 $('#btn_editar8').click(function () {
-  Swal.fire({
-    title: "Editar producto",
-    text: "No podras recuperar los datos",
-    padding: '1rem',
-    showConfirmButton: 'true',
-    confirmButtonText: 'Confirmar',
-    showCancelButton: 'true',
-    cancelButtonText: 'Cancelar',
-    width: '70%',
-    html: `<div class="container text-center">
+    Swal.fire({
+        title: "Editar producto",
+        text: "No podras recuperar los datos",
+        padding: '1rem',
+        showConfirmButton: 'true',
+        confirmButtonText: 'Confirmar',
+        showCancelButton: 'true',
+        cancelButtonText: 'Cancelar',
+        width: '70%',
+        html: `<div class="container text-center">
     <div class="row">
         <div class="row">
 
@@ -1329,44 +1116,44 @@ $('#btn_editar8').click(function () {
     </div>
 
 </div> `
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "¿Estas seguro de editarlo?",
-        text: "No podras recuperar los datos",
-        imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
-        imageWidth: 200,
-        imageHeight: 200,
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Confirmar"
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
-          Swal.fire({
-            title: "Elemento Editado!",
-            text: "El archivo se ha Editado correctamente",
-            imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-            imageWidth: 200,
-            imageHeight: 200
-          })
+            Swal.fire({
+                title: "¿Estas seguro de editarlo?",
+                text: "No podras recuperar los datos",
+                imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
+                imageWidth: 200,
+                imageHeight: 200,
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Confirmar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Elemento Editado!",
+                        text: "El archivo se ha Editado correctamente",
+                        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+                        imageWidth: 200,
+                        imageHeight: 200
+                    })
+                }
+            });
         }
-      });
-    }
-  });
+    });
 })
 
 
 $('#btn_agregar_producto').click(function () {
-  Swal.fire({
-    title: "Agregar producto",
-    padding: '1rem',
-    showConfirmButton: 'true',
-    confirmButtonText: 'Confirmar',
-    showCancelButton: 'true',
-    cancelButtonText: 'Cancelar',
-    width: '70%',
-    html: `<div class="container text-center">
+    Swal.fire({
+        title: "Agregar producto",
+        padding: '1rem',
+        showConfirmButton: 'true',
+        confirmButtonText: 'Confirmar',
+        showCancelButton: 'true',
+        cancelButtonText: 'Cancelar',
+        width: '70%',
+        html: `<div class="container text-center">
     <div class="row">
         <div class="row">
 
@@ -1414,15 +1201,15 @@ $('#btn_agregar_producto').click(function () {
     </div>
 
 </div> `
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "Elemento Agregado!",
-        text: "El archivo se ha agregado correctamente",
-        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-        imageWidth: 200,
-        imageHeight: 200
-      })
-    }
-  });
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: "Elemento Agregado!",
+                text: "El archivo se ha agregado correctamente",
+                imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+                imageWidth: 200,
+                imageHeight: 200
+            })
+        }
+    });
 })

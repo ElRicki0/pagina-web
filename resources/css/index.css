@@ -124,6 +124,10 @@ section button {
 
 /*zona usuarios*/
 
+.botoncitoPerfilAgre {
+    margin-top: 20px;
+}
+
 
 .btnUsuAgregar {
     position: absolute;
@@ -307,4 +311,13 @@ footer {
 .modal-header {
     background-color: #1F1B47;
     color: white;
+}
+
+/*Zona del empleado*/
+
+.tamanioImagenTablaEmpleado{
+    width: 200px;
+    height: 200px;
+    border-radius: 30px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.671);
 }
