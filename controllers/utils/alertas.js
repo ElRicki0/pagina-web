@@ -92,6 +92,75 @@ function alertMine(action) {
                 imageAlt: "Custom image"
             })
             break;
+
+            case'agregar_producto':
+            Swal.fire({
+                text: 'El usuario se ha editado correctamente',
+                width:'70%',
+                showConfirmButton:true,
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Confirmar",
+                html:`<div class="container text-center">
+                <div class="row">
+                    <div class="row">
+
+                    </div>
+                    <div class=" col-md-4">
+                        <img class="rounded  mx-auto d-block" style="margin-top: 3rem;"
+                            src="../../resources/img/productos/agregar_producto.jpg" alt="..." width="300px">
+                        <br>
+                        <br>
+                        <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar
+                            imagen</button>
+                    </div>
+                    <div class="col" style="margin-top: 3rem;">
+                        <div class="row">
+                            <div class="col">
+                                <div class="letraPer col-md-4 fs-3">Nombre producto</div>
+                                <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                    <input type="text" class="form-control fs-3"
+                                        aria-label="Sizing example input"
+                                        aria-describedby="inputGroup-sizing-default" value="">
+                                </div>
+                                <div class="letraPer col-md-4 fs-3">Precio producto</div>
+                                <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                    <input type="number" step="0.01" class="form-control fs-3"
+                                        aria-label="Sizing example input"
+                                        aria-describedby="inputGroup-sizing-default" value="">
+                                </div>
+
+                                <div class="letraPer col-md-4 fs-3">Marca producto</div>
+                                <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                    <input type="text" class="form-control fs-3"
+                                        aria-label="Sizing example input"
+                                        aria-describedby="inputGroup-sizing-default" value="">
+                                </div>
+
+                                <div class="letraPer col-md-4 fs-3">Descripción producto</div>
+                                <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                    <textarea type="text" class="form-control fs-3"
+                                        aria-label="Sizing example input" style="height: 150px;"
+                                        aria-describedby="inputGroup-sizing-default"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> `
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Elemento agregado!",
+                        text: "El producto se ha agregado correctamente",
+                        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+                        imageWidth: 200,
+                        imageHeight: 200,
+                    });
+                }
+            });
+            break;
     }
     Swal.fire({
         title: "Éxisto",
@@ -101,11 +170,11 @@ function alertMine(action) {
         imageHeight: 200,
     });
 }
-
+/**/
 
 
 /*producto_editar*/
-$('#btn_info1').click(function () {
+document.getElementById('btn_info1').addEventListener('click', function () {
     Swal.fire({
         title: "Información producto",
         text: "No podras recuperar los datos",
@@ -151,7 +220,7 @@ $('#btn_info1').click(function () {
     })
 })
 
-$('#btn_info2').click(function () {
+document.getElementById('btn_info2').addEventListener('click', function () {
     Swal.fire({
         title: "Información producto",
         text: "No podras recuperar los datos",
@@ -196,7 +265,7 @@ $('#btn_info2').click(function () {
     })
 })
 
-$('#btn_info3').click(function () {
+document.getElementById('btn_info3').addEventListener('click', function () {
     Swal.fire({
         title: "Información producto",
         text: "No podras recuperar los datos",
@@ -241,7 +310,7 @@ $('#btn_info3').click(function () {
     })
 })
 
-$('#btn_info4').click(function () {
+document.getElementById('btn_info4').addEventListener('click', function () {
     Swal.fire({
         title: "Información producto",
         text: "No podras recuperar los datos",
@@ -286,7 +355,7 @@ $('#btn_info4').click(function () {
     })
 })
 
-$('#btn_info5').click(function () {
+document.getElementById('btn_info5').addEventListener('click', function () {
     Swal.fire({
         title: "Información producto",
         text: "No podras recuperar los datos",
@@ -331,7 +400,7 @@ $('#btn_info5').click(function () {
     })
 })
 
-$('#btn_info6').click(function () {
+document.getElementById('btn_info6').addEventListener('click', function () {
     Swal.fire({
         title: "Información producto",
         text: "No podras recuperar los datos",
@@ -376,7 +445,7 @@ $('#btn_info6').click(function () {
     })
 })
 
-$('#btn_info7').click(function () {
+document.getElementById('btn_info7').addEventListener('click', function () {
     Swal.fire({
         title: "Información producto",
         text: "No podras recuperar los datos",
@@ -421,7 +490,7 @@ $('#btn_info7').click(function () {
     })
 })
 
-$('#btn_info8').click(function () {
+document.getElementById('btn_info8').addEventListener('click', function () {
     Swal.fire({
         title: "Información producto",
         text: "No podras recuperar los datos",
@@ -466,9 +535,8 @@ $('#btn_info8').click(function () {
     })
 })
 
-
-$('#btn_editar1').click(function () {
-    Swal.fire({
+document.getElementById('btn_editar1').addEventListener('click',function(){
+        Swal.fire({
         title: "Editar producto",
         text: "No podras recuperar los datos",
         padding: '1rem',
@@ -553,7 +621,7 @@ $('#btn_editar1').click(function () {
     });
 })
 
-$('#btn_editar2').click(function () {
+document.getElementById('btn_editar2').addEventListener('click',function(){
     Swal.fire({
         title: "Editar producto",
         text: "No podras recuperar los datos",
@@ -639,7 +707,7 @@ $('#btn_editar2').click(function () {
     });
 })
 
-$('#btn_editar3').click(function () {
+document.getElementById('btn_editar3').addEventListener('click',function(){
     Swal.fire({
         title: "Editar producto",
         text: "No podras recuperar los datos",
@@ -723,7 +791,7 @@ $('#btn_editar3').click(function () {
     });
 })
 
-$('#btn_editar4').click(function () {
+document.getElementById('btn_editar4').addEventListener('click',function(){
     Swal.fire({
         title: "Editar producto",
         text: "No podras recuperar los datos",
@@ -807,7 +875,7 @@ $('#btn_editar4').click(function () {
     });
 })
 
-$('#btn_editar5').click(function () {
+document.getElementById('btn_editar5').addEventListener('click',function(){
     Swal.fire({
         title: "Editar producto",
         text: "No podras recuperar los datos",
@@ -891,7 +959,7 @@ $('#btn_editar5').click(function () {
     });
 })
 
-$('#btn_editar6').click(function () {
+document.getElementById('btn_editar6').addEventListener('click',function(){
     Swal.fire({
         title: "Editar producto",
         text: "No podras recuperar los datos",
@@ -975,7 +1043,7 @@ $('#btn_editar6').click(function () {
     });
 })
 
-$('#btn_editar7').click(function () {
+document.getElementById('btn_editar7').addEventListener('click',function(){
     Swal.fire({
         title: "Editar producto",
         text: "No podras recuperar los datos",
@@ -1059,7 +1127,7 @@ $('#btn_editar7').click(function () {
     });
 })
 
-$('#btn_editar8').click(function () {
+document.getElementById('btn_editar8').addEventListener('click',function(){
     Swal.fire({
         title: "Editar producto",
         text: "No podras recuperar los datos",
@@ -1144,7 +1212,7 @@ $('#btn_editar8').click(function () {
 })
 
 
-$('#btn_agregar_producto').click(function () {
+document.getElementById('btn_agregar').addEventListener('click', function () {
     Swal.fire({
         title: "Agregar producto",
         padding: '1rem',
