@@ -1,6 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Courgette", cursive;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
 
 
-/* fin de Perfil */
+
+main {
+    margin: 0px 10px 10px 10px;
+    position: absolute;
+    min-height: 100vh;
+    position: sticky;
+    padding-bottom: 50px;
+}
+
+.container {
+    padding-bottom: 50px;
+}
+
+/*-----------------------------------
+                 NAVBAR
+  -----------------------------------
+*/
+
+.navbar-expand-lg {
+    background-color: #1F1B47 !important;
+    color: #fefefe !important;
+}
+
+.nav-link.active {
+    color: #f3fefe !important;
+    font-size: 30px !important;
+}
+
+.nav-link.active:active {
+    background-color: rgba(214, 214, 214, 0.226) !important;
+    border-radius: 50px;
+}
+
+.dropdown-toggle {
+    color: #f3fefe !important;
+    font-size: 30px !important;
+}
+
+.dropdown-toggle:active {
+    background-color: rgba(214, 214, 214, 0.226) !important;
+    border-radius: 50px;
+}
+
+.dropdown-item:active {
+    background-color: rgb(125, 3, 173);
+}
+
+.corazon {
+    background-color: #1F1B47 !important;
+}
+
+.corazon:active {
+    background-color: rgba(214, 214, 214, 0.226) !important;
+}
+
+.iconoder {
+    margin-top: 0px;
+    margin-left: 10px;
+}
+
+.marcos {
+    margin-left: 10px;
+}
+
+.boton {
+    background-color: #878c94d3;
+    margin-left: 10px;
+}
+
+.navbar-brand {
+    color: #f3fefe !important;
+    font-size: 30px !important;
+}
+
+span {
+    color: #f3fefe;
+}
+
+/*Fin Navbar */
+
+
 
 .Fondo {
     background: url(../img/fondo_inicio.png);
@@ -27,7 +116,7 @@ section button {
     color: #fefefe !important;
 }
 
-.btncreapu{
+.btncreapu {
     margin: 20px !important;
 }
 
@@ -35,6 +124,8 @@ section button {
     color: #f3fefe !important;
     font-size: 30px !important;
 }
+
+
 /*footer*/
 
 footer {
@@ -98,5 +189,101 @@ footer {
     font-size: 18px;
 }
 
+/*-----------------------------------
+        Cuerpo pantalla index
+  -----------------------------------
+*/
 
 
+.noti1 img {
+    border-radius: 10px;
+    box-shadow: 9px 14px 15px 2px #4a4a4a;
+    animation: myAnim 2s ease 0s 1 normal forwards;
+    transition: 1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotateY(-60deg);
+}
+
+/*script para que al pasar sobre el la opacidad baje*/
+.noti1 img:hover {
+    opacity: 85%;
+    transform: none;
+}
+
+@keyframes myAnim {
+    0% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+.textNoti {
+    padding: 20px;
+}
+
+.noti2 img {
+    height: 350px;
+    width: 500px;
+    border-radius: 10px;
+    box-shadow: 9px 14px 15px 2px #4a4a4a;
+    animation: animacionNoti2 2s ease 0s 1 normal forwards;
+    transition: 1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotateY(-60deg);
+}
+
+.noti2 img:hover {
+    opacity: 85%;
+    transform: none;
+}
+
+@keyframes animacionNoti2 {
+	0% {
+		transform: scale(0.5);
+		transform-origin: 50% 100%;
+	}
+
+	100% {
+		transform: scale(1);
+		transform-origin: 50% 100%;
+	}
+}
+
+.noti3 img {
+    height: 350px;
+    width: 500px;
+    border-radius: 10px;
+    box-shadow: 9px 14px 15px 2px #4a4a4a;
+    animation: animacionNoti3 2s ease 0s 1 normal forwards;
+    transition: 1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotateY(-60deg);
+}
+
+.noti3 img:hover {
+    opacity: 85%;
+    transform: none;
+}
+
+
+@keyframes animacionNoti3 {
+	0% {
+		transform: scale(0.5);
+		transform-origin: 50% 100%;
+	}
+
+	100% {
+		transform: scale(1);
+		transform-origin: 50% 100%;
+	}
+}
