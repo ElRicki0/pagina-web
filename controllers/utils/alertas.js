@@ -17,6 +17,7 @@ function alertMine(action) {
                 imageHeight: 200,
             });
             break;
+
         case 'eliminarUsu':
             Swal.fire({
                 title: "¿Estas seguro de eliminarlo?",
@@ -92,17 +93,16 @@ function alertMine(action) {
                 imageAlt: "Custom image"
             })
             break;
-
-            case'agregar_producto':
+        case 'agregar_producto':
             Swal.fire({
-                text: 'El usuario se ha editado correctamente',
-                width:'70%',
-                showConfirmButton:true,
+                title: 'Agregar producto',
+                width: '70%',
+                showConfirmButton: true,
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
                 confirmButtonText: "Confirmar",
-                html:`<div class="container text-center">
+                html: `<div class="container text-center">
                 <div class="row">
                     <div class="row">
 
@@ -161,14 +161,298 @@ function alertMine(action) {
                 }
             });
             break;
+        case 'agregar_marca':
+            Swal.fire({
+                title: 'Agregar marca',
+                width: '70%',
+                showConfirmButton: true,
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Confirmar",
+                html: `<div class="container text-center">
+                <div class="row">
+                    <div class="row">
+    
+                    </div>
+                    <div class=" col-md-4">
+                        <img class="rounded  mx-auto d-block" style="margin-top: 3rem;"
+                            src="../../resources/img/productos/agregar_producto.jpg" alt="..." width="300px">
+                        <br>
+                        <br>
+                        <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar
+                            imagen</button>
+                    </div>
+                    <div class="col" style="margin-top: 3rem;">
+                        <div class="row">
+                            <div class="col">
+                                <div class="letraPer col-md-4 fs-3">Nombre producto</div>
+                                <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                    <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                        aria-describedby="inputGroup-sizing-default" value="">
+                                </div>
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Elemento agregado!",
+                        text: "El producto se ha agregado correctamente",
+                        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+                        imageWidth: 200,
+                        imageHeight: 200,
+                    });
+                }
+            });
+            break;
+        case 'editar_marca':
+            Swal.fire({
+                title: 'Editar marca',
+                width: '70%',
+                showConfirmButton: true,
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Confirmar",
+                html: `<div class="container text-center">
+                <div class="row">
+                    <div class="row">
+    
+                    </div>
+                    <div class=" col">
+    
+                        <img class="rounded  mx-auto d-block" style="margin-top: 3rem;"
+                            src="../../resources/img/productos/agregar_producto.jpg" alt="..." width="300px">
+                        <br>
+                        <br>
+                        <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar
+                            imagen</button>
+                    </div>
+                    <div class="col-md-6" style="margin: 3rem, 3rem, 3rem, 3rem;">
+                        <div class="row">
+                            <div class="col">
+                                <div class="mx-auto">
+    
+                                    <div class="letraPer col-md-5 fs-3">Nombre producto</div>
+                                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                            aria-describedby="inputGroup-sizing-default" value="Ejemplo de marca">
+                                    </div>  
+                                </div>
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Elemento editado!",
+                        text: "El producto se ha editado correctamente",
+                        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+                        imageWidth: 200,
+                        imageHeight: 200,
+                    });
+                }
+            });
+            break;
+        case 'información_marca':
+            Swal.fire({
+                title: "Información producto",
+                text: "No podras recuperar los datos",
+                padding: '1rem',
+                showConfirmButton: 'true',
+                confirmButtonText: 'Confirmar',
+                width: '70%',
+                html: `
+            <div class="container text-center">
+                    <div class="row">
+                        <div class="row">
+        
+                        </div>
+                        <div class=" col-md-4">
+                            <img class="rounded  mx-auto d-block" src="../../resources/img/marcas/mc4.jpg" alt="..."
+                                width="300px">
+                            <br>
+                            <br>
+        
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="letraPer col-md-4 fs-3">Nombre marca</div>
+                                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">Ejemplo de nombre de la marca
+                                    </div>
+                                </div>
+                            </div>
+        
+                        </div>
+                    </div>
+        
+                </div>
+            `
+            })
+            break;
+        case 'agregar_categoría':
+            Swal.fire({
+                title: 'Agregar categoria',
+                width: '70%',
+                showConfirmButton: true,
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Confirmar",
+                html: `<div class="container text-center">
+                <div class="row">
+                    <div class="row">
+    
+                    </div>
+                    <div class=" col-md-4">
+                        <img class="rounded  mx-auto d-block" style="margin-top: 3rem;"
+                            src="../../resources/img/productos/agregar_producto.jpg" alt="..." width="300px">
+                        <br>
+                        <br>
+                        <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar
+                            imagen</button>
+                    </div>
+                    <div class="col" style="margin-top: 3rem;">
+                        <div class="row">
+                            <div class="col">
+                            <div class="letraPer col-md-4 fs-3">Nombre categoría</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3"
+                                    aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="">
+                            </div>
+    
+                            <div class="col">
+                                <div class="letraPer col-md-4 fs-3">Descripción producto</div>
+                                <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                    <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                        style="height: 150px;" aria-describedby="inputGroup-sizing-default"></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>`
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Elemento agregado!",
+                        text: "El producto se ha agregado correctamente",
+                        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+                        imageWidth: 200,
+                        imageHeight: 200,
+                    });
+                }
+            });
+            break;
+            break;
+        case 'editar_categoría':
+            Swal.fire({
+                title: 'Editar categoría',
+                width: '70%',
+                showConfirmButton: true,
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Confirmar",
+                html: `<div class="container text-center">
+                <div class="row">
+                    <div class="row">
+    
+                    </div>
+                    <div class=" col-md-4">
+                        <img class="rounded  mx-auto d-block" style="margin-top: 3rem;"
+                            src="../../resources/img/productos/agregar_producto.jpg" alt="..." width="300px">
+                        <br>
+                        <br>
+                        <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar
+                            imagen</button>
+                    </div>
+                    <div class="col" style="margin-top: 3rem;">
+                        <div class="row">
+                            <div class="col">
+                            <div class="letraPer col-md-4 fs-3">Nombre categoría</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3"
+                                    aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="ejemplo de nombre de categoría">
+                            </div>
+    
+                            <div class="col">
+                                <div class="letraPer col-md-4 fs-3">Descripción producto</div>
+                                <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                    <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                        style="height: 150px;" aria-describedby="inputGroup-sizing-default">Este es un ejemplo de como poder hacer nas cosas increíbles con el text area </textarea>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>`
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Elemento editado!",
+                        text: "El producto se ha editado correctamente",
+                        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+                        imageWidth: 200,
+                        imageHeight: 200,
+                    });
+                }
+            });
+            break;
+        case 'información_categoría':
+            Swal.fire({
+                title: "Información categoría",
+                text: "No podras recuperar los datos",
+                padding: '1rem',
+                showConfirmButton: 'true',
+                confirmButtonText: 'Confirmar',
+                width: '70%',
+                html: `
+            <div class="container text-center">
+                    <div class="row">
+                        <div class="row">
+        
+                        </div>
+                        <div class=" col-md-4">
+                            <img class="rounded  mx-auto d-block" src="../../resources/img/marcas/mc4.jpg" alt="..."
+                                width="300px">
+                            <br>
+                            <br>
+        
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="letraPer col-md-4 fs-3">Nombre categoría</div>
+                                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">Ejemplo de nombre de la categoría
+                                    </div>
+                                <div class="letraPer col-md-4 fs-3">Descripción categoría</div>
+                                <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">Ejemplo de una descripcion para una de la categorías
+                                </div>
+                            </div>
+                            </div>
+        
+                        </div>
+                    </div>
+        
+                </div>
+            `
+            })
+            break;
     }
-    Swal.fire({
-        title: "Éxisto",
-        text: message,
-        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-        imageWidth: 200,
-        imageHeight: 200,
-    });
+
 }
 /**/
 
@@ -535,8 +819,8 @@ document.getElementById('btn_info8').addEventListener('click', function () {
     })
 })
 
-document.getElementById('btn_editar1').addEventListener('click',function(){
-        Swal.fire({
+document.getElementById('btn_editar1').addEventListener('click', function () {
+    Swal.fire({
         title: "Editar producto",
         text: "No podras recuperar los datos",
         padding: '1rem',
@@ -621,7 +905,7 @@ document.getElementById('btn_editar1').addEventListener('click',function(){
     });
 })
 
-document.getElementById('btn_editar2').addEventListener('click',function(){
+document.getElementById('btn_editar2').addEventListener('click', function () {
     Swal.fire({
         title: "Editar producto",
         text: "No podras recuperar los datos",
@@ -707,7 +991,7 @@ document.getElementById('btn_editar2').addEventListener('click',function(){
     });
 })
 
-document.getElementById('btn_editar3').addEventListener('click',function(){
+document.getElementById('btn_editar3').addEventListener('click', function () {
     Swal.fire({
         title: "Editar producto",
         text: "No podras recuperar los datos",
@@ -791,7 +1075,7 @@ document.getElementById('btn_editar3').addEventListener('click',function(){
     });
 })
 
-document.getElementById('btn_editar4').addEventListener('click',function(){
+document.getElementById('btn_editar4').addEventListener('click', function () {
     Swal.fire({
         title: "Editar producto",
         text: "No podras recuperar los datos",
@@ -875,7 +1159,7 @@ document.getElementById('btn_editar4').addEventListener('click',function(){
     });
 })
 
-document.getElementById('btn_editar5').addEventListener('click',function(){
+document.getElementById('btn_editar5').addEventListener('click', function () {
     Swal.fire({
         title: "Editar producto",
         text: "No podras recuperar los datos",
@@ -959,7 +1243,7 @@ document.getElementById('btn_editar5').addEventListener('click',function(){
     });
 })
 
-document.getElementById('btn_editar6').addEventListener('click',function(){
+document.getElementById('btn_editar6').addEventListener('click', function () {
     Swal.fire({
         title: "Editar producto",
         text: "No podras recuperar los datos",
@@ -1043,7 +1327,7 @@ document.getElementById('btn_editar6').addEventListener('click',function(){
     });
 })
 
-document.getElementById('btn_editar7').addEventListener('click',function(){
+document.getElementById('btn_editar7').addEventListener('click', function () {
     Swal.fire({
         title: "Editar producto",
         text: "No podras recuperar los datos",
@@ -1127,7 +1411,7 @@ document.getElementById('btn_editar7').addEventListener('click',function(){
     });
 })
 
-document.getElementById('btn_editar8').addEventListener('click',function(){
+document.getElementById('btn_editar8').addEventListener('click', function () {
     Swal.fire({
         title: "Editar producto",
         text: "No podras recuperar los datos",
