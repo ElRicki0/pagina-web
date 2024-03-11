@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Empleados</title>
+  <title>Usuarios Empleados</title>
   <link rel="icon" href="../../resources/img/iconos/loguito.ico">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -21,7 +21,7 @@
 
   <button type="button" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#usu"
     class="btnUsuAgregar">Agregar empleado</button>
-  <h2 class="usuusu">Empleados</h2>
+  <h2 class="usuusu">Usuarios Empleados</h2>
   <span>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           Apartado de tabla de los empleados
@@ -31,8 +31,9 @@
         <thead>
           <tr>
             <th>Perfil</th>
+            <th>Foto</th>
             <th>Nombre</th>
-            <th>Rol</th>
+            <th>Nivel de empleado</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -41,7 +42,7 @@
             <th scope="row">1</th>
             <td> <img src="../../resources/img/riverss.jpg" alt="" class="tamanioImagenTablaEmpleado img-fluid "> </td>
             <td>Jacob</td>
-            <td>Otto</td>
+            <td>Administrador</td>
             <td>
               <button type="button" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#ediusu"
                 class="editar-btn"><img src="../../resources/img/iconos/lapiz.png" class="botones_productos"
@@ -54,7 +55,7 @@
             <th scope="row">2</th>
             <td> <img src="../../resources/img/riverss.jpg" alt="" class="tamanioImagenTablaEmpleado"> </td>
             <td>Jacob</td>
-            <td>Thornton</td>
+            <td>Visualizador</td>
             <td>
               <button type="button" class="editar-btn"><img src="../../resources/img/iconos/lapiz.png"
                   class="botones_productos" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#ediusu"
@@ -67,7 +68,7 @@
             <th scope="row">3</th>
             <td> <img src="../../resources/img/riverss.jpg" alt="" class="tamanioImagenTablaEmpleado"> </td>
             <td>Jacob</td>
-            <td>Thornton</td>
+            <td>Secretario</td>
             <td>
               <button type="button" class="editar-btn"><img src="../../resources/img/iconos/lapiz.png"
                   class="botones_productos" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#ediusu"
@@ -79,7 +80,7 @@
             <th scope="row">4</th>
             <td> <img src="../../resources/img/riverss.jpg" alt="" class="tamanioImagenTablaEmpleado"> </td>
             <td>Jacob</td>
-            <td>Thornton</td>
+            <td>Secretario</td>
             <td>
               <button type="button" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#ediusu"
                 class="editar-btn"><img src="../../resources/img/iconos/lapiz.png" class="botones_productos"
@@ -94,7 +95,7 @@
             <th scope="row">5</th>
             <td> <img src="../../resources/img/riverss.jpg" alt="" class="tamanioImagenTablaEmpleado"> </td>
             <td>Jacob</td>
-            <td>Thornton</td>
+            <td>Visualizador</td>
             <td>
               <button type="button" class="editar-btn"><img src="../../resources/img/iconos/lapiz.png"
                   class="botones_productos" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#ediusu"
@@ -107,7 +108,7 @@
             <th scope="row">6</th>
             <td> <img src="../../resources/img/riverss.jpg" alt="" class="tamanioImagenTablaEmpleado"> </td>
             <td>Alisson</td>
-            <td>Zepeda</td>
+            <td>Administrador</td>
             <td>
               <button type="button" class="editar-btn"><img src="../../resources/img/iconos/lapiz.png"
                   class="botones_productos" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#ediusu"
@@ -319,6 +320,7 @@
 <!--Enlaces para archivos javascript-->
 <script src="../../controllers/utils/dinamics_parts.js"></script>
 <script src="../../controllers/utils/alertas.js"></script>
+<script src="../../controllers/utils/footer.js"></script>
 <script src="../../controllers/utils/explorador_modal.js"></script>
 
 <!--Enlace para poder mostrar alertas-->

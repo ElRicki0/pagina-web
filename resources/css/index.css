@@ -31,8 +31,28 @@ main {
 .nav-link.active {
     color: #f3fefe !important;
     font-size: 30px !important;
-
 }
+
+.nav-link.active:active {
+    background-color: rgba(214, 214, 214, 0.226) !important;
+    border-radius: 50px;
+}
+
+.dropdown-toggle{
+    color: #f3fefe !important;
+    font-size: 30px !important;
+}
+
+.dropdown-toggle:active{
+    background-color: rgba(214, 214, 214, 0.226) !important;
+    border-radius: 50px;
+}
+
+.dropdown-item:active{
+    background-color: rgb(125, 3, 173);
+}
+
+
 
 .iconoder {
     margin-top: 0px;
@@ -316,8 +336,8 @@ footer {
 /*Zona del empleado*/
 
 .tamanioImagenTablaEmpleado{
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 30px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.671);
 }
