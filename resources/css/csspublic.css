@@ -1,0 +1,102 @@
+
+
+/* fin de Perfil */
+
+.Fondo {
+    background: url(../img/fondo_inicio.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 70%;
+    align-items: center;
+}
+
+input {
+    border-color: blueviolet !important;
+}
+
+.test {
+    border-radius: 100px 100px 0 0;
+}
+
+.oscuro {
+    background-color: #1F1B47 !important;
+}
+
+section button {
+    background-color: #1D1C6A !important;
+    color: #fefefe !important;
+}
+
+.btncreapu{
+    margin: 20px !important;
+}
+
+.navbar-brand {
+    color: #f3fefe !important;
+    font-size: 30px !important;
+}
+/*footer*/
+
+footer {
+    color: aliceblue;
+    width: 100%;
+    bottom: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 1px;
+    background-color: #1F1B47 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+
+.social-icons-container,
+.footer-menu-conteiner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+
+.social-icons {
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    border: 1px solid #fefefe;
+    background-image: url(../img/imagen_f.png);
+    background-position: center;
+    background-size: 40%;
+    background-repeat: no-repeat;
+    margin: 1rem;
+}
+
+.social-icons:hover {
+    background-color: #000000;
+    filter: invert(40)
+}
+
+.social-icons:nth-last-of-type(2) {
+    background-image: url(../img/imagen_c.png);
+}
+
+.social-icons:nth-last-of-type(3) {
+    background-image: url(../img/imagen_i.png);
+}
+
+.social-icons:nth-last-of-type(4) {
+    background-image: url(../img/imagen_x.png);
+}
+
+.footer-menu-conteiner {
+    list-style-type: none;
+    color: #fefefe;
+    font-size: 18px;
+}
+
+
+

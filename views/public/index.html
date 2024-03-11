@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inicio sesión</title>
+    <link rel="icon" href="../../resources/img/iconos/loguito.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../resources/css/csspublic.css">
+    <!--Enlace para mandar a llamar propiedad de jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--Enlace para poder mostrar alertas-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+<body>
+    <!-- Contenedor principal con fondo -->
+    <div class="Fondo">
+        <!-- Navbar solo para el login -->
+        <nav class="navbar bg-body-tertiary oscuro fixed-top">
+            <div class="container-fluid  text-center mx-auto d-block">
+                <a class="navbar-brand text_menu" href="#">IVANE CARE</a>
+            </div>
+        </nav>
+
+        <!-- Sección de inicio de sesión -->
+        <section class="vh-100">
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                        <div class="card shadow-2-strong" style="border-radius: 5rem;">
+                            <div class="card-body p-5 text-center border-radius: 5rem border-dark border-100">
+
+                                <!-- Campo de entrada para el Nombre -->
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="usuario">Nombre</label>
+                                    <br>
+                                    <input type="email" id="usuario" class="form-control form-control-lg " />
+                                </div>
+                                <!-- Campo de entrada para la contraseña -->
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="contrasenia">Contraseña</label>
+                                    <br>
+                                    <input type="password" id="contrasenia"
+                                        class="form-control form-control-lg border-Warning-subtle" />
+                                </div>
+                                <!-- Botón para iniciar sesión -->
+                                <button id="BtnCorrecto" class="btncreapu btn btn-lg btn-block" style="border-radius:1000rem"
+                                type="submit">crear cuenta</button> 
+        
+                                <button id="BtnCorrecto" class="btncreapu btn btn-lg btn-block" style="border-radius:1000rem"
+                                    type="submit">Iniciar
+                                    sesión</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="test">
+        </footer>
+                <div class="modal-footer">
+                </div>
+            </div>
+        <!--Enlaces que manda a llamar archivos javaScript-->
+        <script src="../../resources/js/index.js"></script>
+        <script src="../../controllers/utils/alertas.js"></script>
+        <script src="../../controllers/utils/footer.js"></script>
+    </div>
+
+<!-- Scripts de Popper y Bootstrap-->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"></script>
+
+</body>
+
+
+
+<!--https://www.youtube.com/watch?v=hE-XBmlcXIM-->
+
+
+
+<!--<div class="social-icons-container">
+    <a href="" class="social-icons"></a>
+    <a href="" class="social-icons"></a>
+    <a href="" class="social-icons"></a>
+    <a href="" class="social-icons"></a>
+</div>
+<ul class="footer-menu-conteiner">
+    <li class="menu-items">ejemplos</li>
+    <li class="menu-items">ejemplos</li>
+    <li class="menu-items">ejemplos</li>
+    <li class="menu-items">ejemplos</li>
+</ul>
+-->
+
+</html>
