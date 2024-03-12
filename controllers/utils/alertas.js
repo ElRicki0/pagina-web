@@ -1,9 +1,6 @@
-
-
-
 /*
 ----------------------------------------
-/// función para alertas generales   ///
+/// función para alertas generales ///
 ----------------------------------------
 */
 function alertMine(action) {
@@ -95,70 +92,11 @@ function alertMine(action) {
             break;
         case 'agregar_producto':
             Swal.fire({
-                title: 'Agregar producto',
-                width: '70%',
-                showConfirmButton: true,
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Confirmar",
-                html: `<div class="container text-center">
-                <div class="row">
-                    <div class="row">
-
-                    </div>
-                    <div class=" col-md-4">
-                        <img class="rounded  mx-auto d-block" style="margin-top: 3rem;"
-                            src="../../resources/img/productos/agregar_producto.jpg" alt="..." width="300px">
-                        <br>
-                        <br>
-                        <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar
-                            imagen</button>
-                    </div>
-                    <div class="col" style="margin-top: 3rem;">
-                        <div class="row">
-                            <div class="col">
-                                <div class="letraPer col-md-4 fs-3">Nombre producto</div>
-                                <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                                    <input type="text" class="form-control fs-3"
-                                        aria-label="Sizing example input"
-                                        aria-describedby="inputGroup-sizing-default" value="">
-                                </div>
-                                <div class="letraPer col-md-4 fs-3">Precio producto</div>
-                                <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                                    <input type="number" step="0.01" class="form-control fs-3"
-                                        aria-label="Sizing example input"
-                                        aria-describedby="inputGroup-sizing-default" value="">
-                                </div>
-
-                                <div class="letraPer col-md-4 fs-3">Marca producto</div>
-                                <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                                    <input type="text" class="form-control fs-3"
-                                        aria-label="Sizing example input"
-                                        aria-describedby="inputGroup-sizing-default" value="">
-                                </div>
-
-                                <div class="letraPer col-md-4 fs-3">Descripción producto</div>
-                                <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                                    <textarea type="text" class="form-control fs-3"
-                                        aria-label="Sizing example input" style="height: 150px;"
-                                        aria-describedby="inputGroup-sizing-default"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> `
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                        title: "Elemento agregado!",
-                        text: "El producto se ha agregado correctamente",
-                        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-                        imageWidth: 200,
-                        imageHeight: 200,
-                    });
-                }
+                title: "Elemento agregado!",
+                text: "El producto se ha agregado correctamente",
+                imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+                imageWidth: 200,
+                imageHeight: 200,
             });
             break;
         case 'agregar_marca':
@@ -171,32 +109,32 @@ function alertMine(action) {
                 cancelButtonColor: "#d33",
                 confirmButtonText: "Confirmar",
                 html: `<div class="container text-center">
-                <div class="row">
-                    <div class="row">
-    
+    <div class="row">
+        <div class="row">
+
+        </div>
+        <div class=" col-md-4">
+            <img class="rounded  mx-auto d-block" style="margin-top: 3rem;"
+                src="../../resources/img/productos/agregar_producto.jpg" alt="..." width="300px">
+            <br>
+            <br>
+            <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar
+                imagen</button>
+        </div>
+        <div class="col" style="margin-top: 3rem;">
+            <div class="row">
+                <div class="col">
+                    <div class="letraPer col-md-4 fs-3">Nombre producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" value="">
                     </div>
-                    <div class=" col-md-4">
-                        <img class="rounded  mx-auto d-block" style="margin-top: 3rem;"
-                            src="../../resources/img/productos/agregar_producto.jpg" alt="..." width="300px">
-                        <br>
-                        <br>
-                        <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar
-                            imagen</button>
-                    </div>
-                    <div class="col" style="margin-top: 3rem;">
-                        <div class="row">
-                            <div class="col">
-                                <div class="letraPer col-md-4 fs-3">Nombre producto</div>
-                                <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                                    <input type="text" class="form-control fs-3" aria-label="Sizing example input"
-                                        aria-describedby="inputGroup-sizing-default" value="">
-                                </div>
-    
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
-            </div>`
+            </div>
+        </div>
+    </div>
+</div>`
             }).then((result) => {
                 if (result.isConfirmed) {
                     Swal.fire({
@@ -219,36 +157,36 @@ function alertMine(action) {
                 cancelButtonColor: "#d33",
                 confirmButtonText: "Confirmar",
                 html: `<div class="container text-center">
-                <div class="row">
-                    <div class="row">
-    
-                    </div>
-                    <div class=" col">
-    
-                        <img class="rounded  mx-auto d-block" style="margin-top: 3rem;"
-                            src="../../resources/img/productos/agregar_producto.jpg" alt="..." width="300px">
-                        <br>
-                        <br>
-                        <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar
-                            imagen</button>
-                    </div>
-                    <div class="col-md-6" style="margin: 3rem, 3rem, 3rem, 3rem;">
-                        <div class="row">
-                            <div class="col">
-                                <div class="mx-auto">
-    
-                                    <div class="letraPer col-md-5 fs-3">Nombre producto</div>
-                                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
-                                            aria-describedby="inputGroup-sizing-default" value="Ejemplo de marca">
-                                    </div>  
-                                </div>
-    
-                            </div>
+    <div class="row">
+        <div class="row">
+
+        </div>
+        <div class=" col">
+
+            <img class="rounded  mx-auto d-block" style="margin-top: 3rem;"
+                src="../../resources/img/productos/agregar_producto.jpg" alt="..." width="300px">
+            <br>
+            <br>
+            <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar
+                imagen</button>
+        </div>
+        <div class="col-md-6" style="margin: 3rem, 3rem, 3rem, 3rem;">
+            <div class="row">
+                <div class="col">
+                    <div class="mx-auto">
+
+                        <div class="letraPer col-md-5 fs-3">Nombre producto</div>
+                        <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                            <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-default" value="Ejemplo de marca">
                         </div>
                     </div>
+
                 </div>
-            </div>`
+            </div>
+        </div>
+    </div>
+</div>`
             }).then((result) => {
                 if (result.isConfirmed) {
                     Swal.fire({
@@ -270,32 +208,32 @@ function alertMine(action) {
                 confirmButtonText: 'Confirmar',
                 width: '70%',
                 html: `
-            <div class="container text-center">
-                    <div class="row">
-                        <div class="row">
-        
-                        </div>
-                        <div class=" col-md-4">
-                            <img class="rounded  mx-auto d-block" src="../../resources/img/marcas/mc4.jpg" alt="..."
-                                width="300px">
-                            <br>
-                            <br>
-        
-                        </div>
-                        <div class="col">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="letraPer col-md-4 fs-3">Nombre marca</div>
-                                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">Ejemplo de nombre de la marca
-                                    </div>
-                                </div>
-                            </div>
-        
-                        </div>
+<div class="container text-center">
+    <div class="row">
+        <div class="row">
+
+        </div>
+        <div class=" col-md-4">
+            <img class="rounded  mx-auto d-block" src="../../resources/img/marcas/mc4.jpg" alt="..." width="300px">
+            <br>
+            <br>
+
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <div class="letraPer col-md-4 fs-3">Nombre marca</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">Ejemplo de nombre de la
+                        marca
                     </div>
-        
                 </div>
-            `
+            </div>
+
+        </div>
+    </div>
+
+</div>
+`
             })
             break;
         case 'agregar_categoría':
@@ -308,40 +246,37 @@ function alertMine(action) {
                 cancelButtonColor: "#d33",
                 confirmButtonText: "Confirmar",
                 html: `<div class="container text-center">
-                <div class="row">
-                    <div class="row">
-    
-                    </div>
-                    <div class=" col-md-4">
-                        <img class="rounded  mx-auto d-block" style="margin-top: 3rem;"
-                            src="../../resources/img/productos/agregar_producto.jpg" alt="..." width="300px">
-                        <br>
-                        <br>
-                        <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar
-                            imagen</button>
-                    </div>
-                    <div class="col" style="margin-top: 3rem;">
-                        <div class="row">
-                            <div class="col">
-                            <div class="letraPer col-md-4 fs-3">Nombre categoría</div>
-                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                                <input type="text" class="form-control fs-3"
-                                    aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default" value="">
-                            </div>
-    
-                            <div class="col">
-                                <div class="letraPer col-md-4 fs-3">Descripción producto</div>
-                                <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                                    <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
-                                        style="height: 150px;" aria-describedby="inputGroup-sizing-default"></textarea>
-                                </div>
-                            </div>
+    <div class="row">
+        <div class="row">
 
-                        </div>
+        </div>
+        <div class=" col-md-4">
+            <img class="rounded  mx-auto d-block" style="margin-top: 3rem;"
+                src="../../resources/img/productos/agregar_producto.jpg" alt="..." width="300px">
+            <br>
+            <br>
+            <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar
+                imagen</button>
+        </div>
+        <div class="col" style="margin-top: 3rem;">
+            <div class="row">
+                <div class="col">
+                    <div class="letraPer col-md-4 fs-3">Nombre categoría</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" value="">
                     </div>
                 </div>
-            </div>`
+                <div class="col">
+                    <div class="letraPer col-md-4 fs-3">Descripción producto</div>
+                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                        <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
+                            style="height: 150px;" aria-describedby="inputGroup-sizing-default"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`
             }).then((result) => {
                 if (result.isConfirmed) {
                     Swal.fire({
@@ -364,41 +299,36 @@ function alertMine(action) {
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
                 confirmButtonText: "Confirmar",
-                html: `<div class="container text-center">
+                html: `<div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <img class="rounded  mx-auto d-block" style="margin-top: 3rem;"
+                    src="../../resources/img/productos/agregar_producto.jpg" alt="..." width="300px">
+                <br>
+                <br>
+                <input type="file" class="btn btn-secondary btn-lg boton_editar">Cambiar
+                    imagen</input>
+            </div>
+            <div class="col-sm-12 col-md-6" style="margin-top: 3rem;">
                 <div class="row">
-                    <div class="row">
-    
+                    <div class="col-12">
+                        <div class="letraPer fs-3">Nombre categoría</div>
+                        <div class="cuadroText fs-3 border border-dark rounded text-start">
+                            <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-default" value="ejemplo de nombre de categoría">
+                        </div>
                     </div>
-                    <div class=" col-md-4">
-                        <img class="rounded  mx-auto d-block" style="margin-top: 3rem;"
-                            src="../../resources/img/productos/agregar_producto.jpg" alt="..." width="300px">
-                        <br>
-                        <br>
-                        <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar
-                            imagen</button>
-                    </div>
-                    <div class="col" style="margin-top: 3rem;">
-                        <div class="row">
-                            <div class="col">
-                            <div class="letraPer col-md-4 fs-3">Nombre categoría</div>
-                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                                <input type="text" class="form-control fs-3"
-                                    aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default" value="ejemplo de nombre de categoría">
-                            </div>
-    
-                            <div class="col">
-                                <div class="letraPer col-md-4 fs-3">Descripción producto</div>
-                                <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                                    <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
-                                        style="height: 150px;" aria-describedby="inputGroup-sizing-default">Este es un ejemplo de como poder hacer nas cosas increíbles con el text area </textarea>
-                                </div>
-                            </div>
-
+                    <div class="col-12">
+                        <div class="letraPer fs-3">Descripción categoría</div>
+                        <div class="cuadroText fs-3 border border-dark rounded text-start">
+                            <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                style="height: 150px;"
+                                aria-describedby="inputGroup-sizing-default">Este es un ejemplo de como poder hacer nas cosas increíbles con el text area </textarea>
                         </div>
                     </div>
                 </div>
-            </div>`
+            </div>
+        </div>`
             }).then((result) => {
                 if (result.isConfirmed) {
                     Swal.fire({
@@ -420,35 +350,37 @@ function alertMine(action) {
                 confirmButtonText: 'Confirmar',
                 width: '70%',
                 html: `
-            <div class="container text-center">
+        <div class="container text-center">
+            <div class="row">
+                <div class="row">
+
+                </div>
+                <div class=" col-md-4">
+                    <img class="rounded  mx-auto d-block" src="../../resources/img/marcas/mc4.jpg" alt="..."
+                        width="300px">
+                    <br>
+                    <br>
+
+                </div>
+                <div class="col">
                     <div class="row">
-                        <div class="row">
-        
-                        </div>
-                        <div class=" col-md-4">
-                            <img class="rounded  mx-auto d-block" src="../../resources/img/marcas/mc4.jpg" alt="..."
-                                width="300px">
-                            <br>
-                            <br>
-        
-                        </div>
                         <div class="col">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="letraPer col-md-4 fs-3">Nombre categoría</div>
-                                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">Ejemplo de nombre de la categoría
-                                    </div>
-                                <div class="letraPer col-md-4 fs-3">Descripción categoría</div>
-                                <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">Ejemplo de una descripcion para una de la categorías
-                                </div>
+                            <div class="letraPer col-md-4 fs-3">Nombre categoría</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">Ejemplo de
+                                nombre de la categoría
                             </div>
+                            <div class="letraPer col-md-4 fs-3">Descripción categoría</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">Ejemplo de una
+                                descripcion para una de la categorías
                             </div>
-        
                         </div>
                     </div>
-        
+
                 </div>
-            `
+            </div>
+
+        </div>
+        `
             })
             break;
     }
@@ -467,7 +399,7 @@ document.getElementById('btn_info1').addEventListener('click', function () {
         confirmButtonText: 'Confirmar',
         width: '70%',
         html: `
-    <div class="container text-center">
+        <div class="container text-center">
             <div class="row">
                 <div class="row">
 
@@ -490,7 +422,8 @@ document.getElementById('btn_info1').addEventListener('click', function () {
                             <div class="letraPer col-md-4 fs-3">Marca producto</div>
                             <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">Kellogs</div>
                             <div class="letraPer col-md-4 fs-3">Descripción producto</div>
-                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start" style="padding: 1rem;">Descubre la
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start"
+                                style="padding: 1rem;">Descubre la
                                 paleta perfecta: nuestro programa de sombras de ojos te lleva desde lo sutil hasta lo
                                 espectacular en cada aplicación</div>
                         </div>
@@ -500,7 +433,7 @@ document.getElementById('btn_info1').addEventListener('click', function () {
             </div>
 
         </div>
-    `
+        `
     })
 })
 
@@ -513,7 +446,7 @@ document.getElementById('btn_info2').addEventListener('click', function () {
         confirmButtonText: 'Confirmar',
         width: '70%',
         html: `
-    <div class="container text-center">
+        <div class="container text-center">
             <div class="row">
                 <div class="row">
 
@@ -529,15 +462,18 @@ document.getElementById('btn_info2').addEventListener('click', function () {
                     <div class="row">
                         <div class="col">
                             <div class="letraPer col-md-4 fs-3">Nombre producto</div>
-                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">paletas de furtivas
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">paletas de
+                                furtivas
                             </div>
                             <div class="letraPer col-md-4 fs-3">Precio producto</div>
                             <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">$3.50</div>
                             <div class="letraPer col-md-4 fs-3">Marca producto</div>
                             <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">Columbia</div>
                             <div class="letraPer col-md-4 fs-3">Descripción producto</div>
-                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start" style="padding: 1rem;"> 
-                            ¡Sumérgete en la dulzura exótica con nuestra paleta de colores inspirada en fresitas chinas!</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start"
+                                style="padding: 1rem;">
+                                ¡Sumérgete en la dulzura exótica con nuestra paleta de colores inspirada en fresitas
+                                chinas!</div>
                         </div>
                     </div>
 
@@ -545,7 +481,7 @@ document.getElementById('btn_info2').addEventListener('click', function () {
             </div>
 
         </div>
-    `
+        `
     })
 })
 
@@ -558,7 +494,7 @@ document.getElementById('btn_info3').addEventListener('click', function () {
         confirmButtonText: 'Confirmar',
         width: '70%',
         html: `
-    <div class="container text-center">
+        <div class="container text-center">
             <div class="row">
                 <div class="row">
 
@@ -580,8 +516,9 @@ document.getElementById('btn_info3').addEventListener('click', function () {
                             <div class="letraPer col-md-4 fs-3">Marca producto</div>
                             <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">Rapture</div>
                             <div class="letraPer col-md-4 fs-3">Descripción producto</div>
-                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start" style="padding: 1rem;">
-                            Obtén una piel luminosa y uniforme con nuestra crema aclaradora de alta calidad.
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start"
+                                style="padding: 1rem;">
+                                Obtén una piel luminosa y uniforme con nuestra crema aclaradora de alta calidad.
                                 espectacular en cada aplicación</div>
                         </div>
                     </div>
@@ -590,7 +527,7 @@ document.getElementById('btn_info3').addEventListener('click', function () {
             </div>
 
         </div>
-    `
+        `
     })
 })
 
@@ -603,7 +540,7 @@ document.getElementById('btn_info4').addEventListener('click', function () {
         confirmButtonText: 'Confirmar',
         width: '70%',
         html: `
-    <div class="container text-center">
+        <div class="container text-center">
             <div class="row">
                 <div class="row">
 
@@ -619,15 +556,17 @@ document.getElementById('btn_info4').addEventListener('click', function () {
                     <div class="row">
                         <div class="col">
                             <div class="letraPer col-md-4 fs-3">Nombre producto</div>
-                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">Labial mata toros
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">Labial mata
+                                toros
                             </div>
                             <div class="letraPer col-md-4 fs-3">Precio producto</div>
                             <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">$3.70</div>
                             <div class="letraPer col-md-4 fs-3">Marca producto</div>
                             <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">Cromopolis</div>
                             <div class="letraPer col-md-4 fs-3">Descripción producto</div>
-                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start" style="padding: 1rem;">
-                            Atrévete a destacar con nuestro labial de un rojo intenso como el carmesí.</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start"
+                                style="padding: 1rem;">
+                                Atrévete a destacar con nuestro labial de un rojo intenso como el carmesí.</div>
                         </div>
                     </div>
 
@@ -635,7 +574,7 @@ document.getElementById('btn_info4').addEventListener('click', function () {
             </div>
 
         </div>
-    `
+        `
     })
 })
 
@@ -648,7 +587,7 @@ document.getElementById('btn_info5').addEventListener('click', function () {
         confirmButtonText: 'Confirmar',
         width: '70%',
         html: `
-    <div class="container text-center">
+        <div class="container text-center">
             <div class="row">
                 <div class="row">
 
@@ -671,8 +610,10 @@ document.getElementById('btn_info5').addEventListener('click', function () {
                             <div class="letraPer col-md-4 fs-3">Marca producto</div>
                             <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">Village</div>
                             <div class="letraPer col-md-4 fs-3">Descripción producto</div>
-                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start" style="padding: 1rem;">
-                            Logra un acabado mágico con nuestro polvo de hadas, ¡tu secreto para un maquillaje impecable!</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start"
+                                style="padding: 1rem;">
+                                Logra un acabado mágico con nuestro polvo de hadas, ¡tu secreto para un maquillaje
+                                impecable!</div>
                         </div>
                     </div>
 
@@ -680,7 +621,7 @@ document.getElementById('btn_info5').addEventListener('click', function () {
             </div>
 
         </div>
-    `
+        `
     })
 })
 
@@ -693,7 +634,7 @@ document.getElementById('btn_info6').addEventListener('click', function () {
         confirmButtonText: 'Confirmar',
         width: '70%',
         html: `
-    <div class="container text-center">
+        <div class="container text-center">
             <div class="row">
                 <div class="row">
 
@@ -709,15 +650,16 @@ document.getElementById('btn_info6').addEventListener('click', function () {
                     <div class="row">
                         <div class="col">
                             <div class="letraPer col-md-4 fs-3">Nombre producto</div>
-                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">lápiz de colores 
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">lápiz de colores
                             </div>
                             <div class="letraPer col-md-4 fs-3">Precio producto</div>
                             <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">$70</div>
                             <div class="letraPer col-md-4 fs-3">Marca producto</div>
                             <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">Tintelia</div>
                             <div class="letraPer col-md-4 fs-3">Descripción producto</div>
-                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start" style="padding: 1rem;">
-                            Define y realza tus labios con nuestro lápiz labial en tono natural.</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start"
+                                style="padding: 1rem;">
+                                Define y realza tus labios con nuestro lápiz labial en tono natural.</div>
                         </div>
                     </div>
 
@@ -725,7 +667,7 @@ document.getElementById('btn_info6').addEventListener('click', function () {
             </div>
 
         </div>
-    `
+        `
     })
 })
 
@@ -738,7 +680,7 @@ document.getElementById('btn_info7').addEventListener('click', function () {
         confirmButtonText: 'Confirmar',
         width: '70%',
         html: `
-    <div class="container text-center">
+        <div class="container text-center">
             <div class="row">
                 <div class="row">
 
@@ -754,15 +696,17 @@ document.getElementById('btn_info7').addEventListener('click', function () {
                     <div class="row">
                         <div class="col">
                             <div class="letraPer col-md-4 fs-3">Nombre producto</div>
-                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">Lápiz tonalidad oscura
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">Lápiz tonalidad
+                                oscura
                             </div>
                             <div class="letraPer col-md-4 fs-3">Precio producto</div>
                             <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">$750</div>
                             <div class="letraPer col-md-4 fs-3">Marca producto</div>
                             <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">Shout like</div>
                             <div class="letraPer col-md-4 fs-3">Descripción producto</div>
-                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start" style="padding: 1rem;">
-                            Añade un toque de misterio con nuestro lápiz labial en un tono oscuro y seductor.</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start"
+                                style="padding: 1rem;">
+                                Añade un toque de misterio con nuestro lápiz labial en un tono oscuro y seductor.</div>
                         </div>
                     </div>
 
@@ -770,7 +714,7 @@ document.getElementById('btn_info7').addEventListener('click', function () {
             </div>
 
         </div>
-    `
+        `
     })
 })
 
@@ -783,7 +727,7 @@ document.getElementById('btn_info8').addEventListener('click', function () {
         confirmButtonText: 'Confirmar',
         width: '70%',
         html: `
-    <div class="container text-center">
+        <div class="container text-center">
             <div class="row">
                 <div class="row">
 
@@ -806,8 +750,10 @@ document.getElementById('btn_info8').addEventListener('click', function () {
                             <div class="letraPer col-md-4 fs-3">Marca producto</div>
                             <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">A$ap Rocky</div>
                             <div class="letraPer col-md-4 fs-3">Descripción producto</div>
-                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start" style="padding: 1rem;">
-                            Define tus labios con elegancia usando nuestro labial de pincel en un deslumbrante tono rojo rubí.</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start"
+                                style="padding: 1rem;">
+                                Define tus labios con elegancia usando nuestro labial de pincel en un deslumbrante tono
+                                rojo rubí.</div>
                         </div>
                     </div>
 
@@ -815,7 +761,7 @@ document.getElementById('btn_info8').addEventListener('click', function () {
             </div>
 
         </div>
-    `
+        `
     })
 })
 
@@ -837,7 +783,7 @@ document.getElementById('btn_editar1').addEventListener('click', function () {
                 <div class=" col-md-4">
                     <img class="rounded  mx-auto d-block" src="../../resources/img/productos/pd1.jpg" alt="..."
                         width="300px">
-                        <br>
+                    <br>
                     <br>
                     <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar imagen</button>
                     <br>
@@ -866,10 +812,11 @@ document.getElementById('btn_editar1').addEventListener('click', function () {
                             </div>
 
                             <div class="letraPer col-md-4 fs-3">Descripción producto</div>
-                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start" >
-                            <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
-                            style="height: 150px;" aria-describedby="inputGroup-sizing-default">Descubre la paleta perfecta: nuestro programa de sombras de ojos te lleva desde lo sutil hasta lo espectacular en cada aplicación</textarea>
-                    </div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    style="height: 150px;"
+                                    aria-describedby="inputGroup-sizing-default">Descubre la paleta perfecta: nuestro programa de sombras de ojos te lleva desde lo sutil hasta lo espectacular en cada aplicación</textarea>
+                            </div>
 
                         </div>
                     </div>
@@ -916,54 +863,55 @@ document.getElementById('btn_editar2').addEventListener('click', function () {
         cancelButtonText: 'Cancelar',
         width: '70%',
         html: `<div class="container text-center">
-    <div class="row">
-        <div class="row">
+            <div class="row">
+                <div class="row">
 
-        </div>
-        <div class=" col-md-4">
-            <img class="rounded  mx-auto d-block" src="../../resources/img/productos/pd2.jpg" alt="..."
-                width="300px">
-                <br>
+                </div>
+                <div class=" col-md-4">
+                    <img class="rounded  mx-auto d-block" src="../../resources/img/productos/pd2.jpg" alt="..."
+                        width="300px">
+                    <br>
                     <br>
                     <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar imagen</button>
-            <br>
-            <br>
+                    <br>
+                    <br>
 
-        </div>
-        <div class="col">
-            <div class="row">
+                </div>
                 <div class="col">
-                    <div class="letraPer col-md-4 fs-3">Nombre producto</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default" value="paletas de frutas">
-                    </div>
-                    <div class="letraPer col-md-4 fs-3">Precio producto</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default" value="$3.50">
-                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="letraPer col-md-4 fs-3">Nombre producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="paletas de frutas">
+                            </div>
+                            <div class="letraPer col-md-4 fs-3">Precio producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="$3.50">
+                            </div>
 
 
-                    <div class="letraPer col-md-4 fs-3">Marca producto</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default" value="Columbia">
-                    </div>
+                            <div class="letraPer col-md-4 fs-3">Marca producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="Columbia">
+                            </div>
 
-                    <div class="letraPer col-md-4 fs-3">Descripción producto</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                    <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
-                    style="height: 150px;" aria-describedby="inputGroup-sizing-default">¡Sumérgete en la dulzura exótica con nuestra paleta de colores inspirada en fresitas chinas!</textarea>
-            </div>
+                            <div class="letraPer col-md-4 fs-3">Descripción producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    style="height: 150px;"
+                                    aria-describedby="inputGroup-sizing-default">¡Sumérgete en la dulzura exótica con nuestra paleta de colores inspirada en fresitas chinas!</textarea>
+                            </div>
+
+                        </div>
+                    </div>
 
                 </div>
             </div>
 
-        </div>
-    </div>
-
-</div> `
+        </div> `
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({
@@ -1009,9 +957,9 @@ document.getElementById('btn_editar3').addEventListener('click', function () {
                 <div class=" col-md-4">
                     <img class="rounded  mx-auto d-block" src="../../resources/img/productos/pd3.jpg" alt="..."
                         width="300px">
-                        <br>
-                        <br>
-                        <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar imagen</button>
+                    <br>
+                    <br>
+                    <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar imagen</button>
 
                 </div>
                 <div class="col">
@@ -1037,9 +985,10 @@ document.getElementById('btn_editar3').addEventListener('click', function () {
 
                             <div class="letraPer col-md-4 fs-3">Descripción producto</div>
                             <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                            <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
-                            style="height: 150px;" aria-describedby="inputGroup-sizing-default">Obtén una piel luminosa y uniforme con nuestra crema aclaradora de alta calidad. espectacular en cada aplicación</textarea>
-                    </div>
+                                <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    style="height: 150px;"
+                                    aria-describedby="inputGroup-sizing-default">Obtén una piel luminosa y uniforme con nuestra crema aclaradora de alta calidad. espectacular en cada aplicación</textarea>
+                            </div>
 
                         </div>
                     </div>
@@ -1086,52 +1035,53 @@ document.getElementById('btn_editar4').addEventListener('click', function () {
         cancelButtonText: 'Cancelar',
         width: '70%',
         html: `<div class="container text-center">
-    <div class="row">
-        <div class="row">
-
-        </div>
-        <div class=" col-md-4">
-            <img class="rounded  mx-auto d-block" src="../../resources/img/productos/pd4.png" alt="..."
-                width="300px">
-                <br>
-                <br>
-                <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar imagen</button>
-
-        </div>
-        <div class="col">
             <div class="row">
+                <div class="row">
+
+                </div>
+                <div class=" col-md-4">
+                    <img class="rounded  mx-auto d-block" src="../../resources/img/productos/pd4.png" alt="..."
+                        width="300px">
+                    <br>
+                    <br>
+                    <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar imagen</button>
+
+                </div>
                 <div class="col">
-                    <div class="letraPer col-md-4 fs-3">Nombre producto</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default" value="Labial mata toros">
-                    </div>
-                    <div class="letraPer col-md-4 fs-3">Precio producto</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default" value="$3.70">
-                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="letraPer col-md-4 fs-3">Nombre producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="Labial mata toros">
+                            </div>
+                            <div class="letraPer col-md-4 fs-3">Precio producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="$3.70">
+                            </div>
 
 
-                    <div class="letraPer col-md-4 fs-3">Marca producto</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default" value="Cromopolis">
-                    </div>
+                            <div class="letraPer col-md-4 fs-3">Marca producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="Cromopolis">
+                            </div>
 
-                    <div class="letraPer col-md-4 fs-3">Descripción producto</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                    <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
-                    style="height: 150px;" aria-describedby="inputGroup-sizing-default">Atrévete a destacar con nuestro labial de un rojo intenso como el carmesí</textarea>
-            </div>
+                            <div class="letraPer col-md-4 fs-3">Descripción producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    style="height: 150px;"
+                                    aria-describedby="inputGroup-sizing-default">Atrévete a destacar con nuestro labial de un rojo intenso como el carmesí</textarea>
+                            </div>
+
+                        </div>
+                    </div>
 
                 </div>
             </div>
 
-        </div>
-    </div>
-
-</div> `
+        </div> `
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({
@@ -1170,52 +1120,53 @@ document.getElementById('btn_editar5').addEventListener('click', function () {
         cancelButtonText: 'Cancelar',
         width: '70%',
         html: `<div class="container text-center">
-    <div class="row">
-        <div class="row">
-
-        </div>
-        <div class=" col-md-4">
-            <img class="rounded  mx-auto d-block" src="../../resources/img/productos/pd5.jpg" alt="..."
-                width="300px">
-                <br>
-                <br>
-                <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar imagen</button>
-
-        </div>
-        <div class="col">
             <div class="row">
+                <div class="row">
+
+                </div>
+                <div class=" col-md-4">
+                    <img class="rounded  mx-auto d-block" src="../../resources/img/productos/pd5.jpg" alt="..."
+                        width="300px">
+                    <br>
+                    <br>
+                    <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar imagen</button>
+
+                </div>
                 <div class="col">
-                    <div class="letraPer col-md-4 fs-3">Nombre producto</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default" value="Polvo de brujas">
-                    </div>
-                    <div class="letraPer col-md-4 fs-3">Precio producto</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default" value="$9.00">
-                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="letraPer col-md-4 fs-3">Nombre producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="Polvo de brujas">
+                            </div>
+                            <div class="letraPer col-md-4 fs-3">Precio producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="$9.00">
+                            </div>
 
 
-                    <div class="letraPer col-md-4 fs-3">Marca producto</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default" value="Village">
-                    </div>
+                            <div class="letraPer col-md-4 fs-3">Marca producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="Village">
+                            </div>
 
-                    <div class="letraPer col-md-4 fs-3">Descripción producto</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                    <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
-                    style="height: 150px;" aria-describedby="inputGroup-sizing-default">Logra un acabado mágico con nuestro polvo de hadas, ¡tu secreto para un maquillaje impecable!</textarea>
-            </div>
+                            <div class="letraPer col-md-4 fs-3">Descripción producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    style="height: 150px;"
+                                    aria-describedby="inputGroup-sizing-default">Logra un acabado mágico con nuestro polvo de hadas, ¡tu secreto para un maquillaje impecable!</textarea>
+                            </div>
+
+                        </div>
+                    </div>
 
                 </div>
             </div>
 
-        </div>
-    </div>
-
-</div> `
+        </div> `
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({
@@ -1254,52 +1205,53 @@ document.getElementById('btn_editar6').addEventListener('click', function () {
         cancelButtonText: 'Cancelar',
         width: '70%',
         html: `<div class="container text-center">
-    <div class="row">
-        <div class="row">
-
-        </div>
-        <div class=" col-md-4">
-            <img class="rounded  mx-auto d-block" src="../../resources/img/productos/pd6.jpg" alt="..."
-                width="300px">
-                <br>
-                <br>
-                <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar imagen</button>
-
-        </div>
-        <div class="col">
             <div class="row">
+                <div class="row">
+
+                </div>
+                <div class=" col-md-4">
+                    <img class="rounded  mx-auto d-block" src="../../resources/img/productos/pd6.jpg" alt="..."
+                        width="300px">
+                    <br>
+                    <br>
+                    <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar imagen</button>
+
+                </div>
                 <div class="col">
-                    <div class="letraPer col-md-4 fs-3">Nombre producto</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default" value="lápiz de colores">
-                    </div>
-                    <div class="letraPer col-md-4 fs-3">Precio producto</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default" value="$70">
-                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="letraPer col-md-4 fs-3">Nombre producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="lápiz de colores">
+                            </div>
+                            <div class="letraPer col-md-4 fs-3">Precio producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="$70">
+                            </div>
 
 
-                    <div class="letraPer col-md-4 fs-3">Marca producto</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default" value="Tintelia">
-                    </div>
+                            <div class="letraPer col-md-4 fs-3">Marca producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="Tintelia">
+                            </div>
 
-                    <div class="letraPer col-md-4 fs-3">Descripción producto</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                    <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
-                    style="height: 150px;" aria-describedby="inputGroup-sizing-default">Define y realza tus labios con nuestro lápiz labial en tono natural.</textarea>
-            </div>
+                            <div class="letraPer col-md-4 fs-3">Descripción producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    style="height: 150px;"
+                                    aria-describedby="inputGroup-sizing-default">Define y realza tus labios con nuestro lápiz labial en tono natural.</textarea>
+                            </div>
+
+                        </div>
+                    </div>
 
                 </div>
             </div>
 
-        </div>
-    </div>
-
-</div> `
+        </div> `
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({
@@ -1338,52 +1290,53 @@ document.getElementById('btn_editar7').addEventListener('click', function () {
         cancelButtonText: 'Cancelar',
         width: '70%',
         html: `<div class="container text-center">
-    <div class="row">
-        <div class="row">
-
-        </div>
-        <div class=" col-md-4">
-            <img class="rounded  mx-auto d-block" src="../../resources/img/productos/pd7.jpg" alt="..."
-                width="300px">
-                <br>
-                <br>
-                <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar imagen</button>
-
-        </div>
-        <div class="col">
             <div class="row">
+                <div class="row">
+
+                </div>
+                <div class=" col-md-4">
+                    <img class="rounded  mx-auto d-block" src="../../resources/img/productos/pd7.jpg" alt="..."
+                        width="300px">
+                    <br>
+                    <br>
+                    <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar imagen</button>
+
+                </div>
                 <div class="col">
-                    <div class="letraPer col-md-4 fs-3">Nombre producto</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default" value="Lápiz tonalidad oscura">
-                    </div>
-                    <div class="letraPer col-md-4 fs-3">Precio producto</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default" value="$750">
-                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="letraPer col-md-4 fs-3">Nombre producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="Lápiz tonalidad oscura">
+                            </div>
+                            <div class="letraPer col-md-4 fs-3">Precio producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="$750">
+                            </div>
 
 
-                    <div class="letraPer col-md-4 fs-3">Marca producto</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default" value="Shout like">
-                    </div>
+                            <div class="letraPer col-md-4 fs-3">Marca producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="Shout like">
+                            </div>
 
-                    <div class="letraPer col-md-4 fs-3">Descripción producto</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                    <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
-                    style="height: 150px;" aria-describedby="inputGroup-sizing-default">Añade un toque de misterio con nuestro lápiz labial en un tono oscuro y seductor.</textarea>
-            </div>
+                            <div class="letraPer col-md-4 fs-3">Descripción producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    style="height: 150px;"
+                                    aria-describedby="inputGroup-sizing-default">Añade un toque de misterio con nuestro lápiz labial en un tono oscuro y seductor.</textarea>
+                            </div>
+
+                        </div>
+                    </div>
 
                 </div>
             </div>
 
-        </div>
-    </div>
-
-</div> `
+        </div> `
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({
@@ -1422,52 +1375,53 @@ document.getElementById('btn_editar8').addEventListener('click', function () {
         cancelButtonText: 'Cancelar',
         width: '70%',
         html: `<div class="container text-center">
-    <div class="row">
-        <div class="row">
-
-        </div>
-        <div class=" col-md-4">
-            <img class="rounded  mx-auto d-block" src="../../resources/img/productos/pd8.png" alt="..."
-                width="300px">
-                <br>
-                <br>
-                <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar imagen</button>
-
-        </div>
-        <div class="col">
             <div class="row">
+                <div class="row">
+
+                </div>
+                <div class=" col-md-4">
+                    <img class="rounded  mx-auto d-block" src="../../resources/img/productos/pd8.png" alt="..."
+                        width="300px">
+                    <br>
+                    <br>
+                    <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar imagen</button>
+
+                </div>
                 <div class="col">
-                    <div class="letraPer col-md-4 fs-3">Nombre producto</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default" value="Pincel rojo">
-                    </div>
-                    <div class="letraPer col-md-4 fs-3">Precio producto</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default" value="$40">
-                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="letraPer col-md-4 fs-3">Nombre producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="Pincel rojo">
+                            </div>
+                            <div class="letraPer col-md-4 fs-3">Precio producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="$40">
+                            </div>
 
 
-                    <div class="letraPer col-md-4 fs-3">Marca producto</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                        <input type="text" class="form-control fs-3" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default" value="A$ap Rocky">
-                    </div>
+                            <div class="letraPer col-md-4 fs-3">Marca producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="A$ap Rocky">
+                            </div>
 
-                    <div class="letraPer col-md-4 fs-3">Descripción producto</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                    <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
-                    style="height: 150px;" aria-describedby="inputGroup-sizing-default">Define tus labios con elegancia usando nuestro labial de pincel en un deslumbrante tono rojo rubí.</textarea>
-            </div>
+                            <div class="letraPer col-md-4 fs-3">Descripción producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    style="height: 150px;"
+                                    aria-describedby="inputGroup-sizing-default">Define tus labios con elegancia usando nuestro labial de pincel en un deslumbrante tono rojo rubí.</textarea>
+                            </div>
+
+                        </div>
+                    </div>
 
                 </div>
             </div>
 
-        </div>
-    </div>
-
-</div> `
+        </div> `
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({
@@ -1506,53 +1460,54 @@ document.getElementById('btn_agregar').addEventListener('click', function () {
         cancelButtonText: 'Cancelar',
         width: '70%',
         html: `<div class="container text-center">
-    <div class="row">
-        <div class="row">
-
-        </div>
-        <div class=" col-md-4">
-            <img class="rounded  mx-auto d-block" src="../../resources/img/productos/agregar_producto.jpg" alt="..."
-                width="300px">
-                <br>
-                <br>
-                <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar imagen</button>
-
-        </div>
-        <div class="col">
             <div class="row">
-            <div class="col">
-            <div class="letraPer col-md-4 fs-3">Nombre producto</div>
-            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
-                    aria-describedby="inputGroup-sizing-default" value="">
-            </div>
-            <div class="letraPer col-md-4 fs-3">Precio producto</div>
-            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                <input type="number" step="0.01" class="form-control fs-3" aria-label="Sizing example input"
-                    aria-describedby="inputGroup-sizing-default" value="">
-            </div>
-        
-            <div class="letraPer col-md-4 fs-3">Marca producto</div>
-            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
-                    aria-describedby="inputGroup-sizing-default" value="">
-            </div>
-        
-            <div class="letraPer col-md-4 fs-3">Descripción producto</div>
-            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
-                <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
-                    style="height: 150px;" aria-describedby="inputGroup-sizing-default"></textarea>
-            </div>
-        </div>
-        
+                <div class="row">
 
                 </div>
+                <div class=" col-md-4">
+                    <img class="rounded  mx-auto d-block" src="../../resources/img/productos/agregar_producto.jpg"
+                        alt="..." width="300px">
+                    <br>
+                    <br>
+                    <button type="button" class="btn btn-secondary btn-lg boton_editar">Cambiar imagen</button>
+
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <div class="letraPer col-md-4 fs-3">Nombre producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="">
+                            </div>
+                            <div class="letraPer col-md-4 fs-3">Precio producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="number" step="0.01" class="form-control fs-3"
+                                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
+                                    value="">
+                            </div>
+
+                            <div class="letraPer col-md-4 fs-3">Marca producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <input type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" value="">
+                            </div>
+
+                            <div class="letraPer col-md-4 fs-3">Descripción producto</div>
+                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">
+                                <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
+                                    style="height: 150px;" aria-describedby="inputGroup-sizing-default"></textarea>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
             </div>
-
         </div>
-    </div>
 
-</div> `
+    </div> `
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({

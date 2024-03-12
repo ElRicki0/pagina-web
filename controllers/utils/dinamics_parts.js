@@ -23,9 +23,8 @@ header.innerHTML = `<nav class="navbar navbar-expand-lg bg-body-tertiary">
                     </a>
                     <ul class="dropdown-menu">
                     <li><a class="dropdown-item" aria-current="page" href="../../views/admin/productos.html">Productos</a></li>
-                      <li><a class="dropdown-item" aria-current="page" href="">Categorias</a></li>
-                      <li><a class="dropdown-item" aria-current="page" href="">Subcategorias</a></li>
-                      <li><a class="dropdown-item" aria-current="page" href="">Marcas</a></li>
+                      <li><a class="dropdown-item" aria-current="page" href="../../views/admin/categoria.html">Categorias</a></li>
+                      <li><a class="dropdown-item" aria-current="page" href="../../views/admin/marca.html">Marcas</a></li>
                     </ul>
                     <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" aria-current="page" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
