@@ -1,7 +1,7 @@
 
 const header = document.querySelector("header");
 
-header.innerHTML = `<nav class="navbar navbar-expand-lg bg-body-tertiary">
+header.innerHTML = `<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
 <div class="mb-6 xs-6 xl-6 col-12">
     <div class="row marcos">
         <div class="col-6">
@@ -23,15 +23,12 @@ header.innerHTML = `<nav class="navbar navbar-expand-lg bg-body-tertiary">
                         <li><a class="dropdown-item" aria-current="page" href="">Categorias</a></li>
                         <li><a class="dropdown-item" aria-current="page" href="">Marcas</a></li>
                     </ul>
-                </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="">Contactanos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="">Sobre nosotros</a>
                     </li>
-                    <form class="busqueda" role="search">
-                        <input class="form-control me-10" type="search" placeholder="Buscar..." aria-label="Search"> 
                 </ul>
             </div>
         </div>
