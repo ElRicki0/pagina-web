@@ -328,14 +328,12 @@ footer {
 }
 
 .btn_ver_mas {
-    right: 20px;
     background-color: #1D1C6A;
     color: white;
     border: none;
     cursor: pointer;
     border-radius: 20px;
     text-decoration: none;
-    display: inline-block;
     font-size: 16px;
     margin: 4px 35px;
 }
