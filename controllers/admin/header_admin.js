@@ -43,7 +43,7 @@ header.innerHTML = `<nav class="navbar navbar-expand-lg bg-body-tertiary">
         </div>
         <div class="iconoder col-5 d-flex">
             <ul class="navbar-nav ms-auto align-items-right" style="align-items: flex-end;">
-                <button class="rounded-circle border border-dark" type="button" data-bs-toggle="modal" data-bs-target="#perfil">
+                <button class="rounded-circle border border-dark" type="button" data-bs-toggle="modal" data-bs-target="perfil.html">
                     <img class="tamañoImagenPerfil rounded-circle" src="../../resources/img/iconoPerfil.jpg" alt="" width="60px">
                 </button>   
             </ul>

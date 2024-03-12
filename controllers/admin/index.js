@@ -11,7 +11,7 @@ BtnCorrecto.addEventListener('click', (e)=>{
 
     console.log(data)
     if(data.usuario=='admin'&&data.contrasenia=='pass123'){
-        window.location.href = '../../views/admin/Menu.html';
+        window.location.href = '../../views/admin/menu.html';
     }
     else{
         window.alert('error')
