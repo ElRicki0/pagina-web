@@ -22,7 +22,7 @@
         <br>
         <!-- Botón para agregar producto -->
         <button type="button" class="btn_producto_agregar" id="" data-bs-toggle="modal"
-            data-bs-target="#btn_agregar_Producto">Agregar categoría</button>
+            data-bs-target="#btn_agregar_categoría">Agregar categoría</button>
         <!-- Título de la página -->
         <h2 class="usuusu">categoría</h2>
         <br>
@@ -151,6 +151,63 @@
     <footer class="test ">
     </footer>
 
+    <!--modals de botones-->
+
+    <!--agregar producto-->
+    <div class="modal fade" id="btn_agregar_categoría" tabindex="-1" aria-labelledby="exampleModalLabel"
+        data-bs-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar categoría</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!--contenido del modal-->
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class=" col">
+                                <img id="modalProfileImage" class="rounded  mx-auto d-block" style="margin-top: 3rem;"
+                                    src="../../resources/img/productos/imagen_agregar.jpg" alt="..." width="300px">
+                                <br>
+                                <br>
+                                <input type="file" id="modalInputFile" style="display:none;" accept="image/*">
+                                <button type="button"
+                                    class="botoncitoPerfilAgre btn btn-outline-dark btn-lg btn-block mx-auto order-2"
+                                    onclick="abrirExploradorModal()">Insertar foto de categoría</button>
+                            </div>
+                            <div class="col" style="margin-top: 3rem;">
+                                <div class="row">
+                                    <div class="col">
+                                        <form>
+                                            <div class="letraPer col-md-8 fs-3">Nombre categoría</div>
+                                            <div
+                                                class="cuadroText col-md-10 fs-3 border border-dark rounded text-start">
+                                                <input type="text" class="form-control fs-3"
+                                                    aria-label="Sizing example input"
+                                                    aria-describedby="inputGroup-sizing-default" value="">
+                                            </div>
+                                            <div class="letraPer col-md-10 fs-3">Descripción categoría</div>
+                                            <div
+                                                class="cuadroText col-md-10 fs-3 border border-dark rounded text-start">
+                                                <textarea type="text" class="form-control fs-3"
+                                                    aria-label="Sizing example input" style="height: 150px;"
+                                                    aria-describedby="inputGroup-sizing-default"></textarea>
+                                            </div>
+                                        </form>
+
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar
+                                        </button>
+                                        <button type="button" class="btn btn-primary" id="btn_agregar_Producto">Guardar
+                                            producto</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
 </body>
 
