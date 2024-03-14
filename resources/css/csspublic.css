@@ -321,6 +321,9 @@ footer {
 
 /*Inicio codigo para las tarjetitas*/
 
+.imagen_tarjeta{
+    height: 250px;
+}
 
 .btn_ver_mas {
     background-color: #1D1C6A;
