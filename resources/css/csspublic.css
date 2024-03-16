@@ -189,6 +189,13 @@ footer {
     font-size: 18px;
 }
 
+.copyright {
+    color: #fefefe;
+    opacity: 0.3;
+    text-align: center;
+}
+
+
 /*-----------------------------------
         Cuerpo pantalla index
   -----------------------------------
@@ -287,7 +294,8 @@ footer {
 }
 
 /*Inicio codigo de textos fs-1*/
-.textNoti1{
+.textNoti1 {
+    color: #1F1B47;
     margin-top: 110px;
     padding: 20px;
     transition: 1s;
@@ -296,6 +304,7 @@ footer {
 }
 
 .textNoti {
+    color: #1F1B47;
     transition: 1s;
     letter-spacing: normal;
     animation: textitoTitulo 2s ease 0s 1 normal forwards;
@@ -321,7 +330,7 @@ footer {
 
 /*Inicio codigo para las tarjetitas*/
 
-.imagen_tarjeta{
+.imagen_tarjeta {
     height: 250px;
 }
 
@@ -336,14 +345,73 @@ footer {
     margin: 4px 35px;
 }
 
-.btn_ver_mas:hover{
+.btn_ver_mas:hover {
     background-color: #1F1B47;
     color: #f3fefe;
+    box-shadow: 9px 14px 15px 2px #4a4a4ac0;
+}
+
+.botonComprar:hover {
     box-shadow: 9px 14px 15px 2px #4a4a4a;
 }
 
-.botonComprar:hover{
+/*Carrousel tarjetas*/
+
+.container-carousel {
+    background: rgb(2, 0, 36);
+    background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(74, 35, 152, 0.6530987394957983) 100%);
     box-shadow: 9px 14px 15px 2px #4a4a4a;
+
+}
+
+/* Cambiar el color del icono del botón "Anterior" del carrusel */
+.carousel-control-prev-icon {
+    border-radius: 30px;
+    background-color: #621286;
+}
+
+/* Cambiar el color del icono del botón "Siguiente" del carrusel */
+.carousel-control-next-icon {
+    border-radius: 30px;
+    background-color: #621286;
 }
 
 
+.img-wrapper {
+    max-width: 100%;
+    height: 17em;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.img-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+@media screen and (min-width:900px) {
+    .carousel-inner {
+        display: flex;
+    }
+
+    .carousel-item {
+        display: block;
+        margin-right: 0;
+        flex: 0 0calc(100%/3);
+    }
+
+    .img-wrapper {
+        height: 23vw;
+    }
+
+}
+
+.carousel-inner {
+    padding: 1rem;
+}
+
+.card {
+    margin: 0.5rem;
+    background-color: #CCC9EE;
+}
