@@ -337,10 +337,8 @@ footer {
 .btn_ver_mas {
     background-color: #1D1C6A;
     color: white;
-    border: none;
     cursor: pointer;
     border-radius: 20px;
-    text-decoration: none;
     font-size: 18px;
     margin: 4px 35px;
 }
@@ -489,9 +487,9 @@ footer {
     }
 }
 
-/*-----------------------------------
-        Cuerpo pantalla marcas
-  -----------------------------------
+/*----------------------------------------
+    Cuerpo pantalla marca en especifico
+  ---------------------------------------
 */
 
 .espaciado_imagen {
@@ -523,13 +521,58 @@ footer {
 
 .textCat {
     color: #1F1B47;
+    letter-spacing: normal;
+}
+
+/*-----------------------------------
+        Cuerpo pantalla Marcas
+  -----------------------------------
+*/
+
+.textMarca {
+    margin-top: 140px;
+    color: #1F1B47;
     transition: 1s;
     letter-spacing: normal;
     animation: textitoTitulo 2s ease 0s 1 normal forwards;
 }
 
-hr{
-    border: 7px solid black;
+.btn_marca {
+    background-color: #1D1C6A;
+    color: white;
+    cursor: pointer;
     border-radius: 10px;
+    font-size: 24px;
 }
+
+.btn_marca:hover {
+    background-color: #1F1B47;
+    color: #f3fefe;
+    box-shadow: 9px 14px 15px 2px #4a4a4ac0;
+}
+
+.imagen_marca{
+    height: 250px;
+    width: 360px;
+}
+
+.liniaSeparadora{
+    border:7px solid rgb(73, 0, 141);
+    border-radius: 5px;
+}
+
+.btn-link {
+    text-decoration: none; /* Quitar subrayado del enlace */
+    color: inherit; /* Heredar color del texto del botón */
+}
+
+.btn-link:hover {
+    color: #f3fefe;
+    text-decoration: none;
+}
+
+.tarjetaLanzamiento{
+    width: 400px;
+}
+
 
