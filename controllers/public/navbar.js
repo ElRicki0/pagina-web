@@ -19,9 +19,9 @@ header.innerHTML = `<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-t
                         Productos
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" aria-current="page" href="">Productos</a></li>
+                        <li><a class="dropdown-item" aria-current="page" href="../../views/public/index.html">Productos</a></li>
                         <li><a class="dropdown-item" aria-current="page" href="">Categorias</a></li>
-                        <li><a class="dropdown-item" aria-current="page" href="">Marcas</a></li>
+                        <li><a class="dropdown-item" aria-current="page" href="../../views/public/marca.html">Marcas</a></li>
                     </ul>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="">Contactanos</a>
