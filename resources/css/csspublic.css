@@ -506,3 +506,30 @@ footer {
 .tarjeta_categoria:hover {
     background-color: #1F1B47;
 }
+
+
+/*-----------------------------------
+        Cuerpo pantalla Categoria
+  -----------------------------------
+*/
+
+.elementoCategoria{
+    margin-top: 100px;
+}
+
+.elementoCategoria img{
+    width: 300px;
+}
+
+.textCat {
+    color: #1F1B47;
+    transition: 1s;
+    letter-spacing: normal;
+    animation: textitoTitulo 2s ease 0s 1 normal forwards;
+}
+
+hr{
+    border: 7px solid black;
+    border-radius: 10px;
+}
+
