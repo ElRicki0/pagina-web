@@ -3,10 +3,9 @@
 const footer = document.querySelector("footer");
 
 footer.innerHTML = `<div class="social-icons-container ">
-    <a href="https://twitter.com/?lang=es" class="social-icons"></a>
-    <a href="https://www.instagram.com/" class="social-icons"></a>
-    <a href="https://mail.google.com/" class="social-icons"></a>
-    <a href="https://www.facebook.com/" class="social-icons"></a>
+    <a href="https://twitter.com/?lang=es" target="_blank" class="social-icons"></a>
+    <a href="https://www.threads.net/@ivanecare" target="_blank" class="social-icons"></a>
+    <a href="https://www.facebook.com/profile.php?id=61556911452120" target="_blank" class="social-icons"></a>
 </div>
 <ul class="footer-menu-conteiner">
 </ul>

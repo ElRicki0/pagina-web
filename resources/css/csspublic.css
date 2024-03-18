@@ -511,11 +511,11 @@ footer {
   -----------------------------------
 */
 
-.elementoCategoria{
+.elementoCategoria {
     margin-top: 100px;
 }
 
-.elementoCategoria img{
+.elementoCategoria img {
     width: 300px;
 }
 
@@ -551,19 +551,21 @@ footer {
     box-shadow: 9px 14px 15px 2px #4a4a4ac0;
 }
 
-.imagen_marca{
+.imagen_marca {
     height: 250px;
     width: 360px;
 }
 
-.liniaSeparadora{
-    border:7px solid rgb(73, 0, 141);
+.liniaSeparadora {
+    border: 7px solid rgb(73, 0, 141);
     border-radius: 5px;
 }
 
 .btn-link {
-    text-decoration: none; /* Quitar subrayado del enlace */
-    color: inherit; /* Heredar color del texto del botón */
+    text-decoration: none;
+    /* Quitar subrayado del enlace */
+    color: inherit;
+    /* Heredar color del texto del botón */
 }
 
 .btn-link:hover {
@@ -571,8 +573,122 @@ footer {
     text-decoration: none;
 }
 
-.tarjetaLanzamiento{
+.tarjetaLanzamiento {
     width: 400px;
 }
 
 
+/*Carrito */
+.star{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #b6b5b5;
+    font-size: 30px;
+    transition: color 3.0s;
+    margin-left: 40px;
+}
+
+.listacarrito{
+    padding-top: 90px;
+}
+
+.stark{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: gold;
+    font-size: 30px;
+    transition: color 3.0s;
+    margin-left: 40px;
+}
+
+.star:hover
+.star:checked{
+    color: gold;
+}
+
+
+.corazonc{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #b6b5b5;
+    font-size: 30px;
+    transition: color 3.0s;
+    display: flex;
+    margin-left: 400px;
+}
+.btnañacarrito{
+    background-color: #1D1C6A !important;
+}    
+
+.corazonc:hover
+.corazonc:checked{
+    color: gold;
+}
+
+.tableComen{
+    padding: 60px!important; 
+    margin: 30px !important;
+    width: 650px;
+    height: 350px;
+    border-radius: 30px;
+    padding-bottom: 50px;
+    margin-right: 410px;
+}
+
+ 
+.conteinercarrito{
+    padding-top: 20px;
+    margin: 10px;
+ }
+
+
+.btnañacarrito{
+   margin-right: 400px;
+}
+
+.precioCarito{
+    display: flex;
+    margin-left: 90px;
+}
+.contenCaarr
+{
+    width: 100px;
+    float: left;
+    display: flex;
+}
+
+
+
+
+
+.letraPer{
+    margin-left: 40px;
+    padding-top: 20px;
+}
+
+
+.comenta
+.cocomen{
+    width: 30px;
+}
+
+.CuantasEstrellas{
+    margin-left: 40px;
+}
+
+.cuadroTextComen{
+    border-radius: 30px;
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.671);
+    margin-left: 50px;
+}
+
+.btnComi{
+    background-color: #1D1C6A;
+}
+
+.interes {
+    display: flex;
+}

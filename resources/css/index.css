@@ -238,16 +238,13 @@ footer {
 }
 
 .social-icons:nth-last-of-type(2) {
-    background-image: url(../img/imagen_c.png);
+    background-image: url(../img/imagen_t.png);
 }
 
 .social-icons:nth-last-of-type(3) {
     background-image: url(../img/imagen_i.png);
 }
 
-.social-icons:nth-last-of-type(4) {
-    background-image: url(../img/imagen_x.png);
-}
 
 .footer-menu-conteiner {
     list-style-type: none;
