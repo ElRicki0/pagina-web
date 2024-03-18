@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descripcion del producto</title>
+    <!--Script para ponerle icono a la pagina-->
+    <link rel="icon" href="../../resources/img/iconos/loguito.ico">
+    <!--Enlace para mandar a llamar propiedad de boostrap.css-->
+    <link rel="stylesheet" href="../../resources/css/css_boostrap.css">
+    <!--Enlace para mandar a llamar el css-->
+    <link rel="stylesheet" href="../../resources/css/csspublic.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+</head>
+
+<body>
+    <!--navbar-->
+    <header>
+    </header>
+    <!--contenido-->
+    <main>
+        <!--imagen de producto-->
+        <div class="container text-center" style="padding-top: 50px;">
+            <div class="row">
+                <div class=" col">
+                    <img id="carrito" class="rounded  mx-auto d-block border" style="margin-top: 3rem;"
+                        src="../../resources/img/productos/pd8.png" alt="..." width="300px">
+                    <br>
+                    <br>
+                    <input type="file" id="modalInputFile" style="display:none;" accept="image/*">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <i class="corazonc bi bi-suit-heart-fill"></i>
+                            <h5 class="precioCarito" id="preciocarrito">$3.00</h5>
+                        </div>
+                    </div>
+                    <!--precio de producto-->
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col" style="margin-top: 3rem;">
+                            
+                                <div class="letraCar fs-3 col-md-4 mt-5 text-start">
+                                    <a href="../public/marca_especifica.html">Garnier</a>
+                                </div>
+                                <div class="letraCar fs-3 col-md-4 mt-3 text-start">Labial seytu</div>
+                                <!--Descripcion de producto-->
+                                <div class="letraCar col-md-8 fs-3 mt-3 text-start">Labial Seytu matte con acabado
+                                    satinado, no
+                                    transfiere y libre de
+                                    quimicos, aroma a cherry</div>
+                                <br>
+                                <br>
+                                <div class="d-grid  d-md-block text-center">
+                                    <button class="btnañacarrito btn" type="button">Añadir a
+                                        carrito</button>
+                                </div>
+                              
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--comentarios de producto-->
+        <div class="row">
+            <div class="col-lg-4 col-sm-12">
+                <div class="starcom">
+                    <div class="letraPer  fs-3">reseñas de clientes</div>
+                    <!--Estrellas comentadas de el producto-->
+                    <h2 class="CuantasEstrellas">5.00</h2>
+                    <i class="star bi bi-star-fill"></i>
+                    <i class="star bi bi-star-fill"></i>
+                    <i class="star bi bi-star-fill"></i>
+                    <i class="star bi bi-star-fill"></i>
+                    <i class="star bi bi-star-fill"></i>
+                </div>
+                <div class="cocomen">
+                    <div class="letraPer  fs-3">Comenta del producto</div>
+                    <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
+                        style="height: 150px; width: 500px; margin-left: 40px;"
+                        aria-describedby="inputGroup-sizing-default"></textarea>
+                </div>
+            </div>
+            <!--tabla de comentarios de producto-->
+            <div class="col-lg-8 col-sm-12">
+                <table class="tableComen">
+                    <h4 class="text-center mt-4">Comentarios</h4>
+                    <thead>
+                        <tr>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">estrellas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>
+                                <i class="stark bi bi-star-fill"></i>
+                                <i class="stark bi bi-star-fill"></i>
+                                <i class="stark bi bi-star-fill"></i>
+                                <i class="stark bi bi-star-fill"></i>
+                                <i class="stark bi bi-star-fill"></i>
+                                <p>Es bastante bueno me encanta el sabor y olor</p>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>
+                                <i class="stark bi bi-star-fill"></i>
+                                <i class="stark bi bi-star-fill"></i>
+                                <i class="stark bi bi-star-fill"></i>
+                                <i class="stark bi bi-star-fill"></i>
+                                <i class="stark bi bi-star-fill"></i>
+                                <p>Me gusto mucho el acabado y duracion</p>
+
+                            </td>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>
+                                <i class="stark bi bi-star-fill"></i>
+                                <i class="stark bi bi-star-fill"></i>
+                                <i class="stark bi bi-star-fill"></i>
+                                <i class="stark bi bi-star-fill"></i>
+                                <i class="stark bi bi-star-fill"></i>
+                                <p>No se transfiere y me encanta que aunque tome agua sigue ahi</p>
+
+                            </td>
+                        </tr>
+                        <tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!------------------------------------
+            Apartado de descuentos de la semana
+            ------------------------------------->
+        <p class="fs-1 textNoti">Te podria interesar</p>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="container-carousel rounded-5">
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <!--tarjeta 1-->
+                            <div class="carousel-item active">
+                                <div class="d-flex justify-content-center">
+                                    <div class="card">
+                                        <div class="img-wrapper">
+                                            <img src="../../resources/img/imagenesIndex/producto8.jpg" alt="...">
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Protector Solar Nivea Control De Brillo</h5>
+                                            <p class="">$14.80
+                                            </p>
+                                            <button class="btn btn_ver_mas">
+                                                Más información
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--tarjeta 2-->
+                            <div class="carousel-item">
+                                <div class="d-flex justify-content-center">
+                                    <div class="card">
+                                        <div class="img-wrapper">
+                                            <img src="../../resources/img/imagenesIndex/producto3.jpg" alt="...">
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">UV-Defender-Protector-Solar-Diario</h5>
+                                            <p class="">$20.80
+                                            </p>
+                                            <button class="btn btn_ver_mas">
+                                                Más información
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--tarjeta 3-->
+                            <div class="carousel-item">
+                                <div class="d-flex justify-content-center">
+                                    <div class="card">
+                                        <div class="img-wrapper">
+                                            <img src="../../resources/img/imagenesIndex/producto4.jpg" alt="...">
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">OPI - Esmalte de uñas, 0.5 onzas líquidas</h5>
+                                            <p class="">$2.00
+                                            </p>
+                                            <button class="btn btn_ver_mas">
+                                                Más información
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+    <footer class="test">
+    </footer>
+</body>
+
+<!--Enlace para elementos del boostrap-->
+<script src="../../resources/js/js_boostrap.js"></script>
+
+<!--Enlace para poder mostrar alertas-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!--Enlaces para archivos javascript-->
+<script src="../../controllers/public/alertas_publicas.js"></script>
+<script src="../../controllers/public/navbar.js"></script>
+<script src="../../controllers/utils/footer.js"></script>
+
+</html>

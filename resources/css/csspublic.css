@@ -214,6 +214,10 @@ footer {
     color: #352E77;
 }
 
+.letraCar{
+    color: #000055;
+}
+
 .letraPer {
     color: #000055;
     margin-top: 20px;
@@ -430,27 +434,8 @@ select {
     max-height: 100%;
 }
 
-/* Indicandole en que tamaño tendra que realizar el ajuste de tamaños */
-@media screen and (min-width:900px) {
-    .carousel-inner {
-        display: flex;
-    }
 
-    .carousel-item {
-        display: block;
-        margin-right: 0;
-        flex: 0 0calc(100%/3);
-    }
 
-    .img-wrapper {
-        height: 23vw;
-    }
-
-}
-
-.carousel-inner {
-    padding: 1rem;
-}
 
 .card {
     margin: 0.5rem;
@@ -671,6 +656,8 @@ button a{
 }
 
 /*Carrito */
+
+
 .star{
     margin: 0;
     padding: 0;
@@ -713,7 +700,15 @@ button a{
 }
 .btnañacarrito{
     background-color: #1D1C6A !important;
-}    
+    color: #fefefe;
+    width: 180px;
+}
+
+.btnañacarrito:hover{
+    background-color: #0a093b !important;
+    color: #fefefe;
+    box-shadow: 9px 14px 15px 2px #4a4a4ac0;
+}   
 
 .corazonc:hover
 .corazonc:checked{
