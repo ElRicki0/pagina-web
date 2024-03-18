@@ -43,8 +43,10 @@ header.innerHTML = `<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-t
                 </button>
                 <button class="corazon rounded border border-dark" type="button" data-bs-toggle="modal"
                     data-bs-target="#perfil">
+                    <a class="nav-link active" aria-current="page" href="../../views/public/perfil_cliente.html">
                     <img class="tamañoImagenPerfil rounded-circle" src="../../resources/img/iconoPerfil.jpg" alt="" width="60px">
-                </button>
+                    </a>
+                    </button>
             </ul>
         </div>
     </div>

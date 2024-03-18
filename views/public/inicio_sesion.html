@@ -9,11 +9,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="../../resources/css/csspublic.css">
-    <!--Enlace para mandar a llamar propiedad de jquery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!--Enlace para poder mostrar alertas-->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 </head>
 
 <body>
@@ -48,59 +43,39 @@
                                         class="form-control form-control-lg border-Warning-subtle" />
                                 </div>
                                 <!-- Botón para iniciar sesión -->
-                                <button id="BtnCorrecto" class="btncreapu btn btn-lg btn-block" style="border-radius:1000rem"
-                                type="submit">crear cuenta</button> 
-        
-                                <button id="BtnCorrecto" class="btncreapu btn btn-lg btn-block" style="border-radius:1000rem"
-                                    type="submit">Iniciar
+                                <button id="BtnCorrecto" class="btncreapu btn btn-lg btn-block"
+                                    style="border-radius:1000rem" type="submit"><a  href="../public/registro_cliente.html"> crear cuenta </a></button>
+
+                                <button id="BtnCorrecto"onclick="alertMine('InicioSesion')" class="btncreapu btn btn-lg btn-block"
+                                    style="border-radius:1000rem" type="submit">Iniciar
                                     sesión</button>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <footer class="test">
-        </footer>
-                <div class="modal-footer">
-                </div>
-            </div>
-        <!--Enlaces que manda a llamar archivos javaScript-->
-        <script src="../../resources/js/index.js"></script>
-        <script src="../../controllers/utils/alertas.js"></script>
-        <script src="../../controllers/utils/footer.js"></script>
     </div>
+    </section>
 
-<!-- Scripts de Popper y Bootstrap-->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-    crossorigin="anonymous"></script>
+    <footer class="test">
+    </footer>
+    <div class="modal-footer">
+    </div>
+    </div>
+    </div>
 
 </body>
 
+<!--Enlace para elementos del boostrap-->
+<script src="../../resources/js/js_boostrap.js"></script>
+
+<!--Enlace para poder mostrar alertas-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!--Enlaces para archivos javascript-->
+<script src="../../controllers/public/alertas_publicas.js"></script>
+<script src="../../controllers/utils/footer.js"></script>
 
 
-<!--https://www.youtube.com/watch?v=hE-XBmlcXIM-->
-
-
-
-<!--<div class="social-icons-container">
-    <a href="" class="social-icons"></a>
-    <a href="" class="social-icons"></a>
-    <a href="" class="social-icons"></a>
-    <a href="" class="social-icons"></a>
-</div>
-<ul class="footer-menu-conteiner">
-    <li class="menu-items">ejemplos</li>
-    <li class="menu-items">ejemplos</li>
-    <li class="menu-items">ejemplos</li>
-    <li class="menu-items">ejemplos</li>
-</ul>
--->
 
 </html>
