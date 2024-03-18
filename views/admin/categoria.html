@@ -21,8 +21,7 @@
     <main>
         <br>
         <!-- Botón para agregar producto -->
-        <button type="button" class="btn_producto_agregar" id="" data-bs-toggle="modal"
-            data-bs-target="#btn_agregar_categoría">Agregar categoría</button>
+        <button type="button" class="btn_producto_agregar" onclick="crear_categoria()">Agregar categoría</button>
         <!-- Título de la página -->
         <h2 class="usuusu">categoría</h2>
         <br>
@@ -46,7 +45,7 @@
                             <div class="btn btn-outline-danger" onclick="alertMine('eliminar')">
                                 <img id="" src="../../resources/img/iconos/papelera.png" class="botones_productos">
                             </div>
-                            <div class="btn btn-outline-warning" onclick="alertMine('editar_categoría')">
+                            <div class="btn btn-outline-warning" onclick="editar_categoria()">
                                 <img src="../../resources/img/iconos/lapiz.png" class="botones_productos">
                             </div>
                             <div class="btn btn-outline-info" onclick="alertMine('información_categoría')">
@@ -74,8 +73,7 @@
                             <div class="btn btn-outline-danger" id="BtnEliminar2" onclick="alertMine('eliminar')">
                                 <img id="" src="../../resources/img/iconos/papelera.png" class="botones_productos">
                             </div>
-                            <div class="btn btn-outline-warning" id="btn_editar2"
-                                onclick="alertMine('editar_categoría')">
+                            <div class="btn btn-outline-warning" id="btn_editar2" onclick="editar_categoria()">
                                 <img src="../../resources/img/iconos/lapiz.png" class="botones_productos">
                             </div>
                             <div class="btn btn-outline-info" id="btn_info2"
@@ -103,8 +101,7 @@
                             <div class="btn btn-outline-danger" id="BtnEliminar3" onclick="alertMine('eliminar')">
                                 <img id="" src="../../resources/img/iconos/papelera.png" class="botones_productos">
                             </div>
-                            <div class="btn btn-outline-warning" id="btn_editar3"
-                                onclick="alertMine('editar_categoría')">
+                            <div class="btn btn-outline-warning" id="btn_editar3" onclick="editar_categoria()">
                                 <img src="../../resources/img/iconos/lapiz.png" class="botones_productos">
                             </div>
                             <div class="btn btn-outline-info" id="btn_info3"
@@ -132,8 +129,7 @@
                             <div class="btn btn-outline-danger" id="BtnEliminar4" onclick="alertMine('eliminar')">
                                 <img id="" src="../../resources/img/iconos/papelera.png" class="botones_productos">
                             </div>
-                            <div class="btn btn-outline-warning" id="btn_editar4"
-                                onclick="alertMine('editar_categoría')">
+                            <div class="btn btn-outline-warning" id="btn_editar4" onclick="editar_categoria()">
                                 <img src="../../resources/img/iconos/lapiz.png" class="botones_productos">
                             </div>
                             <div class="btn btn-outline-info" id="btn_info4"
@@ -153,8 +149,8 @@
 
     <!--modals de botones-->
 
-    <!--agregar producto-->
-    <div class="modal fade" id="btn_agregar_categoría" tabindex="-1" aria-labelledby="exampleModalLabel"
+    <!--agregar categoria-->
+    <div class="modal fade" id="modal_agregar_categoría" tabindex="-1" aria-labelledby="exampleModalLabel"
         data-bs-backdrop="static" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
@@ -162,65 +158,108 @@
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar categoría</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <!--contenido del modal-->
-                    <div class="container text-center">
-                        <div class="row">
-                            <div class=" col">
-                                <img id="modalProfileImage" class="rounded  mx-auto d-block" style="margin-top: 3rem;"
-                                    src="../../resources/img/productos/imagen_agregar.jpg" alt="..." width="300px">
-                                <br>
-                                <br>
-                                <input type="file" id="modalInputFile" style="display:none;" accept="image/*">
-                                <button type="button"
-                                    class="botoncitoPerfilAgre btn btn-outline-dark btn-lg btn-block mx-auto order-2"
-                                    onclick="abrirExploradorModal()">Insertar foto de categoría</button>
-                            </div>
-                            <div class="col" style="margin-top: 3rem;">
-                                <div class="row">
-                                    <div class="col">
-                                        <form>
-                                            <div class="letraPer col-md-8 fs-3">Nombre categoría</div>
-                                            <div
-                                                class="cuadroText col-md-10 fs-3 border border-dark rounded text-start">
-                                                <input type="text" class="form-control fs-3"
-                                                    aria-label="Sizing example input"
-                                                    aria-describedby="inputGroup-sizing-default" value="">
-                                            </div>
-                                            <div class="letraPer col-md-10 fs-3">Descripción categoría</div>
-                                            <div
-                                                class="cuadroText col-md-10 fs-3 border border-dark rounded text-start">
-                                                <textarea type="text" class="form-control fs-3"
-                                                    aria-label="Sizing example input" style="height: 150px;"
-                                                    aria-describedby="inputGroup-sizing-default"></textarea>
-                                            </div>
-                                        </form>
-
-
-
+                <form action="">
+                    <div class="modal-body">
+                        <!--contenido del modal-->
+                        <div class="container text-center">
+                            <div class="row">
+                                <form action="">
+                                    <div class=" col">
+                                        <img id="modalProfileImage" class="rounded  mx-auto d-block"
+                                            style="margin-top: 3rem;"
+                                            src="../../resources/img/productos/imagen_agregar.jpg" alt="..."
+                                            width="300px">
+                                        <br>
+                                        <br>
+                                        <input type="file" id="modalInputFile" style="display:none;" accept="image/*">
+                                        <button type="button"
+                                            class="botoncitoPerfilAgre btn btn-outline-dark btn-lg btn-block mx-auto order-2"
+                                            onclick="abrirExploradorModal()">Insertar foto de
+                                            categoría</button>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar
-                                        </button>
-                                        <button type="button" class="btn btn-primary" id="btn_agregar_Producto">Guardar
-                                            producto</button>
+                                    <div class="col" style="margin-top: 3rem;">
+                                        <div class="row">
+                                            <div class="col">
+
+                                                <div class="letraPer col-md-8 fs-3">Nombre categoría
+                                                </div>
+                                                <div
+                                                    class="cuadroText col-md-10 fs-3 border border-dark rounded text-start">
+                                                    <input type="text" class="form-control fs-3"
+                                                        aria-label="Sizing example input"
+                                                        aria-describedby="inputGroup-sizing-default" value="">
+                                                </div>
+                                                <div class="letraPer col-md-10 fs-3">Descripción
+                                                    categoría</div>
+                                                <div
+                                                    class="cuadroText col-md-10 fs-3 border border-dark rounded text-start">
+                                                    <textarea type="text" class="form-control fs-3"
+                                                        aria-label="Sizing example input" style="height: 150px;"
+                                                        aria-describedby="inputGroup-sizing-default"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
+                    </div>
+                    <!--final del body-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar
+                        </button>
+                        <button type="button" class="btn btn-primary" id="btn_agregar_Producto">Guardar
+                            producto</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--editar categoria-->
+    <div class="modal fade" id="modal_editar_categoría" tabindex="-1" aria-labelledby="exampleModalLabel"
+        data-bs-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar categoría</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="">
+                    <div class="modal-body">
+                        <!--contenido del modal-->
+
+                        <div class="container text-center">
+                            <div class="row">
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--final del body-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar
+                        </button>
+                        <button type="button" class="btn btn-primary" id="btn_agregar_Producto">Guardar
+                            categoría</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 </body>
 
-<!--Enlaces para archivos javascript-->
-<script src="../../controllers/utils/explorador_modal.js"></script>
-<script src="../../controllers/admin/plantillas.js"></script>
-<script src="../../controllers//admin/alertas_alertas.js"></script>
+<!--Enlaces para archivos bootstrap javascript-->
+<script src="../../resources/js/js_boostrap.js"></script>
 
 <!--Enlace para poder mostrar alertas-->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<!--Enlace para elementos del boostrap-->
-<script src="../../resources/js/js_boostrap.js"></script>
+<script src="../../controllers/admin/alerta_categoria.js"></script>
+<script src="../../controllers/utils/explorador_modal.js"></script>
+<script src="../../controllers/admin/plantillas.js"></script>
+<script src="../../controllers//admin/alertas_alertas.js"></script>
 
 
 </html>

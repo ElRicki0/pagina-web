@@ -201,38 +201,39 @@ function alertMine(action) {
             break;
         case 'información_marca':
             Swal.fire({
-                title: "Información producto",
+                title: "Información marca",
                 text: "No podras recuperar los datos",
                 padding: '1rem',
                 showConfirmButton: 'true',
                 confirmButtonText: 'Confirmar',
                 width: '70%',
-                html: `
-<div class="container text-center">
-    <div class="row">
-        <div class="row">
-
-        </div>
-        <div class=" col-md-4">
-            <img class="rounded  mx-auto d-block" src="../../resources/img/marcas/mc4.jpg" alt="..." width="300px">
-            <br>
-            <br>
-
-        </div>
-        <div class="col">
-            <div class="row">
-                <div class="col">
-                    <div class="letraPer col-md-4 fs-3">Nombre marca</div>
-                    <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">Ejemplo de nombre de la
-                        marca
+                html: ` <div class="container text-center text-center">
+                <div class="row">
+                    <div class="row">
+    
+                    </div>
+                    <div class=" col">
+                        <img class="rounded  mx-auto d-block" src="../../resources/img/productos/imagen_agregar.jpg" alt="..."
+                            width="300px">
+                        <br>
+                        <br>
+    
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <div class="letraPer col fs-3">Nombre marca</div>
+                                <div class="cuadroText col fs-3 border border-dark rounded text-start">Ejemplo de
+                                    nombre de la
+                                    marca
+                                </div>
+                            </div>
+                        </div>
+    
                     </div>
                 </div>
+    
             </div>
-
-        </div>
-    </div>
-
-</div>
 `
             })
             break;
@@ -299,36 +300,35 @@ function alertMine(action) {
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
                 confirmButtonText: "Confirmar",
-                html: `<div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-md-6">
-                <img class="rounded  mx-auto d-block" style="margin-top: 3rem;"
-                    src="../../resources/img/productos/agregar_producto.jpg" alt="..." width="300px">
-                <br>
-                <br>
-                <input type="file" class="btn btn-secondary btn-lg boton_editar">Cambiar
-                    imagen</input>
-            </div>
-            <div class="col-sm-12 col-md-6" style="margin-top: 3rem;">
+                html: `
+                 <div class="container text-center text-center">
+            <div class="row">
                 <div class="row">
-                    <div class="col-12">
-                        <div class="letraPer fs-3">Nombre categoría</div>
-                        <div class="cuadroText fs-3 border border-dark rounded text-start">
-                            <input type="text" class="form-control fs-3" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default" value="ejemplo de nombre de categoría">
+
+                </div>
+                <div class=" col">
+                    <img class="rounded  mx-auto d-block" src="../../resources/img/productos/imagen_agregar.jpg" alt="..."
+                        width="300px">
+                    <br>
+                    <br>
+
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <div class="letraPer col fs-3">Nombre marca</div>
+                            <div class="cuadroText col fs-3 border border-dark rounded text-start">Ejemplo de
+                                nombre de la
+                                marca
+                            </div>
                         </div>
                     </div>
-                    <div class="col-12">
-                        <div class="letraPer fs-3">Descripción categoría</div>
-                        <div class="cuadroText fs-3 border border-dark rounded text-start">
-                            <textarea type="text" class="form-control fs-3" aria-label="Sizing example input"
-                                style="height: 150px;"
-                                aria-describedby="inputGroup-sizing-default">Este es un ejemplo de como poder hacer nas cosas increíbles con el text area </textarea>
-                        </div>
-                    </div>
+
                 </div>
             </div>
-        </div>`
+
+        </div>
+                `
             }).then((result) => {
                 if (result.isConfirmed) {
                     Swal.fire({
@@ -350,43 +350,78 @@ function alertMine(action) {
                 confirmButtonText: 'Confirmar',
                 width: '70%',
                 html: `
-        <div class="container text-center">
-            <div class="row">
+                <div class="container text-center text-center">
                 <div class="row">
-
-                </div>
-                <div class=" col-md-4">
-                    <img class="rounded  mx-auto d-block" src="../../resources/img/marcas/mc4.jpg" alt="..."
-                        width="300px">
-                    <br>
-                    <br>
-
-                </div>
-                <div class="col">
                     <div class="row">
-                        <div class="col">
-                            <div class="letraPer col-md-4 fs-3">Nombre categoría</div>
-                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">Ejemplo de
-                                nombre de la categoría
-                            </div>
-                            <div class="letraPer col-md-4 fs-3">Descripción categoría</div>
-                            <div class="cuadroText col-md-8 fs-3 border border-dark rounded text-start">Ejemplo de una
-                                descripcion para una de la categorías
+    
+                    </div>
+                    <div class=" col">
+                        <img class="rounded  mx-auto d-block" src="../../resources/img/productos/imagen_agregar.jpg" alt="..."
+                            width="300px">
+                        <br>
+                        <br>
+    
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <div class="letraPer col fs-3">Nombre categoria</div>
+                                <div class="cuadroText col fs-3 border border-dark rounded text-start">Ejemplo de
+                                    nombre de la
+                                    categoria
+                                </div>
                             </div>
                         </div>
+    
                     </div>
-
                 </div>
+    
             </div>
-
-        </div>
+    
         `
             })
             break;
     }
 
 }
-/**/
+
+/*admin_categoria*/
+
+// Inicialización del modal
+const modal_agregar_categoria = new bootstrap.Modal('#modal_agregar_categoría');
+const modal_editar_categoria = new bootstrap.Modal('#modal_editar_categoría');
+
+//agregar categoría
+
+// Evento show.bs.modal del modal
+document.getElementById('modal_agregar_categoría').addEventListener('show.bs.modal', function (event) {
+    // Encuentra el formulario dentro del modal
+    var form = event.target.querySelector('form');
+    // Resetea el formulario
+    form.reset();
+});
+
+// mostrar el modal
+function crear_categoria() {
+    // Muestra el modal
+    modal_agregar_categoria.show();
+}
+
+//editar categoría
+document.getElementById('modal_editar_categoría').addEventListener('show.bs.modal', function (event) {
+    // Encuentra el formulario dentro del modal
+    var form_e = event.target.querySelector('form');
+    // Resetea el formulario
+    form_ee.reset();
+});
+
+function editar_categoria() {
+    // Muestra el modal
+    modal_editar_categoria.show();
+}
+
+//agregar marca
+
 
 
 /*producto_editar*/
