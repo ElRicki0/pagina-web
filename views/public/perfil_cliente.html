@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Perfil cliente</title>
+    <!--Script para ponerle icono a la pagina-->
+    <link rel="icon" href="../../resources/img/iconos/loguito.ico">
+    <!--Enlace para mandar a llamar propiedad de boostrap.css-->
+    <link rel="stylesheet" href="../../resources/css/css_boostrap.css">
+    <!--Enlace para mandar a llamar el css-->
+    <link rel="stylesheet" href="../../resources/css/csspublic.css">
+</head>
+
+<body>
+  <!--navbar-->
+  <header>
+
+  </header>
+    <!--Cuerpo de la pagina-->
+    <main>
+        <!--Aca solo es el un tipo titulo-->
+            <div class="py-2">
+                <p class="py-3"></p>
+                <p class="TituPerfiClie text-center fs-1 py-5">Datos de su cuenta</p>
+            </div>
+
+
+        <!--Clase para poder alinear todo en una sola linea-->
+        <div class="row">
+            <div class="row">
+                <!--Imagen de perfil-->
+                <div class=" col-md-5 text-center">
+                    <img id="modalProfileImage" class="rounded  mx-auto d-block img-fluid mt-3"
+                        src="../../resources/img/iconoPerfil.jpg" alt="..." width="300px">
+                    <input type="file" id="modalInputFile" style="display:none;" accept="image/*">
+                    <button type="button" class=" btn btn-outline-dark btn-lg order-2 mt-4  mb-4"
+                        onclick="abrirExploradorModal()">Insertar foto de perfil</button>
+                </div>
+                <div class="col">
+                    <form>
+                        <div class="form-group">
+                            <label for="CuadroNom" class="letraPer col-md-4 fs-3">Nombre</label>
+                            <input type="text" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
+                                id="CuadroNom" placeholder="Veronica">
+                        </div>
+                        <div class="form-group">
+                            <label for="CuadroApel" class="letraPer col-md-4 fs-3">Apellido</label>
+                            <input type="text" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
+                                id="CuadroApel" placeholder="Sanchez">
+                        </div>
+                        <div class="form-group">
+                            <label for="CuadroCorreo" class="letraPer col-md-8 fs-3">Correo electrónico</label>
+                            <input type="email" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
+                                id="CuadroCorreo" placeholder="Verititito@gmail.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="CuadroTel" class="letraPer col-md-4 fs-3">Telefono</label>
+                            <input type="number"
+                                class="form-control cuadroText col-md-8 fs-3 border border-dark rounded" id="CuadroTel"
+                                placeholder="1234-1234">
+                        </div>
+                        <div class="form-group">
+                            <label for="CuadroTelEmer" class="letraPer col-md-10 fs-3">Telefono de emergencia</label>
+                            <input type="number"
+                                class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
+                                id="CuadroTelEmer" placeholder="1234-1234">
+                        </div>
+                        <div class="form-group">
+                            <label for="CuadroDUI" class="letraPer col-md-10 fs-3">DUI del empleado</label>
+                            <input type="number"
+                                class="form-control cuadroText col-md-8 fs-3 border border-dark rounded" id="CuadroDUI"
+                                placeholder="12345678-9">
+                        </div>
+                        <div class="form-group">
+                            <label for="CuadroNivel" class="letraPer col-md-10 fs-3">Nivel del empleado</label>
+                            <select class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
+                                id="CuadroNivel">
+                                <option>Administrador</option>
+                                <option>Empleado</option>
+                                <option>Repartidor</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="CuadroPass" class="letraPer col-md-10 fs-3">Contraseña</label>
+                            <input type="password"
+                                class="form-control cuadroText col-md-8 fs-3 border border-dark rounded" id="CuadroPass"
+                                placeholder="contraseña">
+                        </div>
+                        <div class="form-group">
+                            <label for="CuadroFecha" class="letraPer col-md-10 fs-3">Fecha de nacimiento</label>
+                            <input type="date" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
+                                id="CuadroFecha" placeholder="12345678-9">
+                        </div>
+                    </form>
+                </div>
+                <!-- Botones para editar los datos del usuario-->
+                <div class="row">
+                    <div class="col">
+                        <button id="" onclick="alertMine('modificarUsu')" type="button"
+                            class="BotonActualizar btn btn-outline-dark col-md-4 btn-lg btn-block mx-auto d-block"> <img
+                                src="../../resources/img/actualizar.png" class="botones_productos" style="width: 50px;">
+                            <h5>Actualizar datos</h5>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="test">
+
+    </footer>
+</body>
+
+<!--Enlace para elementos del boostrap-->
+<script src="../../resources/js/js_boostrap.js"></script>
+
+<!--Enlace para poder mostrar alertas-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!--Enlaces para archivos javascript-->
+<script src="../../controllers/public/alertas_publicas.js"></script>
+<script src="../../controllers/utils/explorador_modal.js"></script>
+<script src="../../controllers/public/navbar.js"></script>
+<script src="../../controllers/utils/footer.js"></script>
+</html>
