@@ -29,7 +29,7 @@ header.innerHTML = `<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-t
                         <a class="nav-link active" aria-current="page" href="../../views/public/contactos.html">Contactos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="">Sobre nosotros</a>
+                        <a class="nav-link active" aria-current="page" href="../../views/public/historia.html">Sobre nosotros</a>
                     </li>
                 </ul>
             </div>

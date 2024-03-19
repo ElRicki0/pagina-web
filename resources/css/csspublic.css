@@ -172,7 +172,7 @@ footer {
 }
 
 .social-icons:nth-last-of-type(2) {
-    background-image: url(../img/imagen_c.png);
+    background-image: url(../img/imagen_t.png);
 }
 
 .social-icons:nth-last-of-type(3) {
@@ -804,3 +804,14 @@ div iframe{
     background: rgb(131,58,180);
 background: linear-gradient(236deg, rgba(131,58,180,1) 21%, rgba(29,94,253,1) 54%, rgba(244,94,240,1) 86%);
 }
+
+/*historia*/
+
+.historia_card ul {
+    list-style-type: none; /* Elimina los puntos */
+    padding: 0; /* Elimina el relleno interno */
+    margin: 0; /* Elimina el margen externo */
+}
+
+/*historia*/
+
