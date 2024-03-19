@@ -655,9 +655,10 @@ button a{
     color: #3D0059;
 }
 
-/*Carrito */
-
-
+/*-----------------------------------
+        Cuerpo pantalla carrito
+  -----------------------------------
+*/
 .star{
     margin: 0;
     padding: 0;
@@ -693,10 +694,16 @@ button a{
     padding: 0;
     box-sizing: border-box;
     color: #b6b5b5;
-    font-size: 30px;
+    font-size: 50px;
     transition: color 3.0s;
+    transition: font 3.0s;
     display: flex;
     margin-left: 400px;
+}
+
+.corazonc:hover{
+    color: #ff0000;
+    font-size: 55px;
 }
 .btnañacarrito{
     background-color: #1D1C6A !important;
@@ -747,10 +754,6 @@ button a{
     display: flex;
 }
 
-
-
-
-
 .letraPer{
     margin-left: 40px;
     padding-top: 20px;
@@ -778,4 +781,26 @@ button a{
 
 .interes {
     display: flex;
+}
+
+/*-----------------------------------
+        Cuerpo pantalla Contactos
+  -----------------------------------
+*/
+
+div iframe{
+    border-radius: 70px; 
+    border: 10px solid #635bacbb;
+}
+
+.decoCuadros{
+    background-color: #1D1C6A; 
+    color: aliceblue;
+    border-radius: 40px; 
+    font-size:x-large;
+}
+
+.fonditoContactos{
+    background: rgb(131,58,180);
+background: linear-gradient(236deg, rgba(131,58,180,1) 21%, rgba(29,94,253,1) 54%, rgba(244,94,240,1) 86%);
 }

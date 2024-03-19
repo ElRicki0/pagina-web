@@ -15,10 +15,10 @@ function alertMine(action) {
         }
       });
       Toast.fire({
-        imageUrl: "../../resources/img/alertasImagenes/kirby.png",
-        imageWidth: 100,
-        imageHeight: 100,
-        title: "Se ha agregado al carrito"
+        imageUrl: "../../resources/img/alertasImagenes/kirbyComprando.jpg",
+        imageWidth: 200,
+        imageHeight: 200,
+        title: "Su producto se ha agregado al carrito"
       });
       break;
     case 'CrearCuenta':
@@ -68,7 +68,73 @@ function alertMine(action) {
         imageAlt: "Custom image"
       })
       break;
-
-
+    case 'agregarCorazon':
+      const toastCorazon = Swal.mixin({
+        toast: true,
+        position: "bottom-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toastCorazon) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      toastCorazon.fire({
+        imageUrl: "../../resources/img/alertasImagenes/kirbyCorazon.jpg",
+        imageWidth: 200,
+        imageHeight: 200,
+        title: "Su producto se ha agregado a su lista de deseos"
+      });
+      break;
+      case 'agregarComentario':
+        // Obtener el valor del texto del textarea
+        var comentario = document.getElementById('textoComentario').value;
+    
+        // Aquí puedes hacer lo que necesites con el comentario, por ejemplo, mostrar una alerta
+        const toastComentario = Swal.mixin({
+            toast: true,
+            position: "bottom-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toastComentario) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+        });
+        toastComentario.fire({
+            imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+            imageWidth: 200,
+            imageHeight: 200,
+            title: "Comentario agregado correctamente"
+        });
+    
+        // Limpiar el contenido del textarea
+        document.getElementById('textoComentario').value = '';
+        break;
+    
+    case 'eliminarProductoCompra':
+      Swal.fire({
+        title: "¿Estas seguro de eliminarlo?",
+        text: "Se eliminara de tu compra",
+        imageUrl: "../../resources/img/alertasImagenes/kirbyTriste.png",
+        imageWidth: 200,
+        imageHeight: 200,
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Confirmar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Articulo borrado de la lista!",
+            imageUrl: "../../resources/img/alertasImagenes/kirby.png",
+            imageWidth: 200,
+            imageHeight: 200,
+          });
+        }
+      });
+      break;
   }
 }
