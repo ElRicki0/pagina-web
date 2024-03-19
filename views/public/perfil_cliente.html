@@ -14,17 +14,17 @@
 </head>
 
 <body>
-  <!--navbar-->
-  <header>
+    <!--navbar-->
+    <header>
 
-  </header>
+    </header>
     <!--Cuerpo de la pagina-->
     <main>
         <!--Aca solo es el un tipo titulo-->
-            <div class="py-2">
-                <p class="py-3"></p>
-                <p class="TituPerfiClie text-center fs-1 py-5">Datos de su cuenta</p>
-            </div>
+        <div class="py-2">
+            <p class="py-3"></p>
+            <p class="TituPerfiClie text-center fs-1 py-5">Datos de su cuenta</p>
+        </div>
 
 
         <!--Clase para poder alinear todo en una sola linea-->
@@ -51,47 +51,31 @@
                                 id="CuadroApel" placeholder="Sanchez">
                         </div>
                         <div class="form-group">
-                            <label for="CuadroCorreo" class="letraPer col-md-8 fs-3">Correo electrónico</label>
-                            <input type="email" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
-                                id="CuadroCorreo" placeholder="Verititito@gmail.com">
-                        </div>
-                        <div class="form-group">
                             <label for="CuadroTel" class="letraPer col-md-4 fs-3">Telefono</label>
                             <input type="number"
                                 class="form-control cuadroText col-md-8 fs-3 border border-dark rounded" id="CuadroTel"
                                 placeholder="1234-1234">
                         </div>
                         <div class="form-group">
-                            <label for="CuadroTelEmer" class="letraPer col-md-10 fs-3">Telefono de emergencia</label>
-                            <input type="number"
-                                class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
-                                id="CuadroTelEmer" placeholder="1234-1234">
+                            <label for="CuadroCorreo" class="letraPer col-md-8 fs-3">Residencial</label>
+                            <textarea class="form-control cuadroText mt-2 col-md-8 fs-3 border border-dark rounded mb-4"
+                                id="CuadroDirecRe" rows="3" placeholder="Escriba su dirección aca"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="CuadroDUI" class="letraPer col-md-10 fs-3">DUI del empleado</label>
-                            <input type="number"
-                                class="form-control cuadroText col-md-8 fs-3 border border-dark rounded" id="CuadroDUI"
-                                placeholder="12345678-9">
+                            <label for="CuadroApel" class="letraPer col-md-4 fs-3">Usuario</label>
+                            <input type="text" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
+                                id="CuadroApel" placeholder="Introdusca du usuario">
                         </div>
                         <div class="form-group">
-                            <label for="CuadroNivel" class="letraPer col-md-10 fs-3">Nivel del empleado</label>
-                            <select class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
-                                id="CuadroNivel">
-                                <option>Administrador</option>
-                                <option>Empleado</option>
-                                <option>Repartidor</option>
-                            </select>
+                            <label for="CuadroCorreo" class="letraPer col-md-8 fs-3">Correo electrónico</label>
+                            <input type="email" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
+                                id="CuadroCorreo" placeholder="Verititito@gmail.com">
                         </div>
                         <div class="form-group">
                             <label for="CuadroPass" class="letraPer col-md-10 fs-3">Contraseña</label>
                             <input type="password"
                                 class="form-control cuadroText col-md-8 fs-3 border border-dark rounded" id="CuadroPass"
                                 placeholder="contraseña">
-                        </div>
-                        <div class="form-group">
-                            <label for="CuadroFecha" class="letraPer col-md-10 fs-3">Fecha de nacimiento</label>
-                            <input type="date" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
-                                id="CuadroFecha" placeholder="12345678-9">
                         </div>
                     </form>
                 </div>
@@ -124,4 +108,5 @@
 <script src="../../controllers/utils/explorador_modal.js"></script>
 <script src="../../controllers/public/navbar.js"></script>
 <script src="../../controllers/utils/footer.js"></script>
+
 </html>
