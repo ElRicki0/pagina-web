@@ -3,7 +3,7 @@
 const footer = document.querySelector("footer");
 
 footer.innerHTML = `<div class="social-icons-container ">
-    <a href="https://twitter.com/?lang=es" target="_blank" class="social-icons"></a>
+    <a href="https://www.instagram.com/ivanecare?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="social-icons"></a>
     <a href="https://www.threads.net/@ivanecare" target="_blank" class="social-icons"></a>
     <a href="https://www.facebook.com/profile.php?id=61556911452120" target="_blank" class="social-icons"></a>
 </div>
