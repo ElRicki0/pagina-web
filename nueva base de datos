@@ -1,0 +1,174 @@
+DROP DATABASE IF EXISTS ivaneDB;
+CREATE DATABASE IF NOT EXISTS ivaneDB;
+
+USE ivaneDB;
+
+-- Creacion de tablas
+
+-- Creacion de tabla tb_clientes------
+
+CREATE TABLE tb_clientes (
+  id_cliente int auto_increment primary key ,
+  nombre_cliente VARCHAR(50) UNIQUE NOT NULL,
+  apellido_cliente VARCHAR(50) NOT NULL,
+  telefono_cliente INT NOT NULL,
+  residencia_cliente VARCHAR(500) NOT NULL,
+  usuario_cliente varchar(50) UNIQUE NOT NULL,
+  correo_cliente VARCHAR(50) UNIQUE NOT NULL,
+  pass_cliente VARCHAR(50) NOT NULL,
+  imagen_cliente varchar(50),
+  estado_cliente ENUM ('conectado', 'desconectado', 'inutilizable', 'baneado') NOT NULL
+);
+
+-- Creacion de tabla tb_administradores
+  
+CREATE TABLE tb_administradores (
+  id_admin int auto_increment primary key,
+  nombre_admin VARCHAR(50) NOT NULL,
+  apellido_admin VARCHAR(50) NOT NULL,
+  correo_admin VARCHAR(50) UNIQUE NOT NULL,
+  DUI_admin INT UNIQUE NOT NULL,
+  telefono_admin VARCHAR(10) UNIQUE NOT NULL,
+  numero_emerjencia_admin VARCHAR(10) UNIQUE NOT NULL,
+  imagen_admin varchar(50),
+  usuario_admin VARCHAR(50) UNIQUE NOT NULL,
+  pass_admin VARCHAR(5000) UNIQUE NOT NULL,
+  estado_admin ENUM ('conectado', 'desconectado', 'inutilizable', 'baneado') NOT NULL
+);
+
+-- Creacion de tabla tb_categorias_productos
+
+CREATE TABLE tb_categorias_productos (
+  id_categoria_producto int auto_increment primary key,
+  nombre_categoria_producto VARCHAR(50) UNIQUE NOT NULL,
+  descripcion_categoria_producto VARCHAR(50) NOT NULL,
+  imagen_categoria_producto varchar(50)
+);
+
+-- Creacion de tabla tb_marcas
+CREATE TABLE tb_marcas (
+  id_marca int auto_increment primary key,
+  nombre_marca VARCHAR(50) UNIQUE NOT NULL,
+  imagen_marca varchar(50)
+);
+
+-- Creacion de tabla tb_productos
+CREATE TABLE tb_productos (
+  id_producto int auto_increment primary key,
+  nombre_producto VARCHAR(50) NOT NULL,
+  descripcion_producto VARCHAR(500) NOT NULL,
+  precio_producto float NOT NULL,
+  id_categoria_producto int NOT NULL,
+  CONSTRAINT fk_id_categoriaProducto
+  FOREIGN KEY (id_categoria_producto)
+  REFERENCES tb_categorias_productos(id_categoria_producto),
+  id_admin int NOT NULL,
+  CONSTRAINT fk_id_admin
+  FOREIGN KEY (id_admin)
+  REFERENCES tb_administradores(id_admin),
+  id_marca int NOT NULL,
+  CONSTRAINT fk_id_marca
+  FOREIGN KEY (id_marca)
+  REFERENCES tb_marcas(id_marca)
+);
+
+-- Creacion de tabla tb_resenia
+CREATE TABLE tb_resenia (
+  id_resenia int auto_increment primary key,
+  estrella decimal(5,2),
+  id_producto int NOT NULL,
+  CONSTRAINT fk_id_producto
+  FOREIGN KEY (id_producto)
+  REFERENCES tb_productos(id_producto)
+);
+
+-- Creacion de tabla tb_comentarios  
+CREATE TABLE tb_comentarios (
+  id_comentario int auto_increment primary key,
+  comentario varchar(500) NOT NULL,
+   id_producto int NOT NULL,
+  CONSTRAINT fk_id_producto_C
+  FOREIGN KEY (id_producto)
+  REFERENCES tb_productos(id_producto),
+   id_cliente int NOT NULL,
+  CONSTRAINT fk_id_cliente_C
+  FOREIGN KEY (id_cliente)
+  REFERENCES tb_clientes(id_cliente)
+);
+
+-- Creeacion de tabla tb_listas_deseos 
+CREATE TABLE tb_listas_deseos (
+  id_lista_deseo int auto_increment primary key,
+  id_producto int NOT NULL,
+  CONSTRAINT fk_id_producto_lista
+  FOREIGN KEY (id_producto)
+  REFERENCES tb_productos(id_producto),
+   id_cliente int ,
+  CONSTRAINT fk_id_cliente_lista
+  FOREIGN KEY (id_cliente)
+  REFERENCES tb_clientes(id_cliente)
+);
+
+-- Creacion de tabla tb_carritos_cliente
+CREATE TABLE tb_carritos_cliente (
+  id_carrito_cliente int auto_increment primary key,
+   id_cliente int NOT NULL,
+  CONSTRAINT fk_id_cliente_carrito
+  FOREIGN KEY (id_cliente)
+  REFERENCES tb_clientes(id_cliente)
+);
+ 
+CREATE TABLE tb_carritos_productos (
+  id_carrito_productos int auto_increment primary key,
+  id_carrito_cliente int NOT NULL,
+  CONSTRAINT fk_id_carrito_cliente_C_P
+  FOREIGN KEY (id_carrito_cliente)
+  REFERENCES tb_carritos_cliente(id_carrito_cliente),
+	id_producto int NOT NULL,
+  CONSTRAINT fk_id_producto_C_P
+  FOREIGN KEY (id_producto)
+  REFERENCES tb_productos(id_producto),
+  cantidad INT,
+  precio_productos FLOAT
+); 
+
+-- Creacion de tabla tb_pedidos
+
+CREATE TABLE tb_pedidos (
+  id_pedido int auto_increment primary key,
+  id_carrito_productos int NOT NULL,
+  CONSTRAINT fk_id_carrito_productos_P
+  FOREIGN KEY (id_carrito_productos)
+  REFERENCES tb_carritos_productos(id_carrito_productos),
+  fecha_pedido DATE NOT NULL,
+  estado_pedido ENUM ('pendiente', 'en_proceso', 'entregado', 'cancelado') NOT NULL,
+  direccion_pedido VARCHAR(500) NOT NULL
+); 
+
+-- Creacion de tabla tb_imagenes
+CREATE TABLE tb_imagenes (
+  id_imagen int auto_increment primary key,
+  codigo_imagenes VARCHAR(200),
+  id_producto int NOT NULL,
+  CONSTRAINT fk_id_producto_imagenes
+  FOREIGN KEY (id_producto)
+  REFERENCES tb_productos(id_producto)
+); 
+
+-- Creacion de tabla tb_detalles_pedidos
+CREATE TABLE tb_detalles_pedidos (
+  id_detalle_entrega int auto_increment primary key,
+  id_pedido int NOT NULL,
+  CONSTRAINT fk_id_pedido_detalle_P
+  FOREIGN KEY (id_pedido)
+  REFERENCES tb_pedidos(id_pedido),
+  id_producto int NOT NULL,
+  CONSTRAINT fk_id_producto_detalle_P
+  FOREIGN KEY (id_producto)
+  REFERENCES tb_productos(id_producto),
+  precio_pedido float,
+  cantidad_pedido INT
+);
+
+-- las imagenes se cambiaron por varchar(50) en logar de LONGTEXT
+-- la asignacion de autoincrement y de primary key se hacen directamente desde la creacion de la tabla y no se altera nada afuera de estas 
