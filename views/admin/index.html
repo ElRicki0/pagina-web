@@ -1,17 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Inicio sesión</title>    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Inicio sesión</title>
     <!--Script para ponerle icono a la pagina-->
-    <link rel="icon" href="../../resources/img/iconos/loguito.ico">
+    <link rel="icon" href="../../resources/img/iconos/loguito.ico" />
     <!--Enlace para mandar a llamar propiedad de boostrap.css-->
-    <link rel="stylesheet" href="../../resources/css/css_boostrap.css">
+    <link rel="stylesheet" href="../../resources/css/css_boostrap.css" />
     <!--Enlace para mandar a llamar el css-->
-    <link rel="stylesheet" href="../../resources/css/index.css">
-
+    <link rel="stylesheet" href="../../resources/css/index.css" />
 </head>
 
 <body>
@@ -19,50 +18,96 @@
     <div class="Fondo">
         <!-- Navbar solo para el login -->
         <nav class="navbar bg-body-tertiary oscuro fixed-top">
-            <div class="container-fluid  text-center mx-auto d-block">
+            <div class="container-fluid text-center mx-auto d-block">
                 <a class="navbar-brand text_menu" href="#">IVANE CARE</a>
             </div>
         </nav>
 
-        <!-- Sección de inicio de sesión -->
-        <section class="vh-100">
-            <div class="container py-5 h-100">
-                <div class="row d-flex justify-content-center align-items-center h-100">
-                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                        <div class="card shadow-2-strong" style="border-radius: 5rem;">
-                            <div class="card-body p-5 text-center border-radius: 5rem border-dark border-100">
+        <!-- Título del contenido principal -->
+        <h3 id="mainTitle"></h3>
 
-                                <!-- Campo de entrada para el Nombre -->
+        <!-- Sección de inicio de sesión -->
+        <form class="vh-100" id="loginForm">
+            <div class="container py-5 h-100">
+                <div class="row justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                        <div class="card shadow-2-strong" style="border-radius: 5rem">
+                            <div class="card-body p-5 text-center border-radius: 5rem border-dark border-100">
                                 <div class="form-outline mb-4">
-                                    <label class="form-label" for="alias">Nombre</label>
-                                    <br>
-                                    <input type="email" id="alias" class="form-control form-control-lg " />
+                                    <label class="form-label" for="alias">Usuario</label><br />
+                                    <input type="email" id="alias" name="alias" class="form-control form-control-lg"
+                                        required />
                                 </div>
-                                <!-- Campo de entrada para la contraseña -->
                                 <div class="form-outline mb-4">
-                                    <label class="form-label" for="clave">Contraseña</label>
-                                    <br>
-                                    <input type="password" id="clave"
-                                        class="form-control form-control-lg border-Warning-subtle" />
+                                    <label class="form-label" for="clave">Contraseña</label><br />
+                                    <input type="password" id="clave" name="clave"
+                                        class="form-control form-control-lg border-Warning-subtle" required />
                                 </div>
-                                <!-- Botón para iniciar sesión -->
-                                <button id="BtnCorrecto" class="btn btn-lg btn-block" style="border-radius:1000rem"
-                                    type="submit">Iniciar
-                                    sesión</button>
+                                <button id="BtnCorrecto" class="btn btn-lg btn-block" style="border-radius: 1000rem"
+                                    type="submit">
+                                    Enviar
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </form>
+        <!-- Sección para crear el primer administrador -->
+        <form class="vh-100" id="signupForm">
+            <div class="container py-5 h-100">
+                <div class="row justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                        <div class="card shadow-2-strong" style="border-radius: 5rem">
+                            <div class="card-body p-5 text-center border-radius: 5rem border-dark border-100">
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="nombreAdministrador">Nombre</label><br />
+                                    <input id="nombreAdministrador" type="text" name="nombreAdministrador"
+                                        class="form-control form-control-lg" required />
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label for="apellidoAdministrador" class="form-label">Apellido</label>
+                                    <input id="apellidoAdministrador" type="text" name="apellidoAdministrador"
+                                        class="form-control" required />
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label for="correoAdministrador" class="form-label">Correo</label>
+                                    <input id="correoAdministrador" type="email" name="correoAdministrador"
+                                        class="form-control" required />
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label for="aliasAdministrador" class="form-label">Alias</label>
+                                    <input id="aliasAdministrador" type="text" name="aliasAdministrador"
+                                        class="form-control" required />
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="clave">Contraseña</label><br />
+                                    <input type="password" id="clave"
+                                        class="form-control form-control-lg border-Warning-subtle" />
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label for="confirmarClave" class="form-label">Confirmar contraseña</label>
+                                    <input id="confirmarClave" type="password" name="confirmarClave"
+                                        class="form-control" required />
+                                </div>
+                                <div class="text-center">
+                                    <button type="reset" class="btn btn-secondary">
+                                        <i class="bi bi-x-square"></i> Cancelar
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="bi bi-save"></i> Guardar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
 
-        <footer class="test">
-        </footer>
-
+        <footer class="test"></footer>
     </div>
 </body>
-
-
 
 <!--Enlaces para archivos javascript-->
 <script src="../../controllers/utils/explorador_modal.js"></script>
