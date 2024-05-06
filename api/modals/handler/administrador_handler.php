@@ -13,7 +13,9 @@ class EmpleadosHandler
     protected $nombre = null;
     protected $apellido = null;
     protected $correo = null;
-    protected $DUI = null;
+    protected $telefono = null;
+    protected $telefonoEmer = null;
+    protected $dui = null;
     protected $alias = null;
     protected $clave = null;
 
@@ -22,15 +24,15 @@ class EmpleadosHandler
      */
     public function checkUser($username, $password)
     {
-        $sql = 'SELECT id_administrador, alias_administrador, clave_administrador
-                FROM administrador
-                WHERE  alias_administrador = ?';
+        $sql = 'SELECT id_admin, alias_admin, pass_admin
+                FROM tb_administradores
+                WHERE  alias_admin = ?';
         $params = array($username);
         if (!($data = Database::getRow($sql, $params))) {
             return false;
-        } elseif (password_verify($password, $data['clave_administrador'])) {
-            $_SESSION['idAdministrador'] = $data['id_administrador'];
-            $_SESSION['aliasAdministrador'] = $data['alias_administrador'];
+        } elseif (password_verify($password, $data['pass_admin'])) {
+            $_SESSION['idAdministrador'] = $data['id_admin'];
+            $_SESSION['aliasAdministrador'] = $data['alias_admin'];
             return true;
         } else {
             return false;
@@ -39,13 +41,13 @@ class EmpleadosHandler
 
     public function checkPassword($password)
     {
-        $sql = 'SELECT clave_administrador
-                FROM administrador
-                WHERE id_administrador = ?';
+        $sql = 'SELECT pass_admin
+                FROM tb_administradores
+                WHERE id_admin = ?';
         $params = array($_SESSION['idAdministrador']);
         $data = Database::getRow($sql, $params);
         // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
-        if (password_verify($password, $data['clave_administrador'])) {
+        if (password_verify($password, $data['pass_admin'])) {
             return true;
         } else {
             return false;
