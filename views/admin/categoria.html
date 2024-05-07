@@ -27,120 +27,34 @@
         <h2 class="usuusu">categoría</h2>
         <br>
         <div class="container">
-            <div class="row">
-                <!--Contenedor donde esta la tarjeta-->
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="card my-3">
-                        <img src="../../resources/img/categoria/cg1.jpeg" width="150px" class="rounded mx-auto d-block"
-                            alt="Besos indesentes">
-                        <div class="card-body">
-                            <!-- Título y descripción del producto -->
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the
-                                card title and make up the
-                                bulk
-                                of
-                                the
-                                card's content.</p>
-                            <!-- Botones de acción (Eliminar, Editar, Información) -->
-                            <div class="btn btn-outline-danger" onclick="alertMine('eliminar')">
-                                <img id="" src="../../resources/img/iconos/papelera.png" class="botones_productos">
-                            </div>
-                            <div class="btn btn-outline-warning" onclick="editar_categoria()">
-                                <img src="../../resources/img/iconos/lapiz.png" class="botones_productos">
-                            </div>
-                            <div class="btn btn-outline-info" onclick="alertMine('información_categoría')">
-                                <img src="../../resources/img/iconos/info.png" class="botones_productos">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!--Contenedor donde esta la tarjeta-->
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="card my-3">
-                        <img src="../../resources/img/categoria/cg2.jpg" width="150px" class="rounded mx-auto d-block"
-                            alt="Besos indesentes">
-                        <div class="card-body">
-                            <!-- Título y descripción del producto -->
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the
-                                card title and make up the
-                                bulk
-                                of
-                                the
-                                card's content.</p>
-                            <!-- Botones de acción (Eliminar, Editar, Información) -->
-                            <div class="btn btn-outline-danger" id="BtnEliminar2" onclick="alertMine('eliminar')">
-                                <img id="" src="../../resources/img/iconos/papelera.png" class="botones_productos">
-                            </div>
-                            <div class="btn btn-outline-warning" id="btn_editar2" onclick="editar_categoria()">
-                                <img src="../../resources/img/iconos/lapiz.png" class="botones_productos">
-                            </div>
-                            <div class="btn btn-outline-info" id="btn_info2"
-                                onclick="alertMine('información_categoría')">
-                                <img src="../../resources/img/iconos/info.png" class="botones_productos">
+            <div class="row" id="categorias"> 
+                    <!--Contenedor donde esta la tarjeta
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="card my-3">
+                            <img src="../../resources/img/categoria/cg1.jpeg" width="150px" class="rounded mx-auto d-block"
+                                alt="Besos indesentes">
+                            <div class="card-body">
+                                <!-- Título y descripción del producto 
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the
+                                    card title and make up the
+                                    bulk
+                                    of
+                                    the
+                                    card's content.</p>
+                                <!-- Botones de acción (Eliminar, Editar, Información) 
+                                <div class="btn btn-outline-danger" onclick="alertMine('eliminar')">
+                                    <img id="" src="../../resources/img/iconos/papelera.png" class="botones_productos">
+                                </div>
+                                <div class="btn btn-outline-warning" onclick="editar_categoria()">
+                                    <img src="../../resources/img/iconos/lapiz.png" class="botones_productos">
+                                </div>
+                                <div class="btn btn-outline-info" onclick="alertMine('información_categoría')">
+                                    <img src="../../resources/img/iconos/info.png" class="botones_productos">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!--Contenedor donde esta la tarjeta-->
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="card my-3">
-                        <img src="../../resources/img/categoria/cg3.jpg" height="150px" class="rounded mx-auto d-block"
-                            alt="Besos indecentes">
-                        <div class="card-body">
-                            <!-- Título y descripción del producto -->
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the
-                                card title and make up the
-                                bulk
-                                of
-                                the
-                                card's content.</p>
-                            <!-- Botones de acción (Eliminar, Editar, Información) -->
-                            <div class="btn btn-outline-danger" id="BtnEliminar3" onclick="alertMine('eliminar')">
-                                <img id="" src="../../resources/img/iconos/papelera.png" class="botones_productos">
-                            </div>
-                            <div class="btn btn-outline-warning" id="btn_editar3" onclick="editar_categoria()">
-                                <img src="../../resources/img/iconos/lapiz.png" class="botones_productos">
-                            </div>
-                            <div class="btn btn-outline-info" id="btn_info3"
-                                onclick="alertMine('información_categoría')">
-                                <img src="../../resources/img/iconos/info.png" class="botones_productos">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Contenedor donde esta la tarjeta-->
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="card my-3">
-                        <img src="../../resources/img/categoria/cg4.jpg" width="150px" class="rounded mx-auto d-block"
-                            alt="...">
-                        <div class="card-body">
-                            <!-- Título y descripción del producto -->
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the
-                                card title and make up the
-                                bulk
-                                of
-                                the
-                                card's content.</p>
-                            <!-- Botones de acción (Eliminar, Editar, Información) -->
-                            <div class="btn btn-outline-danger" id="BtnEliminar4" onclick="alertMine('eliminar')">
-                                <img id="" src="../../resources/img/iconos/papelera.png" class="botones_productos">
-                            </div>
-                            <div class="btn btn-outline-warning" id="btn_editar4" onclick="editar_categoria()">
-                                <img src="../../resources/img/iconos/lapiz.png" class="botones_productos">
-                            </div>
-                            <div class="btn btn-outline-info" id="btn_info4"
-                                onclick="alertMine('información_categoría')">
-                                <img src="../../resources/img/iconos/info.png" class="botones_productos">
-
-
-                            </div>
-                        </div>
-                    </div>
+                    </div>-->
                 </div>
 
     </main>
@@ -261,6 +175,7 @@
 <script src="../../controllers/utils/explorador_modal.js"></script>
 <script src="../../controllers/admin/plantillas.js"></script>
 <script src="../../controllers//admin/alertas_alertas.js"></script>
+<script src="../../controllers/admin/categoria.js"></script>
 
 
 </html>
