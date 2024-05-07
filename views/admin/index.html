@@ -27,7 +27,7 @@
         <h3 id="mainTitle"></h3>
 
         <!-- Sección de inicio de sesión -->
-        <form class="vh-100" id="loginForm">
+        <form class="d-none" id="loginForm">
             <div class="container py-5 h-100">
                 <div class="row justify-content-center align-items-center h-100">
                     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -35,7 +35,7 @@
                             <div class="card-body p-5 text-center border-radius: 5rem border-dark border-100">
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="alias">Usuario</label><br />
-                                    <input type="email" id="alias" name="alias" class="form-control form-control-lg"
+                                    <input type="text" id="alias" name="alias" class="form-control form-control-lg"
                                         required />
                                 </div>
                                 <div class="form-outline mb-4">
@@ -54,7 +54,7 @@
             </div>
         </form>
         <!-- Sección para crear el primer administrador -->
-        <form class="vh-100" id="signupForm">
+        <form class="d-none" id="signupForm">
             <div class="container py-5 h-100">
                 <div class="row justify-content-center align-items-center h-100">
                     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -81,8 +81,8 @@
                                         class="form-control" required />
                                 </div>
                                 <div class="form-outline mb-4">
-                                    <label class="form-label" for="clave">Contraseña</label><br />
-                                    <input type="password" id="clave"
+                                    <label class="form-label" for="claveAdministrador">Contraseña</label><br />
+                                    <input type="password" id="claveAdministrador" name="claveAdministrador"
                                         class="form-control form-control-lg border-Warning-subtle" />
                                 </div>
                                 <div class="form-outline mb-4">
@@ -107,18 +107,25 @@
 
         <footer class="test"></footer>
     </div>
+
+
+    <!--Enlace para elementos del bootstrap-->
+    <script src="../../resources/js/bootstrap.bundle.min.js"></script>
+
+    <!--Enlace para poder mostrar alertas-->
+    <script src="../../resources/js/sweetalert.min.js"></script>
+
+    <!--Enlaces para archivos javascript-->
+    <script src="../../controllers/utils/footer.js"></script>
+    <script src="../../controllers/utils/admin.js"></script>
+
+    <!-- Llamada al controlador general de la aplicación -->
+    <script type="text/javascript" src="../../controllers/utils/components.js"></script>
+
+    <!-- Llamada al controlador de la página web -->
+    <script type="text/javascript" src="../../controllers/admin/index.js"></script>
+
 </body>
 
-<!--Enlaces para archivos javascript-->
-<script src="../../controllers/utils/explorador_modal.js"></script>
-<script src="../../controllers/utils/footer.js"></script>
-<script src="../../controllers//admin/alertas_alertas.js"></script>
-<script src="../../controllers/admin/index.js"></script>
-
-<!--Enlace para poder mostrar alertas-->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<!--Enlace para elementos del boostrap-->
-<script src="../../resources/js/js_boostrap.js"></script>
 
 </html>
