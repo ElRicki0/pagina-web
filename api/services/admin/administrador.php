@@ -31,6 +31,9 @@ if (isset($_GET['action'])) {
                     !$administrador->setNombre($_POST['nombreAdministrador']) or
                     !$administrador->setApellido($_POST['apellidoAdministrador']) or
                     !$administrador->setCorreo($_POST['correoAdministrador']) or
+                    !$administrador->setTelefono($_POST['telefonoAdministrador']) or
+                    !$administrador->setTelefonoEmer($_POST['telefonoEmerAdministrador']) or
+                    !$administrador->setDUI($_POST['duiAdministrador']) or
                     !$administrador->setAlias($_POST['aliasAdministrador']) or
                     !$administrador->setClave($_POST['claveAdministrador'])
                 ) {
@@ -118,7 +121,11 @@ if (isset($_GET['action'])) {
                     !$administrador->setNombre($_POST['nombreAdministrador']) or
                     !$administrador->setApellido($_POST['apellidoAdministrador']) or
                     !$administrador->setCorreo($_POST['correoAdministrador']) or
-                    !$administrador->setAlias($_POST['aliasAdministrador'])
+                    !$administrador->setTelefono($_POST['telefonoAdministrador']) or
+                    !$administrador->setTelefonoEmer($_POST['telefonoEmerAdministrador']) or
+                    !$administrador->setDUI($_POST['duiAdministrador']) or
+                    !$administrador->setAlias($_POST['aliasAdministrador']) or
+                    !$administrador->setClave($_POST['claveAdministrador'])
                 ) {
                     $result['error'] = $administrador->getDataError();
                 } elseif ($administrador->editProfile()) {
@@ -164,6 +171,9 @@ if (isset($_GET['action'])) {
                     !$administrador->setNombre($_POST['nombreAdministrador']) or
                     !$administrador->setApellido($_POST['apellidoAdministrador']) or
                     !$administrador->setCorreo($_POST['correoAdministrador']) or
+                    !$administrador->setTelefono($_POST['telefonoAdministrador']) or
+                    !$administrador->setTelefonoEmer($_POST['telefonoEmerAdministrador']) or
+                    !$administrador->setDUI($_POST['duiAdministrador']) or
                     !$administrador->setAlias($_POST['aliasAdministrador']) or
                     !$administrador->setClave($_POST['claveAdministrador'])
                 ) {
@@ -174,7 +184,7 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Administrador registrado correctamente';
                 } else {
-                    $result['error'] = 'Ocurrió un problema al registrar el administrador';
+                    $result['error'] = 'Ocurrió un pato';
                 }
                 break;
             case 'logIn':

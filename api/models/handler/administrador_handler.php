@@ -87,7 +87,7 @@ class AdministradorHandler
     public function searchRows()
     {
         $value = '%' . Validator::getSearchValue() . '%';
-        $sql = 'SELECT id_admin, nombre_admin, apellido_admin, correo_admin, telefono_admin, numero_emerjencia_admin, DUI_admin, alias_administrador
+        $sql = 'SELECT id_admin, nombre_admin, apellido_admin, correo_admin, telefono_admin, numero_emerjencia_admin, DUI_admin, alias_admin
                 FROM tb_administradores
                 WHERE apellido_admin LIKE ? OR nombre_admin LIKE ?
                 ORDER BY apellido_admin';
@@ -97,7 +97,7 @@ class AdministradorHandler
 
     public function createRow()
     {
-        $sql = 'INSERT INTO tb_administradores(nombre_admin, apellido_admin, correo_admin, telefono_admin, numero_emerjencia_admin, DUI_admin, alias_administrador, pass_admin)
+        $sql = 'INSERT INTO tb_administradores(nombre_admin, apellido_admin, correo_admin, telefono_admin, numero_emerjencia_admin, DUI_admin, alias_admin, pass_admin)
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
         $params = array($this->nombre, $this->apellido, $this->correo, $this->telefono, $this->telefonoEmer, $this->dui, $this->alias, $this->clave);
         return Database::executeRow($sql, $params);
@@ -105,7 +105,7 @@ class AdministradorHandler
 
     public function readAll()
     {
-        $sql = 'SELECT id_admin, nombre_admin, apellido_admin, correo_admin, telefono_admin, numero_emerjencia_admin, DUI_admin, alias_administrador
+        $sql = 'SELECT id_admin, nombre_admin, apellido_admin, correo_admin, telefono_admin, numero_emerjencia_admin, DUI_admin, alias_admin
                 FROM tb_administradores
                 ORDER BY apellido_admin';
         return Database::getRows($sql);
@@ -113,7 +113,7 @@ class AdministradorHandler
 
     public function readOne()
     {
-        $sql = 'SELECT id_admin, nombre_admin, apellido_admin, correo_admin, telefono_admin, numero_emerjencia_admin, DUI_admin, alias_administrador
+        $sql = 'SELECT id_admin, nombre_admin, apellido_admin, correo_admin, telefono_admin, numero_emerjencia_admin, DUI_admin, alias_admin
                 FROM tb_administradores
                 WHERE id_admin = ?';
         $params = array($this->id);
@@ -135,5 +135,13 @@ class AdministradorHandler
                 WHERE id_admin = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
+    }
+    public function checkDuplicate($value)
+    {
+        $sql = 'SELECT id_cliente
+                FROM tb_administradores 
+                WHERE DUI_admin = ? OR correo_admin = ?';
+        $params = array($value, $value);
+        return Database::getRow($sql, $params);
     }
 }
