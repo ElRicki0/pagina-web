@@ -13,7 +13,7 @@ CREATE TABLE tb_clientes (
   apellido_cliente VARCHAR(50) NOT NULL,
   telefono_cliente INT NOT NULL,
   residencia_cliente VARCHAR(500) NOT NULL,
-  usuario_cliente varchar(50) UNIQUE NOT NULL,
+  alias_cliente varchar(50) UNIQUE NOT NULL,
   correo_cliente VARCHAR(50) UNIQUE NOT NULL,
   pass_cliente VARCHAR(50) NOT NULL,
   imagen_cliente varchar(50),
@@ -27,14 +27,19 @@ CREATE TABLE tb_administradores (
   nombre_admin VARCHAR(50) NOT NULL,
   apellido_admin VARCHAR(50) NOT NULL,
   correo_admin VARCHAR(50) UNIQUE NOT NULL,
-  DUI_admin INT UNIQUE NOT NULL,
   telefono_admin VARCHAR(10) UNIQUE NOT NULL,
   numero_emerjencia_admin VARCHAR(10) UNIQUE NOT NULL,
-  imagen_admin varchar(50),
-  usuario_admin VARCHAR(50) UNIQUE NOT NULL,
+  DUI_admin INT UNIQUE NOT NULL,
+  alias_admin VARCHAR(50) UNIQUE NOT NULL,
   pass_admin VARCHAR(5000) UNIQUE NOT NULL,
+  imagen_admin varchar(50),
   estado_admin ENUM ('conectado', 'desconectado', 'inutilizable', 'baneado') NOT NULL
 );
+
+SELECT * FROM tb_administradores;
+
+-- insercion de datos de ejemplo 
+
 
 -- Creacion de tabla tb_categorias_productos
 

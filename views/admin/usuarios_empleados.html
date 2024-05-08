@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -20,7 +20,7 @@
     <!-- tablas para usuarios -->
     <main>
         <!-- Título del contenido principal -->
-        <h2 class="usuusu" id="mainTitle">Usuarios Empleados</h2>
+        <h3 class="usuusu" id="mainTitle"></h3>
         <div class="row">
             <!-- Formulario de búsqueda -->
             <form class="col-sm-12 col-md-6" id="searchForm">
@@ -52,144 +52,131 @@
                 <button type="button" onclick="openCreate()" class="btnUsuAgregar">Agregar empleado</button>
             </div>
         </div>
-        <span>
-            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             Apartado de tabla de los empleados
             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-            <div class="container-usuarios mb-5">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <td colspan="5" id="rowsFound"></td>
-                        </tr>
-                        <tr>
-                            <th>Foto</th>
-                            <th>Nombre</th>
-                            <th>CORREO</th>
-                            <th>ALIAS</th>
-                            <th>ACCIONES</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableBody"></tbody>
-                </table>
-            </div>
+        <div class="container-usuarios mb-5">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td colspan="5" id="rowsFound"></td>
+                    </tr>
+                    <tr>
+                        <th>APELLIDO</th>
+                        <th>NOMBRE</th>
+                        <th>CORREO</th>
+                        <th>ALIAS</th>
+                        <th>ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+    </main>
+    <footer class="test ">
+    </footer>
 
-            <footer class="test ">
-            </footer>
-            <!-- modal agregar empleado-->
-            <div class="modal fade" id="saveModal" tabindex="-1" aria-labelledby="modal" aria-hidden="true">
-                <div class="modal-dialog modal-lg" style="width: 100%;">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <!-- Título del modal -->
-                            <h6 class="modal-title  w-100 text-center" id="modalTitle">Agregar datos del empleado</h6>
-                            <!-- Botón de cierre del modal -->
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="col">
-                                <div class="row">
-                                    <!--Imagen de perfil-->
-                                    <div class=" row ">
-                                        <div class="row">
-                                            <div
-                                                class="col-md-12 container d-flex flex-column align-items-center justify-content-center">
-                                                <img id="modalProfileImage"
-                                                    class="rounded-circle mx-auto d-block order-1"
-                                                    src="../../resources/img/iconoPerfil.jpg" alt="..." width="300px">
-                                                <input type="file" id="modalInputFile" style="display:none;"
-                                                    accept="image/*">
-                                                <button type="button"
-                                                    class="botoncitoPerfilAgre btn btn-outline-dark btn-lg btn-block mx-auto order-2"
-                                                    onclick="abrirExploradorModal()">Insertar foto de perfil</button>
-                                            </div>
-                                        </div>
-
-                                        <div class="col">
-                                            <form>
-                                                <div class="form-group">
-                                                    <label for="CuadroNom" class="letraPer col-md-4 fs-3">Nombre</label>
-                                                    <input type="text" class="form-control cuadroText col-md-8 fs-3"
-                                                        id="CuadroNom" placeholder="Veronica">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="CuadroApel"
-                                                        class="letraPer col-md-4 fs-3">Apellido</label>
-                                                    <input type="text" class="form-control cuadroText col-md-8 fs-3"
-                                                        id="CuadroApel" placeholder="Sanchez">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="CuadroCorreo" class="letraPer col-md-8 fs-3">Correo
-                                                        electrónico</label>
-                                                    <input type="email" class="form-control cuadroText col-md-8 fs-3"
-                                                        id="CuadroCorreo" placeholder="Verititito@gmail.com">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="CuadroTel"
-                                                        class="letraPer col-md-4 fs-3">Telefono</label>
-                                                    <input type="number" class="form-control cuadroText col-md-8 fs-3"
-                                                        id="CuadroTel" placeholder="1234-1234">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="CuadroTelEmer" class="letraPer col-md-10 fs-3">Telefono
-                                                        de
-                                                        emergencia</label>
-                                                    <input type="number" class="form-control cuadroText col-md-8 fs-3"
-                                                        id="CuadroTelEmer" placeholder="1234-1234">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="CuadroDUI" class="letraPer col-md-10 fs-3">DUI del
-                                                        empleado</label>
-                                                    <input type="number" class="form-control cuadroText col-md-8 fs-3"
-                                                        id="CuadroDUI" placeholder="12345678-9">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="CuadroNivel" class="letraPer col-md-10 fs-3">Nivel del
-                                                        empleado</label>
-                                                    <select class="form-control cuadroText col-md-8 fs-3"
-                                                        id="CuadroNivel">
-                                                        <option>Administrador</option>
-                                                        <option>Empleado</option>
-                                                        <option>Repartidor</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="CuadroPass"
-                                                        class="letraPer col-md-10 fs-3">Contraseña</label>
-                                                    <input type="password" class="form-control cuadroText col-md-8 fs-3"
-                                                        id="CuadroPass" placeholder="contraseña">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="CuadroFecha" class="letraPer col-md-10 fs-3">Fecha de
-                                                        nacimiento</label>
-                                                    <input type="date" class="form-control cuadroText col-md-8 fs-3"
-                                                        id="CuadroFecha" placeholder="12345678-9">
-                                                </div>
-                                            </form>
-                                        </div>
+    <!-- modal agregar empleado-->
+    <div class="modal fade" id="saveModal" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalTitle"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Formulario para guardar un registro -->
+                <form id="saveForm">
+                    <div class="modal-body">
+                        <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                        <input type="number" class="d-none" id="idAdministrador" name="idAdministrador">
+                        <div class="col">
+                            <div class="row">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="nombreAdministrador"
+                                            class="form-label letraPer col-md-4 fs-3">Nombre</label>
+                                        <input id="nombreAdministrador" type="text" name="nombreAdministrador"
+                                            class="form-control cuadroText col-md-8 fs-3" placeholder="Veronica"
+                                            required>
                                     </div>
-                                </div>
+                                    <div class="form-group">
+                                        <label for="apellidoAdministrador"
+                                            class="form-label letraPer col-md-4 fs-3">Apellido</label>
+                                        <input id="apellidoAdministrador" type="text" name="apellidoAdministrador"
+                                            class="form-control cuadroText col-md-8 fs-3" placeholder="Sanchez"
+                                            required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="correoAdministrador"
+                                            class="form-label letraPer col-md-4 fs-3">Correo</label>
+                                        <input id="correoAdministrador" type="text" name="correoAdministrador"
+                                            class="form-control cuadroText col-md-8 fs-3" placeholder="Sanchez"
+                                            required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="telefonoAdministrador"
+                                            class="letraPer col-md-4 fs-3">Telefono</label>
+                                        <input type="text" class="form-control cuadroText col-md-8 fs-3"
+                                            name="telefonoAdministrador" id="telefonoAdministrador"
+                                            placeholder="####-####" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="telefonoEmerAdministrador" class="letraPer col-md-10 fs-3">Telefono
+                                            de
+                                            emergencia</label>
+                                        <input type="text" class="form-control cuadroText col-md-8 fs-3"
+                                            name="telefonoEmerAdministrador" id="telefonoEmerAdministrador"
+                                            placeholder="####-####" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="duiAdministrador" class="letraPer col-md-10 fs-3">DUI</label>
+                                        <input type="text" class="form-control cuadroText col-md-8 fs-3"
+                                            name="duiAdministrador" id="duiAdministrador" placeholder="########-#"
+                                            required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="aliasAdministrador"
+                                            class="form-label letraPer col-md-10 fs-3">Alias</label>
+                                        <input id="aliasAdministrador" type="text" name="aliasAdministrador"
+                                            class="form-control cuadroText col-md-8 fs-3" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="claveAdministrador"
+                                            class="letraPer col-md-10 fs-3">Contraseña</label>
+                                        <input type="password" class="form-control cuadroText col-md-8 fs-3"
+                                            name="claveAdministrador" id="claveAdministrador" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="confirmarClave" class="letraPer col-md-10 fs-3">Confirmar
+                                            contraseña</label>
+                                        <input type="password" class="form-control cuadroText col-md-8 fs-3"
+                                            name="confirmarClave" id="confirmarClave" required>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="modal-footer">
-                                <!-- Botón para agregar los datos del empleado-->
-                                <button id="" onclick="alertMine('agregarUsu')" type="button" type="button"
-                                    style="font-size: 30px;" class="agreUs btn btn-outline-secondary">Agregar</button>
-                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <!-- Botón para agregar los datos del empleado-->
+                            <button type="submit" style="font-size: 30px;"
+                                class="agreUs btn btn-outline-secondary">Agregar</button>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
-    </main>
-    <!--Enlace para elementos del bootstrap-->
-    <script src="../../resources/js/js_boostrap.js"></script>
-    <!--Enlace para poder mostrar alertas-->
-    <script src="../../resources/js/sweetalert.min.js"></script>
-    <!--Enlaces para archivos javascript-->
-    <script src="../../controllers/admin/header_admin.js"></script>
-    <script src="../../controllers/utils/admin.js"></script>
-    <script src="../../controllers/utils/footer.js"></script>
+        </div>
+    </div>
+
+    <!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT -->
+    <!-- Llamada al framework y librería de mensajes -->
+    <script src="../../resources/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
     <!-- Llamada al controlador general de la aplicación -->
     <script type="text/javascript" src="../../controllers/utils/components.js"></script>
+    <!--Enlaces para archivos javascript-->
+    <script src="../../controllers/admin/header_admin.js"></script>
+    <script src="../../controllers/utils/footer.js"></script>
+    <!-- Llamada al controlador del sitio privado -->
+    <script type="text/javascript" src="../../controllers/utils/admin.js"></script>
     <!-- Llamada al controlador de la página web -->
     <script type="text/javascript" src="../../controllers/admin/administrador.js"></script>
 
