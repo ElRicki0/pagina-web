@@ -21,6 +21,24 @@ const SAVE_FORM = document.getElementById('saveForm'),
     CLAVE_ADMINISTRADOR = document.getElementById('claveAdministrador'),
     CONFIRMAR_CLAVE = document.getElementById('confirmarClave');
 
+// Llamada a la función para establecer la mascara del campo teléfono.
+vanillaTextMask.maskInput({
+    inputElement: document.getElementById('telefonoAdministrador'),
+    mask: [/\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+});
+
+// Llamada a la función para establecer la mascara del campo teléfono emergenci.
+vanillaTextMask.maskInput({
+    inputElement: document.getElementById('telefonoEmerAdministrador'),
+    mask: [/\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+});
+
+// Llamada a la función para establecer la mascara del campo DUI.
+vanillaTextMask.maskInput({
+    inputElement: document.getElementById('duiAdministrador'),
+    mask: [/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/]
+});
+
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
     // Se establece el título del contenido principal.
@@ -91,7 +109,7 @@ const fillTable = async (form = null) => {
         // Script 1
         DATA.dataset.forEach(row => {
             TABLE_BODY.innerHTML += `
-                <tr>
+                <tr row col-12" style="margin-bottom: 10px; margin-left: auto; margin-right: auto;">
                     <td>${row.apellido_admin}</td>
                     <td>${row.nombre_admin}</td>
                     <td>${row.correo_admin}</td>
