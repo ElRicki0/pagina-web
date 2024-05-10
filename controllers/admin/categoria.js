@@ -1,88 +1,173 @@
 // Constante para completar la ruta de la API.
 const CATEGORIA_API = 'services/admin/categoria.php';
-// Constante para establecer el contenedor de categorías.
-const CATEGORIAS = document.getElementById('categorias');
 
-//modals de pagina de categoria
-const modal_agregar_categoria = new bootstrap.Modal('#modal_agregar_categoría'),
-MODAL_TITLE = document.getElementById('modalTitle');
+// constante para buscar una cosa que no se que busca ja ja profe por favor explique bien >:(
+const SEARCH_FORM = document.getElementById('searchForm');
 
-const modal_editar_categoria = new bootstrap.Modal('#modal_editar_categoría');
+// Constantes para establecer los elementos de la tabla.
+const TABLE_BODY = document.getElementById('tableBody'),
+    ROWS_FOUND = document.getElementById('rowsFound');
+// Constantes para establecer los elementos del componente Modal.
+const SAVE_MODAL = new bootstrap.Modal('#saveModal'),
+    MODAL_TITLE = document.getElementById('modalTitle');
 
-// Método del evento para cuando el documento ha cargado.
-document.addEventListener('DOMContentLoaded', async () => {
-    
-    // Petición para obtener las categorías disponibles.
-    const DATA = await fetchData(CATEGORIA_API, 'readAll');
+// Constantes para establecer los elementos del formulario de guardar.
+const SAVE_FORM = document.getElementById('saveForm'),
+    id_categoria_producto = document.getElementById('id_categoria_producto'),
+    nombre_categoria_producto = document.getElementById('nombre_categoria_producto'),
+    descripcion_categoria_producto = document.getElementById('descripcion_categoria_producto'),
+    imagen_categoria_producto = document.getElementById('imagen_categoria_producto');
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Llamada a la función para llenar la tabla con los registros existentes.
+    fillTable();
+});
+
+// Método del evento para cuando se envía el formulario de buscar.
+SEARCH_FORM.addEventListener('submit', (event) => {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Constante tipo objeto con los datos del formulario.
+    const FORM = new FormData(SEARCH_FORM);
+    // Llamada a la función para llenar la tabla con los resultados de la búsqueda.
+    fillTable(FORM);
+});
+
+// Método del evento para cuando se envía el formulario de guardar.
+SAVE_FORM.addEventListener('submit', async (event) => {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Se verifica la acción a realizar.
+    (id_categoria_producto.value) ? action = 'updateRow' : action = 'createRow';
+    // Constante tipo objeto con los datos del formulario.
+    const FORM = new FormData(SAVE_FORM);
+    // Petición para guardar los datos del formulario.
+    const DATA = await fetchData(CATEGORIA_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
-        // Se inicializa el contenedor de categorías.
-        CATEGORIAS.innerHTML = '';
-        // Se recorre el conjunto de registros fila por fila a través del objeto row.
-        DATA.dataset.forEach(row => {
-            // Se establece la página web de destino con los parámetros.
-            let url = `products.html?id=${row.id_categoria}&nombre=${row.nombre_categoria}`;
-            // Se crean y concatenan las tarjetas con los datos de cada categoría.
-            CATEGORIAS.innerHTML += `
-
-            <!-- Contenedor donde esta la tarjeta -->
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="card my-3">
-                        <img src="../..resources/img/categoria/${row.imagen_categoria_producto}" class="card-img-top"
-                            alt="Besos indesentes">
-                        <div class="card-body">
-                            <!-- Título y descripción del producto  -->
-                            <h5 class="card-title">${row.nombre_categoria_producto}</h5>
-                            <p class="card-text">${row.descripcion_categoria_producto}</p>
-                            <!-- Botones de acción (Eliminar, Editar, Información)  -->
-                            <div class="btn btn-outline-danger" onclick="alertMine('eliminar')">
-                                <img id="" src="../../resources/img/iconos/papelera.png" class="botones_productos">
-                            </div>
-                            <div class="btn btn-outline-warning" onclick="editar_categoria()">
-                                <img src="../../resources/img/iconos/lapiz.png" class="botones_productos">
-                            </div>
-                            <div class="btn btn-outline-info" onclick="alertMine('información_categoría')">
-                                <img src="../../resources/img/iconos/info.png" class="botones_productos">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        });
+        // Se cierra la caja de diálogo.
+        SAVE_MODAL.hide();
+        // Se muestra un mensaje de éxito.
+        sweetAlert(1, DATA.message, true);
+        // Se carga nuevamente la tabla para visualizar los cambios.
+        fillTable();
     } else {
-        // Se asigna al título del contenido de la excepción cuando no existen datos para mostrar.
-        document.getElementById('mainTitle').textContent = DATA.error;
+        sweetAlert(2, DATA.error, false);
     }
 });
 
 
-//Apartado de modals
-
-//agregar categoría
-
-// Evento show.bs.modal del modal
-document.getElementById('modal_agregar_categoría').addEventListener('show.bs.modal', function (event) {
-    // Encuentra el formulario dentro del modal
-    var form = event.target.querySelector('form');
-    // Resetea el formulario
-    form.reset();
-});
-
-// mostrar el modal
-function crear_categoria() {
-    // Muestra el modal
-    modal_agregar_categoria.show();
+/*
+*   Función asíncrona para llenar la tabla con los registros disponibles.
+*   Parámetros: form (objeto opcional con los datos de búsqueda).
+*   Retorno: ninguno.
+*/
+const fillTable = async (form = null) => {
+    // Se inicializa el contenido de la tabla.
+    ROWS_FOUND.textContent = '';
+    TABLE_BODY.innerHTML = '';
+    // Se verifica la acción a realizar.
+    (form) ? action = 'searchRows' : action = 'readAll';
+    // Petición para obtener los registros disponibles.
+    const DATA = await fetchData(CATEGORIA_API, action, form);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (DATA.status) {
+        // Se recorre el conjunto de registros fila por fila.
+        DATA.dataset.forEach(row => {
+            // Se crean y concatenan las filas de la tabla con los datos de cada registro.
+            TABLE_BODY.innerHTML += `
+            <tr>
+            <td><img src="${SERVER_URL}images/categorias/${row.imagen_categoria_producto}" height="50"></td>
+            <td>${row.nombre_categoria_producto}</td>
+            <td>${row.descripcion_categoria_producto}</td>
+            <td>
+                <button type="button" class="btn btn-info" onclick="openUpdate(${row.id_categoria_producto})">
+                    <img src="../../resources/img/iconos/info.png" alt="">
+                </button>
+                <button type="button" class="btn btn-danger" onclick="openDelete(${row.id_categoria_producto})">
+                    <img src="../../resources/img/iconos/papelera.png" alt="">
+                </button>
+                <button type="button" class="btn btn-warning" onclick="openReport(${row.id_categoria_producto})">
+                    <img src="../../resources/img/iconos/lapiz.png" alt="">
+                </button>
+            </td>
+        </tr>
+            `;
+        });
+        // Se muestra un mensaje de acuerdo con el resultado.
+        ROWS_FOUND.textContent = DATA.message;
+    } else {
+        sweetAlert(4, DATA.error, true);
+    }
 }
 
-//editar categoría
-document.getElementById('modal_editar_categoría').addEventListener('show.bs.modal', function (event) {
-    // Encuentra el formulario dentro del modal
-    var form_e = event.target.querySelector('form');
-    // Resetea el formulario
-    form_ee.reset();
-});
+/*
+*   Función para preparar el formulario al momento de insertar un registro.
+*   Parámetros: ninguno.
+*   Retorno: ninguno.
+*/
+const openCreate = () => {
+    // Se muestra la caja de diálogo con su título.
+    SAVE_MODAL.show();
+    MODAL_TITLE.textContent = 'Crear categoría';
+    // Se prepara el formulario.
+    SAVE_FORM.reset();
+}
 
-function editar_categoria() {
-    // Muestra el modal
-    modal_editar_categoria.show();
+/*
+*   Función asíncrona para preparar el formulario al momento de actualizar un registro.
+*   Parámetros: id (identificador del registro seleccionado).
+*   Retorno: ninguno.
+*/
+const openUpdate = async (id) => {
+    // Se define una constante tipo objeto con los datos del registro seleccionado.
+    const FORM = new FormData();
+    FORM.append('id_categoria_producto', id);
+    // Petición para obtener los datos del registro solicitado.
+    const DATA = await fetchData(CATEGORIA_API, 'readOne', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (DATA.status) {
+        // Se muestra la caja de diálogo con su título.
+        SAVE_MODAL.show();
+        MODAL_TITLE.textContent = 'Actualizar categoría';
+        // Se prepara el formulario.
+        SAVE_FORM.reset();
+        // Se inicializan los campos con los datos.
+        const ROW = DATA.dataset;
+        id_categoria_producto.value = ROW.id_categoria_producto;
+        nombre_categoria_producto.value = ROW.nombre_categoria_producto;
+        descripcion_categoria_producto.value = ROW.descripcion_categoria_producto;
+        imagen_categoria_producto.value = ROW.imagen_categoria_producto;
+    } else {
+        sweetAlert(2, DATA.error, false);
+    }
+}
+
+/*
+*   Función asíncrona para eliminar un registro.
+*   Parámetros: id (identificador del registro seleccionado).
+*   Retorno: ninguno.
+*/
+const openDelete = async (id) => {
+    // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
+    const RESPONSE = await confirmAction('¿Desea eliminar la categoría de forma permanente?');
+    // Se verifica la respuesta del mensaje.
+
+    if (RESPONSE) {
+        // Se define una constante tipo objeto con los datos del registro seleccionado.
+        const FORM = new FormData();
+        FORM.append('id_categoria_producto', id);
+        // Petición para eliminar el registro seleccionado.
+        const DATA = await fetchData(CATEGORIA_API, 'deleteRow', FORM);
+        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+        if (DATA.status) {
+            // Se muestra un mensaje de éxito.
+            await sweetAlert(1, DATA.message, true);
+            // Se carga nuevamente la tabla para visualizar los cambios.
+            fillTable();
+        } else {
+            sweetAlert(2, DATA.error, false);
+        }
+    }
 }

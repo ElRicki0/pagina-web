@@ -5,7 +5,9 @@
         "card",
         "Card",
         "categoria",
+        "categorias",
         "contrasenia",
+        "descripcion",
         "dismiss",
         "Inicialización",
         "IVANECARE",
@@ -16,6 +18,7 @@
         "Magic",
         "Nicolas",
         "Resetea",
+        "SCRUD",
         "Zepeda"
     ],
     "liveServer.settings.port": 5501
