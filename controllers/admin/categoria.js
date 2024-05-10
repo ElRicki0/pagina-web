@@ -83,13 +83,13 @@ const fillTable = async (form = null) => {
             <td>${row.descripcion_categoria_producto}</td>
             <td>
                 <button type="button" class="btn btn-info" onclick="openUpdate(${row.id_categoria_producto})">
-                    <img src="../../resources/img/iconos/info.png" alt="">
+                <img src="../../resources/img/iconos/lapiz.png" alt="">
                 </button>
                 <button type="button" class="btn btn-danger" onclick="openDelete(${row.id_categoria_producto})">
                     <img src="../../resources/img/iconos/papelera.png" alt="">
                 </button>
                 <button type="button" class="btn btn-warning" onclick="openReport(${row.id_categoria_producto})">
-                    <img src="../../resources/img/iconos/lapiz.png" alt="">
+                    <img src="../../resources/img/iconos/info.png" alt="">
                 </button>
             </td>
         </tr>
