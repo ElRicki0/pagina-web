@@ -124,8 +124,7 @@ if (isset($_GET['action'])) {
                     !$administrador->setTelefono($_POST['telefonoAdministrador']) or
                     !$administrador->setTelefonoEmer($_POST['telefonoEmerAdministrador']) or
                     !$administrador->setDUI($_POST['duiAdministrador']) or
-                    !$administrador->setAlias($_POST['aliasAdministrador']) or
-                    !$administrador->setClave($_POST['claveAdministrador'])
+                    !$administrador->setAlias($_POST['aliasAdministrador']) 
                 ) {
                     $result['error'] = $administrador->getDataError();
                 } elseif ($administrador->editProfile()) {
