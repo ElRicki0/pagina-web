@@ -19,7 +19,6 @@ const SAVE_FORM = document.getElementById('saveForm'),
     imagen_categoria_producto = document.getElementById('imagen_categoria_producto');
 
 document.addEventListener('DOMContentLoaded', () => {
-
     // Llamada a la función para llenar la tabla con los registros existentes.
     fillTable();
 });
@@ -82,15 +81,12 @@ const fillTable = async (form = null) => {
             <td>${row.nombre_categoria_producto}</td>
             <td>${row.descripcion_categoria_producto}</td>
             <td>
-                <button type="button" class="btn btn-info" onclick="openUpdate(${row.id_categoria_producto})">
-                <img src="../../resources/img/iconos/lapiz.png" alt="">
-                </button>
-                <button type="button" class="btn btn-danger" onclick="openDelete(${row.id_categoria_producto})">
-                    <img src="../../resources/img/iconos/papelera.png" alt="">
-                </button>
-                <button type="button" class="btn btn-warning" onclick="openReport(${row.id_categoria_producto})">
-                    <img src="../../resources/img/iconos/info.png" alt="">
-                </button>
+            <button type="button" class="btn editar-btn" onclick="openUpdate(${row.id_categoria_producto})">
+                <img src="../../resources/img/iconos/lapiz.png">
+            </button>
+            <button type="button" class="btn borrar-btn" onclick="openDelete(${row.id_categoria_producto})">
+                <img src="../../resources/img/iconos/papelera.png">
+            </button>
             </td>
         </tr>
             `;
@@ -138,7 +134,7 @@ const openUpdate = async (id) => {
         id_categoria_producto.value = ROW.id_categoria_producto;
         nombre_categoria_producto.value = ROW.nombre_categoria_producto;
         descripcion_categoria_producto.value = ROW.descripcion_categoria_producto;
-        imagen_categoria_producto.value = ROW.imagen_categoria_producto;
+        // imagen_categoria_producto.value = ROW.imagen_categoria_producto;
     } else {
         sweetAlert(2, DATA.error, false);
     }
