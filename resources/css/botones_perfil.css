@@ -1,0 +1,19 @@
+.botonCancell {
+    background-color: rgb(179, 26, 26);
+    color: aliceblue;
+}
+
+.botonCancell:hover {
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0.4);
+}
+
+.BotonSave{
+    background-color: #1D1C6A;
+    color: aliceblue;
+}
+
+.BotonSave:hover {
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0.4);
+}

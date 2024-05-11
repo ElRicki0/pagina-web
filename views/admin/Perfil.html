@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../resources/css/css_boostrap.css">
     <!--Enlace para mandar a llamar el css-->
     <link rel="stylesheet" href="../../resources/css/index.css">
+    <link rel="stylesheet" href="../../resources/css/botones_perfil.css">
 </head>
 
 <body>
@@ -19,7 +20,7 @@
     <!--Cuerpo de la pagina-->
     <main>
         <!--Aca solo es el un tipo titulo-->
-        <p class="TituPerfi text-center fs-1">Perfil</p>
+        <h3 class="usuusu" id="mainTitle"></h3>
         <!--Clase para poder alinear todo en una sola linea-->
         <div class="row">
             <div class="row">
@@ -34,89 +35,140 @@
                         Imagen</button>
                 </div>
                 <div class="col">
-                    <form>
+                    <!-- Formulario para cambiar datos personales del usuario-->
+                    <form id="profileForm">
                         <div class="form-group">
-                            <label for="CuadroNom" class="letraPer col-md-4 fs-3">Nombre</label>
-                            <input type="text" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
-                                id="CuadroNom" placeholder="Veronica">
+                            <label for="nombreAdministrador" class="form-label letraPer col-md-4 fs-3">Nombre</label>
+                            <input id="nombreAdministrador" type="text" name="nombreAdministrador"
+                                class="form-control cuadroText col-md-6 fs-3" placeholder="Veronica" required>
                         </div>
                         <div class="form-group">
-                            <label for="CuadroApel" class="letraPer col-md-4 fs-3">Apellido</label>
-                            <input type="text" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
-                                id="CuadroApel" placeholder="Sanchez">
+                            <label for="apellidoAdministrador"
+                                class="form-label letraPer col-md-4 fs-3">Apellido</label>
+                            <input id="apellidoAdministrador" type="text" name="apellidoAdministrador"
+                                class="form-control cuadroText col-md-8 fs-3" placeholder="Sanchez" required>
                         </div>
                         <div class="form-group">
-                            <label for="CuadroCorreo" class="letraPer col-md-8 fs-3">Correo electrónico</label>
-                            <input type="email" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
-                                id="CuadroCorreo" placeholder="Verititito@gmail.com">
+                            <label for="correoAdministrador" class="form-label letraPer col-md-4 fs-3">Correo</label>
+                            <input id="correoAdministrador" type="text" name="correoAdministrador"
+                                class="form-control cuadroText col-md-8 fs-3" placeholder="Sanchez" required>
                         </div>
                         <div class="form-group">
-                            <label for="CuadroTel" class="letraPer col-md-4 fs-3">Telefono</label>
-                            <input type="number"
-                                class="form-control cuadroText col-md-8 fs-3 border border-dark rounded" id="CuadroTel"
-                                placeholder="1234-1234">
+                            <label for="telefonoAdministrador" class="letraPer col-md-4 fs-3">Telefono</label>
+                            <input type="text" class="form-control cuadroText col-md-8 fs-3"
+                                name="telefonoAdministrador" id="telefonoAdministrador" placeholder="####-####"
+                                required>
                         </div>
                         <div class="form-group">
-                            <label for="CuadroTelEmer" class="letraPer col-md-10 fs-3">Telefono de emergencia</label>
-                            <input type="number"
-                                class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
-                                id="CuadroTelEmer" placeholder="1234-1234">
+                            <label for="telefonoEmerAdministrador" class="letraPer col-md-10 fs-3">Telefono
+                                de
+                                emergencia</label>
+                            <input type="text" class="form-control cuadroText col-md-8 fs-3"
+                                name="telefonoEmerAdministrador" id="telefonoEmerAdministrador" placeholder="####-####"
+                                required>
                         </div>
                         <div class="form-group">
-                            <label for="CuadroDUI" class="letraPer col-md-10 fs-3">DUI del empleado</label>
-                            <input type="number"
-                                class="form-control cuadroText col-md-8 fs-3 border border-dark rounded" id="CuadroDUI"
-                                placeholder="12345678-9">
+                            <label for="duiAdministrador" class="letraPer col-md-10 fs-3">DUI</label>
+                            <input type="text" class="form-control cuadroText col-md-8 fs-3" name="duiAdministrador"
+                                id="duiAdministrador" placeholder="########-#" required>
                         </div>
                         <div class="form-group">
-                            <label for="CuadroNivel" class="letraPer col-md-10 fs-3">Nivel del empleado</label>
-                            <select class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
-                                id="CuadroNivel">
-                                <option>Administrador</option>
-                                <option>Empleado</option>
-                                <option>Repartidor</option>
-                            </select>
+                            <label for="aliasAdministrador" class="form-label letraPer col-md-10 fs-3">Alias</label>
+                            <input id="aliasAdministrador" type="text" name="aliasAdministrador"
+                                class="form-control cuadroText col-md-8 fs-3" required>
                         </div>
-                        <div class="form-group">
-                            <label for="CuadroPass" class="letraPer col-md-10 fs-3">Contraseña</label>
-                            <input type="password"
-                                class="form-control cuadroText col-md-8 fs-3 border border-dark rounded" id="CuadroPass"
-                                placeholder="contraseña">
+                        <!-- Boton para editar los datos del usuario-->
+
+                        <div class="col mt-4">
+                            <button id="" type="submit" class="btn btn-outline-dark col-md-4 btn-block mx-auto d-block">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="50" fill="currentColor"
+                                    class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                                    <path
+                                        d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9" />
+                                    <path fill-rule="evenodd"
+                                        d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z" />
+                                </svg>
+                                <h5>Guardar</h5>
+                            </button>
                         </div>
-                        <div class="form-group">
-                            <label for="CuadroFecha" class="letraPer col-md-10 fs-3">Fecha de nacimiento</label>
-                            <input type="date" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
-                                id="CuadroFecha" placeholder="12345678-9">
-                        </div>
+
                     </form>
-                </div>
-                <!-- Botones para editar los datos del usuario-->
-                <div class="row">
-                    <div class="col">
-                        <button id="" onclick="alertMine('modificarUsu')" type="button"
-                            class="BotonActualizar btn btn-outline-dark col-md-4 btn-lg btn-block mx-auto d-block"> <img
-                                src="../../resources/img/actualizar.png" class="botones_productos" style="width: 50px;">
-                            <h5>Actualizar datos</h5>
+                    <!-- Boton para abrir modal de cambio de contraseña-->
+                    <div class="col mt-4">
+                        <button id="" type="submit" class="btn btn-outline-danger col-md-4 btn-block mx-auto d-block"
+                            onclick="openPassword()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="50" fill="currentColor"
+                                class="bi bi-shield-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.8 11.8 0 0 1-2.517 2.453 7 7 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7 7 0 0 1-1.048-.625 11.8 11.8 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 63 63 0 0 1 5.072.56" />
+                            </svg>
+                            <h5>Cambiar contraseña</h5>
                         </button>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Inclusión de la librería de mascaras. Para más información https://github.com/text-mask/text-mask -->
+        <script type="text/javascript" src="../../resources/js/vanillaTextMask.js"></script>
     </main>
     <footer class="test">
 
     </footer>
+
+
+    <!-- Componente Modal para mostrar el formulario de cambio de contraseña -->
+    <div class="modal fade" id="passwordModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <!-- Contenido del componente Modal -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalTitle">Cambiar contraseña</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Formulario para actualizar contraseña -->
+                <form id="passwordForm">
+                    <div class="modal-body row">
+                        <div class="col-sm-12 col-md-6 offset-md-3">
+                            <label for="claveActual" class="form-label">Contraseña actual</label>
+                            <input id="claveActual" type="password" name="claveActual" class="form-control" required>
+                        </div>
+                        <div class="col-12 text-center mt-3 mb-3">
+                            <div>CONTRASEÑA NUEVA</div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <label for="claveNueva" class="form-label">Contraseña</label>
+                            <input id="claveNueva" type="password" name="claveNueva" class="form-control" required>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <label for="confirmarClave" class="form-label">Confirmar contraseña</label>
+                            <input id="confirmarClave" type="password" name="confirmarClave" class="form-control"
+                                required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn botonCancell">Cancelar</button>
+                        <button type="submit" class="btn BotonSave">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT -->
+    <!-- Llamada al framework y librería de mensajes -->
+    <script src="../../resources/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
+    <!-- Llamada al controlador general de la aplicación -->
+    <script type="text/javascript" src="../../controllers/utils/components.js"></script>
+    <!--Enlaces para archivos javascript-->
+    <script src="../../controllers/admin/header_admin.js"></script>
+    <script src="../../controllers/utils/footer.js"></script>
+    <!-- Llamada al controlador del sitio privado -->
+    <script type="text/javascript" src="../../controllers/utils/admin.js"></script>
+    <!-- Llamada al controlador de la página web -->
+    <script type="text/javascript" src="../../controllers/admin/perfil.js"></script>
+
 </body>
-
-<!--Enlaces para archivos javascript-->
-<script src="../../controllers/utils/explorador_modal.js"></script>
-<script src="../../controllers/admin/plantillas.js"></script>
-<script src="../../controllers/admin/alertas_alertas.js"></script>
-
-<!--Enlace para poder mostrar alertas-->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<!--Enlace para elementos del bootstrap-->
-<script src="../../resources/js/bootstrap.bundle.min.js"></script>
 
 </html>
