@@ -18,153 +18,104 @@
 
     <!--Navbar-->
     <header></header>
-    <main>
-        <br>
-        <!-- Botón para agregar producto -->
-        <button type="button" class="btn_producto_agregar" onclick="agregar_marca()">Agregar marca</button>
-        <!-- Título de la página -->
-        <h2 class="usuusu">Marca</h2>
-        <br>
-        <div class="container">
-            <div class="row">
-                <!--Contenedor donde esta la tarjeta-->
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="card my-3">
-                        <img src="../../resources/img/marcas/mc1.jpg" width="150px" class="rounded mx-auto d-block"
-                            alt="Besos indesentes">
-                        <div class="card-body">
-                            <!-- Título y descripción del producto -->
-                            <h5 class="card-title">Card stitle</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk
-                                of
-                                the
-                                card's content.</p>
-                            <!-- Botones de acción (Eliminar, Editar, Información) -->
-                            <div class="btn btn-outline-danger" onclick="alertMine('eliminar')">
-                                <img id="" src="../../resources/img/iconos/papelera.png" class="botones_productos">
-                            </div>
-                            <div class="btn btn-outline-warning" onclick="editar_marca()">
-                                <img src="../../resources/img/iconos/lapiz.png" class="botones_productos">
-                            </div>
-                            <div class="btn btn-outline-info" onclick="alertMine('información_marca')">
-                                <img src="../../resources/img/iconos/info.png" class="botones_productos">
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!--Contenedor donde esta la tarjeta-->
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="card my-3">
-                        <img src="../../resources/img/marcas/mc2.png" width="150px" class="rounded mx-auto d-block"
-                            alt="Besos indesentes">
-                        <div class="card-body">
-                            <!-- Título y descripción del producto -->
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk
-                                of
-                                the
-                                card's content.</p>
-                            <!-- Botones de acción (Eliminar, Editar, Información) -->
-                            <div class="btn btn-outline-danger" id="BtnEliminar2" onclick="alertMine('eliminar')">
-                                <img id="" src="../../resources/img/iconos/papelera.png" class="botones_productos">
-                            </div>
-                            <div class="btn btn-outline-warning" id="btn_editar2" onclick="editar_marca()">
-                                <img src="../../resources/img/iconos/lapiz.png" class="botones_productos">
-                            </div>
-                            <div class="btn btn-outline-info" id="btn_info2" onclick="alertMine('información_marca')">
-                                <img src="../../resources/img/iconos/info.png" class="botones_productos">
-                            </div>
-                        </div>
+
+    <!-- Contenido principal del documento -->
+    <main>
+        <!-- Título del contenido principal -->
+        <h3 class="usuusu" id="mainTitle"></h3>
+        <div class="row">
+            <!-- Formulario de búsqueda -->
+            <form class="col-sm-12 col-md-6" id="searchForm">
+                <div class="row">
+                    <div class="col-6">
+                        <input type="search" class="form-control" name="search" placeholder="Buscar" required>
+                    </div>
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-success">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                            </svg>
+                        </button>
+                        <button type="reset" class="btn btn-secondary" onclick="fillTable()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-x-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                <path
+                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                            </svg>
+                        </button>
                     </div>
                 </div>
-                <!--Contenedor donde esta la tarjeta-->
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="card my-3">
-                        <img src="../../resources/img/marcas/mc3.jpg" width="150px" class="rounded mx-auto d-block"
-                            alt="Besos indesentes">
-                        <div class="card-body">
-                            <!-- Título y descripción del producto -->
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk
-                                of
-                                the
-                                card's content.</p>
-                            <!-- Botones de acción (Eliminar, Editar, Información) -->
-                            <div class="btn btn-outline-danger" id="BtnEliminar3" onclick="alertMine('eliminar')">
-                                <img id="" src="../../resources/img/iconos/papelera.png" class="botones_productos">
-                            </div>
-                            <div class="btn btn-outline-warning" id="btn_editar3" onclick="editar_marca()">
-                                <img src="../../resources/img/iconos/lapiz.png" class="botones_productos">
-                            </div>
-                            <div class="btn btn-outline-info" id="btn_info3" onclick="alertMine('información_marca')">
-                                <img src="../../resources/img/iconos/info.png" class="botones_productos">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Contenedor donde esta la tarjeta-->
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="card my-3">
-                        <img src="../../resources/img/marcas/mc4.jpg" width="150px" class="rounded mx-auto d-block"
-                            alt="...">
-                        <div class="card-body">
-                            <!-- Título y descripción del producto -->
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk
-                                of
-                                the
-                                card's content.</p>
-                            <!-- Botones de acción (Eliminar, Editar, Información) -->
-                            <div class="btn btn-outline-danger" id="BtnEliminar4" onclick="alertMine('eliminar')">
-                                <img id="" src="../../resources/img/iconos/papelera.png" class="botones_productos">
-                            </div>
-                            <div class="btn btn-outline-warning" id="btn_editar4" onclick="editar_marca()">
-                                <img src="../../resources/img/iconos/lapiz.png" class="botones_productos">
-                            </div>
-                            <div class="btn btn-outline-info" id="btn_info4" onclick="alertMine('información_marca')">
-                                <img src="../../resources/img/iconos/info.png" class="botones_productos">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Contenedor donde esta la tarjeta-->
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="card my-3">
-                        <img src="../../resources/img/marcas/mc5.png" width="150px" class="rounded mx-auto d-block"
-                            alt="...">
-                        <div class="card-body">
-                            <!-- Título y descripción del producto -->
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk
-                                of
-                                the
-                                card's content.</p>
-                            <!-- Botones de acción (Eliminar, Editar, Información) -->
-                            <div class="btn btn-outline-danger" id="BtnEliminar5" onclick="alertMine('eliminar')">
-                                <img id="" src="../../resources/img/iconos/papelera.png" class="botones_productos">
-                            </div>
-                            <div class="btn btn-outline-warning" id="btn_editar5" onclick="editar_marca()">
-                                <img src="../../resources/img/iconos/lapiz.png" class="botones_productos">
-                            </div>
-                            <div class="btn btn-outline-info" id="btn_info5" onclick="alertMine('información_marca')">
-                                <img src="../../resources/img/iconos/info.png" class="botones_productos">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            </form>
+
+            <div class="col-sm-12 col-md-6 text-end">
+                <!-- Botón para abrir una caja de diálogo al momento de crear un nuevo registro -->
+                <button type="button" class="btnUsuAgregar" onclick="openCreate()">
+                    <i class="bi bi-plus-square-fill">Agregar marca</i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Tabla para mostrar los registros existentes -->
+        <table class="table table-hover">
+            <!-- Encabezado de la tabla para mostrar la cantidad de registros y los títulos de las columnas -->
+            <thead>
+                <tr>
+                    <td colspan="3" id="rowsFound"></td>
+                </tr>
+                <tr>
+                    <th>Nombre marca</th>
+                    <th>Imagen Marca</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <!-- Cuerpo de la tabla para mostrar un registro por fila -->
+            <tbody id="tableBody"></tbody>
+        </table>
+
+
 
     </main>
 
     <footer class="test ">
     </footer>
 
-    <!-- Modal -->
+
+    <!-- Componente Modal para guardar un registro -->
+    <div class="modal fade" id="saveModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalTitle"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Formulario para guardar un registro -->
+                <form id="saveForm">
+                    <div class="modal-body row g-3">
+                        <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                        <input type="number" class="d-none" id="idMarca" name="idMarca">
+                        <div class="col-sm-12 col-md-6">
+                            <label for="nombreMarca" class="form-label">Marca</label>
+                            <input id="nombreMarca" type="text" name="nombreMarca" class="form-control" required>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <label for="imagenMarca" class="form-label">Imagen</label>
+                            <input id="imagenMarca" type="file" name="imagenMarca" class="form-control"
+                                accept=".png, .jpg">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modals de la primera version -->
     <!--agregar marca-->
     <div class="modal fade" id="modal_agregar_marca" tabindex="-1" aria-labelledby="exampleModalLabel"
         data-bs-backdrop="static" aria-hidden="true">
@@ -203,8 +154,7 @@
                                                     class="cuadroText col-md-10 fs-3 border border-dark rounded text-start">
                                                     <input type="text" class="form-control fs-3"
                                                         aria-label="Sizing example input"
-                                                        aria-describedby="inputGroup-sizing-default"
-                                                        value="">
+                                                        aria-describedby="inputGroup-sizing-default" value="">
                                                 </div>
                                             </div>
 
@@ -226,82 +176,83 @@
         </div>
     </div>
 
-    
 
-<!--editar marca-->
-<div class="modal fade" id="modal_editar_marca" tabindex="-1" aria-labelledby="exampleModalLabel"
-data-bs-backdrop="static" aria-hidden="true">
-<div class="modal-dialog modal-xl">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar marca</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <form action="">
-            <div class="modal-body">
-                <!--contenido del modal-->
-                <div class="container text-center">
-                    <div class="row">
-                        <form action="">
-                            <div class=" col">
-                                <img id="modalProfileImage" class="rounded  mx-auto d-block"
-                                    style="margin-top: 3rem;"
-                                    src="../../resources/img/productos/imagen_agregar.jpg" alt="..."
-                                    width="300px">
-                                <br>
-                                <br>
-                                <input type="file" id="modalInputFile" style="display:none;" accept="image/*">
-                                <button type="button"
-                                    class="botoncitoPerfilAgre btn btn-outline-dark btn-lg btn-block mx-auto order-2"
-                                    onclick="abrirExploradorModal()">Editar foto de
-                                    marca</button>
-                            </div>
-                            <div class="col" style="margin-top: 3rem;">
-                                <div class="row">
-                                    <div class="col">
 
-                                        <div class="letraPer col-md-8 fs-3">Nombre marca
-                                        </div>
-                                        <div
-                                            class="cuadroText col-md-10 fs-3 border border-dark rounded text-start">
-                                            <input type="text" class="form-control fs-3"
-                                                aria-label="Sizing example input"
-                                                aria-describedby="inputGroup-sizing-default"
-                                                value="Nombre de marca para poder editar">
+    <!--editar marca-->
+    <div class="modal fade" id="modal_editar_marca" tabindex="-1" aria-labelledby="exampleModalLabel"
+        data-bs-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar marca</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="">
+                    <div class="modal-body">
+                        <!--contenido del modal-->
+                        <div class="container text-center">
+                            <div class="row">
+                                <form action="">
+                                    <div class=" col">
+                                        <img id="modalProfileImage" class="rounded  mx-auto d-block"
+                                            style="margin-top: 3rem;"
+                                            src="../../resources/img/productos/imagen_agregar.jpg" alt="..."
+                                            width="300px">
+                                        <br>
+                                        <br>
+                                        <input type="file" id="modalInputFile" style="display:none;" accept="image/*">
+                                        <button type="button"
+                                            class="botoncitoPerfilAgre btn btn-outline-dark btn-lg btn-block mx-auto order-2"
+                                            onclick="abrirExploradorModal()">Editar foto de
+                                            marca</button>
+                                    </div>
+                                    <div class="col" style="margin-top: 3rem;">
+                                        <div class="row">
+                                            <div class="col">
+
+                                                <div class="letraPer col-md-8 fs-3">Nombre marca
+                                                </div>
+                                                <div
+                                                    class="cuadroText col-md-10 fs-3 border border-dark rounded text-start">
+                                                    <input type="text" class="form-control fs-3"
+                                                        aria-label="Sizing example input"
+                                                        aria-describedby="inputGroup-sizing-default"
+                                                        value="Nombre de marca para poder editar">
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
-
-                                </div>
+                                </form>
                             </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
+                    <!--final del body-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar
+                        </button>
+                        <button type="button" class="btn btn-primary" id="btn_agregar_Producto">Guardar
+                            marca</button>
+                    </div>
+                </form>
             </div>
-            <!--final del body-->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar
-                </button>
-                <button type="button" class="btn btn-primary" id="btn_agregar_Producto">Guardar
-                    marca</button>
-            </div>
-        </form>
+        </div>
     </div>
-</div>
 
 
 
 </body>
 
 
-<!--Enlaces para archivos javascript-->
+<!--Enlaces para archivos bootstrap javascript-->
 <script src="../../resources/js/bootstrap.bundle.min.js"></script>
 
 <!--Enlace para poder mostrar alertas-->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<script src="../../controllers//admin/alerta_marca.js"></script>
+<script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
+<script src="../../controllers/utils/components.js"></script>
 <script src="../../controllers/utils/explorador_modal.js"></script>
 <script src="../../controllers/admin/plantillas.js"></script>
-<script src="../../controllers/admin/alertas_alertas.js"></script>
+<script src="../../controllers/admin/marcas.js"></script>
+<script src="../../controllers/utils/admin.js"></script>
 
 </html>
