@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -11,240 +11,141 @@
     <link rel="stylesheet" href="../../resources/css/css_boostrap.css">
     <!--Enlace para mandar a llamar el css-->
     <link rel="stylesheet" href="../../resources/css/index.css">
+    <link rel="stylesheet" href="../../resources/css/scrooll.css">
 </head>
 
 <body>
     <!--Navbar-->
     <header></header>
-    <br>
-    <br>
 
     <!-- tablas para usuarios -->
-
-    <h2 class="usuusu">Usuarios clientes</h2>
-    <span>
+    <main>
+        <!-- Título del contenido principal -->
+        <h3 class="usuusu" id="mainTitle"></h3>
+        <div class="row">
+            <!-- Formulario de búsqueda -->
+            <form class="col-sm-12 col-md-6" id="searchForm">
+                <div class="row ms-4">
+                    <div class="col-6">
+                        <input type="search" class="form-control" name="search" placeholder="Buscar" required>
+                    </div>
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-success">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                            </svg>
+                        </button>
+                        <button type="reset" class="btn btn-secondary" onclick="fillTable()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-x-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                <path
+                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
         <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             Apartado de tabla de los clientes
          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+        <div colspan="5" id="rowsFound" class="textoRegistros"></div>
         <div class="container-usuarios mb-5">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Perfil</th>
-                        <th>Foto</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td> <img src="../../resources/img/riverss.jpg" alt=""
-                                class="tamanioImagenTablaEmpleado img-fluid "> </td>
-                        <td>Jacob</td>
-                        <td>Alexander</td>
-                        <td>
-                            <button type="button" data-bs-dismiss="modal" data-bs-toggle="modal"
-                                data-bs-target="#ediusu" class="editar-btn"><img
-                                    src="../../resources/img/iconos/lapiz.png" class="botones_productos"
-                                    alt="Editar"></button>
-                            <button id=" " onclick="alertMine('eliminarUsu')" type="button" class="borrar-btn"><img
-                                    src="../../resources/img/iconos/papelera.png" class="botones_productos"
-                                    alt="Borrar"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td> <img src="../../resources/img/riverss.jpg" alt=""
-                                class="tamanioImagenTablaEmpleado img-fluid "> </td>
-                        <td>Jacob</td>
-                        <td>Rivera</td>
-                        <td>
-                            <button type="button" class="editar-btn"><img src="../../resources/img/iconos/lapiz.png"
-                                    class="botones_productos" data-bs-dismiss="modal" data-bs-toggle="modal"
-                                    data-bs-target="#ediusu" alt="Editar"></button>
-                            <button id="" onclick="alertMine('eliminarUsu')" type="button" class="borrar-btn"><img
-                                    src="../../resources/img/iconos/papelera.png" class="botones_productos"
-                                    alt="Borrar"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td> <img src="../../resources/img/riverss.jpg" alt=""
-                                class="tamanioImagenTablaEmpleado img-fluid "> </td>
-                        <td>Darlen</td>
-                        <td>Sanchez</td>
-                        <td>
-                            <button type="button" class="editar-btn"><img src="../../resources/img/iconos/lapiz.png"
-                                    class="botones_productos" data-bs-dismiss="modal" data-bs-toggle="modal"
-                                    data-bs-target="#ediusu" alt="Editar"></button>
-                            <button id="" onclick="alertMine('eliminarUsu')" type="button" class="borrar-btn"><img
-                                    src="../../resources/img/iconos/papelera.png" class="botones_productos"
-                                    alt="Borrar"></button>
-                        </td>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td> <img src="../../resources/img/riverss.jpg" alt=""
-                                class="tamanioImagenTablaEmpleado img-fluid "> </td>
-                        <td>Samantha</td>
-                        <td>Castro</td>
-                        <td>
-                            <button type="button" data-bs-dismiss="modal" data-bs-toggle="modal"
-                                data-bs-target="#ediusu" class="editar-btn"><img
-                                    src="../../resources/img/iconos/lapiz.png" class="botones_productos"
-                                    data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#ediusu"
-                                    alt="Editar"></button>
-                            <button id="" onclick="alertMine('eliminarUsu')" type="button" class="borrar-btn"><img
-                                    src="../../resources/img/iconos/papelera.png" class="botones_productos"
-                                    alt="Borrar"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        </td>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td> <img src="../../resources/img/riverss.jpg" alt=""
-                                class="tamanioImagenTablaEmpleado img-fluid "> </td>
-                        <td>Mumble</td>
-                        <td>Sanchez</td>
-                        <td>
-                            <button type="button" class="editar-btn"><img src="../../resources/img/iconos/lapiz.png"
-                                    class="botones_productos" data-bs-dismiss="modal" data-bs-toggle="modal"
-                                    data-bs-target="#ediusu" alt="Editar"></button>
-                            <button id="" onclick="alertMine('eliminarUsu')" type="button" class="borrar-btn"><img
-                                    src="../../resources/img/iconos/papelera.png" class="botones_productos"
-                                    alt="Borrar"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">6</th>
-                        <td> <img src="../../resources/img/riverss.jpg" alt=""
-                                class="tamanioImagenTablaEmpleado img-fluid "> </td>
-                        <td>Alisson</td>
-                        <td>Zepeda</td>
-                        <td>
-                            <button type="button" class="editar-btn"><img src="../../resources/img/iconos/lapiz.png"
-                                    class="botones_productos" data-bs-dismiss="modal" data-bs-toggle="modal"
-                                    data-bs-target="#ediusu" alt="Editar"></button>
-                            <button id="" onclick="alertMine('eliminarUsu')" type="button" class="borrar-btn"><img
-                                    src="../../resources/img/iconos/papelera.png" class="botones_productos"
-                                    alt="Borrar"></button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-
-
-
-
-        <footer class="test ">
-        </footer>
-
-        </div>
-
-        <!-- Ventana flotante para editar usuario clientes -->
-
-        <!-- modal editar usuario-->
-        <div class="modal fade" id="ediusu" tabindex="-1" aria-labelledby="modal" aria-hidden="true">
-            <div class="modal-dialog modal-lg" style="width: 100%;">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <!-- Título del modal -->
-                        <h6 class="modal-title  w-100 text-center" id="modal">Editar datos del cliente</h6>
-                        <!-- Botón de cierre del modal -->
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="col">
-                            <div class="row">
-                                <!--Imagen de perfil-->
-                                <div class=" row ">
-                                    <div class="col-md-12 container d-flex align-items-center justify-content-center">
-                                        <img class="rounded mx-auto d-block " src="../../resources/img/iconoPerfil.jpg"
-                                            alt="..." width="300px">
-                                        <br>
-                                    </div>
-
-                                    <div class="col">
-                                        <form>
-                                            <div class="form-group">
-                                                <label for="CuadroNom" class="letraPer col-md-4 fs-3">Nombre</label>
-                                                <input type="text"
-                                                    class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
-                                                    id="CuadroNom" placeholder="Veronica">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="CuadroApel" class="letraPer col-md-4 fs-3">Apellido</label>
-                                                <input type="text"
-                                                    class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
-                                                    id="CuadroApel" placeholder="Sanchez">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="CuadroNomUsu" class="letraPer col-md-4 fs-3">Nombre de
-                                                    usuario</label>
-                                                <input type="text"
-                                                    class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
-                                                    id="CuadroNomUsu" placeholder="Veri2603">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="CuadroCorreo" class="letraPer col-md-8 fs-3">Correo
-                                                    electrónico</label>
-                                                <input type="email"
-                                                    class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
-                                                    id="CuadroCorreo" placeholder="Verititito@gmail.com">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="CuadroTel" class="letraPer col-md-4 fs-3">Telefono</label>
-                                                <input type="number"
-                                                    class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
-                                                    id="CuadroTel" placeholder="1234-1234">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="CuadroTelEmer" class="letraPer col-md-10 fs-3">Telefono de
-                                                    emergencia</label>
-                                                <input type="number"
-                                                    class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
-                                                    id="CuadroTelEmer" placeholder="1234-1234">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="CuadroDUI" class="letraPer col-md-10 fs-3">DUI del
-                                                    cliente</label>
-                                                <input type="number"
-                                                    class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
-                                                    id="CuadroDUI" placeholder="12345678-9">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="CuadroPass"
-                                                    class="letraPer col-md-10 fs-3">Contraseña</label>
-                                                <input type="password"
-                                                    class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
-                                                    id="CuadroPass" placeholder="contraseña">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="CuadroFecha" class="letraPer col-md-10 fs-3">Fecha de
-                                                    nacimiento</label>
-                                                <input type="date"
-                                                    class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
-                                                    id="CuadroFecha" placeholder="12345678-9">
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <!-- Botón para actualizar datos en el modal -->
-                                <button onclick="alertMine ('modificarUsu')" type="button" type="button"
-                                    style="font-size: 30px;" class="agreUs btn btn-outline-secondary">Editar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="table-responsive scrollbar" style="max-height: 400px; overflow-y: auto;">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>FOTO</th>
+                            <th>APELLIDO</th>
+                            <th>NOMBRE</th>
+                            <th>ALIAS</th>
+                            <th>ESTADO</th>
+                            <th>ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
             </div>
         </div>
-    </span>
+
+        <!-- Inclusión de la librería de mascaras. Para más información https://github.com/text-mask/text-mask -->
+        <script type="text/javascript" src="../../resources/js/vanillaTextMask.js"></script>
+    </main>
+    <footer class="test ">
+    </footer>
+
+    <!-- Ventana flotante para editar usuario clientes -->
+    <!-- Componente Modal para guardar un registro -->
+    <div class="modal fade" id="saveModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- Título del modal -->
+                    <h1 class="modal-title fs-5" id="modalTitle"></h1>
+                    <!-- Botón de cierre del modal -->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Formulario para guardar un registro -->
+                <form id="saveForm">
+                    <div class="modal-body row g-3">
+                        <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                        <input type="hidden" id="idCliente" name="idCliente">
+                        <!-- Campos del formulario -->
+                        <div class="form-group">
+                            <label for="nombreCliente" class="form-label letraPer col-md-4 fs-3">Nombre</label>
+                            <input id="nombreCliente" type="text" name="nombreCliente"
+                                class="form-control cuadroText col-md-6 fs-3" placeholder="Veronica" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellidoCliente" class="form-label letraPer col-md-4 fs-3">Apellido</label>
+                            <input id="apellidoCliente" type="text" name="apellidoCliente"
+                                class="form-control cuadroText col-md-8 fs-3" placeholder="Sanchez" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="aliasCliente" class="form-label letraPer col-md-4 fs-3">Alias</label>
+                            <input id="aliasCliente" type="text" name="aliasCliente"
+                                class="form-control cuadroText col-md-8 fs-3" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefonoCliente" class="letraPer col-md-4 fs-3">Telefono</label>
+                            <input type="text" class="form-control cuadroText col-md-8 fs-3" name="telefonoCliente"
+                                id="telefonoCliente" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="correoCliente" class="form-label letraPer col-md-4 fs-3">Correo</label>
+                            <input id="correoCliente" type="text" name="correoCliente"
+                                class="form-control cuadroText col-md-8 fs-3" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="direccionCliente" class="form-label letraPer col-md-4 fs-3">Dirección</label>
+                            <input type="text" id="direccionCliente" name="direccionCliente" maxlength="250"
+                                class="form-control cuadroText col-md-8 fs-3" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="imagenCliente" class="form-label letraPer col-md-4 fs-3">Imagen</label>
+                            <input id="imagenCliente" type="file" name="imagenCliente"
+                                class="form-control cuadroText col-md-8 fs-3" accept=".png, .jpg">
+                        </div>
+                        <div class="form-check form-switch form-check-reverse">
+                            <input class="form-check-input" type="checkbox" id="estadoCliente" name="estadoCliente"
+                                checked>
+                            <label class="form-check-label" for="estadoCliente">Estado</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <!-- Botón para agregar los datos del empleado-->
+                        <button type="submit" style="font-size: 30px;"
+                            class="agreUs btn btn-outline-secondary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
 
     <!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT -->
@@ -259,7 +160,10 @@
     <!-- Llamada al controlador del sitio privado -->
     <script type="text/javascript" src="../../controllers/utils/admin.js"></script>
     <!-- Llamada al controlador de la página web -->
-    <script type="text/javascript" src="../../controllers/admin/administrador.js"></script>
+    <script type="text/javascript" src="../../controllers/admin/clientes.js"></script>
+
 </body>
+
+
 
 </html>

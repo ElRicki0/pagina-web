@@ -97,9 +97,9 @@ class ClienteHandler
 
     public function createRow()
     {
-        $sql = 'INSERT INTO tb_clientes(nombre_cliente, apellido_cliente, correo_cliente, telefono_cliente, residencia_cliente, pass_cliente, estado_cliente, imagen_cliente)
-                VALUES(?, ?, ?, ?, ?, ?,true, ?)';
-        $params = array($this->nombre, $this->apellido, $this->correo, $this->telefono, $this->direccion, $this->clave, $this->imagen);
+        $sql = 'INSERT INTO tb_clientes(nombre_cliente, apellido_cliente, alias_cliente, correo_cliente, telefono_cliente, residencia_cliente, pass_cliente, estado_cliente, imagen_cliente)
+                VALUES(?, ?, ?, ?, ?, ?, ?,true, ?)';
+        $params = array($this->nombre, $this->apellido,$this->alias, $this->correo, $this->telefono, $this->direccion, $this->clave, $this->imagen);
         return Database::executeRow($sql, $params);
     }
 
@@ -113,7 +113,7 @@ class ClienteHandler
 
     public function readOne()
     {
-        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, correo_cliente, telefono_cliente, residencia_cliente, estado_cliente, imagen_cliente
+        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, correo_cliente, telefono_cliente, residencia_cliente, estado_cliente, alias_cliente,imagen_cliente
                 FROM tb_clientes
                 WHERE id_cliente = ?';
         $params = array($this->id);
@@ -123,9 +123,9 @@ class ClienteHandler
     public function updateRow()
     {
         $sql = 'UPDATE tb_clientes
-                SET nombre_cliente = ?, apellido_cliente = ?, estado_cliente = ?, telefono_cliente = ?, direccion_cliente = ?, imagen_cliente = ?
+                SET nombre_cliente = ?, apellido_cliente = ?, alias_cliente = ?, estado_cliente = ?, telefono_cliente = ?, direccion_cliente = ?, imagen_cliente = ?
                 WHERE id_cliente = ?';
-        $params = array($this->nombre, $this->apellido, $this->estado, $this->telefono, $this->direccion, $this->imagen, $this->id);
+        $params = array($this->nombre, $this->apellido, $this->alias, $this->estado, $this->telefono, $this->direccion, $this->imagen, $this->id);
         return Database::executeRow($sql, $params);
     }
 
