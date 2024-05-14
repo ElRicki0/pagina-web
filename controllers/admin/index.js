@@ -3,6 +3,31 @@ const SIGNUP_FORM = document.getElementById('signupForm');
 // Constante para establecer el formulario de inicio de sesión.
 const LOGIN_FORM = document.getElementById('loginForm');
 
+
+// Constantes para poder validar campos
+TELEFONO_ADMINISTRADOR = document.getElementById('telefonoAdministrador'),
+TELEFONO_EMER_ADMINISTRADOR = document.getElementById('telefonoEmerAdministrador'),
+DUI_ADMINISTRADOR = document.getElementById('duiAdministrador'),
+
+
+// Llamada a la función para establecer la mascara del campo teléfono.
+vanillaTextMask.maskInput({
+    inputElement: document.getElementById('telefonoAdministrador'),
+    mask: [/\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+});
+
+// Llamada a la función para establecer la mascara del campo teléfono emergenci.
+vanillaTextMask.maskInput({
+    inputElement: document.getElementById('telefonoEmerAdministrador'),
+    mask: [/\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+});
+
+// Llamada a la función para establecer la mascara del campo DUI.
+vanillaTextMask.maskInput({
+    inputElement: document.getElementById('duiAdministrador'),
+    mask: [/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/]
+});
+
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
     // Petición para consultar los usuarios registrados.
