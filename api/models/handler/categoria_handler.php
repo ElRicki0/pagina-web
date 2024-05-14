@@ -9,13 +9,13 @@ class CategoriaHandler
     /*
      *  Declaración de atributos para el manejo de datos.
      */
-    protected $id_categoria_producto = null;
-    protected $nombre_categoria_producto = null;
-    protected $descripcion_categoria_producto = null;
-    protected $imagen_categoria_producto = null;
+    protected $id = null;
+    protected $nombre = null;
+    protected $descripcion = null;
+    protected $imagen = null;
 
     // Constante para establecer la ruta de las imágenes.
-    const RUTA_IMAGEN = '../../images/categorias';
+    const RUTA_IMAGEN = '../../images/categorias/';
 
 
     /*
@@ -36,7 +36,7 @@ class CategoriaHandler
     {
         $sql = 'INSERT INTO tb_categorias_productos(nombre_categoria_producto, descripcion_categoria_producto, imagen_categoria_producto)
                 VALUES(?, ?, ?)';
-        $params = array($this->nombre_categoria_producto, $this->descripcion_categoria_producto, $this->imagen_categoria_producto);
+        $params = array($this->nombre, $this->descripcion, $this->imagen);
         return Database::executeRow($sql, $params);
     }
     public function readAll()
@@ -52,7 +52,7 @@ class CategoriaHandler
         $sql = 'SELECT id_categoria_producto, nombre_categoria_producto, descripcion_categoria_producto, imagen_categoria_producto
                 FROM tb_categorias_productos
                 WHERE id_categoria_producto = ?';
-        $params = array($this->id_categoria_producto);
+        $params = array($this->id,);
         return Database::getRow($sql, $params);
     }
 
@@ -61,7 +61,7 @@ class CategoriaHandler
         $sql = 'SELECT imagen_categoria_producto
                 FROM tb_categorias_productos
                 WHERE id_categoria_producto = ?';
-        $params = array($this->id_categoria_producto);
+        $params = array($this->id,);
         return Database::getRow($sql, $params);
     }
 
@@ -70,7 +70,7 @@ class CategoriaHandler
         $sql = 'UPDATE tb_categorias_productos
                 SET imagen_categoria_producto = ?, nombre_categoria_producto = ?, descripcion_categoria_producto = ?
                 WHERE id_categoria_producto = ?';
-        $params = array($this->imagen_categoria_producto, $this->nombre_categoria_producto, $this->descripcion_categoria_producto, $this->id_categoria_producto);
+        $params = array($this->imagen, $this->nombre, $this->descripcion, $this->id);
         return Database::executeRow($sql, $params);
     }
 
@@ -78,7 +78,7 @@ class CategoriaHandler
     {
         $sql = 'DELETE FROM tb_categorias_productos
                 WHERE id_categoria_producto = ?';
-        $params = array($this->id_categoria_producto);
+        $params = array($this->id,);
         return Database::executeRow($sql, $params);
     }
 }

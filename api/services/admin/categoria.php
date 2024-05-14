@@ -10,8 +10,8 @@ if (isset($_GET['action'])) {
     $categoria = new CategoriaData;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'dataset' => null, 'error' => null, 'exception' => null);
-
-        
+    // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
+    if (isset($_SESSION['idAdministrador'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'searchRows':
@@ -27,16 +27,16 @@ if (isset($_GET['action'])) {
             case 'createRow':
                 $_POST = Validator::validateForm($_POST);
                 if (
-                    !$categoria->setNombre($_POST['nombre_categoria_producto']) or
-                    !$categoria->setDescripcion($_POST['descripcion_categoria_producto']) or
-                    !$categoria->setImagen($_FILES['imagen_categoria_producto'])
+                    !$categoria->setNombre($_POST['nombreCategoria']) or
+                    !$categoria->setDescripcion($_POST['descripcionCategoria']) or
+                    !$categoria->setImagen($_FILES['imagenCategoria'])
                 ) {
                     $result['error'] = $categoria->getDataError();
                 } elseif ($categoria->createRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Categoría creada correctamente';
                     // Se asigna el estado del archivo después de insertar.
-                    $result['fileStatus'] = Validator::saveFile($_FILES['imagen_categoria_producto'], $categoria::RUTA_IMAGEN);
+                    $result['fileStatus'] = Validator::saveFile($_FILES['imagenCategoria'], $categoria::RUTA_IMAGEN);
                 } else {
                     $result['error'] = 'Ocurrió un problema al crear la categoría';
                 }
@@ -50,7 +50,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
-                if (!$categoria->setId($_POST['id_categoria_producto'])) {
+                if (!$categoria->setId($_POST['idCategoria'])) {
                     $result['error'] = $categoria->getDataError();
                 } elseif ($result['dataset'] = $categoria->readOne()) {
                     $result['status'] = 1;
@@ -61,25 +61,25 @@ if (isset($_GET['action'])) {
             case 'updateRow':
                 $_POST = Validator::validateForm($_POST);
                 if (
-                    !$categoria->setId($_POST['id_categoria_producto']) or
+                    !$categoria->setId($_POST['idCategoria']) or
                     !$categoria->setFilename() or
-                    !$categoria->setNombre($_POST['nombre_categoria_producto']) or
-                    !$categoria->setDescripcion($_POST['descripcion_categoria_producto']) or
-                    !$categoria->setImagen($_FILES['imagen_categoria_producto'], $categoria->getFilename())
+                    !$categoria->setNombre($_POST['nombreCategoria']) or
+                    !$categoria->setDescripcion($_POST['descripcionCategoria']) or
+                    !$categoria->setImagen($_FILES['imagenCategoria'], $categoria->getFilename())
                 ) {
                     $result['error'] = $categoria->getDataError();
                 } elseif ($categoria->updateRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Categoría modificada correctamente';
                     // Se asigna el estado del archivo después de actualizar.
-                    $result['fileStatus'] = Validator::changeFile($_FILES['imagen_categoria_producto'], $categoria::RUTA_IMAGEN, $categoria->getFilename());
+                    $result['fileStatus'] = Validator::changeFile($_FILES['imagenCategoria'], $categoria::RUTA_IMAGEN, $categoria->getFilename());
                 } else {
                     $result['error'] = 'Ocurrió un problema al modificar la categoría';
                 }
                 break;
             case 'deleteRow':
                 if (
-                    !$categoria->setId($_POST['id_categoria_producto']) or
+                    !$categoria->setId($_POST['idCategoria']) or
                     !$categoria->setFilename()
                 ) {
                     $result['error'] = $categoria->getDataError();
@@ -101,7 +101,9 @@ if (isset($_GET['action'])) {
         header('Content-type: application/json; charset=utf-8');
         // Se imprime el resultado en formato JSON y se retorna al controlador.
         print(json_encode($result));
-    
+    } else {
+        print(json_encode('Acceso denegado'));
+    }
 } else {
     print(json_encode('Recurso no disponible'));
 }

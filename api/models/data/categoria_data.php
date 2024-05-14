@@ -18,7 +18,7 @@ class CategoriaData extends CategoriaHandler
     public function setId($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->id_categoria_producto = $value;
+            $this->id = $value;
             return true;
         } else {
             $this->data_error = 'El identificador de la categoría es incorrecto';
@@ -32,7 +32,7 @@ class CategoriaData extends CategoriaHandler
             $this->data_error = 'El nombre debe ser un valor alfanumérico';
             return false;
         } elseif (Validator::validateLength($value, $min, $max)) {
-            $this->nombre_categoria_producto = $value;
+            $this->nombre = $value;
             return true;
         } else {
             $this->data_error = 'El nombre debe tener una longitud entre ' . $min . ' y ' . $max;
@@ -48,7 +48,7 @@ class CategoriaData extends CategoriaHandler
             $this->data_error = 'La descripción contiene caracteres prohibidos';
             return false;
         } elseif (Validator::validateLength($value, $min, $max)) {
-            $this->descripcion_categoria_producto = $value;
+            $this->descripcion = $value;
             return true;
         } else {
             $this->data_error = 'La descripción debe tener una longitud entre ' . $min . ' y ' . $max;
@@ -59,16 +59,16 @@ class CategoriaData extends CategoriaHandler
     public function setImagen($file, $filename = null)
     {
         if (Validator::validateImageFile($file, 1000)) {
-            $this->imagen_categoria_producto = Validator::getFilename();
+            $this->imagen = Validator::getFilename();
             return true;
         } elseif (Validator::getFileError()) {
             $this->data_error = Validator::getFileError();
             return false;
         } elseif ($filename) {
-            $this->imagen_categoria_producto = $filename;
+            $this->imagen = $filename;
             return true;
         } else {
-            $this->imagen_categoria_producto = 'default.png';
+            $this->imagen = 'default.png';
             return true;
         }
     }
@@ -76,7 +76,7 @@ class CategoriaData extends CategoriaHandler
     public function setFilename()
     {
         if ($data = $this->readFilename()) {
-            $this->filename = $data['imagen_categoria'];
+            $this->filename = $data['imagen_categoria_producto'];
             return true;
         } else {
             $this->data_error = 'Categoría inexistente';

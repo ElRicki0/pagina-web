@@ -13,10 +13,10 @@ const SAVE_MODAL = new bootstrap.Modal('#saveModal'),
 
 // Constantes para establecer los elementos del formulario de guardar.
 const SAVE_FORM = document.getElementById('saveForm'),
-    id_categoria_producto = document.getElementById('id_categoria_producto'),
-    nombre_categoria_producto = document.getElementById('nombre_categoria_producto'),
-    descripcion_categoria_producto = document.getElementById('descripcion_categoria_producto'),
-    imagen_categoria_producto = document.getElementById('imagen_categoria_producto');
+    ID_CATEGORIA = document.getElementById('idCategoria'),
+    IMAGEN_CATEGORIA = document.getElementById('imagenCategoria');
+    NOMBRE_CATEGORIA = document.getElementById('nombreCategoria'),
+    DESCRIPCION_CATEGORIA = document.getElementById('descripcionCategoria'),
 
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros existentes.
@@ -119,7 +119,7 @@ const openCreate = () => {
 const openUpdate = async (id) => {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('id_categoria_producto', id);
+    FORM.append('idCategoria', id);
     // Petición para obtener los datos del registro solicitado.
     const DATA = await fetchData(CATEGORIA_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -131,9 +131,9 @@ const openUpdate = async (id) => {
         SAVE_FORM.reset();
         // Se inicializan los campos con los datos.
         const ROW = DATA.dataset;
-        id_categoria_producto.value = ROW.id_categoria_producto;
-        nombre_categoria_producto.value = ROW.nombre_categoria_producto;
-        descripcion_categoria_producto.value = ROW.descripcion_categoria_producto;
+        ID_CATEGORIA.value = ROW.id_categoria_producto;
+        NOMBRE_CATEGORIA.value = ROW.nombre_categoria_producto;
+        DESCRIPCION_CATEGORIA.value = ROW.descripcion_categoria_producto;
         // imagen_categoria_producto.value = ROW.imagen_categoria_producto;
     } else {
         sweetAlert(2, DATA.error, false);
@@ -153,7 +153,7 @@ const openDelete = async (id) => {
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('id_categoria_producto', id);
+        FORM.append('idCategoria', id);
         // Petición para eliminar el registro seleccionado.
         const DATA = await fetchData(CATEGORIA_API, 'deleteRow', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
