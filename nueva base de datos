@@ -47,15 +47,20 @@ CREATE TABLE tb_categorias_productos (
   id_categoria_producto int auto_increment primary key,
   nombre_categoria_producto VARCHAR(50) UNIQUE NOT NULL,
   descripcion_categoria_producto VARCHAR(50) NOT NULL,
-  imagen_categoria_producto varchar(50)
+  imagen_categoria_producto varchar(500)
 );
+SELECT id_marca, nombre_marca, imagen_marca
+                FROM tb_marcas
 
 -- Creacion de tabla tb_marcas
 CREATE TABLE tb_marcas (
   id_marca int auto_increment primary key,
   nombre_marca VARCHAR(50) UNIQUE NOT NULL,
-  imagen_marca varchar(50)
+  imagen_marca varchar(500)
 );
+
+
+select*from tb_marcas;
 
 -- Creacion de tabla tb_productos
 CREATE TABLE tb_productos (
@@ -63,6 +68,7 @@ CREATE TABLE tb_productos (
   nombre_producto VARCHAR(50) NOT NULL,
   descripcion_producto VARCHAR(500) NOT NULL,
   precio_producto float NOT NULL,
+  cantidad_producto	int,
   id_categoria_producto int NOT NULL,
   CONSTRAINT fk_id_categoriaProducto
   FOREIGN KEY (id_categoria_producto)
@@ -177,3 +183,13 @@ CREATE TABLE tb_detalles_pedidos (
 
 -- las imagenes se cambiaron por varchar(50) en logar de LONGTEXT
 -- la asignacion de autoincrement y de primary key se hacen directamente desde la creacion de la tabla y no se altera nada afuera de estas 
+
+-- Datos de ejemplo para tb_categorias_productos
+INSERT INTO tb_categorias_productos (nombre_categoria_producto, descripcion_categoria_producto, imagen_categoria_producto) 
+VALUES 
+('Electrónica', 'Productos electrónicos', 'electronica.jpg'),
+('Ropa', 'Prendas de vestir', 'ropa.jpg');
+
+SELECT id_marca, nombre_marca, imagen_marca 
+                FROM tb_marcas
+                ORDER BY id_marca
