@@ -91,6 +91,22 @@ class ClienteHandler
         return Database::executeRow($sql, $params);
     }
 
+    public function checkPassword($password)
+    {
+        $sql = 'SELECT pass_cliente
+                FROM tb_clientes
+                WHERE id_cliente = ?';
+        $params = array($_SESSION['id_cliente']);
+        $data = Database::getRow($sql, $params);
+        // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
+        if (password_verify($password, $data['pass_cliente'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
     */
@@ -133,9 +149,9 @@ class ClienteHandler
     public function updateRow()
     {
         $sql = 'UPDATE tb_clientes
-                SET nombre_cliente = ?, apellido_cliente = ?, alias_cliente = ?, correo_cliente = ?, estado_cliente = ?, telefono_cliente = ?, direccion_cliente = ?, imagen_cliente = ?
+                SET estado_cliente = ?, imagen_cliente = ?
                 WHERE id_cliente = ?';
-        $params = array($this->nombre, $this->apellido, $this->alias, $this->correo, $this->estado, $this->telefono, $this->direccion, $this->imagen, $this->id);
+        $params = array( $this->estado, $this->imagen, $this->id);
         return Database::executeRow($sql, $params);
     }
 
@@ -158,7 +174,7 @@ class ClienteHandler
 
     public function readFilename()
     {
-        $sql = 'SELECT imagen_cliene
+        $sql = 'SELECT imagen_cliente
                 FROM tb_clientes
                 WHERE id_cliente = ?';
         $params = array($this->id);

@@ -16,11 +16,11 @@ const SAVE_FORM = document.getElementById('saveForm'),
     TELEFONO_CLIENTE = document.getElementById('telefonoCliente'),
     CORREO_CLIENTE = document.getElementById('correoCliente'),
     DIRECCION_CLIENTE = document.getElementById('direccionCliente'),
-    ESTADO_CLIENTE = document.getElementById('estadocliente');
-ALIAS_CLIENTE = document.getElementById('aliasCliente'),
+    ESTADO_CLIENTE = document.getElementById('estadoCliente'),
+    ALIAS_CLIENTE = document.getElementById('aliasCliente'),
     CLAVE_CLIENTE = document.getElementById('claveCliente'),
-    CONFIRMAR_CLAVE = document.getElementById('confirmarClave');
-IMAGEN_CLIENTE = document.getElementById('imagenCliente');
+    CONFIRMAR_CLAVE = document.getElementById('confirmarClave'),
+    IMAGEN_CLIENTE = document.getElementById('imagenCliente');
 
 // Llamada a la función para establecer la mascara del campo teléfono.
 vanillaTextMask.maskInput({
@@ -89,7 +89,6 @@ const fillTable = async (form = null) => {
         // Script 1
         DATA.dataset.forEach(row => {
             // Se establece un icono para el estado del cliente.
-            const icon = row.estado_cliente ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill';
             TABLE_BODY.innerHTML += `
                 <tr row col-12" style="margin-bottom: 10px; margin-left: auto; margin-right: auto;">
                 <td><img src="${SERVER_URL}images/clientes/${row.imagen_cliente}" height="50"></td>
@@ -97,14 +96,18 @@ const fillTable = async (form = null) => {
                     <td>${row.nombre_cliente}</td>
                     <td>${row.correo_cliente}</td>
                     <td>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="28" fill="currentColor" class="${icon}" viewBox="0 0 16 16">
-                            ${row.estado_cliente
-                    ? `<path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
-                                   <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>`
-                    : `<path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z"/>
-                                   <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z"/>`}
-                        </svg>
-                    </td>
+                    
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="28" fill="currentColor" viewBox="0 0 16 16">
+                            ${(row.estado_cliente )
+                    ? `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+                  </svg>`
+                    : `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
+                    <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z"/>
+                    <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z"/>
+                  </svg>`}
+                  </td>
                     <td>
                         <button type="button" class="btn editar-btn" onclick="openUpdate(${row.id_cliente})">
                             <img src="../../resources/img/iconos/info.png">
@@ -171,17 +174,11 @@ const openUpdate = async (id) => {
         CORREO_CLIENTE.value = ROW.correo_cliente;
         ALIAS_CLIENTE.value = ROW.alias_cliente;
         TELEFONO_CLIENTE.value = ROW.telefono_cliente;
-        // Verifica si el estado es true o false y establece el checkbox en consecuencia
-        if (ROW.estado_cliente === '1') {
-            ESTADO_CLIENTE.checked = true;
-        } else {
-            ESTADO_CLIENTE.checked = false;
-        }
+        ESTADO_CLIENTE.checked = ROW.estado_cliente;
     } else {
         sweetAlert(2, DATA.error, false);
     }
 }
-
 
 
 /*
