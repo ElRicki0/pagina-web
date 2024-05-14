@@ -63,6 +63,16 @@ class ClienteHandler
         return Database::executeRow($sql, $params);
     }
 
+    public function readProfile()
+    {
+        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, correo_cliente, telefono_cliente,residencia_cliente,alias_cliente
+                FROM id_cliente
+                WHERE id_admin = ?';
+        $params = array($_SESSION['id_cliente']);
+        return Database::getRow($sql, $params);
+    }
+
+
     public function editProfile()
     {
         $sql = 'UPDATE tb_clientes
@@ -123,9 +133,9 @@ class ClienteHandler
     public function updateRow()
     {
         $sql = 'UPDATE tb_clientes
-                SET nombre_cliente = ?, apellido_cliente = ?, alias_cliente = ?, estado_cliente = ?, telefono_cliente = ?, direccion_cliente = ?, imagen_cliente = ?
+                SET nombre_cliente = ?, apellido_cliente = ?, alias_cliente = ?, correo_cliente = ?, estado_cliente = ?, telefono_cliente = ?, direccion_cliente = ?, imagen_cliente = ?
                 WHERE id_cliente = ?';
-        $params = array($this->nombre, $this->apellido, $this->alias, $this->estado, $this->telefono, $this->direccion, $this->imagen, $this->id);
+        $params = array($this->nombre, $this->apellido, $this->alias, $this->correo, $this->estado, $this->telefono, $this->direccion, $this->imagen, $this->id);
         return Database::executeRow($sql, $params);
     }
 

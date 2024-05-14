@@ -88,18 +88,26 @@ const fillTable = async (form = null) => {
         // Se recorre el conjunto de registros fila por fila.
         // Script 1
         DATA.dataset.forEach(row => {
-            // Se establece un icono para el estado del ROL.
-            (row.estado_cliente) ? icon = 'bi bi-eye-fill ' : icon = 'bi bi-eye-slash-fill';
+            // Se establece un icono para el estado del cliente.
+            const icon = row.estado_cliente ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill';
             TABLE_BODY.innerHTML += `
                 <tr row col-12" style="margin-bottom: 10px; margin-left: auto; margin-right: auto;">
-                <td><img src="${SERVER_URL}images/productos/${row.imagen_cliente}" height="50"></td>
+                <td><img src="${SERVER_URL}images/clientes/${row.imagen_cliente}" height="50"></td>
                     <td>${row.apellido_cliente}</td>
                     <td>${row.nombre_cliente}</td>
                     <td>${row.correo_cliente}</td>
-                    <td><i class="${icon}"></i></td>
+                    <td>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="28" fill="currentColor" class="${icon}" viewBox="0 0 16 16">
+                            ${row.estado_cliente
+                    ? `<path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                                   <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>`
+                    : `<path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z"/>
+                                   <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z"/>`}
+                        </svg>
+                    </td>
                     <td>
                         <button type="button" class="btn editar-btn" onclick="openUpdate(${row.id_cliente})">
-                            <img src="../../resources/img/iconos/lapiz.png">
+                            <img src="../../resources/img/iconos/info.png">
                         </button>
                         <button type="button" class="btn borrar-btn" onclick="openDelete(${row.id_cliente})">
                             <img src="../../resources/img/iconos/papelera.png">
@@ -156,14 +164,49 @@ const openUpdate = async (id) => {
         ALIAS_CLIENTE.disabled = true;
         // Se inicializan los campos con los datos.
         const ROW = DATA.dataset;
-        DIRECCION_CLIENTE.value = ROW.residencia_cliente;
         ID_CLIENTE.value = ROW.id_cliente;
+        DIRECCION_CLIENTE.value = ROW.residencia_cliente;
         NOMBRE_CLIENTE.value = ROW.nombre_cliente;
         APELLIDO_CLIENTE.value = ROW.apellido_cliente;
         CORREO_CLIENTE.value = ROW.correo_cliente;
-        ALIAS_CLIENTE.value = ROW.alias_cliente ;
+        ALIAS_CLIENTE.value = ROW.alias_cliente;
         TELEFONO_CLIENTE.value = ROW.telefono_cliente;
+        // Verifica si el estado es true o false y establece el checkbox en consecuencia
+        if (ROW.estado_cliente === '1') {
+            ESTADO_CLIENTE.checked = true;
+        } else {
+            ESTADO_CLIENTE.checked = false;
+        }
     } else {
         sweetAlert(2, DATA.error, false);
+    }
+}
+
+
+
+/*
+*   Función asíncrona para eliminar un registro.
+*   Parámetros: id (identificador del registro seleccionado).
+*   Retorno: ninguno.
+*/
+const openDelete = async (id) => {
+    // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
+    const RESPONSE = await confirmAction('¿Desea eliminar el cliente de forma permanente?');
+    // Se verifica la respuesta del mensaje.
+    if (RESPONSE) {
+        // Se define una constante tipo objeto con los datos del registro seleccionado.
+        const FORM = new FormData();
+        FORM.append('idCliente', id);
+        // Petición para eliminar el registro seleccionado.
+        const DATA = await fetchData(ADMINISTRADOR_API, 'deleteRow', FORM);
+        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+        if (DATA.status) {
+            // Se muestra un mensaje de éxito.
+            await sweetAlert(1, DATA.message, true);
+            // Se carga nuevamente la tabla para visualizar los cambios.
+            fillTable();
+        } else {
+            sweetAlert(2, DATA.error, false);
+        }
     }
 }
