@@ -106,7 +106,8 @@ class Database
                 self::$error;
                 break;
             default:
-                self::$error = 'Ocurrió un problema en la base de datos';
+                self::$error;
+                // self::$error = 'Ocurrió un problema en la base de datos';
         }
     }
 

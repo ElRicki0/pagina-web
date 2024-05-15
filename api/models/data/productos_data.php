@@ -75,7 +75,7 @@ class ProductoData extends ProductoHandler
             $this->cantidad = $value;
             return true;
         } else {
-            $this->data_error = 'Las existencias debe ser un número entero positivo';
+            $this->data_error = 'Las cantidads debe ser un número entero positivo';
             return false;
         }
     }
