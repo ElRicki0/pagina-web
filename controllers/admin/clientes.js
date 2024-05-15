@@ -54,6 +54,12 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     (ID_CLIENTE.value) ? action = 'updateRow' : action = 'createRow';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
+
+    const estadoCliente = ESTADO_CLIENTE.checked ? 1 : 0;
+
+    FORM.set('estadoCliente', estadoCliente);
+
+
     // Petición para guardar los datos del formulario.
     const DATA = await fetchData(CLIENTE_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -89,25 +95,15 @@ const fillTable = async (form = null) => {
         // Script 1
         DATA.dataset.forEach(row => {
             // Se establece un icono para el estado del cliente.
+            (parseInt(row.estado_cliente)) ? icon = 'bi bi-eye-fill' : icon = 'bi bi-eye-slash-fill';
             TABLE_BODY.innerHTML += `
                 <tr row col-12" style="margin-bottom: 10px; margin-left: auto; margin-right: auto;">
-                <td><img src="${SERVER_URL}images/clientes/${row.imagen_cliente}" height="50"></td>
+                <td><img src="${SERVER_URL}images/clientes/${row.imagen_cliente}" height="70" class="border border-primary rounded-circle"></td>
                     <td>${row.apellido_cliente}</td>
                     <td>${row.nombre_cliente}</td>
                     <td>${row.correo_cliente}</td>
-                    <td>
-                    
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="28" fill="currentColor" viewBox="0 0 16 16">
-                            ${(row.estado_cliente )
-                    ? `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
-                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
-                  </svg>`
-                    : `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
-                    <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z"/>
-                    <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z"/>
-                  </svg>`}
-                  </td>
+                    <td><i class="${icon}"></i></td>
+
                     <td>
                         <button type="button" class="btn editar-btn" onclick="openUpdate(${row.id_cliente})">
                             <img src="../../resources/img/iconos/info.png">

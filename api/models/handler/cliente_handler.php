@@ -131,7 +131,7 @@ class ClienteHandler
 
     public function readAll()
     {
-        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, correo_cliente, estado_cliente
+        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, correo_cliente, estado_cliente, imagen_cliente
                 FROM tb_clientes
                 ORDER BY apellido_cliente';
         return Database::getRows($sql);
@@ -152,6 +152,7 @@ class ClienteHandler
                 SET estado_cliente = ?, imagen_cliente = ?
                 WHERE id_cliente = ?';
         $params = array( $this->estado, $this->imagen, $this->id);
+        print_r($params);
         return Database::executeRow($sql, $params);
     }
 
