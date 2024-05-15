@@ -181,4 +181,12 @@ class ClienteHandler
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
+
+    //Función para cambiar el estado de un cliente.
+    public function changeState()
+    {
+        $sql = 'CALL cambiar_estado_cliente(?);';
+        $params = array($this->id);
+        return Database::executeRow($sql, $params);
+    }
 }

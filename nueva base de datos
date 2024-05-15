@@ -32,8 +32,8 @@ CREATE TABLE tb_administradores (
   DUI_admin INT UNIQUE NOT NULL,
   alias_admin VARCHAR(50) UNIQUE NOT NULL,
   pass_admin VARCHAR(5000) UNIQUE NOT NULL,
-  imagen_admin varchar(50),
-  estado_admin ENUM ('conectado', 'desconectado', 'inutilizable', 'baneado') NOT NULL
+  imagen_cliente LONGTEXT,
+  estado_cliente boolean NOT NULL
 );
 
 SELECT * FROM tb_administradores;

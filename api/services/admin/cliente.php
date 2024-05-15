@@ -75,6 +75,19 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Ocurrió un problema al modificar el registro';
                 }
                 break;
+            // Estado
+            case 'changeState':
+                if (
+                    !$cliente->setId($_POST['idCliente'])
+                ) {
+                    $result['error'] = $cliente->getDataError();
+                } elseif ($cliente->changeState()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Estado del cliente cambiado correctamente';
+                } else {
+                    $result['error'] = 'Ocurrió un problema al alterar el estado del cliente';
+                }
+                break;
             case 'deleteRow':
                 if (!$cliente->setId($_POST['idCliente'])) {
                     $result['error'] = $cliente->getDataError();
