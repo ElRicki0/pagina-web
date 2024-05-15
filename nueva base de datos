@@ -69,7 +69,7 @@ CREATE TABLE tb_productos (
   descripcion_producto VARCHAR(500) NOT NULL,
   precio_producto float NOT NULL,
   cantidad_producto	int,
-  id_categoria_producto int NOT NULL,
+  id_categoria_producto int,
   CONSTRAINT fk_id_categoriaProducto
   FOREIGN KEY (id_categoria_producto)
   REFERENCES tb_categorias_productos(id_categoria_producto),
@@ -77,7 +77,7 @@ CREATE TABLE tb_productos (
   CONSTRAINT fk_id_admin
   FOREIGN KEY (id_admin)
   REFERENCES tb_administradores(id_admin),
-  id_marca int NOT NULL,
+  id_marca int,
   CONSTRAINT fk_id_marca
   FOREIGN KEY (id_marca)
   REFERENCES tb_marcas(id_marca)
