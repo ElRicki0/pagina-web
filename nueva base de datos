@@ -49,8 +49,6 @@ CREATE TABLE tb_categorias_productos (
   descripcion_categoria_producto VARCHAR(50) NOT NULL,
   imagen_categoria_producto varchar(500)
 );
-SELECT id_marca, nombre_marca, imagen_marca
-                FROM tb_marcas
 
 -- Creacion de tabla tb_marcas
 CREATE TABLE tb_marcas (
@@ -184,11 +182,6 @@ CREATE TABLE tb_detalles_pedidos (
 -- las imagenes se cambiaron por varchar(50) en logar de LONGTEXT
 -- la asignacion de autoincrement y de primary key se hacen directamente desde la creacion de la tabla y no se altera nada afuera de estas 
 
--- Datos de ejemplo para tb_categorias_productos
-INSERT INTO tb_categorias_productos (nombre_categoria_producto, descripcion_categoria_producto, imagen_categoria_producto) 
-VALUES 
-('Electrónica', 'Productos electrónicos', 'electronica.jpg'),
-('Ropa', 'Prendas de vestir', 'ropa.jpg');
 
 SELECT id_marca, nombre_marca, imagen_marca 
                 FROM tb_marcas
