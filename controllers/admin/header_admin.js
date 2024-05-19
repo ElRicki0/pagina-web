@@ -34,6 +34,9 @@ header.innerHTML = `
                 <li class="nav-item">
                     <a class="nav-link active" href="../../views/admin/pedidos.html">Lista de Pedidos</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="../../views/admin/comentarios.html">Comentarios</a>
+                </li>
             </ul>
             <div class="ml-auto d-flex align-items-center">
                 <div class="nav-item dropdown">
