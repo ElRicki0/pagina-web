@@ -7,7 +7,7 @@ if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $producto = new ProductoData;
+    $pedido = new PedidoData;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'dataset' => null, 'error' => null, 'exception' => null, 'fileStatus' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
@@ -17,7 +17,7 @@ if (isset($_GET['action'])) {
             case 'searchRows':
                 if (!Validator::validateSearch($_POST['search'])) {
                     $result['error'] = Validator::getSearchError();
-                } elseif ($result['dataset'] = $producto->searchRows()) {
+                } elseif ($result['dataset'] = $pedido->searchRows()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
                 } else {
@@ -28,68 +28,83 @@ if (isset($_GET['action'])) {
                 
                 $_POST = Validator::validateForm($_POST);
                 if (
-                    !$producto->setNombre($_POST['nombreProducto']) or
-                    !$producto->setDescripcion($_POST['descripcionProducto']) or
-                    !$producto->setPrecio($_POST['precioProducto']) or
-                    !$producto->setCantidad($_POST['cantidadProducto']) or
-                    !$producto->setCategoria($_POST['categoriaProducto']) or
-                    !$producto->setAdministrador($_POST['administradorProducto']) or
-                    !$producto->setMarca($_POST['marcaProducto'])
+                    !$pedido->setPedido($_POST['pedidoDetalle']) or
+                    !$pedido->setEstado(isset($_POST['estadoDetalle']) ? 1 : 0) or
+                    !$pedido->setProducto($_POST['productoDetalle']) or
+                    !$pedido->setCliente($_POST['clienteDetalle']) or
+                    !$pedido->setFecha($_POST['fechaDetalle']) or 
+                    !$pedido->setDireccion($_POST['direccionDetalle']) or 
+                    !$pedido->setPrecio($_POST['precioDetalle']) or 
+                    !$pedido->setCantidad($_POST['CantidadDetalle'])
                 ) {
-                    $result['error'] = $producto->getDataError();
+                    $result['error'] = $pedido->getDataError();
                 } elseif ($producto->createRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Producto creado correctamente';
+                    $result['message'] = 'Pedido creado correctamente';
                 } else {
-                    $result['error'] = 'Ocurrió un problema al crear el producto';
+                    $result['error'] = 'Ocurrió un problema al crear el pedido';
                 }
                 break;
             case 'readAll':
-                if ($result['dataset'] = $producto->readAll()) {
+                if ($result['dataset'] = $pedido->readAll()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } else {
-                    $result['error'] = 'No existen productos registrados';
+                    $result['error'] = 'No existen pedidos registrados';
                 }
                 break;
             case 'readOne':
-                if (!$producto->setId($_POST['idProducto'])) {
-                    $result['error'] = $producto->getDataError();
-                } elseif ($result['dataset'] = $producto->readOne()) {
+                if (!$pedido->setId($_POST['idProducto'])) {
+                    $result['error'] = $pedido->getDataError();
+                } elseif ($result['dataset'] = $pedido->readOne()) {
                     $result['status'] = 1;
                 } else {
-                    $result['error'] = 'Producto inexistente';
+                    $result['error'] = 'Pedido inexistente';
                 }
                 break;
             case 'updateRow':
                 $_POST = Validator::validateForm($_POST);
                 if (
-                    !$producto->setNombre($_POST['nombreProducto']) or
-                    !$producto->setDescripcion($_POST['descripcionProducto']) or
-                    !$producto->setPrecio($_POST['precioProducto']) or
-                    !$producto->setCantidad($_POST['cantidadProducto']) or
-                    !$producto->setCategoria($_POST['categoriaProducto']) or
-                    !$producto->setAdministrador($_POST['administradorProducto']) or
-                    !$producto->setMarca($_POST['marcaProducto'])
+                    !$pedido->setPedido($_POST['pedidoDetalle']) or
+                    !$pedido->setEstado(isset($_POST['estadoDetalle']) ? 1 : 0) or
+                    !$pedido->setProducto($_POST['productoDetalle']) or
+                    !$pedido->setCliente($_POST['clienteDetalle']) or
+                    !$pedido->setFecha($_POST['fechaDetalle']) or 
+                    !$pedido->setDireccion($_POST['direccionDetalle']) or 
+                    !$pedido->setPrecio($_POST['precioDetalle']) or 
+                    !$pedido->setCantidad($_POST['CantidadDetalle'])
                 ) {
-                    $result['error'] = $producto->getDataError();
-                } elseif ($producto->updateRow()) {
+                    $result['error'] = $pedido->getDataError();
+                } elseif ($pedido->updateRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Producto modificado correctamente';
                 } else {
                     $result['error'] = 'Ocurrió un problema al modificar el producto';
                 }
                 break;
+                // Caso para poder cambiar el estado del comentario
+            case 'changeState':
+                if (
+                    !$pedido->setId($_POST['idPedido'])
+                ) {
+                    $result['error'] = $pedido->getDataError();
+                } elseif ($pedido->changeState()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Estado del pedido cambiado correctamente';
+                } else {
+                    $result['error'] = 'Ocurrió un problema al alterar el estado del pedido';
+                }
+                break;
             case 'deleteRow':
                 if (
-                    !$producto->setId($_POST['id_Producto'])
+                    !$pedido->setId($_POST['idPedido'])
                 ) {
-                    $result['error'] = $producto->getDataError();
-                } elseif ($producto->deleteRow()) {
+                    $result['error'] = $pedido->getDataError();
+                } elseif ($pedido->deleteRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Producto eliminado correctamente';
+                    $result['message'] = 'pedido eliminado correctamente';
                 } else {
-                    $result['error'] = 'Ocurrió un problema al eliminar el producto';
+                    $result['error'] = 'Ocurrió un problema al eliminar el pedido';
                 }
                 break;
             default:

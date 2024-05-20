@@ -3,24 +3,27 @@ const PRODUCTO_API = 'services/admin/producto.php';
 const CATEGORIA_API = 'services/admin/categoria.php';
 const ADMIN_API = 'services/admin/administrador.php';
 const MARCA_API = 'services/admin/marca.php';
-const PEDIDOS_aPI = 'services/admin/pedidos.php';
-
+const PEDIDOS_API = 'services/admin/pedidos.php';
+ 
 // add
-
+ 
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('searchForm');
 // Constantes para establecer el contenido de la tabla.
-const TABLE_BODY = document.getElementById('tarjetas');
+const TABLE_BODY = document.getElementById('tableBody'),
+    ROWS_FOUND = document.getElementById('rowsFound');
 // Constantes para establecer los elementos del componente Modal.
-
-
+ 
+ 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
-    
+    // Se establece el título del contenido principal.
+    MAIN_TITLE.textContent = 'Gestionar pedidos';
     // Llamada a la función para llenar la tabla con los registros existentes.
     fillTable();
 });
-
+ 
+ 
 /*
 *   Función asíncrona para llenar la tabla con los registros disponibles.
 *   Parámetros: form (objeto opcional con los datos de búsqueda).
@@ -28,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 */
 const fillTable = async (form = null) => {
     // Se inicializa el contenido de la tabla.
+    ROWS_FOUND.textContent = '';
     TABLE_BODY.innerHTML = '';
     // Se verifica la acción a realizar.
     (form) ? action = 'searchRows' : action = 'readAll';
@@ -75,9 +79,9 @@ const fillTable = async (form = null) => {
         sweetAlert(4, DATA.error, true);
     }
 }
-
-
-
+ 
+ 
+ 
 /*
 *   Función asíncrona para eliminar un registro.
 *   Parámetros: id (identificador del registro seleccionado).
@@ -104,3 +108,4 @@ const openDelete = async (id) => {
         }
     }
 }
+ 

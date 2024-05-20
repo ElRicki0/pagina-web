@@ -15,127 +15,63 @@
 
 
 <body>
+
     <!--Navbar-->
-    <header>
+    <header></header>
 
-    </header>
+    <!-- tablas para usuarios -->
     <main>
-        <br>
-        <h2 class="usuusu">Pedidos</h2>
-        <br>
-        <div class="container">
-            <div class="row" id="tarjetas">
-
-                
-                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                            Apartado de tarjetas
-                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-
-            </div>
-            <!-- Tabla de empleados activos -->
-            <h2 class="text-center">Trabajadores en linea</h2>
-
-            <div class="container-usuarios mb-5">
-                <table class="table table-striped">
+        <!-- Título del contenido principal -->
+        <h3 class="usuusu" id="mainTitle"></h3>
+        <div class="row">
+            <!-- Formulario de búsqueda -->
+            <form class="col-sm-12 col-md-6" id="searchForm">
+                <div class="row ms-4">
+                    <div class="col-6">
+                        <input type="search" class="form-control" name="search" placeholder="Buscar" required>
+                    </div>
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-success">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                            </svg>
+                        </button>
+                        <button type="reset" class="btn btn-secondary" onclick="fillTable()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-x-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                <path
+                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            Apartado de tabla de los pedidos
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+        <div colspan="5" id="rowsFound" class="textoRegistros"></div>
+        <div class="container-usuarios mb-5">
+            <div class="table-responsive scrollbar" style="max-height: 400px; overflow-y: auto;">
+                <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>Nombre</th>
-                            <th>Estado</th>
+                            <th>PRODUCTO</th>
+                            <th>USUARIO CLIENTE</th>
+                            <th>COMENTARIO</th>
+                            <th>ESTADO</th>
+                            <th>ACCIONES</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>Daniel Martinez</td>
-                            <td>
-                                <div class="estadousu"></div>
-                            </td>
-                            <td>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Alisson Zepeda</td>
-                            <td>
-                                <div class="estadousu"></div>
-                            </td>
-                            <td>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Ricardo Melara</td>
-                            <td>
-                                <div class="estadousu"></div>
-                            </td>
-                            <td>
-                            </td>
-                        <tr>
-                            <td>Jeremy Calderon</td>
-                            <td>
-                                <div class="estadousu"></div>
-                            </td>
-                            <td>
-                            </td>
-                        </tr>
-                        <tr>
-                        </tr>
-                    </tbody>
+                    <tbody id="tableBody"></tbody>
                 </table>
             </div>
-
-        </div>
-
-        <!-- Tabla de clientes activos -->
-        <h2 class="text-center">Clientes en linea</h2>
-
-        <div class="container-usuarios mb-5">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Estado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Veronica Sanchez</td>
-                        <td>
-                            <div class="estadousu"></div>
-                        </td>
-                        <td>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Alisson Zepeda</td>
-                        <td>
-                            <div class="estadousu"></div>
-                        </td>
-                        <td>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Ricardo Melara</td>
-                        <td>
-                            <div class="estadousu"></div>
-                        </td>
-                        <td>
-                        </td>
-                    <tr>
-                        <td>Jeremy Castro</td>
-                        <td>
-                            <div class="estadousu"></div>
-                        </td>
-                        <td>
-                        </td>
-                    </tr>
-                    <tr>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
         </div>
     </main>
     <footer class="test ">
-
     </footer>
 
     <div class="modal fade" id="masInfo" tabindex="-1" aria-labelledby="modal" aria-hidden="true">
@@ -213,20 +149,21 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT -->
+    <!-- Llamada al framework y librería de mensajes -->
+    <script src="../../resources/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
+    <!-- Llamada al controlador general de la aplicación -->
+    <script type="text/javascript" src="../../controllers/utils/components.js"></script>
+    <!--Enlaces para archivos javascript-->
+    <script src="../../controllers/admin/header_admin.js"></script>
+    <script src="../../controllers/utils/footer.js"></script>
+    <!-- Llamada al controlador del sitio privado -->
+    <script type="text/javascript" src="../../controllers/utils/admin.js"></script>
+    <!-- Llamada al controlador de la página web -->
+    <script type="text/javascript" src="../../controllers/admin/pedidos.js"></script>
 </body>
-
-<!--Enlaces para archivos javascript-->
-<script src="../../controllers/utils/explorador_modal.js"></script>
-<script src="../../controllers/admin/plantillas.js"></script>
-<script src="../../controllers//admin/alertas_alertas.js"></script>
-
-<!--Enlace para poder mostrar alertas-->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<!--Enlace para elementos del bootstrap-->
-<script src="../../resources/js/bootstrap.bundle.min.js"></script>
-
-<script src="../../controllers/admin/pedidos.js"></script>
-
 
 </html>
