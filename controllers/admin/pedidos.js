@@ -1,12 +1,7 @@
 // Constantes para completar las rutas de la API.
 const PRODUCTO_API = 'services/admin/producto.php';
-const CATEGORIA_API = 'services/admin/categoria.php';
-const ADMIN_API = 'services/admin/administrador.php';
-const MARCA_API = 'services/admin/marca.php';
 const PEDIDOS_API = 'services/admin/pedidos.php';
- 
-// add
- 
+const CLIENTE_API = 'services/admin/cliente.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('searchForm');
 // Constantes para establecer el contenido de la tabla.
@@ -42,36 +37,27 @@ const fillTable = async (form = null) => {
         // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
         DATA.dataset.forEach(row => {
             // Se establece un icono para el estado del producto.
-            (row.estado_producto) ? icon = 'bi bi-eye-fill' : icon = 'bi bi-eye-slash-fill';
+            (row.estado_pedido) ? icon = 'bi bi-eye-fill' : icon = 'bi bi-eye-slash-fill';
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TABLE_BODY.innerHTML += `
-            <div class="card mb-3 mx-3 mt-5" style="max-width: 400px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="../../resources/img/iconos/usuario.png" class="img-fluid rounded-start mt-5"
-                        alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title"><b>Ricardo Melara</b></h5>
-                        <br>
-                        <p class="card-text">-Producto1</p>
-                        <p class="card-text">-Producto2</p>
-                        <p class="card-text">-Producto3</p>
-                        <p class="card-text">...</p>
-                        <p class="card-text"><small class="text-body-secondary">Last updated 8 mins ago</small>
-                        <p class="text-danger"><b>Pendiente</b></p>
-                        <button type="button" class="btn btn-outline-info" data-bs-toggle="modal"
-                            data-bs-target="#masInfo">Información</button>
-                        <div onclick="alertMine('entregado')" class="btn btn-outline-success">
-                            <img src="../../resources/img/iconos/check.png" class="imagen-pedido">
-                        </div>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-            `;
+            <tr>
+                <td>${row.nombre_producto}</td>
+                <td>${row.nombre_cliente}</td>
+                <td>${row.fecha_pedido}</td>
+                <td>${row.direccion_pedido}</td>
+                <td>${row.precio_pedido}</td>
+                <td>${row.cantidad_pedido}</td>
+                <td><i class="${icon}"></i></td>
+                <td>
+                <button type="button" class="btn editar-btn" onclick="openState(${row.id_detalle_entrega})">
+                <img src="../../resources/img/iconos/intercambiar.png">
+            </button>
+            <button type="button" class="btn borrar-btn" onclick="openDelete(${row.id_detalle_entrega})">
+                <img src="../../resources/img/iconos/papelera.png">
+            </button>
+                </td>
+            </tr>
+        `;
         });
         // Se muestra un mensaje de acuerdo con el resultado.
         ROWS_FOUND.textContent = DATA.message;
@@ -81,6 +67,42 @@ const fillTable = async (form = null) => {
 }
  
  
+
+/*
+*   Función asíncrona para cambiar el estado de un registro.
+*   Parámetros: id (identificador del registro seleccionado).
+*   Retorno: ninguno.
+*/
+const openState = async (id) => {
+    // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
+    const RESPONSE = await confirmAction('¿Desea cambiar el estado del pedido?');
+    try {
+        // Se verifica la respuesta del mensaje.
+        if (RESPONSE) {
+            // Se define una constante tipo objeto con los datos del registro seleccionado.
+            const FORM = new FormData();
+            FORM.append('idPedido', id);
+            console.log(id);
+            // Petición para eliminar el registro seleccionado.
+            const DATA = await fetchData(PEDIDOS_API, 'changeState', FORM);
+            console.log(DATA.status);
+            // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+            if (DATA.status) {
+                // Se muestra un mensaje de éxito.
+                await sweetAlert(1, DATA.message, true);
+                // Se carga nuevamente la tabla para visualizar los cambios.
+                fillTable();
+            } else {
+                sweetAlert(2, DATA.error, false);
+            }
+        }
+    }
+    catch (Error) {
+        console.log(Error + ' Error al cargar el mensaje');
+    }
+}
+
+
  
 /*
 *   Función asíncrona para eliminar un registro.
@@ -89,14 +111,14 @@ const fillTable = async (form = null) => {
 */
 const openDelete = async (id) => {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar el producto de forma permanente?');
+    const RESPONSE = await confirmAction('¿Desea eliminar el pedido de forma permanente?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('id_Producto', id);
+        FORM.append('idPedido', id);
         // Petición para eliminar el registro seleccionado.
-        const DATA = await fetchData(PRODUCTO_API, 'deleteRow', FORM);
+        const DATA = await fetchData(PEDIDOS_API, 'deleteRow', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (DATA.status) {
             // Se muestra un mensaje de éxito.
