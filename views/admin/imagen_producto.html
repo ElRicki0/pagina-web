@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagenes productos</title>
+    <!--Script para ponerle icono a la pagina-->
+    <link rel="icon" href="../../resources/img/iconos/loguito.ico">
+    <!--Enlace para mandar a llamar propiedad de boostrap.css-->
+    <link rel="stylesheet" href="../../resources/css/css_boostrap.css">
+    <!--Enlace para mandar a llamar el css-->
+    <link rel="stylesheet" href="../../resources/css/index.css">
+    <link rel="stylesheet" href="../../resources/css/scrooll.css">
+
+</head>
+
+<body>
+
+    <!--Navbar-->
+    <header></header>
+    <main>
+        <!-- Título del contenido principal -->
+        <h3 class="usuusu" id="mainTitle"></h3>
+        <div class="row">
+            <!-- Formulario de búsqueda -->
+            <form class="col-sm-12 col-md-6" id="searchForm">
+                <div class="row">
+                    <div class="col-6">
+                        <input type="search" class="form-control" name="search" placeholder="Buscar" required>
+                    </div>
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-success">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                            </svg>
+                        </button>
+                        <button type="reset" class="btn btn-secondary" onclick="fillTable()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-x-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                <path
+                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="col-sm-12 col-md-6 text-end">
+                <!-- Botón para abrir una caja de diálogo al momento de crear un nuevo registro -->
+                <button type="button" class="btnUsuAgregar" onclick="openCreate()">
+                    <i class="bi bi-plus-square-fill">Agregar imagen</i>
+                </button>
+            </div>
+        </div>
+        <div class="container-usuarios mb-5">
+            <div class="table-responsive scrollbar" style="max-height: 400px; overflow-y: auto;">
+                <!-- Tabla para mostrar los registros existentes -->
+                <table class="table table-hover">
+                    <!-- Encabezado de la tabla para mostrar la cantidad de registros y los títulos de las columnas -->
+                    <thead>
+                        <tr>
+                            <td colspan="2" id="rowsFound"></td>
+                        </tr>
+                        <tr>
+                            <th>Nombre imagen</th>
+                            <th>producto relacionado</th>
+                        </tr>
+                    </thead>
+                    <!-- Cuerpo de la tabla para mostrar un registro por fila -->
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="test ">
+    </footer>
+
+
+    <!-- Componente Modal para guardar un registro -->
+    <div class="modal fade" id="saveModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalTitle"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Formulario para crear o actualizar un registro -->
+                <form id="saveForm">
+                    <div class="modal-body row g-3">
+                        <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                        <input type="number" class="d-none" id="idImagen" name="idImagen">
+                        <div class="col-sm-12 col-md-6">
+                            <label for="codigoImagen" class="form-label">Codigo</label>
+                            <input id="codigoImagen" type="text" name="codigoImagen" class="form-control" required>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <label for="productoRelacionado" class="form-label">producto</label>
+                            <select id="productoRelacionado" name="productoRelacionado" class="form-select" required>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--modals de botones-->
+
+    <!--agregar producto-->
+    <div class="modal fade" id="modal_agregar_producto" tabindex="-1" aria-labelledby="exampleModalLabel"
+        data-bs-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar producto</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="">
+                    <div class="modal-body">
+                        <!--contenido del modal-->
+                        <div class="container text-center">
+                            <div class="row">
+                                <form action="">
+                                    <div class=" col">
+                                        <img id="modalProfileImage" class="rounded  mx-auto d-block"
+                                            style="margin-top: 3rem;"
+                                            src="../../resources/img/productos/imagen_agregar.jpg" alt="..."
+                                            width="300px">
+                                        <br>
+                                        <br>
+                                        <input type="file" id="modalInputFile" style="display:none;" accept="image/*">
+                                        <button type="button"
+                                            class="botoncitoPerfilAgre btn btn-outline-dark btn-lg btn-block mx-auto order-2"
+                                            onclick="abrirExploradorModal()">Insertar foto de
+                                            categoría</button>
+                                    </div>
+                                    <div class="col" style="margin-top: 3rem;">
+                                        <div class="row">
+                                            <div class="col">
+
+                                                <div class="letraPer col-md-8 fs-3">Nombre producto
+                                                </div>
+                                                <div
+                                                    class="cuadroText col-md-10 fs-3 border border-dark rounded text-start">
+                                                    <input type="text" class="form-control fs-3"
+                                                        aria-label="Sizing example input"
+                                                        aria-describedby="inputGroup-sizing-default" value="">
+                                                </div>
+
+                                                <div class="letraPer col-md-10 fs-3">Descripción
+                                                    producto</div>
+                                                <div
+                                                    class="cuadroText col-md-10 fs-3 border border-dark rounded text-start">
+                                                    <textarea type="text" class="form-control fs-3"
+                                                        aria-label="Sizing example input" style="height: 150px;"
+                                                        aria-describedby="inputGroup-sizing-default"></textarea>
+                                                </div>
+
+                                                <div class="letraPer col-md-8 fs-3">Precio producto
+                                                </div>
+                                                <div
+                                                    class="cuadroText col-md-10 fs-3 border border-dark rounded text-start">
+                                                    <input type="number" class="form-control fs-3"
+                                                        aria-label="Amount (to the nearest dollar)">
+                                                </div>
+
+                                                <div class="letraPer col-md-8 fs-3">Marca producto
+                                                </div>
+                                                <div
+                                                    class="cuadroText col-md-10 fs-3 border border-dark rounded text-start">
+                                                    <div class="form-floating">
+                                                        <select class="form-select" id="floatingSelect"
+                                                            aria-label="Floating label select example">
+                                                            <option selected>Seleccione una marca</option>
+                                                            <option value="1">Lagee</option>
+                                                            <option value="2">ITALIA</option>
+                                                            <option value="3">IMAN OF NOBLE</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="letraPer col-md-8 fs-3">Empleado encargado
+                                                </div>
+                                                <div
+                                                    class="cuadroText col-md-10 fs-3 border border-dark rounded text-start">
+                                                    <div class="form-floating">
+                                                        <select class="form-select" id="floatingSelect"
+                                                            aria-label="Floating label select example">
+                                                            <option selected>Seleccione un empleado</option>
+                                                            <option value="1">Carlos</option>
+                                                            <option value="2">Maroon</option>
+                                                            <option value="3">José</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!--final del body-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar
+                        </button>
+                        <button type="button" class="btn btn-primary" id="btn_agregar_Producto">Guardar
+                            producto</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--editar producto-->
+    <div class="modal fade" id="modal_editar_producto" tabindex="-1" aria-labelledby="exampleModalLabel"
+        data-bs-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar producto</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="">
+                    <div class="modal-body">
+                        <!--contenido del modal-->
+                        <div class="container text-center">
+                            <div class="row">
+                                <form action="">
+                                    <div class=" col">
+                                        <img id="modalProfileImage" class="rounded  mx-auto d-block"
+                                            style="margin-top: 3rem;"
+                                            src="../../resources/img/productos/imagen_agregar.jpg" alt="..."
+                                            width="300px">
+                                        <br>
+                                        <br>
+                                        <input type="file" id="modalInputFile" style="display:none;" accept="image/*">
+                                        <button type="button"
+                                            class="botoncitoPerfilAgre btn btn-outline-dark btn-lg btn-block mx-auto order-2"
+                                            onclick="abrirExploradorModal()">Insertar foto de
+                                            categoría</button>
+                                    </div>
+                                    <div class="col" style="margin-top: 3rem;">
+                                        <div class="row">
+                                            <div class="col">
+
+                                                <div class="letraPer col-md-8 fs-3">Nombre producto
+                                                </div>
+                                                <div
+                                                    class="cuadroText col-md-10 fs-3 border border-dark rounded text-start">
+                                                    <input type="text" class="form-control fs-3"
+                                                        aria-label="Sizing example input"
+                                                        aria-describedby="inputGroup-sizing-default"
+                                                        value="Edite el nombre del producto ">
+                                                </div>
+
+                                                <div class="letraPer col-md-10 fs-3">Descripción
+                                                    producto</div>
+                                                <div
+                                                    class="cuadroText col-md-10 fs-3 border border-dark rounded text-start">
+                                                    <textarea type="text" class="form-control fs-3"
+                                                        aria-label="Sizing example input" style="height: 150px;"
+                                                        aria-describedby="inputGroup-sizing-default">Edite la descripción del producto</textarea>
+                                                </div>
+
+                                                <div class="letraPer col-md-8 fs-3">Precio producto
+                                                </div>
+                                                <div
+                                                    class="cuadroText col-md-10 fs-3 border border-dark rounded text-start">
+                                                    <input type="number" class="form-control fs-3"
+                                                        aria-label="Amount (to the nearest dollar)" value="1.50">
+                                                </div>
+
+                                                <div class="letraPer col-md-8 fs-3">Marca producto
+                                                </div>
+                                                <div
+                                                    class="cuadroText col-md-10 fs-3 border border-dark rounded text-start">
+                                                    <div class="form-floating">
+                                                        <select class="form-select" id="floatingSelect"
+                                                            aria-label="Floating label select example">
+                                                            <option selected>Edite la marca</option>
+                                                            <option value="1">Lagee</option>
+                                                            <option value="2">ITALIA</option>
+                                                            <option value="3">IMAN OF NOBLE</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="letraPer col-md-8 fs-3">Empleado encargado
+                                                </div>
+                                                <div
+                                                    class="cuadroText col-md-10 fs-3 border border-dark rounded text-start">
+                                                    <div class="form-floating">
+                                                        <select class="form-select" id="floatingSelect"
+                                                            aria-label="Floating label select example">
+                                                            <option selected>Edite a el empleado</option>
+                                                            <option value="1">Carlos</option>
+                                                            <option value="2">Maroon</option>
+                                                            <option value="3">José</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!--final del body-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar
+                        </button>
+                        <button type="button" class="btn btn-primary" id="btn_agregar_Producto">Guardar
+                            producto</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--informacion modal-->
+    <div class="modal fade" id="modal_informacion_producto" tabindex="-1" aria-labelledby="exampleModalLabel"
+        data-bs-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Información producto</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="">
+                    <div class="modal-body">
+                        <!--contenido del modal-->
+                        <div class="container text-center text-center">
+                            <div class="row mt-3">
+                                <div class=" col">
+                                    <img class="rounded  mx-auto d-block"
+                                        src="../../resources/img/productos/imagen_agregar.jpg" alt="..." width="300px">
+                                    <br>
+                                    <br>
+
+                                </div>
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="letraPer col fs-3">Nombre producto</div>
+                                            <div class="cuadroText col fs-3 border border-dark rounded text-start">
+                                                Ejemplo de nombre delproducto
+                                            </div>
+                                            <div class="letraPer col fs-3">Descripción producto</div>
+                                            <div class="cuadroText col fs-3 border border-dark rounded text-start">
+                                                Ejemplo de descripcion de producto
+                                            </div>
+                                            <div class="letraPer col fs-3">Precio producto</div>
+                                            <div class="cuadroText col fs-3 border border-dark rounded text-start">
+                                                $5.30
+                                            </div>
+                                            <div class="letraPer col fs-3">Marca producto</div>
+                                            <div class="cuadroText col fs-3 border border-dark rounded text-start">
+                                                Ejemplo de
+                                                nombre de la
+                                                marca
+                                            </div>
+                                            <div class="letraPer col fs-3">Empleado encargado</div>
+                                            <div class="cuadroText col fs-3 border border-dark rounded text-start">
+                                                Ejemplo de
+                                                nombre del empleado encargado
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!--final del body-->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar
+                                </button>
+                                <button type="button" class="btn btn-primary" id="btn_agregar_Producto">Guardar
+                                    producto</button>
+                            </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--Enlace para elementos del bootstrap-->
+    <script src="../../resources/js/bootstrap.bundle.min.js"></script>
+
+    <!--Enlace para poder mostrar alertas-->
+    <script src="../../resources/js/sweetalert.min.js"></script>
+
+    <!--Enlaces para archivos javascript-->
+    <script src="../../controllers/utils/admin.js"></script>
+    <script src="../../controllers/utils/components.js"></script>
+    <script src="../../controllers/admin/plantillas.js"></script>
+    <script src="../../controllers/admin/producto.js"></script>
+</body>
+
+</html>
