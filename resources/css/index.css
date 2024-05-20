@@ -163,7 +163,13 @@ section button {
     display: inline-block;
     font-size: 16px;
     margin: 4px 35px;
+}
 
+.log{
+    background-color: #1D1C6A;
+    border-radius: 800rem;
+    color: #f3fefe;
+    cursor: pointer;
 }
 
 .container-usuarios {
