@@ -145,13 +145,12 @@ CREATE TABLE tb_carritos_productos (
 
 CREATE TABLE tb_pedidos (
   id_pedido int auto_increment primary key,
-  id_carrito_productos int NOT NULL,
-  CONSTRAINT fk_id_carrito_productos_P
-  FOREIGN KEY (id_carrito_productos)
-  REFERENCES tb_carritos_productos(id_carrito_productos),
   fecha_pedido DATE NOT NULL,
-  estado_pedido ENUM ('pendiente', 'en_proceso', 'entregado', 'cancelado') NOT NULL,
-  direccion_pedido VARCHAR(500) NOT NULL
+  direccion_pedido VARCHAR(500) NOT NULL,
+  id_cliente int NOT NULL,
+  CONSTRAINT fk_id_cliente_pedido
+  FOREIGN KEY (id_cliente)
+  REFERENCES tb_clientes(id_cliente)
 ); 
 
 -- Creacion de tabla tb_imagenes
@@ -175,10 +174,10 @@ CREATE TABLE tb_detalles_pedidos (
   CONSTRAINT fk_id_producto_detalle_P
   FOREIGN KEY (id_producto)
   REFERENCES tb_productos(id_producto),
-  precio_pedido float,
-  cantidad_pedido INT
+  precio_pedido FLOAT NOT null,
+  cantidad_pedido INT NOT NULL,
+  estado_pedido BOOLEAN NOT NULL
 );
-
 -- las imagenes se cambiaron por varchar(50) en logar de LONGTEXT
 -- la asignacion de autoincrement y de primary key se hacen directamente desde la creacion de la tabla y no se altera nada afuera de estas 
 

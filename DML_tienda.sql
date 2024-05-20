@@ -34,3 +34,16 @@ INSERT INTO tb_comentarios (comentario, id_producto, id_cliente, estado_comentar
 ('El polvo compacto deja mi piel suave y sin brillo', 3, 3, 1),
 ('El delineador se seca rápido y no se corre', 4, 1, 1),
 ('La mascarilla deja mi piel fresca y radiante', 5, 2, 1);
+
+
+
+	-- Insertar un nuevo pedido
+	INSERT INTO tb_pedidos (fecha_pedido, direccion_pedido, id_cliente)
+	VALUES ('2024-05-20', '123 Calle Falsa, Ciudad Ejemplo', 1);
+	
+	-- Asumimos que el id_pedido generado es 1 para el siguiente paso
+	INSERT INTO tb_detalles_pedidos (id_pedido, id_producto, precio_pedido, cantidad_pedido, estado_pedido)
+	VALUES (1, 1, 19.99, 2, 1);  -- Estado del pedido 1, puede ser cambiado a 0 si está inactivo o cancelado
+	
+	SELECT * FROM tb_detalles_pedidos
+
