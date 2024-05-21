@@ -17,7 +17,7 @@ CREATE TABLE tb_clientes (
   correo_cliente VARCHAR(50) UNIQUE NOT NULL,
   pass_cliente VARCHAR(50) NOT NULL,
   imagen_cliente varchar(50),
-  estado_cliente ENUM ('conectado', 'desconectado', 'inutilizable', 'baneado') NOT NULL
+  estado_cliente BOOLEAN NOT NULL
 );
 
 -- Creacion de tabla tb_administradores
@@ -31,9 +31,7 @@ CREATE TABLE tb_administradores (
   numero_emerjencia_admin VARCHAR(10) UNIQUE NOT NULL,
   DUI_admin INT UNIQUE NOT NULL,
   alias_admin VARCHAR(50) UNIQUE NOT NULL,
-  pass_admin VARCHAR(5000) UNIQUE NOT NULL,
-  imagen_cliente LONGTEXT,
-  estado_cliente boolean NOT NULL
+  pass_admin VARCHAR(500) UNIQUE NOT NULL
 );
 
 SELECT * FROM tb_administradores;
@@ -103,7 +101,8 @@ CREATE TABLE tb_comentarios (
    id_cliente int NOT NULL,
   CONSTRAINT fk_id_cliente_C
   FOREIGN KEY (id_cliente)
-  REFERENCES tb_clientes(id_cliente)
+  REFERENCES tb_clientes(id_cliente),
+  estado_comentario BOOLEAN 
 );
 
 -- Creeacion de tabla tb_listas_deseos 
@@ -154,6 +153,7 @@ CREATE TABLE tb_pedidos (
   REFERENCES tb_clientes(id_cliente)
 ); 
 
+
 -- Creacion de tabla tb_detalles_pedidos
 CREATE TABLE tb_detalles_pedidos (
   id_detalle_entrega int auto_increment primary key,
@@ -172,13 +172,3 @@ CREATE TABLE tb_detalles_pedidos (
 -- las imagenes se cambiaron por varchar(50) en logar de LONGTEXT
 -- la asignacion de autoincrement y de primary key se hacen directamente desde la creacion de la tabla y no se altera nada afuera de estas 
 
-
-SELECT p.id_producto, p.imagen_producto, p.nombre_producto, p.descripcion_producto, p.precio_producto, p.cantidad_producto, 
-                c.nombre_categoria_producto AS categoria_producto, 
-                a.nombre_admin AS nombre_administrador, 
-                m.nombre_marca AS nombre_marca
-                FROM tb_productos p
-                INNER JOIN tb_categorias_productos c ON p.id_categoria_producto = c.id_categoria_producto
-                INNER JOIN tb_administradores a ON p.id_admin = a.id_admin
-                INNER JOIN tb_marcas m ON p.id_marca = m.id_marca
-                ORDER BY nombre_producto;
