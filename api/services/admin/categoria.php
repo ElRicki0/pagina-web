@@ -26,6 +26,7 @@ if (isset($_GET['action'])) {
                 break;
             case 'createRow':
                 $_POST = Validator::validateForm($_POST);
+                    // accion para tomar la infromacion de las marcas.
                 if (
                     !$categoria->setNombre($_POST['nombreCategoria']) or
                     !$categoria->setDescripcion($_POST['descripcionCategoria']) or
@@ -42,6 +43,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readAll':
+            // Accion para ver registros.
                 if ($result['dataset'] = $categoria->readAll()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
@@ -50,6 +52,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
+             // Accion que muestre todos los datos 
                 if (!$categoria->setId($_POST['idCategoria'])) {
                     $result['error'] = $categoria->getDataError();
                 } elseif ($result['dataset'] = $categoria->readOne()) {
@@ -59,6 +62,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'updateRow':
+                // Accion para la modificacion de las categorias.
                 $_POST = Validator::validateForm($_POST);
                 if (
                     !$categoria->setId($_POST['idCategoria']) or

@@ -17,6 +17,7 @@ if (isset($_GET['action'])) {
         switch ($_GET['action']) {
             case 'createRow':
                 $_POST = Validator::validateForm($_POST);
+                 // Accion para agregar los datos de los clientes.
                 if (
                     !$cliente->setNombre($_POST['nombreCliente']) or
                     !$cliente->setApellido($_POST['apellidoCliente']) or
@@ -59,6 +60,7 @@ if (isset($_GET['action'])) {
                 break;
             case 'updateRow':
                 $_POST = Validator::validateForm($_POST);
+            // Accion para mensaje de inexistencia.
                 if (
                     !$cliente->setId($_POST['idCliente']) or
                     !$cliente->setFilename() or

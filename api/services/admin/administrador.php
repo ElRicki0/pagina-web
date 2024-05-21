@@ -26,6 +26,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'createRow':
+                //Accion para crear un nuevo admin con los datos a pedir.
                 $_POST = Validator::validateForm($_POST);
                 if (
                     !$administrador->setNombre($_POST['nombreAdministrador']) or
@@ -65,6 +66,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'updateRow':
+                // Accion de datos de administrador para llamar .
                 $_POST = Validator::validateForm($_POST);
                 if (
                     !$administrador->setId($_POST['idAdministrador']) or
@@ -117,6 +119,7 @@ if (isset($_GET['action'])) {
                 break;
             case 'editProfile':
                 $_POST = Validator::validateForm($_POST);
+                //Accion para tomar los datos de administrador.
                 if (
                     !$administrador->setNombre($_POST['nombreAdministrador']) or
                     !$administrador->setApellido($_POST['apellidoAdministrador']) or
@@ -135,6 +138,8 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Ocurrió un problema al modificar el perfil';
                 }
                 break;
+
+                // Acciones para el ingreso de configuraciones de contraseña para el cambio de esta.
             case 'changePassword':
                 $_POST = Validator::validateForm($_POST);
                 if (!$administrador->checkPassword($_POST['claveActual'])) {
