@@ -27,7 +27,7 @@
             <form class="col-sm-12 col-md-6" id="searchForm">
                 <div class="row">
                     <div class="col-6">
-                        <input type="search" class="form-control" name="search" placeholder="Buscar" required>
+                        <input type="search" class="form-control" name="search" placeholder="Buscar nombre o descripción" required>
                     </div>
                     <div class="col-6">
                         <button type="submit" class="btn btn-success">
@@ -51,13 +51,13 @@
 
             <div class="col-sm-12 col-md-6 text-end">
                 <!-- Botón para abrir una caja de diálogo al momento de crear un nuevo registro -->
-                <button type="button" class="btnUsuAgregar" onclick="openCreate()">
+                <button type="button" class="btnUsuAgregar mb-5" onclick="openCreate()">
                     <i class="bi bi-plus-square-fill">Agregar producto</i>
                 </button>
             </div>
         </div>
         <div class="container-usuarios mb-5">
-            <div class="table-responsive scrollbar" style="max-height: 400px; overflow-y: auto;">
+            <div class="table-responsive scrollbar tamañoScrool">
                 <!-- Tabla para mostrar los registros existentes -->
                 <table class="table table-hover">
                     <!-- Encabezado de la tabla para mostrar la cantidad de registros y los títulos de las columnas -->
@@ -66,15 +66,15 @@
                             <td colspan="9" id="rowsFound"></td>
                         </tr>
                         <tr>
-                            <th>Nombre producto</th>
-                            <th>Imagen producto</th>
-                            <th>Descripcion</th>
-                            <th>Precio</th>
-                            <th>cantidad</th>
-                            <th>Categoría</th>
-                            <th>Administrador</th>
-                            <th>Marca</th>
-                            <th>Acciones</th>
+                            <th>IMAGEN</th>
+                            <th>NOMBRE</th>
+                            <th>DESCRIPCION</th>
+                            <th>PRECIO</th>
+                            <th>CANTIDAD</th>
+                            <th>CATEGORÍA</th>
+                            <th>ADMINISTRADOR</th>
+                            <th>MARCA</th>
+                            <th>ACCIONES</th>
                         </tr>
                     </thead>
                     <!-- Cuerpo de la tabla para mostrar un registro por fila -->
