@@ -41,7 +41,7 @@ header.innerHTML = `
             <div class="ml-auto d-flex align-items-center">
                 <div class="nav-item dropdown">
                     <ul class="dropdown-menu" aria-labelledby="cuentaDropdown">
-                        <li><a class="dropdown-item" href="Perfil.html">Editar perfil</a></li>
+                        <li><a class="dropdown-item" href="perfil.html">Editar perfil</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#" onclick="logOut()">Cerrar sesión</a></li>
                     </ul>
