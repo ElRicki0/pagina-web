@@ -30,6 +30,34 @@ class ProductoData extends ProductoHandler
         }
     }
 
+    public function setImagen($file, $filename = null)
+    {
+        if (Validator::validateImageFile($file, 1000)) {
+            $this->imagen = Validator::getFilename();
+            return true;
+        } elseif (Validator::getFileError()) {
+            $this->data_error = Validator::getFileError();
+            return false;
+        } elseif ($filename) {
+            $this->imagen = $filename;
+            return true;
+        } else {
+            $this->imagen = 'default.png';
+            return true;
+        }
+    }
+
+    public function setFilename()
+    {
+        if ($data = $this->readFilename()) {
+            $this->filename = $data['imagen_producto'];
+            return true;
+        } else {
+            $this->data_error = 'Producto inexistente';
+            return false;
+        }
+    }
+
     public function setNombre($value, $min = 2, $max = 50)
     {
         if (!Validator::validateAlphanumeric($value)) {
@@ -68,7 +96,7 @@ class ProductoData extends ProductoHandler
             return false;
         }
     }
-    
+
     public function setCantidad($value)
     {
         if (Validator::validateNaturalNumber($value)) {
@@ -112,7 +140,7 @@ class ProductoData extends ProductoHandler
             return false;
         }
     }
-    
+
     /*
      *  Métodos para obtener el valor de los atributos adicionales.
      */
