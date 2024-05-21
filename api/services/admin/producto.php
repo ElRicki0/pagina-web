@@ -27,7 +27,7 @@ if (isset($_GET['action'])) {
             case 'createRow':
                 $_POST = Validator::validateForm($_POST);
                 if (
-                    !$producto->setImagen($_POST['imagenProducto']) or
+                    !$producto->setImagen($_FILES['imagenProducto']) or
                     !$producto->setNombre($_POST['nombreProducto']) or
                     !$producto->setDescripcion($_POST['descripcionProducto']) or
                     !$producto->setPrecio($_POST['precioProducto']) or
@@ -40,6 +40,8 @@ if (isset($_GET['action'])) {
                 } elseif ($producto->createRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Producto creado correctamente';
+                    // Se asigna el estado del archivo después de insertar.
+                    $result['fileStatus'] = Validator::saveFile($_FILES['imagenProducto'], $producto::RUTA_IMAGEN);
                 } else {
                     $result['error'] = 'Ocurrió un problema al crear el producto';
                 }
