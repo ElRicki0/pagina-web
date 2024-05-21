@@ -29,7 +29,7 @@ CREATE TABLE tb_administradores (
   correo_admin VARCHAR(50) UNIQUE NOT NULL,
   telefono_admin VARCHAR(10) UNIQUE NOT NULL,
   numero_emerjencia_admin VARCHAR(10) UNIQUE NOT NULL,
-  DUI_admin INT UNIQUE NOT NULL,
+  DUI_admin VARCHAR UNIQUE NOT NULL,
   alias_admin VARCHAR(50) UNIQUE NOT NULL,
   pass_admin VARCHAR(500) UNIQUE NOT NULL
 );
