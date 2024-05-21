@@ -63,6 +63,7 @@ select*from tb_marcas;
 -- Creacion de tabla tb_productos
 CREATE TABLE tb_productos (
   id_producto int auto_increment primary key,
+  imagen_producto	varchar(200),
   nombre_producto VARCHAR(50) NOT NULL,
   descripcion_producto VARCHAR(500) NOT NULL,
   precio_producto float NOT NULL,
@@ -153,16 +154,6 @@ CREATE TABLE tb_pedidos (
   REFERENCES tb_clientes(id_cliente)
 ); 
 
--- Creacion de tabla tb_imagenes
-CREATE TABLE tb_imagenes (
-  id_imagen int auto_increment primary key,
-  codigo_imagenes VARCHAR(200),
-  id_producto int NOT NULL,
-  CONSTRAINT fk_id_producto_imagenes
-  FOREIGN KEY (id_producto)
-  REFERENCES tb_productos(id_producto)
-); 
-
 -- Creacion de tabla tb_detalles_pedidos
 CREATE TABLE tb_detalles_pedidos (
   id_detalle_entrega int auto_increment primary key,
@@ -182,6 +173,12 @@ CREATE TABLE tb_detalles_pedidos (
 -- la asignacion de autoincrement y de primary key se hacen directamente desde la creacion de la tabla y no se altera nada afuera de estas 
 
 
-SELECT id_marca, nombre_marca, imagen_marca 
-                FROM tb_marcas
-                ORDER BY id_marca
+SELECT p.id_producto, p.imagen_producto, p.nombre_producto, p.descripcion_producto, p.precio_producto, p.cantidad_producto, 
+                c.nombre_categoria_producto AS categoria_producto, 
+                a.nombre_admin AS nombre_administrador, 
+                m.nombre_marca AS nombre_marca
+                FROM tb_productos p
+                INNER JOIN tb_categorias_productos c ON p.id_categoria_producto = c.id_categoria_producto
+                INNER JOIN tb_administradores a ON p.id_admin = a.id_admin
+                INNER JOIN tb_marcas m ON p.id_marca = m.id_marca
+                ORDER BY nombre_producto;
