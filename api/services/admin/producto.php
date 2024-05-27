@@ -66,6 +66,8 @@ if (isset($_GET['action'])) {
             case 'updateRow':
                 $_POST = Validator::validateForm($_POST);
                 if (
+                    !$producto->setId($_POST['idProducto']) or
+
                     !$producto->setNombre($_POST['nombreProducto']) or
                     !$producto->setDescripcion($_POST['descripcionProducto']) or
                     !$producto->setPrecio($_POST['precioProducto']) or
@@ -84,13 +86,15 @@ if (isset($_GET['action'])) {
                 break;
             case 'agregarProducto':
                 $_POST = Validator::validateForm($_POST);
+                // print_r($_POST);
                 if (
-                    !$producto->setMarca($_POST['agregarProducto'])
+                    !$producto->setId($_POST['idProducto2']) or
+                    !$producto->setAgregarCantidad($_POST['agregarProducto'])
                 ) {
                     $result['error'] = $producto->getDataError();
-                } elseif ($producto->updateRow()) {
+                } elseif ($producto->agregarProducto()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Producto modificado correctamente';
+                    $result['message'] = 'Producto agregado correctamente';
                 } else {
                     $result['error'] = 'Ocurrió un problema al agregar producto';
                 }

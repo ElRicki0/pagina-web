@@ -29,6 +29,7 @@ class ProductoData extends ProductoHandler
             return false;
         }
     }
+    
 
     public function setImagen($file, $filename = null)
     {
@@ -111,7 +112,7 @@ class ProductoData extends ProductoHandler
     public function setAgregarCantidad($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->cantidad = $value;
+            $this->agregarCantidad = $value;
             return true;
         } else {
             $this->data_error = 'Las cantidad debe ser un número entero positivo';
