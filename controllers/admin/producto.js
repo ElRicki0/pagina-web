@@ -12,6 +12,9 @@ const TABLE_BODY = document.getElementById('tableBody'),
 // Constantes para establecer los elementos del componente Modal.
 const SAVE_MODAL = new bootstrap.Modal('#saveModal'),
     MODAL_TITLE = document.getElementById('modalTitle');
+// Constantes para establecer los elementos del componente Modal.
+const PRODUCTO_MODAL = new bootstrap.Modal('#addProductoM'),
+    PRODUCTO_TITLE = document.getElementById('productoTitle');
 // Constantes para establecer los elementos del formulario de guardar.
 const SAVE_FORM = document.getElementById('saveForm'),
     ID_PRODUCTO = document.getElementById('idProducto'),
@@ -23,6 +26,7 @@ const SAVE_FORM = document.getElementById('saveForm'),
     CATEGORIA_PRODUCTO = document.getElementById('categoriaProducto'),
     ADMINISTRACION_PRODUCTO = document.getElementById('administradorProducto'),
     MARCA_PRODUCTO = document.getElementById('marcaProducto');
+AGREGAR_PRODUCTO = document.getElementById('agregarProducto');
 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -65,6 +69,29 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         sweetAlert(2, DATA.error, false);
     }
 });
+
+// // Método del evento para cuando se envía el formulario de guardar.
+// PRODUCTO_MODAL.addEventListener('submit', async (event) => {
+//     // Se evita recargar la página web después de enviar el formulario.
+//     event.preventDefault();
+//     // Se verifica la acción a realizar.
+//     (ID_PRODUCTO.value) ? action = 'agregarProducto' : action = 'createRow';
+//     // Constante tipo objeto con los datos del formulario.
+//     const FORM = new FormData(SAVE_FORM);
+//     // Petición para guardar los datos del formulario.
+//     const DATA = await fetchData(PRODUCTO_API, action, FORM);
+//     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+//     if (DATA.status) {
+//         // Se cierra la caja de diálogo.
+//         SAVE_MODAL.hide();
+//         // Se muestra un mensaje de éxito.
+//         sweetAlert(1, DATA.message, true);
+//         // Se carga nuevamente la tabla para visualizar los cambios.
+//         fillTable();
+//     } else {
+//         sweetAlert(2, DATA.error, false);
+//     }
+// });
 
 
 /*
@@ -155,6 +182,34 @@ const openUpdate = async (id) => {
         SAVE_FORM.reset();
         // Se inicializan los campos con los datos.
         const ROW = DATA.dataset;
+        ID_PRODUCTO.value = ROW.id_producto;    
+        NOMBRE_PRODUCTO.value = ROW.nombre_producto;
+        DESCRIPCION_PRODUCTO.value = ROW.descripcion_producto;
+        PRECIO_PRODUCTO.value = ROW.precio_producto;
+        CANTIDAD_PRODUCTO.value = ROW.cantidad_producto;
+        fillSelect(CATEGORIA_API, 'readAll', 'categoriaProducto', ROW.id_categoria_producto);
+        fillSelect(ADMIN_API, 'readAll', 'administradorProducto', ROW.id_admin);
+        fillSelect(MARCA_API, 'readAll', 'marcaProducto', ROW.id_marca);
+    } else {
+        sweetAlert(2, DATA.error, false);
+    }
+}
+
+const openAdd = async (id) => {
+    // Se define un objeto con los datos del registro seleccionado.
+    const FORM = new FormData();
+    FORM.append('idProducto', id);
+    // Petición para obtener los datos del registro solicitado.
+    const DATA = await fetchData(PRODUCTO_API, 'readOne', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (DATA.status) {
+        // Se muestra la caja de diálogo con su título.
+        SAVE_MODAL.show();
+        MODAL_TITLE.textContent = 'Actualizar producto';
+        // Se prepara el formulario.
+        SAVE_FORM.reset();
+        // Se inicializan los campos con los datos.
+        const ROW = DATA.dataset;
         ID_PRODUCTO.value = ROW.id_producto;
         IMAGEN_PRODUCTO.value = ROW.imagen_producto;
         NOMBRE_PRODUCTO.value = ROW.nombre_producto;
@@ -168,7 +223,6 @@ const openUpdate = async (id) => {
         sweetAlert(2, DATA.error, false);
     }
 }
-
 
 /*
 *   Función asíncrona para eliminar un registro.

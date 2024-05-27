@@ -103,7 +103,18 @@ class ProductoData extends ProductoHandler
             $this->cantidad = $value;
             return true;
         } else {
-            $this->data_error = 'Las cantidads debe ser un número entero positivo';
+            $this->data_error = 'Las cantidad debe ser un número entero positivo';
+            return false;
+        }
+    }
+
+    public function setAgregarCantidad($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->cantidad = $value;
+            return true;
+        } else {
+            $this->data_error = 'Las cantidad debe ser un número entero positivo';
             return false;
         }
     }

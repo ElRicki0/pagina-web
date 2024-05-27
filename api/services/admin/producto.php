@@ -82,6 +82,19 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Ocurrió un problema al modificar el producto';
                 }
                 break;
+            case 'agregarProducto':
+                $_POST = Validator::validateForm($_POST);
+                if (
+                    !$producto->setMarca($_POST['agregarProducto'])
+                ) {
+                    $result['error'] = $producto->getDataError();
+                } elseif ($producto->updateRow()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Producto modificado correctamente';
+                } else {
+                    $result['error'] = 'Ocurrió un problema al agregar producto';
+                }
+                break;
             case 'deleteRow':
                 if (
                     !$producto->setId($_POST['id_Producto'])
