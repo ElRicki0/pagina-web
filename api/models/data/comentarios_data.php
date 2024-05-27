@@ -76,6 +76,19 @@ class ComentarioData extends ComentarioHandler
         }
     }
 
+    public function setEstrella($value){
+        if (!is_int($value)) {
+            $this->data_error = 'La estrella debe ser un número entero';
+            return false;
+        } elseif ($value < 1 || $value > 5) {
+            $this->data_error = 'La estrella debe estar entre 1 y 5';
+            return false;
+        } else {
+            $this->estrella = $value;
+            return true;
+        }
+    }
+
     /*
      *  Métodos para obtener el valor de los atributos adicionales.
      */

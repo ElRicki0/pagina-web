@@ -14,6 +14,8 @@ class ComentarioHandler
     protected $estado = null;
     protected $producto = null;
     protected $cliente = null;
+    protected $estrella = null;
+    protected $fecha = null;
 
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
@@ -26,7 +28,7 @@ class ComentarioHandler
         INNER JOIN tb_productos p ON c.id_producto = p.id_producto
         INNER JOIN tb_clientes cl ON c.id_cliente = cl.id_cliente
         WHERE c.comentario LIKE ? OR p.nombre_producto LIKE ?
-        ORDER BY c.comentario;
+        ORDER BY c.fecha_comentario DESC
         ';
         $params = array($value, $value);
         return Database::getRows($sql, $params);
@@ -34,19 +36,19 @@ class ComentarioHandler
 
     public function createRow()
     {
-        $sql = 'INSERT INTO tb_comentarios (comentario, id_producto, id_cliente, estado_comentario)
+        $sql = 'INSERT INTO tb_comentarios (comentario, id_producto, id_cliente, estado_comentario, estrella, fecha_comentario)
         VALUES (?, ?, ?, ?);';
-        $params = array($this->comentario, $this->producto, $this->cliente, $this->estado);
+        $params = array($this->comentario, $this->producto, $this->cliente, $this->estado, $this->estrella, $this->fecha);
         return Database::executeRow($sql, $params);
     }
 
     public function readAll()
     {
-        $sql = 'SELECT c.id_comentario, c.comentario,  p.nombre_producto AS nombre_producto, cl.nombre_cliente AS nombre_cliente, c.estado_comentario
+        $sql = 'SELECT c.id_comentario, c.comentario,  p.nombre_producto AS nombre_producto, cl.nombre_cliente AS nombre_cliente, c.estado_comentario, c.estrella, c.fecha_comentario
                 FROM tb_comentarios c
                 INNER JOIN tb_productos p ON c.id_producto = p.id_producto
                 INNER JOIN tb_clientes cl ON c.id_cliente = cl.id_cliente
-                ORDER BY c.comentario';
+                ORDER BY c.fecha_comentario DESC';
         return Database::getRows($sql);
     }
 
@@ -62,7 +64,7 @@ class ComentarioHandler
     public function updateRow()
     {
         $sql = 'UPDATE tb_comentarios
-                SET  comentario = ?, estado_comentario = ?, id_producto = ?, id_cliente = ?
+                SET  comentario = ?, estado_comentario = ?, estrella = ?, fecha_comentario = ?, id_producto = ?, id_cliente = ?
                 WHERE id_comentario = ?';
         $params = array($this->comentario, $this->estado, $this->producto, $this->cliente, $this->id);
         return Database::executeRow($sql, $params);
