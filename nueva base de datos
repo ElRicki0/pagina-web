@@ -80,30 +80,22 @@ CREATE TABLE tb_productos (
   REFERENCES tb_marcas(id_marca)
 );
 
--- Creacion de tabla tb_resenia
-CREATE TABLE tb_resenia (
-  id_resenia int auto_increment primary key,
-  estrella decimal(5,2),
-  id_producto int NOT NULL,
-  CONSTRAINT fk_id_producto
-  FOREIGN KEY (id_producto)
-  REFERENCES tb_productos(id_producto)
-);
-
 -- Creacion de tabla tb_comentarios  
 CREATE TABLE tb_comentarios (
   id_comentario int auto_increment primary key,
   comentario varchar(500) NOT NULL,
-   id_producto int NOT NULL,
+  estrella int CHECK (estrella >= 1 AND estrella <= 5),
+  id_producto int NOT NULL,
   CONSTRAINT fk_id_producto_C
   FOREIGN KEY (id_producto)
   REFERENCES tb_productos(id_producto),
-   id_cliente int NOT NULL,
+  id_cliente int NOT NULL,
   CONSTRAINT fk_id_cliente_C
   FOREIGN KEY (id_cliente)
   REFERENCES tb_clientes(id_cliente),
-  estado_comentario BOOLEAN 
+  estado_comentario BOOLEAN
 );
+
 
 -- Creeacion de tabla tb_listas_deseos 
 CREATE TABLE tb_listas_deseos (
