@@ -19,6 +19,8 @@ const SAVE_FORM = document.getElementById('saveForm'),
     DESCRIPCION_CATEGORIA = document.getElementById('descripcionCategoria'),
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Llamada a la función para mostrar el encabezado y pie del documento.
+    loadTemplate();
     // Llamada a la función para llenar la tabla con los registros existentes.
     fillTable();
 });
