@@ -59,6 +59,21 @@ class MarcaData extends MarcasHandler
         }
     }
 
+
+    public function setDescripcion($value, $min = 2, $max = 400)
+    {
+        if (!Validator::validateString($value)) {
+            $this->data_error = 'La descripción contiene caracteres prohibidos';
+            return false;
+        } elseif (Validator::validateLength($value, $min, $max)) {
+            $this->descripcion = $value;
+            return true;
+        } else {
+            $this->data_error = 'La descripción de la marca debe tener una longitud entre ' . $min . ' y ' . $max;
+            return false;
+        }
+    }
+
     public function setFilename()
     {
         if ($data = $this->readFilename()) {

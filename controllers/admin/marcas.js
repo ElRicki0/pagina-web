@@ -13,6 +13,7 @@ const SAVE_MODAL = new bootstrap.Modal('#saveModal'),
 const SAVE_FORM = document.getElementById('saveForm'),
     ID_MARCA = document.getElementById('idMarca'),
     NOMBRE_MARCA = document.getElementById('nombreMarca'),
+    DESCRIPCION_MARCA = document.getElementById('descripcionMarca'),
     IMAGEN_MARCA = document.getElementById('imagenMarca');
 
 // Método del evento para cuando el documento ha cargado.
@@ -82,6 +83,7 @@ const fillTable = async (form = null) => {
                 <tr>
                     <td><img src="${SERVER_URL}images/marcas/${row.imagen_marca}" height="120"></td>
                     <td>${row.nombre_marca}</td>
+                    <td>${row.descripcion_marca}</td>
                     <td>
                     <button type="button" class="btn editar-btn" onclick="openUpdate(${row.id_marca})">
                     <img src="../../resources/img/iconos/lapiz.png">
@@ -135,6 +137,7 @@ const openUpdate = async (id) => {
         const ROW = DATA.dataset;
         ID_MARCA.value = ROW.id_marca;
         NOMBRE_MARCA.value = ROW.nombre_marca;
+        DESCRIPCION_MARCA.value = ROW.descripcion_marca;
     } else {
         sweetAlert(2, DATA.error, false);
     }

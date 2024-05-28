@@ -28,6 +28,7 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (
                     !$marca->setNombre($_POST['nombreMarca']) or
+                    !$marca->setDescripcion($_POST['descripcionMarca']) or
                     !$marca->setImagen($_FILES['imagenMarca'])
                 ) {
                     $result['error'] = $marca->getDataError();
@@ -63,6 +64,7 @@ if (isset($_GET['action'])) {
                     !$marca->setId($_POST['idMarca']) or
                     !$marca->setFilename() or
                     !$marca->setNombre($_POST['nombreMarca']) or
+                    !$marca->setDescripcion($_POST['descripcionMarca']) or
                     !$marca->setImagen($_FILES['imagenMarca'], $marca->getFilename())
                 ) {
                     $result['error'] = $marca->getDataError();
