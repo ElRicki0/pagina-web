@@ -23,13 +23,13 @@ class ComentarioHandler
     public function searchRows()
     {
         $value = '%' . Validator::getSearchValue() . '%';
-        $sql = 'SELECT c.id_comentario, c.comentario, p.nombre_producto AS nombre_producto, cl.nombre_cliente AS nombre_cliente, c.estado_comentario
-        FROM tb_comentarios c
-        INNER JOIN tb_productos p ON c.id_producto = p.id_producto
-        INNER JOIN tb_clientes cl ON c.id_cliente = cl.id_cliente
-        WHERE c.comentario LIKE ? OR p.nombre_producto LIKE ?
-        ORDER BY c.fecha_comentario DESC
-        ';
+            $sql = 'SELECT c.id_comentario, c.comentario, p.nombre_producto AS nombre_producto, cl.nombre_cliente AS nombre_cliente, c.estado_comentario
+            FROM tb_comentarios c
+            INNER JOIN tb_productos p ON c.id_producto = p.id_producto
+            INNER JOIN tb_clientes cl ON c.id_cliente = cl.id_cliente
+            WHERE c.comentario LIKE ? OR p.nombre_producto LIKE ?
+            ORDER BY c.fecha_comentario DESC, p.nombre_producto
+            ';
         $params = array($value, $value);
         return Database::getRows($sql, $params);
     }

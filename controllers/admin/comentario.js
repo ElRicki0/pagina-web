@@ -49,6 +49,8 @@ const fillTable = async (form = null) => {
                     <td>${row.nombre_producto}</td>
                     <td>${row.nombre_cliente}</td>
                     <td>${row.comentario}</td>
+                    <td>${row.estrella}/5</td>
+                    <td>${row.fecha_comentario}</td>
                     <td><i class="${icon}"></i></td>
                     <td>
                     <button type="button" class="btn editar-btn" onclick="openState(${row.id_comentario})">

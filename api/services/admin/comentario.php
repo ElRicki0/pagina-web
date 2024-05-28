@@ -32,7 +32,8 @@ if (isset($_GET['action'])) {
                     !$comentario->setComentario($_POST['comentario']) or
                     !$comentario->setEstado(isset($_POST['estadoComentario']) ? 1 : 0) or
                     !$comentario->setProducto($_POST['productoComentario']) or
-                    !$comentario->setCliente($_POST['clienteComentario'])
+                    !$comentario->setCliente($_POST['clienteComentario'])or
+                    !$comentario->setEstrella($_POST['estrellaComentario'])
                 ) {
                     $result['error'] = $comentario->getDataError();
                 } elseif ($comentario->createRow()) {
@@ -115,4 +116,5 @@ if (isset($_GET['action'])) {
 } else {
     print(json_encode('Recurso no disponible'));
 }
+
 
