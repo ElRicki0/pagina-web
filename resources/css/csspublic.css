@@ -579,8 +579,8 @@ select {
 }
 
 .imagen_marca {
-    height: 250px;
-    width: 360px;
+    height: 260px;
+    width: 300px;
 }
 
 .liniaSeparadora {
@@ -602,6 +602,10 @@ select {
 
 .tarjetaLanzamiento {
     width: 400px;
+}
+
+.espaciado{
+    margin-top: 160px;
 }
 
 /*-----------------------------------
