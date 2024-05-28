@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 class="rounded rounded-5  shadow-lg imagen_marca" alt="${row.nombre_marca}">
                 </div>
                     <div class="col-lg-8 ">
-                        <p class="fs-1 textCat mt-4">${row.nombre_marca}</p>
+                        <p class="fs-1 textCat mt-1">${row.nombre_marca}</p>
                         <p class="fs-4">Sedal busca que nuestros usuarios, se vean bien, se sientan bien y le saquen más
                             provecho a la vida. De ahí que todos nuestros productos cumplen con los más altos estándares de
                             calidad y seguridad.</p>

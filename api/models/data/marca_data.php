@@ -44,7 +44,7 @@ class MarcaData extends MarcasHandler
 
     public function setImagen($file, $filename = null)
     {
-        if (Validator::validateImageFile($file, 100)) {
+        if (Validator::validateImageFile($file, 300)) {
             $this->imagen = Validator::getFilename();
             return true;
         } elseif (Validator::getFileError()) {
