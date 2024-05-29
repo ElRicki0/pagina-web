@@ -60,6 +60,7 @@ class MarcaData extends MarcasHandler
     }
 
 
+    // Creando set de descripcion
     public function setDescripcion($value, $min = 2, $max = 400)
     {
         if (!Validator::validateString($value)) {
