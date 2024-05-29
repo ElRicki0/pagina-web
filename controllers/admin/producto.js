@@ -133,7 +133,7 @@ const fillTable = async (form = null) => {
                     <img src="../../resources/img/iconos/papelera.png">
                 </button>
                 <button type="button" class="btn borrar-btn" onclick="openAdd(${row.id_producto})">
-                    <img src="../../resources/img/iconos/papelera.png">
+                    <img src="../../resources/img/iconos/mas.png " width="35px">
                 </button>
                     </td>
                 </tr>

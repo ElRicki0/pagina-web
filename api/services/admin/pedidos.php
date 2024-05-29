@@ -25,16 +25,16 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'createRow':
-                
+
                 $_POST = Validator::validateForm($_POST);
                 if (
                     !$pedido->setPedido($_POST['pedidoDetalle']) or
                     !$pedido->setEstado(isset($_POST['estadoDetalle']) ? 1 : 0) or
                     !$pedido->setProducto($_POST['productoDetalle']) or
                     !$pedido->setCliente($_POST['clienteDetalle']) or
-                    !$pedido->setFecha($_POST['fechaDetalle']) or 
-                    !$pedido->setDireccion($_POST['direccionDetalle']) or 
-                    !$pedido->setPrecio($_POST['precioDetalle']) or 
+                    !$pedido->setFecha($_POST['fechaDetalle']) or
+                    !$pedido->setDireccion($_POST['direccionDetalle']) or
+                    !$pedido->setPrecio($_POST['precioDetalle']) or
                     !$pedido->setCantidad($_POST['CantidadDetalle'])
                 ) {
                     $result['error'] = $pedido->getDataError();
@@ -62,6 +62,15 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Pedido inexistente';
                 }
                 break;
+            case 'readOnePedido':
+                if (!$pedido->setId($_POST['idPedido'])) {
+                    $result['error'] = $pedido->getDataError();
+                } elseif ($result['dataset'] = $pedido->readOnePedido()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['error'] = 'Pedido inexistente';
+                }
+                break;
             case 'updateRow':
                 $_POST = Validator::validateForm($_POST);
                 if (
@@ -69,9 +78,9 @@ if (isset($_GET['action'])) {
                     !$pedido->setEstado(isset($_POST['estadoDetalle']) ? 1 : 0) or
                     !$pedido->setProducto($_POST['productoDetalle']) or
                     !$pedido->setCliente($_POST['clienteDetalle']) or
-                    !$pedido->setFecha($_POST['fechaDetalle']) or 
-                    !$pedido->setDireccion($_POST['direccionDetalle']) or 
-                    !$pedido->setPrecio($_POST['precioDetalle']) or 
+                    !$pedido->setFecha($_POST['fechaDetalle']) or
+                    !$pedido->setDireccion($_POST['direccionDetalle']) or
+                    !$pedido->setPrecio($_POST['precioDetalle']) or
                     !$pedido->setCantidad($_POST['CantidadDetalle'])
                 ) {
                     $result['error'] = $pedido->getDataError();

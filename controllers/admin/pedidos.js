@@ -8,8 +8,13 @@ const SEARCH_FORM = document.getElementById('searchForm');
 const TABLE_BODY = document.getElementById('tableBody'),
     ROWS_FOUND = document.getElementById('rowsFound');
 // Constantes para establecer los elementos del componente Modal.
- 
- 
+
+const DETALLE_MODAL = new bootstrap.Modal('#masInfo2'),
+    MODAL_TITLE = document.getElementById('modal2');
+// Constantes para establecer el contenido de la tabla de productos.
+const TABLE_BODY2 = document.getElementById('tableBody2'),
+    ROWS_FOUND2 = document.getElementById('rowsFound2');
+
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para mostrar el encabezado y pie del documento.
@@ -19,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros existentes.
     fillTable();
 });
- 
+
 // Método del evento para cuando se envía el formulario de buscar.
 SEARCH_FORM.addEventListener('submit', (event) => {
     // Se evita recargar la página web después de enviar el formulario.
@@ -29,7 +34,7 @@ SEARCH_FORM.addEventListener('submit', (event) => {
     // Llamada a la función para llenar la tabla con los resultados de la búsqueda.
     fillTable(FORM);
 });
- 
+
 
 
 /*
@@ -54,7 +59,6 @@ const fillTable = async (form = null) => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TABLE_BODY.innerHTML += `
             <tr>
-                <td>${row.nombre_producto}</td>
                 <td>${row.nombre_cliente}</td>
                 <td>${row.fecha_pedido}</td>
                 <td>${row.direccion_pedido}</td>
@@ -64,10 +68,13 @@ const fillTable = async (form = null) => {
                 <td>
                 <button type="button" class="btn editar-btn" onclick="openState(${row.id_detalle_entrega})">
                 <img src="../../resources/img/iconos/intercambiar.png">
-            </button>
-            <button type="button" class="btn borrar-btn" onclick="openDelete(${row.id_detalle_entrega})">
-                <img src="../../resources/img/iconos/papelera.png">
-            </button>
+                </button>
+                <button type="button" class="btn borrar-btn" onclick="openDelete(${row.id_detalle_entrega})">
+                    <img src="../../resources/img/iconos/papelera.png">
+                </button>
+                <button type="button" class="btn borrar-btn" onclick="openDetalle(${row.id_detalle_entrega})">
+                    <img src="../../resources/img/iconos/mas.png" width=30px>
+                </button>
                 </td>
             </tr>
         `;
@@ -78,8 +85,10 @@ const fillTable = async (form = null) => {
         sweetAlert(4, DATA.error, true);
     }
 }
- 
- 
+
+
+
+
 
 /*
 *   Función asíncrona para cambiar el estado de un registro.
@@ -116,12 +125,42 @@ const openState = async (id) => {
 }
 
 
- 
+
 /*
 *   Función asíncrona para eliminar un registro.
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 */
+const openDetalle = async (id) => {
+    // Se define una constante tipo objeto con los datos del registro seleccionado.
+    const FORM = new FormData();
+    FORM.append('idPedido', id);
+    // Petición para obtener los registros disponibles.
+    const DATA = await fetchData(PEDIDOS_API, 'readOnePedido', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (DATA.status) {
+        DETALLE_MODAL.show();
+        // Se inicializa el contenido de la tabla.
+        ROWS_FOUND2.textContent = '';
+        TABLE_BODY2.innerHTML = '';
+        // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
+        DATA.dataset.forEach(row => {
+            // Se crean y concatenan las filas de la tabla con los datos de cada registro.
+            TABLE_BODY2.innerHTML += `
+            <tr>
+                <td>${row.nombre_producto}</td>
+            </tr>
+        `;
+        });
+        // Se muestra un mensaje de acuerdo con el resultado.
+        ROWS_FOUND2.textContent = DATA.message;
+    } else {
+        sweetAlert(4, DATA.error, true);
+    }
+
+
+}
+
 const openDelete = async (id) => {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
     const RESPONSE = await confirmAction('¿Desea eliminar el pedido de forma permanente?');
@@ -143,4 +182,3 @@ const openDelete = async (id) => {
         }
     }
 }
- 

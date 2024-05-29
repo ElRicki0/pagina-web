@@ -63,12 +63,11 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>PRODUCTO</th>
-                            <th>USUARIO CLIENTE</th>
+                            <th>NOMBRE CLIENTE</th>
                             <th>FECHA</th>
-                            <th>DIRECCION</th>
-                            <th>PRECIO</th>
-                            <th>CANTIDAD</th>
+                            <th>DIRECCIÓN</th>
+                            <th>PRECIO TOTAL</th>
+                            <th>CANTIDAD TOTAL</th>
                             <th>ESTADO</th>
                             <th>ACCIONES</th>
                         </tr>
@@ -158,6 +157,33 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="masInfo2" tabindex="-1" aria-labelledby="modal" aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width: 100%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- Título del modal -->
+                    <h6 class="modal-title w-100 text-center" id="modal2">Información detallada del pedido</h6>
+                    <!-- Botón de cierre del modal -->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- cuerpo del modal -->
+                    <div colspan="5" id="rowsFound2" class="textoRegistros ms-5"></div>
+                    <div class="table-responsive scrollbar tamañoScrool">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Productos</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody2"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT -->
     <!-- Llamada al framework y librería de mensajes -->
     <script src="../../resources/js/bootstrap.bundle.min.js"></script>
@@ -165,7 +191,6 @@
     <!-- Llamada al controlador general de la aplicación -->
     <script type="text/javascript" src="../../controllers/utils/components.js"></script>
     <!--Enlaces para archivos javascript-->
-    <script src="../../controllers/admin/header_admin.js"></script>
     <script src="../../controllers/utils/footer.js"></script>
     <!-- Llamada al controlador del sitio privado -->
     <script type="text/javascript" src="../../controllers/utils/admin.js"></script>

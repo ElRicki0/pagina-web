@@ -1,5 +1,5 @@
 DROP DATABASE IF EXISTS ivaneDB;
-CREATE DATABASE IF NOT EXISTS ivaneDB;
+CREATE DATABASE ivaneDB;
 
 USE ivaneDB;
 
@@ -29,7 +29,7 @@ CREATE TABLE tb_administradores (
   correo_admin VARCHAR(50) UNIQUE NOT NULL,
   telefono_admin VARCHAR(10) UNIQUE NOT NULL,
   numero_emerjencia_admin VARCHAR(10) UNIQUE NOT NULL,
-  DUI_admin VARCHAR UNIQUE NOT NULL,
+  DUI_admin VARCHAR  (11) UNIQUE NOT NULL,
   alias_admin VARCHAR(50) UNIQUE NOT NULL,
   pass_admin VARCHAR(500) UNIQUE NOT NULL
 );
