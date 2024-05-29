@@ -44,7 +44,7 @@ class MarcaData extends MarcasHandler
 
     public function setImagen($file, $filename = null)
     {
-        if (Validator::validateImageFile($file, 100)) {
+        if (Validator::validateImageFile($file, 300)) {
             $this->imagen = Validator::getFilename();
             return true;
         } elseif (Validator::getFileError()) {
@@ -56,6 +56,21 @@ class MarcaData extends MarcasHandler
         } else {
             $this->imagen = 'default.png';
             return true;
+        }
+    }
+
+
+    public function setDescripcion($value, $min = 2, $max = 400)
+    {
+        if (!Validator::validateString($value)) {
+            $this->data_error = 'La descripción contiene caracteres prohibidos';
+            return false;
+        } elseif (Validator::validateLength($value, $min, $max)) {
+            $this->descripcion = $value;
+            return true;
+        } else {
+            $this->data_error = 'La descripción de la marca debe tener una longitud entre ' . $min . ' y ' . $max;
+            return false;
         }
     }
 
