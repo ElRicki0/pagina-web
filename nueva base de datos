@@ -52,8 +52,10 @@ CREATE TABLE tb_categorias_productos (
 CREATE TABLE tb_marcas (
   id_marca int auto_increment primary key,
   nombre_marca VARCHAR(50) UNIQUE NOT NULL,
+  descripcion_marca VARCHAR(500) NOT NULL,
   imagen_marca varchar(500)
 );
+
 
 
 select*from tb_marcas;
@@ -93,8 +95,10 @@ CREATE TABLE tb_comentarios (
   CONSTRAINT fk_id_cliente_C
   FOREIGN KEY (id_cliente)
   REFERENCES tb_clientes(id_cliente),
-  estado_comentario BOOLEAN
+  estado_comentario BOOLEAN,
+  fecha_comentario DATE NOT NULL 
 );
+
 
 
 -- Creeacion de tabla tb_listas_deseos 
@@ -110,31 +114,8 @@ CREATE TABLE tb_listas_deseos (
   REFERENCES tb_clientes(id_cliente)
 );
 
--- Creacion de tabla tb_carritos_cliente
-CREATE TABLE tb_carritos_cliente (
-  id_carrito_cliente int auto_increment primary key,
-   id_cliente int NOT NULL,
-  CONSTRAINT fk_id_cliente_carrito
-  FOREIGN KEY (id_cliente)
-  REFERENCES tb_clientes(id_cliente)
-);
- 
-CREATE TABLE tb_carritos_productos (
-  id_carrito_productos int auto_increment primary key,
-  id_carrito_cliente int NOT NULL,
-  CONSTRAINT fk_id_carrito_cliente_C_P
-  FOREIGN KEY (id_carrito_cliente)
-  REFERENCES tb_carritos_cliente(id_carrito_cliente),
-	id_producto int NOT NULL,
-  CONSTRAINT fk_id_producto_C_P
-  FOREIGN KEY (id_producto)
-  REFERENCES tb_productos(id_producto),
-  cantidad INT,
-  precio_productos FLOAT
-); 
 
 -- Creacion de tabla tb_pedidos
-
 CREATE TABLE tb_pedidos (
   id_pedido int auto_increment primary key,
   fecha_pedido DATE NOT NULL,

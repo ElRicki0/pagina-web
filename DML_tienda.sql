@@ -33,17 +33,18 @@ INSERT INTO tb_categorias_productos (nombre_categoria_producto, descripcion_cate
 ('Brochas y Pinceles', 'Brochas y pinceles profesionales para un maquillaje perfecto', 'brochas.jpg');
 
 -- Inserción de datos en tb_marcas
-INSERT INTO tb_marcas (nombre_marca, imagen_marca) VALUES
-('Maybelline', 'maybelline.jpg'),
-('L\'Oréal', 'loreal.jpg'),
-('MAC Cosmetics', 'mac.jpg'),
-('NYX Professional Makeup', 'nyx.jpg'),
-('Revlon', 'revlon.jpg'),
-('Estée Lauder', 'estee_lauder.jpg'),
-('Clinique', 'clinique.jpg'),
-('Urban Decay', 'urban_decay.jpg'),
-('Sephora', 'sephora.jpg'),
-('NARS', 'nars.jpg');
+INSERT INTO tb_marcas (nombre_marca, descripcion_marca, imagen_marca) VALUES
+('Maybelline', 'Marca reconocida por su amplia gama de productos de maquillaje a precios accesibles.', 'maybelline.jpg'),
+('L\'Oréal', 'Una de las marcas de belleza más grandes y conocidas del mundo, ofrece productos de alta calidad.', 'loreal.jpg'),
+('MAC Cosmetics', 'Marca profesional de maquillaje conocida por su amplia gama de colores y productos innovadores.', 'mac.jpg'),
+('NYX Professional Makeup', 'Marca que ofrece productos de maquillaje de calidad profesional a precios accesibles.', 'nyx.jpg'),
+('Revlon', 'Marca icónica en el mundo de la belleza, conocida por sus productos innovadores y de calidad.', 'revlon.jpg'),
+('Estée Lauder', 'Marca de lujo que ofrece una amplia gama de productos de belleza y cuidado de la piel.', 'estee_lauder.jpg'),
+('Clinique', 'Marca conocida por sus productos dermatológicamente probados y sus soluciones para el cuidado de la piel.', 'clinique.jpg'),
+('Urban Decay', 'Marca famosa por sus productos atrevidos y de alta pigmentación, especialmente sus paletas de sombras.', 'urban_decay.jpg'),
+('Sephora', 'Retailer que ofrece una amplia variedad de marcas y productos de belleza, además de su propia línea de productos.', 'sephora.jpg'),
+('NARS', 'Marca conocida por sus productos de alta calidad y sus icónicos nombres de tonos.', 'nars.jpg');
+
 
 -- Inserción de datos en tb_productos
 INSERT INTO tb_productos (nombre_producto, descripcion_producto, precio_producto, cantidad_producto, id_categoria_producto, id_admin, id_marca)
@@ -90,41 +91,6 @@ INSERT INTO tb_listas_deseos (id_producto, id_cliente) VALUES
 (4, 2), -- Delineador Líquido Negro agregado a la lista de deseos de Diego
 (5, 3); -- Mascarilla Facial Purificante agregada a la lista de deseos de Elena
 
--- Inserción de datos en tb_carritos_cliente
-INSERT INTO tb_carritos_cliente (id_cliente) VALUES
-(1), -- Juan tiene un carrito
-(2), -- Ana tiene un carrito
-(3), -- Carlos tiene un carrito
-(4), -- María tiene un carrito
-(5), -- Pedro tiene un carrito
-(6), -- Luisa tiene un carrito
-(7), -- Miguel tiene un carrito
-(1), -- Juan tiene otro carrito
-(2), -- Ana tiene otro carrito
-(3), -- Carlos tiene otro carrito
-(4), -- María tiene otro carrito
-(5), -- Pedro tiene otro carrito
-(6), -- Luisa tiene otro carrito
-(7), -- Miguel tiene otro carrito
-(8); -- Sofía tiene un carrito
-
--- Inserción de datos en tb_carritos_productos
-INSERT INTO tb_carritos_productos (id_carrito_cliente, id_producto, cantidad, precio_productos) VALUES
-(1, 1, 2, 31.98), -- Juan tiene en su carrito 2 unidades de Crema Hidratante
-(2, 2, 1, 9.99), -- Ana tiene en su carrito 1 unidad de Labial Rojo Intenso
-(3, 3, 3, 37.50), -- Carlos tiene en su carrito 3 unidades de Polvo Compacto Matificante
-(4, 4, 1, 8.50), -- María tiene en su carrito 1 unidad de Delineador Líquido Negro
-(5, 5, 2, 37.98), -- Pedro tiene en su carrito 2 unidades de Mascarilla Facial Purificante
-(6, 6, 1, 22.99), -- Luisa tiene en su carrito 1 unidad de Paleta de Sombras Nude
-(7, 7, 2, 29.98), -- Miguel tiene en su carrito 2 unidades de Máscara de Pestañas Volumen
-(8, 8, 1, 10.99), -- Sofía tiene en su carrito 1 unidad de Corrector Líquido Alta Cobertura
-(1, 9, 1, 19.99), -- Juan tiene en su carrito 1 unidad de Base de Maquillaje Mate
-(2, 10, 1, 29.99), -- Ana tiene en su carrito 1 unidad de Set de Brochas Profesional
-(3, 1, 3, 47.97), -- Carlos tiene en su carrito 3 unidades de Crema Hidratante
-(4, 2, 1, 9.99), -- María tiene en su carrito 1 unidad de Labial Rojo Intenso
-(5, 3, 2, 25.00), -- Pedro tiene en su carrito 2 unidades de Polvo Compacto Matificante
-(6, 4, 1, 8.50), -- Luisa tiene en su carrito 1 unidad de Delineador Líquido Negro
-(7, 5, 2, 37.98); -- Miguel tiene en su carrito 2 unidades de Mascarilla Facial Purificante
 
 -- Inserción de datos en tb_pedidos
 INSERT INTO tb_pedidos (fecha_pedido, direccion_pedido, id_cliente) VALUES
@@ -148,17 +114,17 @@ INSERT INTO tb_pedidos (fecha_pedido, direccion_pedido, id_cliente) VALUES
 
 
 -- Inserción de datos en tb_comentarios
-INSERT INTO tb_comentarios (comentario, id_producto, id_cliente, estado_comentario) VALUES
-('¡Me encanta esta crema hidratante!', 1, 1, 1),
-('El labial es hermoso y dura todo el día', 2, 2, 1),
-('El polvo compacto deja mi piel suave y sin brillo', 3, 3, 1),
-('El delineador se seca rápido y no se corre', 4, 1, 1),
-('La mascarilla deja mi piel fresca y radiante', 5, 2, 1),
-('La paleta de sombras tiene una pigmentación increíble', 6, 3, 1),
-('La máscara de pestañas es mi favorita, da mucho volumen', 7, 4, 1),
-('El corrector cubre muy bien las ojeras', 8, 5, 1),
-('La base de maquillaje deja un acabado impecable', 9, 6, 1),
-('Las brochas son suaves y fáciles de usar', 10, 7, 1);
+INSERT INTO tb_comentarios (comentario, estrella, id_producto, id_cliente, estado_comentario, fecha_comentario) VALUES
+('¡Me encanta esta crema hidratante!', 5, 1, 1, 1, '2024-05-01'),
+('El labial es hermoso y dura todo el día', 4, 2, 2, 1, '2024-05-02'),
+('El polvo compacto deja mi piel suave y sin brillo', 5, 3, 3, 1, '2024-05-03'),
+('El delineador se seca rápido y no se corre', 4, 4, 1, 1, '2024-05-04'),
+('La mascarilla deja mi piel fresca y radiante', 5, 5, 2, 1, '2024-05-05'),
+('La paleta de sombras tiene una pigmentación increíble', 5, 6, 3, 1, '2024-05-06'),
+('La máscara de pestañas es mi favorita, da mucho volumen', 5, 7, 4, 1, '2024-05-07'),
+('El corrector cubre muy bien las ojeras', 4, 8, 5, 1, '2024-05-08'),
+('La base de maquillaje deja un acabado impecable', 5, 9, 6, 1, '2024-05-09'),
+('Las brochas son suaves y fáciles de usar', 5, 10, 7, 1, '2024-05-10');
 
 -- Inserción de datos en tb_detalles_pedidos
 INSERT INTO tb_detalles_pedidos (id_pedido, id_producto, precio_pedido, cantidad_pedido, estado_pedido) VALUES
