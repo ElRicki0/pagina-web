@@ -4,6 +4,7 @@ const PRODUCTO_API = 'services/public/producto.php';
 const PARAMS = new URLSearchParams(location.search);
 const PRODUCTOS = document.getElementById('productosMarc');
 const MAIN_TITLE = document.getElementById('mainTitle');
+const IMAGEN = document.getElementById('imagenMarca');
 
 
 // Método manejador de eventos para cuando el documento ha cargado.
@@ -15,9 +16,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     const DATA = await fetchData(PRODUCTO_API, 'readProductosMarca', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
+        console.log(DATA);
         // Se asigna como título principal la categoría de los productos.
-        MAIN_TITLE.textContent = `Marca: ${PARAMS.get('nombre')}`;
-        console.log(`Marca: ${PARAMS.get('nombre')}`);
+        MAIN_TITLE.textContent = `${PARAMS.get('nombre')}`;
+        IMAGEN.innerHTML = `
+                    <div class="">
+                        <img src="${SERVER_URL}images/marcas/${PARAMS.get('imagen')}" class=" rounded-circle tamaño_imagen_marca" alt="hola">
+                    </div>`;
         // Se inicializa el contenedor de productos.
         PRODUCTOS.innerHTML = '';
         // Se recorre el conjunto de registros fila por fila a través del objeto row.

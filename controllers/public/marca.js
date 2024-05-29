@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <p class="fs-1 textCat mt-1">${row.nombre_marca}</p>
                         <p class="fs-4">${row.descripcion_marca}</p>
                         <button type="button" class="btn btn_marca mt-4">
-                            <a href="marca_producto_especifico.html?id=${row.id_marca}" class="btn-link">Ver productos</a>
+                            <a href="marca_producto_especifico.html?id=${row.id_marca}&nombre=${row.nombre_marca}&imagen=${row.imagen_marca}" class="btn-link">Ver productos</a>
                         </button>
                  </div>
             </div>

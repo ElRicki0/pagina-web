@@ -1,0 +1,113 @@
+.imagenMarcaS {
+    border-radius: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px; /* Ajusta el tamaño según sea necesario */
+    height: 100px; /* Ajusta el tamaño según sea necesario */
+    position: absolute;
+    top: -50px; 
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white; /* Agrega un fondo para visualizar mejor */
+    border: 1px solid black; /* Agrega un borde para visualizar mejor */
+    z-index: 10; /* Asegura que esté por encima del contenedor padre */
+    -webkit-animation: imagenMarcaS 0.65s linear both;
+    animation: imagenMarcaS 0.65s linear both;
+}
+
+@-webkit-keyframes imagenMarcaS {
+    0% {
+        -webkit-transform: scale(1) rotateZ(0);
+        transform: scale(1) rotateZ(0);
+    }
+
+    50% {
+        -webkit-transform: scale(2) rotateZ(180deg);
+        transform: scale(2) rotateZ(180deg);
+    }
+
+    100% {
+        -webkit-transform: scale(1) rotateZ(360deg);
+        transform: scale(1) rotateZ(360deg);
+    }
+}
+
+@keyframes imagenMarcaS {
+    0% {
+        -webkit-transform: scale(1) rotateZ(0);
+        transform: scale(1) rotateZ(0);
+    }
+
+    50% {
+        -webkit-transform: scale(2) rotateZ(180deg);
+        transform: scale(2) rotateZ(180deg);
+    }
+
+    100% {
+        -webkit-transform: scale(1) rotateZ(360deg);
+        transform: scale(1) rotateZ(360deg);
+    }
+}
+
+.enMedio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.contenedor_Padre_Marca {
+    background-color: rgb(181, 102, 255);
+    border-radius: 18px;
+    position: relative;
+    overflow: visible; /* Permite que el contenido salga del contenedor si es necesario */
+}
+
+.textMarcaP {
+    margin-top: 14px;
+    color: white;
+}
+
+.espaciado_marca {
+    margin-top: 180px;
+}
+
+.tamaño_imagen_marca{
+    margin-top: 20px;
+    width: 200px;
+    border: 1px solid black;
+}
+
+/* Media queries para hacer el div responsive */
+@media (max-width: 768px) {
+    .imagenMarcaS {
+        width: 80px;
+        height: 80px;
+        top: -40px; /* Ajusta la posición vertical */
+    }
+
+    .textMarcaP {
+        font-size: 1.5rem;
+    }
+
+    .espaciado_marca {
+        margin-top: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .imagenMarcaS {
+        width: 60px;
+        height: 60px;
+        top: -30px; /* Ajusta la posición vertical */
+    }
+
+    .textMarcaP {
+        font-size: 1.2rem;
+    }
+
+    .espaciado_marca {
+        margin-top: 100px;
+    }
+}
