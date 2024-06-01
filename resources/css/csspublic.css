@@ -8,7 +8,9 @@
     transition: 0.5s;
 }
 
-
+.producto_index{
+    height: 30px;
+}
 
 main {
     margin: 0px 10px 10px 10px;

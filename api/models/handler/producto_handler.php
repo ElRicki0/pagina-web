@@ -68,7 +68,7 @@ class ProductoHandler
 
     public function read8Products()
     {
-        $sql = 'SELECT p.id_producto, p.imagen_producto, p.nombre_producto, p.descripcion_producto, p.precio_producto, p.cantidad_producto, 
+        $sql = 'SELECT p.id_producto, p.imagen_producto, p.nombre_producto, p.descripcion_producto, p.precio_producto, p.cantidad_producto, p.id_categoria_producto, 
                 c.nombre_categoria_producto AS categoria_producto, 
                 a.nombre_admin AS nombre_administrador, 
                 m.nombre_marca AS nombre_marca

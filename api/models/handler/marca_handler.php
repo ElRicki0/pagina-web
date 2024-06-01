@@ -41,7 +41,7 @@ class MarcasHandler
 
     public function readAll()
     {
-        $sql = 'SELECT id_marca, nombre_marca, descripcion_marca, imagen_marca
+        $sql = 'SELECT id_marca, nombre_marca, imagen_marca
                 FROM tb_marcas
                 ORDER BY nombre_marca';
         return Database::getRows($sql);
