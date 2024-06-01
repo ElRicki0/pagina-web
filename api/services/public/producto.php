@@ -10,14 +10,6 @@ if (isset($_GET['action'])) {
     $result = array('status' => 0, 'message' => null, 'dataset' => null, 'error' => null, 'exception' => null);
     // Se compara la acción a realizar según la petición del controlador.
     switch ($_GET['action'] or true) {
-        case 'read8Products':
-            if ($result['dataset'] = $producto->read8Products()) {
-                $result['status'] = 1;
-                $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
-            } else {
-                $result['error'] = 'No existen productos registrados';
-            }
-            break;
         case 'readProductosMarca':
             if (!$producto->setMarca($_POST['idMarca'])) {
                 $result['error'] = $producto->getDataError();
@@ -25,6 +17,14 @@ if (isset($_GET['action'])) {
                 $result['status'] = 1;
             } else {
                 $result['error'];
+            }
+            break;
+        case 'read8Products':
+            if ($result['dataset'] = $producto->read8Products()) {
+                $result['status'] = 1;
+                $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
+            } else {
+                $result['error'] = 'No existen productos registrados';
             }
             break;
         case 'readOne':
