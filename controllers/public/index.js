@@ -4,7 +4,6 @@ const MARCA_API = 'services/public/marca.php'
 // llamamos el id de productos
 const PARAMS = new URLSearchParams(location.search);
 const PRODUCTOS = document.getElementById('productos')
-const MAIN_TITLE = document.getElementById('titleProductos')
 
 const MARCAS = document.getElementById('marcas');
 const MARCAS_TITLE = document.getElementById('titleMarcas');
@@ -13,6 +12,8 @@ const MARCAS_TITLE = document.getElementById('titleMarcas');
 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
+    // Llamada a la función para mostrar el encabezado y pie del documento.
+    loadTemplate();
     // Se establece el título del contenido principal.
     MAIN_TITLE.textContent = 'Productos mas populares';
     const FORM = new FormData();
