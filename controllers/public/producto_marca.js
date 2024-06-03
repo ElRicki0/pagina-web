@@ -31,23 +31,24 @@ document.addEventListener('DOMContentLoaded', async () => {
         DATA.dataset.forEach(row => {
             // Se crean y concatenan las tarjetas con los datos de cada producto.
             PRODUCTOS.innerHTML += `
-    <div class="col-sm-12 col-md-6 col-lg-3">
-        <div class="card mb-3 col-sm-12 col-md-6 col-lg-3">
-            <div class="card-details">
-                <h5 class="card-title">${row.nombre_producto}</h5>
-                <img src="${SERVER_URL}images/productos/${row.imagen_producto}" class="card-img-top" alt="${row.nombre_producto}">
-                <div class="product-info">
-                    <p class="product-price">Precio unitario (US$) ${row.precio_producto}</p>
-                    <p class="product-description">${row.descripcion_producto}</p>
+            <div class="col-sm-12 col-md-6 col-lg-3">
+            <div class="card mb-3">
+                <div class="card-details">
+                    <h5 class="card-title">${row.nombre_producto}</h5>
+                    <div class="d-flex justify-content-center">
+                        <img src="${SERVER_URL}images/productos/${row.imagen_producto}" class="card-img-top mb-3 imagenMar" alt="${row.nombre_producto}">
+                    </div>
+                    <div class="product-info">
+                        <p class="product-price">Precio unitario: $${row.precio_producto}</p>
+                        <p class="product-price">Existencias: ${row.cantidad_producto}</p>
+                        <p class="product-description mb-4">Descripción: ${row.descripcion_producto}</p>
+                    </div>
                 </div>
+                <button class="card-button">
+                    <a href="detail.html?id=${row.id_producto}" class="btn">Ver detalle</a>
+                </button>
             </div>
-            <button class="card-button">
-                <a href="detail.html?id=${row.id_producto}" class="btn">Ver detalle</a>
-            </button>
-        </div>
-    </div>
-`;
-
+        </div>`;
         });
     } else {
         // Se presenta un mensaje de error cuando no existen datos para mostrar.

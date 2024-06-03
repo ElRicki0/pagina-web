@@ -33,7 +33,7 @@ class ProductoData extends ProductoHandler
 
     public function setImagen($file, $filename = null)
     {
-        if (Validator::validateImageFile($file, 1000)) {
+        if (Validator::validateImageFile($file, 300)) {
             $this->imagen = Validator::getFilename();
             return true;
         } elseif (Validator::getFileError()) {

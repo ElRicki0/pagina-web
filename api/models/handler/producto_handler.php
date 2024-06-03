@@ -101,9 +101,9 @@ class ProductoHandler
     public function updateRow()
     {
         $sql = 'UPDATE tb_productos
-                SET  nombre_producto = ?, descripcion_producto = ?, precio_producto = ?, cantidad_producto = ?, id_categoria_producto = ?, id_admin = ?, id_marca=?
+                SET  nombre_producto = ?, descripcion_producto = ?, precio_producto = ?, cantidad_producto = ?, id_categoria_producto = ?, id_admin = ?, imagen_producto = ?, id_marca=?
                 WHERE id_producto = ?';
-        $params = array($this->nombre, $this->descripcion, $this->precio, $this->cantidad, $this->categoria, $this->administrador, $this->marca, $this->id);
+        $params = array($this->nombre, $this->descripcion, $this->precio, $this->cantidad, $this->categoria, $this->administrador, $this->imagen , $this->marca, $this->id);
         return Database::executeRow($sql, $params);
     }
 
@@ -138,7 +138,7 @@ class ProductoHandler
 
     public function readProductosMarca()
     {
-    $sql = 'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto
+    $sql = 'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, cantidad_producto
     FROM tb_productos p
     INNER JOIN tb_marcas USING(id_marca)
     WHERE id_marca = ? 

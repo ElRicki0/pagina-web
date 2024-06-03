@@ -74,12 +74,14 @@ if (isset($_GET['action'])) {
                     !$producto->setCantidad($_POST['cantidadProducto']) or
                     !$producto->setCategoria($_POST['categoriaProducto']) or
                     !$producto->setAdministrador($_POST['administradorProducto']) or
+                    !$producto->setImagen($_FILES['imagenProducto'], $producto->getFilename()) or
                     !$producto->setMarca($_POST['marcaProducto'])
                 ) {
                     $result['error'] = $producto->getDataError();
                 } elseif ($producto->updateRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Producto modificado correctamente';
+                    $result['fileStatus'] = Validator::changeFile($_FILES['imagenProducto'], $producto::RUTA_IMAGEN, $producto->getFilename());
                 } else {
                     $result['error'] = 'Ocurrió un problema al modificar el producto';
                 }

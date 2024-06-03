@@ -9,10 +9,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 250px;
-    /* Ajusta el tamaño según sea necesario */
-    height: 250px;
-    /* Ajusta el tamaño según sea necesario */
+    width: 240px;
+    height: 240px;
     background-color: transparent;
     /* Agrega un fondo para visualizar mejor */
     overflow: hidden;
@@ -74,7 +72,7 @@
 
 
 .espaciadoMarca {
-    margin-top: 150px;
+    margin-top: 140px;
 }
 
 .tamaño_imagen_marca {
@@ -88,8 +86,8 @@
 /*estilo para las cards*/
 .card {
     margin: 0.5rem;
-    width: 210px;
-    height: 270px;
+    width: 260px;
+    height: 460px;
     border-radius: 20px;
     background: white;
     position: relative;
@@ -101,8 +99,7 @@
 
 .card-details {
     color: black;
-    height: 100%;
-    gap: .5rem;
+    gap: .1rem;
     display: grid;
     place-content: center;
 }
@@ -132,6 +129,10 @@
     font-weight: bold;
 }
 
+.card-title{
+    text-align: center;
+}
+
 .card:hover {
     border-color: rgb(206, 112, 230);
     box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
@@ -140,6 +141,14 @@
 .card:hover .card-button {
     transform: translate(-50%, 50%);
     opacity: 1;
+}
+
+.imagenMar {
+    width: 200px;
+    border-radius: 20px;
+    box-shadow: 8px 17px 8px -3px rgba(168, 168, 168, 0.69);
+    -webkit-box-shadow: 8px 17px 8px -3px rgba(168, 168, 168, 0.69);
+    -moz-box-shadow: 8px 17px 8px -3px rgba(168, 168, 168, 0.69);
 }
 
 /* Ajustes para el contenedor de las tarjetas */
