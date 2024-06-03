@@ -36,7 +36,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                                         alt="Fallo al cargar la imagen">
                                     <div class="card-body">
                                         <h5 class="card-title">${row.nombre_producto}</h5>
-                                        <p class="">$40.50</p>
+                                        <p class="">$${row.precio_producto}</p>
+                                        <p class="">Existencias: ${row.cantidad_producto}</p>
                                         <button class="btn btn_ver_mas" data-bs-toggle="collapse" href="#tarjetita-${row.id_producto}" role="button"
                                             aria-expanded="false" aria-controls="tarjetita-${row.id_producto}">Más información</button>
                                         <div class="collapse" id="tarjetita-${row.id_producto}">

@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('nombreProducto').textContent = DATA.dataset.nombre_producto;
         document.getElementById('descripcionProducto').textContent = DATA.dataset.descripcion_producto;
         document.getElementById('precioProducto').textContent = DATA.dataset.precio_producto;
+        document.getElementById('cantidadProducto').textContent = DATA.dataset.cantidad_producto;
         document.getElementById('idProducto').value = DATA.dataset.id_producto;
     } else {
         // Se presenta un mensaje de error cuando no existen datos para mostrar.
