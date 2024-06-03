@@ -118,9 +118,7 @@ section button {
     color: #fefefe !important;
 }
 
-.btncreapu {
-    margin: 5px !important;
-}
+
 
 .navbar-brand {
     color: #f3fefe !important;
@@ -133,9 +131,6 @@ section button {
 footer {
     color: aliceblue;
     width: 100%;
-    bottom: fixed;
-    bottom: 0;
-    left: 0;
     padding: 1px;
     background-color: #1F1B47 !important;
     display: flex;
@@ -607,7 +602,7 @@ select {
 }
 
 .espaciado{
-    margin-top: 130px;
+    margin-top: 100px;
 }
 
 /*-----------------------------------
