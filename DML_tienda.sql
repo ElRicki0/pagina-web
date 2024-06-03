@@ -60,18 +60,6 @@ VALUES
 ('Base de Maquillaje Mate', 'Base de maquillaje con acabado mate y larga duración', 19.99, 50, 4, 1, 1),
 ('Set de Brochas Profesional', 'Set de brochas profesional para aplicación de maquillaje', 29.99, 25, 5, 1, 5);
 
--- Inserción de datos en tb_resenia
-INSERT INTO tb_resenia (estrella, id_producto) VALUES
-(4.5, 1),
-(5.0, 2),
-(3.8, 3),
-(4.0, 4),
-(4.2, 5),
-(4.5, 1),
-(5.0, 2),
-(3.8, 3),
-(4.0, 4),
-(4.2, 5);
 
 -- Inserción de datos en tb_listas_deseos
 INSERT INTO tb_listas_deseos (id_producto, id_cliente) VALUES
