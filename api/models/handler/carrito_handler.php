@@ -12,12 +12,8 @@ class CarritoHandler
     protected $id = null;
     protected $pedido = null;
     protected $producto = null;
-    protected $fecha = null;
-    protected $direccion = null;
-    protected $cliente = null;
     protected $precio = null;
     protected $cantidad = null;
-
 
     /*
      *   Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
@@ -70,7 +66,7 @@ ORDER BY p.nombre_producto;
         // ORDER BY dp.id_detalle_entrega';
         //     return Database::getRows($sql);
     }
-    public function readOne()
+    public function readOnee()
     {
         $sql = 'SELECT *
                 FROM tb_detalles_pedidos
@@ -79,7 +75,7 @@ ORDER BY p.nombre_producto;
         return Database::getRow($sql, $params);
     }
 
-    public function readOnePedido()
+    public function readlistcarrito()
     {
         $sql = 'SELECT p.nombre_producto
         FROM tb_pedidos pe
