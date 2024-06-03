@@ -7,7 +7,6 @@ const MAIN_TITLE = document.getElementById('mainTitle');
 const IMAGEN = document.getElementById('imagenMarca');
 const DESCRIP = document.getElementById('descripcionMarca');
 
-
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
     // Se define un objeto con los datos de la categoría seleccionada.
@@ -45,7 +44,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </div>
                 </div>
                 <button class="card-button">
-                    <a href="detail.html?id=${row.id_producto}" class="btn">Ver detalle</a>
+                    <a href="producto.html?id=${row.id_producto}" class="btn">Ver detalle</a>
                 </button>
             </div>
         </div>`;

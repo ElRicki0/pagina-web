@@ -16,7 +16,7 @@ if (isset($_GET['action'])) {
             } elseif ($result['dataset'] = $producto->readProductosCategoria()) {
                 $result['status'] = 1;
             } else {
-                $result['error'];
+                $result['error'] = 'No existen productos de esta categoría';
             }
             break;
         case 'readProductosMarca':
@@ -25,7 +25,7 @@ if (isset($_GET['action'])) {
             } elseif ($result['dataset'] = $producto->readProductosMarca()) {
                 $result['status'] = 1;
             } else {
-                $result['error'];
+                $result['error'] = 'No existen productos de esta marca';
             }
             break;
         case 'read8Products':

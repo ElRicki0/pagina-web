@@ -60,14 +60,18 @@ header.innerHTML = `<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-t
                         </svg>
                     </a>
                 </button>
-                <button class="corazon rounded border border-dark" type="button" data-bs-toggle="modal"
-                data-bs-target="#perfil">
-                <a class="nav-link active" aria-current="page"
-                    href="../../views/public/perfil_cliente.html">
-                    <img class="tamañoImagenPerfil rounded-circle" src="../../resources/img/iconoPerfil.jpg"
-                        alt="" width="55px" height="55">
-                </a>
-                </button>
+                <div class="ml-auto d-flex align-items-center">
+                <div class="nav-item dropdown">
+                    <ul class="dropdown-menu" aria-labelledby="cuentaDropdown">
+                        <li><a class="dropdown-item" href="perfil_cliente.html">Editar perfil</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#" onclick="logOut()">Cerrar sesión</a></li>
+                    </ul>
+                    <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="rounded-circle" src="../../resources/img/iconoPerfil.jpg" alt="" width="60px">
+                    </button>
+                </div>
+            </div>
                 </ul>
         </div>
     </div>
