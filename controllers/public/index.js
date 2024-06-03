@@ -30,28 +30,25 @@ document.addEventListener('DOMContentLoaded', async () => {
             // let url = `products.html?id=${row.id_producto}&nombre=${row.nombre_producto}`;
             // Se crean y concatenan las tarjetas con los datos de cada categoría.
             PRODUCTOS.innerHTML += `
-                            <div class="col-lg-3 col-md-4 col-sm-12">
-                                <div class="card mb-3 shadow-lg">
-                                    <img src="${SERVER_URL}images/productos/${row.imagen_producto}" class="card-img-top imagen_tarjeta"
-                                        alt="Fallo al cargar la imagen">
-                                    <div class="card-body">
-                                        <h5 class="card-title">${row.nombre_producto}</h5>
-                                        <p class="">$${row.precio_producto}</p>
-                                        <p class="">Existencias: ${row.cantidad_producto}</p>
-                                        <button class="btn btn_ver_mas" data-bs-toggle="collapse" href="#tarjetita-${row.id_producto}" role="button"
-                                            aria-expanded="false" aria-controls="tarjetita-${row.id_producto}">Más información</button>
-                                        <div class="collapse" id="tarjetita-${row.id_producto}">
-                                            <div class="card card-body mt-2">
-                                                <p class="mb-0">${row.descripcion_producto}</p>
-                                                <div class="text-center mt-2">
-                                                    <a href="producto.html?id=${row.id_producto}" class="btn btn-outline-primary">Mayor descripción
-                                                        del producto</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-3">
+            <div class="card mb-3">
+                <div class="card-details">
+                    <div class="d-flex justify-content-center">
+                        <img src="${SERVER_URL}images/productos/${row.imagen_producto}" class="card-img-top mb-3 imagenMar" alt="${row.nombre_producto}">
+                    </div>
+                    <h5 class="card-title">${row.nombre_producto}</h5>
+                    <div class="product-info">
+                        <p class="product-price">Precio unitario: $${row.precio_producto}</p>
+                        <p class="product-price">Existencias: ${row.cantidad_producto}</p>
+                        <p class="product-description mb-4">Descripción: ${row.descripcion_producto}</p>
+                    </div>
+                </div>
+                <button class="card-button">
+                    <a href="producto.html?id=${row.id_producto}" class="btn">Ver detalle</a>
+                </button>
+            </div>
+        </div>
 `;
         });
     } else {

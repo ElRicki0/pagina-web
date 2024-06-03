@@ -25,13 +25,14 @@
         <div class="container text-center" style="padding-top: 50px;">
             <div class="row">
                 <div class=" col">
-                    <img id="imagenProducto" alt="Fallo en cargar imagen" class="rounded  mx-auto d-block border producto_imagen" width="300px">
+                    <img id="imagenProducto" alt="Fallo en cargar imagen"
+                        class="rounded  mx-auto d-block border producto_imagen" width="300px">
                     <br>
                     <br>
                     <input type="file" id="modalInputFile" style="display:none;" accept="image/*">
                     <div class="row align-items-center">
-                        <h5 class="precioCarito">Precio de producto</h5>
-                        <b id="precioProducto">$</b>
+                        <h5 class="precioCarito">Precio de producto $: </h5>
+                        <b id="precioProducto"></b>
                         <h5 class="precioCarito">Cantidad producto</h5>
                         <b id="cantidadProducto"></b>
                         <div class="col-auto">
@@ -45,9 +46,11 @@
                     <div class="row">
                         <div class="col" style="margin-top: 3rem;">
 
-                            <div class="letraCar fs-3 col-md-4 mt-5 text-start">
-                                <a href="../public/marca_especifica.html">Garnier</a>
+                            <div class="letraCar fs-3 col-md-4 mt-5 text-start" id="marcas">
+                                <!-- <input type="number" class="d-none" id="idProducto" name="idMarca"> -->
                             </div>
+
+
                             <div class="letraCar fs-3 col-md-4 mt-3 text-start" id="nombreProducto"></div>
                             <!--Descripcion de producto-->
                             <div class="letraCar col-md-8 fs-3 mt-3 text-start" id="descripcionProducto"></div>
@@ -165,8 +168,9 @@
             <div class="row justify-content-center">
                 <div class="container-carousel rounded-5">
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
+                        <div class="carousel-inner" id="sugerenciasProductos">
                             <!--tarjeta 1-->
+                            
                             <div class="carousel-item active">
                                 <div class="d-flex justify-content-center">
                                     <div class="card">
@@ -185,44 +189,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--tarjeta 2-->
-                            <div class="carousel-item">
-                                <div class="d-flex justify-content-center">
-                                    <div class="card">
-                                        <div class="img-wrapper">
-                                            <img src="../../resources/img/imagenesIndex/producto3.jpg" alt="...">
-                                        </div>
-                                        <div class="card-body">
-                                            <h5 class="card-title">UV-Defender-Protector-Solar-Diario</h5>
-                                            <p class="">$20.80
-                                            </p>
-                                            <div class="text-center mt-2">
-                                                <a href="../public/descripcion_producto.html"
-                                                    class="btn btn_ver_mas">Más información</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--tarjeta 3-->
-                            <div class="carousel-item">
-                                <div class="d-flex justify-content-center">
-                                    <div class="card">
-                                        <div class="img-wrapper">
-                                            <img src="../../resources/img/imagenesIndex/producto4.jpg" alt="...">
-                                        </div>
-                                        <div class="card-body">
-                                            <h5 class="card-title">OPI - Esmalte de uñas, 0.5 onzas líquidas</h5>
-                                            <p class="">$2.00
-                                            </p>
-                                            <div class="text-center mt-2">
-                                                <a href="../public/descripcion_producto.html"
-                                                    class="btn btn_ver_mas">Más información</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
                             data-bs-slide="prev">

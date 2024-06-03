@@ -76,7 +76,8 @@ class ProductoHandler
                 INNER JOIN tb_categorias_productos c ON p.id_categoria_producto = c.id_categoria_producto
                 INNER JOIN tb_administradores a ON p.id_admin = a.id_admin
                 INNER JOIN tb_marcas m ON p.id_marca = m.id_marca
-                ORDER BY nombre_producto limit 8';
+                ORDER BY RAND()
+                limit 8';
         return Database::getRows($sql);
     }
 
@@ -85,6 +86,17 @@ class ProductoHandler
         $sql = 'SELECT *
                 FROM tb_productos
                 WHERE id_producto = ?';
+        $params = array($this->id);
+        return Database::getRow($sql, $params);
+    }
+
+    public function readOneMarca()
+    {
+        $sql = 'SELECT tb_marcas.id_marca, tb_marcas.nombre_marca, tb_marcas.descripcion_marca, tb_marcas.imagen_marca
+        FROM tb_marcas
+        JOIN tb_productos ON tb_marcas.id_marca = tb_productos.id_marca
+        WHERE tb_productos.id_producto = ?;
+        ';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
