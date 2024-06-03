@@ -60,7 +60,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         // let url = `products.html?id=${row.id_producto}&nombre=${row.nombre_producto}`;
         // Se crean y concatenan las tarjetas con los datos de cada categoría.
         MARCAS.innerHTML = `
-                    <a href="marca_producto_especifico.html?id=${DATA.dataset.id_marca}&nombre=${DATA.dataset.nombre_marca}&imagen=${DATA.dataset.imagen_marca}&descrip=${DATA.dataset.descripcion_marca}" class="btn btn-outline-primary">${DATA.dataset.nombre_marca}</a>
+                    <a href="marca_producto_especifico.html?id=${DATA.dataset.id_marca}&nombre=${DATA.dataset.nombre_marca}&imagen=${DATA.dataset.imagen_marca}&descrip=
+                    ${DATA.dataset.descripcion_marca}"class="btn btn-outline-primary">${DATA.dataset.nombre_marca}</a>
 `;
 
     } else {
