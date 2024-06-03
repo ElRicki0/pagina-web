@@ -2,6 +2,7 @@
 const PRODUCTO_API = 'services/public/producto.php'
 const MARCA_API = 'services/public/marca.php'
 // llamamos el id de productos
+const PARAMS = new URLSearchParams(location.search);
 const PRODUCTOS = document.getElementById('productos')
 const MAIN_TITLE = document.getElementById('titleProductos')
 
@@ -14,6 +15,8 @@ const MARCAS_TITLE = document.getElementById('titleMarcas');
 document.addEventListener('DOMContentLoaded', async () => {
     // Se establece el título del contenido principal.
     MAIN_TITLE.textContent = 'Productos mas populares';
+    const FORM = new FormData();
+    FORM.append('id_producto', PARAMS.get('id'));
     // Petición para obtener las categorías disponibles.
     const DATA = await fetchData(PRODUCTO_API, 'read8Products');
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -27,27 +30,27 @@ document.addEventListener('DOMContentLoaded', async () => {
             // let url = `products.html?id=${row.id_producto}&nombre=${row.nombre_producto}`;
             // Se crean y concatenan las tarjetas con los datos de cada categoría.
             PRODUCTOS.innerHTML += `
-<div class="col-lg-3 col-md-4 col-sm-12">
-    <div class="card mb-3 shadow-lg">
-        <img src="${SERVER_URL}images/productos/${row.imagen_producto}" class="card-img-top imagen_tarjeta"
-            alt="Fallo al cargar la imagen">
-        <div class="card-body">
-            <h5 class="card-title">${row.nombre_producto}</h5>
-            <p class="">$40.50</p>
-            <button class="btn btn_ver_mas" data-bs-toggle="collapse" href="#tarjetita-${row.id_producto}" role="button"
-                aria-expanded="false" aria-controls="tarjetita-${row.id_producto}">Más información</button>
-            <div class="collapse" id="tarjetita-${row.id_producto}">
-                <div class="card card-body mt-2">
-                    <p class="mb-0">${row.descripcion_producto}</p>
-                    <div class="text-center mt-2">
-                        <a jhref="detail.html?id=${row.id_producto} class="btn btn-outline-primary">Mayor descripción
-                            del producto</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                            <div class="col-lg-3 col-md-4 col-sm-12">
+                                <div class="card mb-3 shadow-lg">
+                                    <img src="${SERVER_URL}images/productos/${row.imagen_producto}" class="card-img-top imagen_tarjeta"
+                                        alt="Fallo al cargar la imagen">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${row.nombre_producto}</h5>
+                                        <p class="">$40.50</p>
+                                        <button class="btn btn_ver_mas" data-bs-toggle="collapse" href="#tarjetita-${row.id_producto}" role="button"
+                                            aria-expanded="false" aria-controls="tarjetita-${row.id_producto}">Más información</button>
+                                        <div class="collapse" id="tarjetita-${row.id_producto}">
+                                            <div class="card card-body mt-2">
+                                                <p class="mb-0">${row.descripcion_producto}</p>
+                                                <div class="text-center mt-2">
+                                                    <a href="producto.html?id=${row.id_producto}" class="btn btn-outline-primary">Mayor descripción
+                                                        del producto</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 `;
         });
     } else {
