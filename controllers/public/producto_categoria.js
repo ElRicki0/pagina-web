@@ -4,17 +4,17 @@ const PRODUCTO_API = 'services/public/producto.php';
 const PARAMS = new URLSearchParams(location.search);
 const PRODUCTOS = document.getElementById('productosMarc');
 const MAIN_TITLE = document.getElementById('mainTitle');
-const IMAGEN = document.getElementById('imagenMarca');
-const DESCRIP = document.getElementById('descripcionMarca');
+const IMAGEN = document.getElementById('imagenCategoria');
+const DESCRIP = document.getElementById('descripcionCategoria');
 
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
     // Se define un objeto con los datos de la categoría seleccionada.
     const FORM = new FormData();
-    FORM.append('idMarca', PARAMS.get('id'));
+    FORM.append('idCategoria', PARAMS.get('id'));
     // Petición para solicitar los productos de la categoría seleccionada.
-    const DATA = await fetchData(PRODUCTO_API, 'readProductosMarca', FORM);
+    const DATA = await fetchData(PRODUCTO_API, 'readProductosCategoria', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
         console.log(DATA);
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         MAIN_TITLE.textContent = `${PARAMS.get('nombre')}`;
         IMAGEN.innerHTML = `
         <div class="imagenMarcaS img-fluid  mx-auto d-block">
-        <img src="${SERVER_URL}images/marcas/${PARAMS.get('imagen')}" alt="">
+        <img src="${SERVER_URL}images/categorias/${PARAMS.get('imagen')}" alt="">
         </div>`;
         DESCRIP.innerHTML = `${PARAMS.get('descrip')}`;
         // Se inicializa el contenedor de productos.

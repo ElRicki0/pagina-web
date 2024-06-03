@@ -9,7 +9,16 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'dataset' => null, 'error' => null, 'exception' => null);
     // Se compara la acción a realizar según la petición del controlador.
-    switch ($_GET['action'] or true) {
+    switch ($_GET['action']) {
+        case 'readProductosCategoria':
+            if (!$producto->setCategoria($_POST['idCategoria'])) {
+                $result['error'] = $producto->getDataError();
+            } elseif ($result['dataset'] = $producto->readProductosCategoria()) {
+                $result['status'] = 1;
+            } else {
+                $result['error'];
+            }
+            break;
         case 'readProductosMarca':
             if (!$producto->setMarca($_POST['idMarca'])) {
                 $result['error'] = $producto->getDataError();
