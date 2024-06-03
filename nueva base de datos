@@ -16,7 +16,7 @@ CREATE TABLE tb_clientes (
   alias_cliente varchar(50) UNIQUE NOT NULL,
   correo_cliente VARCHAR(50) UNIQUE NOT NULL,
   pass_cliente VARCHAR(50) NOT NULL,
-  imagen_cliente varchar(50),
+  imagen_cliente varchar(100),
   estado_cliente BOOLEAN NOT NULL
 );
 
