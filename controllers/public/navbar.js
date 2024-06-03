@@ -42,7 +42,7 @@ header.innerHTML = `<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-t
                 <ul class="navbar-nav ms-auto align-items-right flex-row" style="align-items: flex-end;">
                     <button class="corazon rounded border border-dark" type="button" data-bs-toggle="modal"
                         data-bs-target="#perfil">
-                        <a class="nav-link active" aria-current="page" href="../../views/public/lista_deseo.html">
+                        <a class="nav-link active" aria-current="page" href="../../views/public/buscador.html">
                             <img src="../../resources/img/lupa.png" alt="..." width="70px">
                     </button>
                     <button class="corazon rounded border border-dark" type="button" data-bs-toggle="modal"
