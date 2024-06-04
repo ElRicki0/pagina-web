@@ -3,12 +3,13 @@ const PRODUCTO_API = 'services/public/producto.php';
 // Constante tipo objeto para obtener los parámetros disponibles en la URL.
 const PARAMS = new URLSearchParams(location.search);
 const PRODUCTOS = document.getElementById('productosMarc');
-const MAIN_TITLE = document.getElementById('mainTitle');
 const IMAGEN = document.getElementById('imagenMarca');
 const DESCRIP = document.getElementById('descripcionMarca');
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
+    // Llamada a la función para mostrar el encabezado y pie del documento.
+    loadTemplate();
     // Se define un objeto con los datos de la categoría seleccionada.
     const FORM = new FormData();
     FORM.append('idMarca', PARAMS.get('id'));

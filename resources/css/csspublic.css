@@ -89,6 +89,10 @@ span {
     color: #f3fefe;
 }
 
+.profile-icon{
+    width: 60px;
+}
+
 /*Fin Navbar */
 
 
@@ -598,7 +602,7 @@ select {
 }
 
 .espaciado {
-    margin-top: 120px;
+    margin-top: 90px;
 }
 
 /*-----------------------------------

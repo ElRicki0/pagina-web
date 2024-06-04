@@ -3,13 +3,12 @@ const CATEGORIA_API = 'services/public/categoria.php';
 
 // Constante tipo objeto para obtener los parámetros disponibles en la URL.
 const CATEGORIA = document.getElementById('categorias');
-const MAIN_TITLE = document.getElementById('mainTitle');
 
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
     // Llamada a la función para mostrar el encabezado y pie del documento.
-    // loadTemplate();
+    loadTemplate();
     // Por el momento la e comentado, porque aun en nuestro sistema no existe esa funcion "lea"
     // Se define un objeto con los datos de la categoría seleccionada.
     const FORM = new FormData();

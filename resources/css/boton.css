@@ -4,8 +4,6 @@
     background-color: #1D1C6A;
     border-radius: 20px;
     box-shadow: #1F1B47 0px 4px 0px 0px;
-    padding: 15px;
-    padding-left: 45px;
     /* Ajusta el padding para dejar espacio para el ícono */
     background-repeat: no-repeat;
     cursor: pointer;
@@ -50,3 +48,5 @@
     color: #fff;
     /* Cambia el color del ícono al pasar el ratón */
 }
+
+

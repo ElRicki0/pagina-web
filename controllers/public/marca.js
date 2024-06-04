@@ -3,13 +3,12 @@ const MARCA_API = 'services/public/marca.php';
 
 // Constante tipo objeto para obtener los parámetros disponibles en la URL.
 const MARCA = document.getElementById('marcas');
-const MAIN_TITLE = document.getElementById('mainTitle');
 
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
     // Llamada a la función para mostrar el encabezado y pie del documento.
-    // loadTemplate();
+    loadTemplate();
     // Se define un objeto con los datos de la categoría seleccionada.
     const FORM = new FormData();
     // Petición para solicitar las marcas de la categoría seleccionada.
