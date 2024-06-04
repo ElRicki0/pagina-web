@@ -18,6 +18,17 @@ class CarritoHandler extends CarritoHandler
      *   Métodos para validar y establecer los datos.
      */
 
+    public function total($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->id = $value;
+            return true;
+        } else {
+            $this->data_error = 'El identificador del producto es incorrecto';
+            return false;
+        }
+    }
+
     public function setId($value)
     {
         if (Validator::validateNaturalNumber($value)) {

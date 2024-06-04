@@ -28,9 +28,9 @@
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">precio total a pagar </h5>
-                        <h6 class="card-subtitle mb-2 text-body-secondary">8 productos en carrito </h6>
+                        <h6 class="card-subtitle mb-2 text-body-secondary" id="cantidadproducto">8 productos en carrito </h6>
                         <h1 class="card-text">$56.98</h1>
-                        <button type="button" class="btn btn-primary btn-lg">Pagar ahora</button>
+                        <button type="button" class="btn btn-primary btn-lg" id="total">Pagar ahora</button>
                     </div>
                 </div>
 
@@ -48,17 +48,17 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">Producto ejemplo</h5>
-                                <p class="card-text">Descubre la perfección en cada aplicación con nuestro nuevo [Nombre
+                                <h5 class="card-title" id="nombrepcarrito">Producto ejemplo</h5>
+                                <p class="card-text" id="descripcarritoproducto">Descubre la perfección en cada aplicación con nuestro nuevo [Nombre
                                     del Producto]. Su fórmula de alta calidad y suavidad incomparable te dejarán
                                     radiante en segundos.</p>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">$5.20</h6>
+                                <h6 class="card-subtitle mb-2 text-body-secondary" id="precioprodcarrito">$5.20</h6>
                                 <div class="text-end">
-                                    <div class="btn btn-outline-danger" onclick="alertMine('eliminarProductoCompra')">
+                                    <div class="btn btn-outline-danger"  id="eliminarProductoCarrito" onclick="alertMine('eliminarProductoCompra')">
                                         <img id="" src="../../resources/img/iconos/papelera.png"
                                             class="">
                                     </div>
-                                    <div class="btn btn-outline-dark" onclick="alertMine('agregarCorazon')">
+                                    <div class="btn btn-outline-dark"  id="agrelistadeseo"  onclick="alertMine('agregarCorazon')">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="30"fill="#FF0000" class="bi bi-heart-fill" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
                                           </svg>
