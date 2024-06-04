@@ -30,17 +30,17 @@ class ProductoHandler
     public function searchRows()
     {
         $value = '%' . Validator::getSearchValue() . '%';
-        $sql = 'SELECT p.id_producto, p.imagen_producto, p.nombre_producto, p.descripcion_producto, p.precio_producto, p.cantidad_producto, 
-                    c.nombre_categoria_producto AS categoria_producto, 
-                    a.nombre_admin AS nombre_administrador, 
-                    m.nombre_marca AS nombre_marca
-                    FROM tb_productos p
-                    INNER JOIN tb_categorias_productos c ON p.id_categoria_producto = c.id_categoria_producto
-                    INNER JOIN tb_administradores a ON p.id_admin = a.id_admin
-                    INNER JOIN tb_marcas m ON p.id_marca = m.id_marca
-                WHERE nombre_producto LIKE ? OR descripcion_producto LIKE ?
+        $sql = 'SELECT p.id_producto, p.imagen_producto, p.nombre_producto, p.descripcion_producto, p.precio_producto, p.cantidad_producto, m.nombre_marca,
+                c.nombre_categoria_producto AS categoria_producto, 
+                a.nombre_admin AS nombre_administrador, 
+                m.nombre_marca AS nombre_marca
+                FROM tb_productos p
+                INNER JOIN tb_categorias_productos c ON p.id_categoria_producto = c.id_categoria_producto
+                INNER JOIN tb_administradores a ON p.id_admin = a.id_admin
+                INNER JOIN tb_marcas m ON p.id_marca = m.id_marca
+                WHERE nombre_producto LIKE ? OR nombre_marca LIKE ? OR descripcion_producto LIKE ?
                 ORDER BY nombre_producto';
-        $params = array($value, $value);
+        $params = array($value, $value, $value);
         return Database::getRows($sql, $params);
     }
 
@@ -57,6 +57,19 @@ class ProductoHandler
         $sql = 'SELECT p.id_producto, p.imagen_producto, p.nombre_producto, p.descripcion_producto, p.precio_producto, p.cantidad_producto, 
                 c.nombre_categoria_producto AS categoria_producto, 
                 a.nombre_admin AS nombre_administrador, 
+                m.nombre_marca AS nombre_marca
+                FROM tb_productos p
+                INNER JOIN tb_categorias_productos c ON p.id_categoria_producto = c.id_categoria_producto
+                INNER JOIN tb_administradores a ON p.id_admin = a.id_admin
+                INNER JOIN tb_marcas m ON p.id_marca = m.id_marca
+                ORDER BY nombre_producto';
+        return Database::getRows($sql);
+    }
+
+    public function readAllPublic()
+    {
+        $sql = 'SELECT p.id_producto, p.imagen_producto, p.nombre_producto, p.descripcion_producto, p.precio_producto, p.cantidad_producto, 
+                c.nombre_categoria_producto AS categoria_producto,  
                 m.nombre_marca AS nombre_marca
                 FROM tb_productos p
                 INNER JOIN tb_categorias_productos c ON p.id_categoria_producto = c.id_categoria_producto
