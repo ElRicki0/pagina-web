@@ -86,8 +86,8 @@
 /*estilo para las cards*/
 .card {
     margin: 0.5rem;
-    width: 260px;
-    height: 460px;
+    width: 270px;
+    height: 500px;
     border-radius: 20px;
     background: white;
     position: relative;
@@ -116,6 +116,7 @@
     border: black;
     background-color: rgb(100, 34, 161);
     color: white;
+    margin-bottom: 30px;
     font-size: 1rem;
     padding: .5rem 1rem;
     position: absolute;

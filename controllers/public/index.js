@@ -31,8 +31,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             // let url = `products.html?id=${row.id_producto}&nombre=${row.nombre_producto}`;
             // Se crean y concatenan las tarjetas con los datos de cada categoría.
             PRODUCTOS.innerHTML += `
-
-            <div class="col-sm-12 col-md-6 col-lg-3">
+            <div class="col-sm-6 col-md-6 col-lg-3">
             <div class="card mb-3">
                 <div class="card-details">
                     <div class="d-flex justify-content-center">
