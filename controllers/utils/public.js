@@ -195,6 +195,7 @@ const loadTemplate = async () => {
     }
     // Se agrega el pie de la página web después del contenido principal.
     MAIN.insertAdjacentHTML('afterend', `
+    <footer>
     <div class="social-icons-container ">
     <a href="https://www.instagram.com/ivanecare?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="social-icons"></a>
     <a href="https://www.threads.net/@ivanecare" target="_blank" class="social-icons"></a>
@@ -202,5 +203,6 @@ const loadTemplate = async () => {
 </div>
 <ul class="footer-menu-conteiner">
 </ul>
-<span class="copyright">&copy;2024, IVANE CARE. All rights reserved</span>`);
-}
+<span class="copyright">&copy;2024, IVANE CARE. All rights reserved</span>
+</footer>
+`);}
