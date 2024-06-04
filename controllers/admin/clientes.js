@@ -100,7 +100,7 @@ const fillTable = async (form = null) => {
             (parseInt(row.estado_cliente)) ? icon = 'bi bi-eye-fill' : icon = 'bi bi-eye-slash-fill';
             TABLE_BODY.innerHTML += `
                 <tr row col-12" style="margin-bottom: 10px; margin-left: auto; margin-right: auto;">
-                <td><img src="${SERVER_URL}images/clientes/${row.imagen_cliente}" height="70" class="border border-primary rounded-circle"></td>
+                <td><img src="${SERVER_URL}images/clientes/${row.imagen_cliente}" height="100" class="border border-primary rounded-circle"></td>
                     <td>${row.apellido_cliente}</td>
                     <td>${row.nombre_cliente}</td>
                     <td>${row.correo_cliente}</td>
