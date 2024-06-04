@@ -23,75 +23,82 @@
     <main class="espaciado">
         <!-- Sección de inicio de sesión -->
         <div class="row  contenedorMayorRegistro m-5">
-            <form>
+            <form class="g-3" id="signupForm">
                 <div class="row">
                     <!--Imagen de perfil-->
                     <div class=" col-lg-12 text-center">
-                        <img id="modalProfileImage"
+                        <img id="imagenR"
                             class="rounded  mx-auto d-block img-fluid mt-3 border border-3 border-secondary-subtle rounded-circle imagen_R"
                             src="../../resources/img/iconoPerfil.jpg" alt="..." width="300px">
-                        <input type="file" id="modalInputFile" style="display:none;" accept="image/*">
-                        <button type="button" class=" btn btn-outline-dark btn-lg order-2 mt-4  mb-4"
-                            onclick="abrirExploradorModal()">Insertar foto de perfil</button>
+                        <input type="file" id="imagenCliente" name="imagenCliente" hidden>
+                        <label for="imagenCliente" class="buttonR  mb-4 col-sm-12">
+                            Inserte una imagen
+                        </label>
+                        
                     </div>
                     <!--Apartado de todos los inputs-->
                     <div class="col-lg-6">
+                        <!-- Campo oculto para asignar el token del reCAPTCHA -->
+                        <input type="text" class="d-none" id="gRecaptchaResponse" name="gRecaptchaResponse">
                         <!--Input de nombre-->
                         <div class="form-group">
-                            <label for="CuadroNom" class="letraPer mt-3 fs-3 form-label">Nombre</label>
-                            <input type="text" class="form-control cuadroText col-md-3 fs-3 " id="CuadroNomRe"
-                                placeholder="Escriba su nombre">
+                            <label for="nombreCliente" class="letraPer mt-3 fs-3 form-label">Nombre</label>
+                            <input type="text" class="form-control cuadroText col-md-3 fs-3 " name="nombreCliente"
+                                id="nombreCliente" placeholder="Escriba su nombre" required>
                         </div>
                         <!--Input de Apellido-->
                         <div class="form-group">
-                            <label for="CuadroApelRe" class="letraPer mt-3 fs-3">Apellido</label>
-                            <input type="text" class="form-control cuadroText col-md-3 fs-3 " id="CuadroApelRe"
-                                placeholder="Escriba su apellido">
+                            <label for="apellidoCliente" class="letraPer mt-3 fs-3">Apellido</label>
+                            <input type="text" class="form-control cuadroText col-md-3 fs-3 " name="apellidoCliente"
+                                id="apellidoCliente" placeholder="Escriba su apellido" required>
                         </div>
                         <!--Input de Correo-->
                         <div class="form-group">
-                            <label for="CuadroCorrRe" class="letraPer mt-3 fs-3">Correo electronico</label>
-                            <input type="email" class="form-control cuadroText col-md-3 fs-3 " id="CuadroCorrRe"
-                                placeholder="Escriba su correo">
+                            <label for="correoCliente" class="letraPer mt-3 fs-3">Correo electronico</label>
+                            <input type="email" class="form-control cuadroText col-md-3 fs-3 " name="correoCliente"
+                                id="correoCliente" placeholder="Escriba su correo" required>
                         </div>
                         <!--Input de Telefono-->
                         <div class="form-group">
-                            <label for="CuadroTelRe" class="letraPer mt-3 fs-3">Número de telefono</label>
-                            <input type="number" class="form-control cuadroText col-md-3 fs-3 " id="CuadroTelRe"
-                                placeholder="Escriba su telefono">
+                            <label for="telefonoCliente" class="letraPer mt-3 fs-3">Número de telefono</label>
+                            <input type="text" class="form-control cuadroText col-md-3 fs-3 " name="telefonoCliente"
+                                id="telefonoCliente" placeholder="0000-0000" required>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <!--Input de nombre de usuario-->
                         <div class="form-group">
-                            <label for="CuadroUsuRe" class="letraPer mt-3 fs-3">Nombre de usuario</label>
-                            <input type="text" class="form-control cuadroText col-md-3 fs-3 " id="CuadroUsuRe"
-                                placeholder="Escriba su usuario">
+                            <label for="aliasCliente" class="letraPer mt-3 fs-3">Nombre de usuario</label>
+                            <input type="text" class="form-control cuadroText col-md-3 fs-3 " name="aliasCliente"
+                                id="aliasCliente" placeholder="Escriba su usuario" required>
                         </div>
                         <!--Input de contrasenia-->
                         <div class="form-group">
-                            <label for="CuadroContraRe" class="letraPer mt-3 fs-3">Contraseña</label>
-                            <input type="password" class="form-control cuadroText col-md-3 fs-3 " id="CuadroContraRe"
-                                placeholder="Escriba su contraseña">
+                            <label for="claveCliente" class="letraPer mt-3 fs-3">Contraseña</label>
+                            <input type="password" class="form-control cuadroText col-md-3 fs-3 " name="claveCliente"
+                                id="claveCliente" placeholder="Escriba su contraseña" required>
                         </div>
                         <div class="form-group">
-                            <label for="CuadroContra" class="letraPer mt-3 fs-3">Confirmar contraseña</label>
-                            <input type="password" class="form-control cuadroText col-md-3 fs-3 " id="CuadroContra"
-                                placeholder="Escriba su contraseña">
+                            <label for="confirmarClave" class="letraPer mt-3 fs-3">Confirmar contraseña</label>
+                            <input type="password" class="form-control cuadroText col-md-3 fs-3 " name="confirmarClave"
+                                id="confirmarClave" placeholder="Escriba su contraseña" required>
                         </div>
                         <!--Input de residencia-->
                         <div class="form-group">
-                            <label for="CuadroDirecRe" class="letraPer mt-3 fs-3">Residencia/Dirección</label>
-                            <textarea class="form-control cuadroText col-md-3 fs-3  mb-4" id="CuadroDirecRe" rows="3"
-                                placeholder="Escriba su dirección aca"></textarea>
+                            <label for="direccionCliente" class="letraPer mt-3 fs-3">Residencia/Dirección</label>
+                            <textarea class="form-control cuadroText col-md-3 fs-3  mb-4" name="direccionCliente"
+                                maxlength="250" id="direccionCliente" rows="3" placeholder="Escriba su dirección aca"
+                                required></textarea>
                         </div>
-
+                    </div>
+                    <div class="form-check d-flex justify-content-center">
+                        <input type="checkbox" class="form-check-input" id="condicion" name="condicion" required>
+                        <label class="form-check-label" for="condicion" required>Acepto términos y condiciones</label>
                     </div>
                     <div class="col text-center">
-                        <button type="button" onclick="alertMine('CrearCuenta')"
-                            class="buttonR col-lg-3 btn-lg mb-4 col-sm-12">
+                        <button type="submit" class="buttonR col-lg-3 btn-lg mb-4 col-sm-12">
                             <i class="bi bi-send-fill icon"></i>
-                            <span>Registrar</span>
+                            Registrar
                         </button>
                         <button type="reset" class="buttonR col-lg-3 btn-lg mb-4 col-sm-12">
                             <i class="bi bi-x-circle-fill"></i>
@@ -99,24 +106,32 @@
 
                     </div>
                 </div>
-        </div>
-        </form>
+            </form>
         </div>
 
+        <!-- Inclusión de la librería de mascaras. Para más información https://github.com/text-mask/text-mask -->
+        <script type="text/javascript" src="../../resources/js/vanillaTextMask.js"></script>
+        <!-- Inclusión de la librería del reCAPTCHA. Para más información https://developers.google.com/recaptcha/docs/v3 -->
+        <script type="text/javascript"
+            src="https://www.google.com/recaptcha/api.js?render=6LdBzLQUAAAAAJvH-aCUUJgliLOjLcmrHN06RFXT"></script>
     </main>
+
     <footer class="test">
     </footer>
+
+    <!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT -->
     <!--Enlace para elementos del boostrap-->
     <script src="../../resources/js/bootstrap.bundle.min.js"></script>
-
     <!--Enlace para poder mostrar alertas-->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
+    <!-- Llamada al controlador general de la aplicación -->
+    <script type="text/javascript" src="../../controllers/utils/components.js"></script>
     <!--Enlaces para archivos javascript-->
-    <script src="../../controllers/public/alertas_publicas.js"></script>
-    <script src="../../controllers/public/navbar.js"></script>
-    <script src="../../controllers/utils/footer.js"></script>
-    <script src="../../controllers/public/alertas_publicas.js"></script>
+    <script type="text/javascript" src="../../controllers/utils/public.js"></script>
+    <!-- Llamada al controlador de la página web -->
+    <script type="text/javascript" src="../../controllers/public/registro.js"></script>
+
+
 </body>
 
 </html>

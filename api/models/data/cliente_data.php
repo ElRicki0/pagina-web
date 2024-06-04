@@ -136,7 +136,7 @@ class ClienteData extends ClienteHandler
 
     public function setImagen($file, $filename = null)
     {
-        if (Validator::validateImageFile($file, 500)) {
+        if (Validator::validateImageFile($file, 300)) {
             $this->imagen = Validator::getFilename();
             return true;
         } elseif (Validator::getFileError()) {
