@@ -55,7 +55,7 @@ if (isset($_GET['action'])) {
             }
             break;
         case 'readAll':
-            if ($result['dataset'] = $producto->read8Products()) {
+            if ($result['dataset'] = $producto->readAll()) {
                 $result['status'] = 1;
                 $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
             } else {
