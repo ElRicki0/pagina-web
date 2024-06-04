@@ -11,7 +11,7 @@ MAIN.style.paddingTop = '75px';
 MAIN.style.paddingBottom = '100px';
 MAIN.classList.add('container');
 // Se establece el título de la página web.
-document.querySelector('title').textContent = 'CoffeeShop - Store';
+document.querySelector('title').textContent = 'IvaneCare - Store';
 // Constante para establecer el elemento del título principal.
 const MAIN_TITLE = document.getElementById('mainTitle');
 
@@ -202,6 +202,5 @@ const loadTemplate = async () => {
 </div>
 <ul class="footer-menu-conteiner">
 </ul>
-<span class="copyright">&copy;2024, IVANE CARE. All rights reserved</span>
-    `);
+<span class="copyright">&copy;2024, IVANE CARE. All rights reserved</span>`);
 }
