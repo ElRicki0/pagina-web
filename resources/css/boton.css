@@ -1,0 +1,52 @@
+.buttonR {
+    text-align: center;
+    position: relative;
+    background-color: #1D1C6A;
+    border-radius: 20px;
+    box-shadow: #1F1B47 0px 4px 0px 0px;
+    padding: 15px;
+    padding-left: 45px;
+    /* Ajusta el padding para dejar espacio para el ícono */
+    background-repeat: no-repeat;
+    cursor: pointer;
+    box-sizing: border-box;
+    color: #fff;
+    border: none;
+    font-size: 26px;
+    transition: all 0.3s ease-in-out;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.buttonR::before {
+    content: "";
+    background-color: #2f296e;
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: width 700ms ease-in-out;
+    display: inline-block;
+}
+
+.buttonR:hover::before {
+    width: 100%;
+}
+
+.buttonR .icon {
+    position: center;
+    /* Ajusta la posición del ícono */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    /* Ajusta el tamaño del ícono si es necesario */
+    transition: color 0.3s ease-in-out;
+    /* Opcional: añade una transición para el color del ícono */
+}
+
+.buttonR:hover .icon {
+    color: #fff;
+    /* Cambia el color del ícono al pasar el ratón */
+}

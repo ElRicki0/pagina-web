@@ -6,104 +6,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Registro</title>
     <link rel="icon" href="../../resources/img/iconos/loguito.ico">
+    <!--Enlace para mandar a llamar propiedad de boostrap.css-->
     <link rel="stylesheet" href="../../resources/css/css_boostrap.css">
     <link rel="stylesheet" href="../../resources/css/csspublic.css">
+    <link rel="stylesheet" href="../../resources/css/boton.css">
+    <link type="text/css" rel="stylesheet" href="../../resources/css/bootstrap-icons.min.css">
+
 </head>
 
 <body class="Fondo">
 
-      <!--navbar-->
-      <header>
+    <!--navbar-->
+    <header>
 
-      </header>
-    <main class="alineado">
+    </header>
+    <main class="espaciado">
         <!-- Sección de inicio de sesión -->
-        <div class="row  align-self-center contenedorMayorRegistro m-5">
+        <div class="row  contenedorMayorRegistro m-5">
             <form>
-                <div class="row  align-self-center">
+                <div class="row">
                     <!--Imagen de perfil-->
-                    <div class=" col-md-5 text-center">
-                        <img id="modalProfileImage" class="rounded  mx-auto d-block img-fluid mt-3"
+                    <div class=" col-lg-12 text-center">
+                        <img id="modalProfileImage"
+                            class="rounded  mx-auto d-block img-fluid mt-3 border border-3 border-secondary-subtle rounded-circle imagen_R"
                             src="../../resources/img/iconoPerfil.jpg" alt="..." width="300px">
                         <input type="file" id="modalInputFile" style="display:none;" accept="image/*">
                         <button type="button" class=" btn btn-outline-dark btn-lg order-2 mt-4  mb-4"
                             onclick="abrirExploradorModal()">Insertar foto de perfil</button>
                     </div>
                     <!--Apartado de todos los inputs-->
-                    <div class="col-md-5">
+                    <div class="col-lg-6">
                         <!--Input de nombre-->
                         <div class="form-group">
                             <label for="CuadroNom" class="letraPer mt-3 fs-3 form-label">Nombre</label>
-                            <input type="text"
-                                class="form-control cuadroText mt-2 col-md-8 fs-3 border border-dark rounded"
-                                id="CuadroNomRe" placeholder="Escriba su nombre">
+                            <input type="text" class="form-control cuadroText col-md-3 fs-3 " id="CuadroNomRe"
+                                placeholder="Escriba su nombre">
                         </div>
                         <!--Input de Apellido-->
                         <div class="form-group">
                             <label for="CuadroApelRe" class="letraPer mt-3 fs-3">Apellido</label>
-                            <input type="text"
-                                class="form-control cuadroText mt-2 col-md-8 fs-3 border border-dark rounded"
-                                id="CuadroApelRe" placeholder="Escriba su apellido">
+                            <input type="text" class="form-control cuadroText col-md-3 fs-3 " id="CuadroApelRe"
+                                placeholder="Escriba su apellido">
                         </div>
                         <!--Input de Correo-->
                         <div class="form-group">
                             <label for="CuadroCorrRe" class="letraPer mt-3 fs-3">Correo electronico</label>
-                            <input type="email"
-                                class="form-control cuadroText mt-2 col-md-8 fs-3 border border-dark rounded"
-                                id="CuadroCorrRe" placeholder="Escriba su correo">
+                            <input type="email" class="form-control cuadroText col-md-3 fs-3 " id="CuadroCorrRe"
+                                placeholder="Escriba su correo">
                         </div>
                         <!--Input de Telefono-->
                         <div class="form-group">
                             <label for="CuadroTelRe" class="letraPer mt-3 fs-3">Número de telefono</label>
-                            <input type="number"
-                                class="form-control cuadroText mt-2 col-md-8 fs-3 border border-dark rounded"
-                                id="CuadroTelRe" placeholder="Escriba su telefono">
+                            <input type="number" class="form-control cuadroText col-md-3 fs-3 " id="CuadroTelRe"
+                                placeholder="Escriba su telefono">
                         </div>
+                    </div>
+                    <div class="col-lg-6">
                         <!--Input de nombre de usuario-->
                         <div class="form-group">
                             <label for="CuadroUsuRe" class="letraPer mt-3 fs-3">Nombre de usuario</label>
-                            <input type="text"
-                                class="form-control cuadroText mt-2 col-md-8 fs-3 border border-dark rounded"
-                                id="CuadroUsuRe" placeholder="Escriba su usuario">
+                            <input type="text" class="form-control cuadroText col-md-3 fs-3 " id="CuadroUsuRe"
+                                placeholder="Escriba su usuario">
                         </div>
                         <!--Input de contrasenia-->
                         <div class="form-group">
                             <label for="CuadroContraRe" class="letraPer mt-3 fs-3">Contraseña</label>
-                            <input type="password"
-                                class="form-control cuadroText mt-2 col-md-8 fs-3 border border-dark rounded"
-                                id="CuadroContraRe" placeholder="Escriba su contraseña">
+                            <input type="password" class="form-control cuadroText col-md-3 fs-3 " id="CuadroContraRe"
+                                placeholder="Escriba su contraseña">
+                        </div>
+                        <div class="form-group">
+                            <label for="CuadroContra" class="letraPer mt-3 fs-3">Confirmar contraseña</label>
+                            <input type="password" class="form-control cuadroText col-md-3 fs-3 " id="CuadroContra"
+                                placeholder="Escriba su contraseña">
                         </div>
                         <!--Input de residencia-->
                         <div class="form-group">
                             <label for="CuadroDirecRe" class="letraPer mt-3 fs-3">Residencia/Dirección</label>
-                            <textarea class="form-control cuadroText mt-2 col-md-8 fs-3 border border-dark rounded mb-4"
-                                id="CuadroDirecRe" rows="3" placeholder="Escriba su dirección aca"></textarea>
+                            <textarea class="form-control cuadroText col-md-3 fs-3  mb-4" id="CuadroDirecRe" rows="3"
+                                placeholder="Escriba su dirección aca"></textarea>
                         </div>
-                        <div class="col text-center">
-                            <button type="button" onclick="alertMine('CrearCuenta')" class="btn col-lg-6 btn-lg btnRegistrarse mb-4 col-sm-12">Crear cuenta</button>
-                            <a class="ms-3 enlacito col-sm-12 col-lg-6" href="../public/inicio_sesion.html">Ya tienes una cuenta ?</a>
-                        </div>
+
+                    </div>
+                    <div class="col text-center">
+                        <button type="button" onclick="alertMine('CrearCuenta')"
+                            class="buttonR col-lg-3 btn-lg mb-4 col-sm-12">
+                            <i class="bi bi-send-fill icon"></i>
+                            <span>Registrar</span>
+                        </button>
+                        <button type="reset" class="buttonR col-lg-3 btn-lg mb-4 col-sm-12">
+                            <i class="bi bi-x-circle-fill"></i>
+                            Cancelar</button>
+
                     </div>
                 </div>
-            </form>
+        </div>
+        </form>
         </div>
 
     </main>
     <footer class="test">
     </footer>
+    <!--Enlace para elementos del boostrap-->
+    <script src="../../resources/js/bootstrap.bundle.min.js"></script>
+
+    <!--Enlace para poder mostrar alertas-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--Enlaces para archivos javascript-->
+    <script src="../../controllers/public/alertas_publicas.js"></script>
+    <script src="../../controllers/public/navbar.js"></script>
+    <script src="../../controllers/utils/footer.js"></script>
+    <script src="../../controllers/public/alertas_publicas.js"></script>
 </body>
-
-
-<!--Enlace para elementos del boostrap-->
-<script src="../../resources/js/bootstrap.bundle.min.js"></script>
-
-<!--Enlace para poder mostrar alertas-->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<!--Enlaces para archivos javascript-->
-<script src="../../controllers/public/alertas_publicas.js"></script>
-<script src="../../controllers/public/navbar.js"></script>
-<script src="../../controllers/utils/footer.js"></script>
-<script src="../../controllers/public/alertas_publicas.js"></script>
 
 </html>

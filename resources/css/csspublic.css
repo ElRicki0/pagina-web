@@ -8,7 +8,7 @@
     transition: 0.5s;
 }
 
-.producto_index{
+.producto_index {
     height: 30px;
 }
 
@@ -202,23 +202,20 @@ footer {
     color: #3D0059;
 }
 
-.imagPer {
-    margin-left: 70px;
+.imagen_R {
+    box-shadow: 29px 28px 9px 4px rgba(0, 0, 0, 0.322);
 }
 
 .cuadroText {
-    margin-left: 10px;
     color: #352E77;
 }
 
-.letraCar{
+.letraCar {
     color: #000055;
 }
 
 .letraPer {
     color: #000055;
-    margin-top: 20px;
-    margin-left: 50px;
 }
 
 .botoncitoMas {
@@ -230,7 +227,7 @@ select {
     border-color: blueviolet !important;
 }
 
-.BotonActualizar{
+.BotonActualizar {
     margin-top: 50px;
 }
 
@@ -601,8 +598,8 @@ select {
     width: 400px;
 }
 
-.espaciado{
-    margin-top: 100px;
+.espaciado {
+    margin-top: 120px;
 }
 
 /*-----------------------------------
@@ -610,16 +607,17 @@ select {
   -----------------------------------
 */
 
-.alineado{
+.alineado {
     margin-top: 100px;
 }
-.contenedorMayorRegistro{
-    background-color: rgba(186, 213, 253, 0.87);
+
+.contenedorMayorRegistro {
+    background-color: rgba(255, 255, 255, 0.87);
     border-radius: 26px;
-    border:4px solid rgb(73, 0, 141);
+    border: 4px solid rgb(0, 0, 0);
 }
 
-.form-control{
+.form-control {
     border-color: rgb(73, 0, 141) !important;
 }
 
@@ -637,7 +635,7 @@ select {
     box-shadow: 9px 14px 15px 2px #4a4a4ac0;
 }
 
-.enlacito{
+.enlacito {
     font-size: large;
 }
 
@@ -646,13 +644,13 @@ select {
     box-shadow: 9px 14px 15px 2px #4a4a4ac0;
 }
 
-button a{
+button a {
     text-decoration: none;
     color: #fefefe;
 }
 
 
-.TituPerfiClie{
+.TituPerfiClie {
     color: #3D0059;
 }
 
@@ -660,7 +658,7 @@ button a{
         Cuerpo pantalla carrito
   -----------------------------------
 */
-.star{
+.star {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -670,11 +668,11 @@ button a{
     margin-left: 40px;
 }
 
-.listacarrito{
+.listacarrito {
     padding-top: 90px;
 }
 
-.stark{
+.stark {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -684,13 +682,12 @@ button a{
     margin-left: 40px;
 }
 
-.star:hover
-.star:checked{
+.star:hover .star:checked {
     color: gold;
 }
 
 
-.corazonc{
+.corazonc {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -702,29 +699,29 @@ button a{
     margin-left: 400px;
 }
 
-.corazonc:hover{
+.corazonc:hover {
     color: #ff0000;
     font-size: 55px;
 }
-.btnañacarrito{
+
+.btnañacarrito {
     background-color: #1D1C6A !important;
     color: #fefefe;
     width: 180px;
 }
 
-.btnañacarrito:hover{
+.btnañacarrito:hover {
     background-color: #0a093b !important;
     color: #fefefe;
     box-shadow: 9px 14px 15px 2px #4a4a4ac0;
-}   
+}
 
-.corazonc:hover
-.corazonc:checked{
+.corazonc:hover .corazonc:checked {
     color: gold;
 }
 
-.tableComen{
-    padding: 60px!important; 
+.tableComen {
+    padding: 60px !important;
     margin: 30px !important;
     width: 650px;
     height: 350px;
@@ -733,50 +730,49 @@ button a{
     margin-right: 410px;
 }
 
- 
-.conteinercarrito{
+
+.conteinercarrito {
     padding-top: 20px;
     margin: 10px;
- }
-
-
-.btnañacarrito{
-   margin-right: 400px;
 }
 
-.precioCarito{
+
+.btnañacarrito {
+    margin-right: 400px;
+}
+
+.precioCarito {
     display: flex;
     margin-left: 90px;
 }
-.contenCaarr
-{
+
+.contenCaarr {
     width: 100px;
     float: left;
     display: flex;
 }
 
-.letraPer{
+.letraPer {
     margin-left: 40px;
     padding-top: 20px;
 }
 
 
-.comenta
-.cocomen{
+.comenta .cocomen {
     width: 30px;
 }
 
-.CuantasEstrellas{
+.CuantasEstrellas {
     margin-left: 40px;
 }
 
-.cuadroTextComen{
+.cuadroTextComen {
     border-radius: 30px;
     box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.671);
     margin-left: 50px;
 }
 
-.btnComi{
+.btnComi {
     background-color: #1D1C6A;
 }
 
@@ -789,34 +785,36 @@ button a{
   -----------------------------------
 */
 
-div iframe{
-    border-radius: 70px; 
+div iframe {
+    border-radius: 70px;
     border: 10px solid #635bacbb;
 }
 
-.decoCuadros{
-    background-color: #1D1C6A; 
+.decoCuadros {
+    background-color: #1D1C6A;
     color: aliceblue;
-    border-radius: 40px; 
-    font-size:x-large;
+    border-radius: 40px;
+    font-size: x-large;
 }
 
-.fonditoContactos{
-    background: rgb(131,58,180);
-background: linear-gradient(236deg, rgba(131,58,180,1) 21%, rgba(29,94,253,1) 54%, rgba(244,94,240,1) 86%);
+.fonditoContactos {
+    background: rgb(131, 58, 180);
+    background: linear-gradient(236deg, rgba(131, 58, 180, 1) 21%, rgba(29, 94, 253, 1) 54%, rgba(244, 94, 240, 1) 86%);
 }
 
 /*historia*/
 
 .historia_card ul {
-    list-style-type: none; /* Elimina los puntos */
-    padding: 0; /* Elimina el relleno interno */
-    margin: 0; /* Elimina el margen externo */
+    list-style-type: none;
+    /* Elimina los puntos */
+    padding: 0;
+    /* Elimina el relleno interno */
+    margin: 0;
+    /* Elimina el margen externo */
 }
 
 /*historia*/
 
-.producto_imagen{
-margin-top: 10rem
+.producto_imagen {
+    margin-top: 10rem
 }
-
