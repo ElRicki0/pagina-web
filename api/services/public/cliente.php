@@ -88,7 +88,7 @@ if (isset($_GET['action'])) {
                 if (!$cliente->checkUser($_POST['correo'], $_POST['clave'])) {
                     $result['error'] = 'Datos incorrectos';
                 } elseif ($cliente->checkStatus()) {
-                    $result['status'] = 1;
+                    $result['status'] = 5;
                     $result['message'] = 'Autenticación correcta';
                 } else {
                     $result['error'] = 'La cuenta ha sido desactivada';

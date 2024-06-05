@@ -56,6 +56,11 @@ const sweetAlert = async (type, text, timer, url = null) => {
         case 4:
             title = 'Aviso';
             icon = 'info';
+            break;
+        case 5:
+            title = 'Exito';
+            icon = 'https://media.tenor.com/aL_YP04sKkEAAAAi/kirby-emblem.gif';
+            break;
     }
     // Se define un objeto con las opciones principales para el mensaje.
     let options = {

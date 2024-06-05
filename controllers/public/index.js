@@ -9,6 +9,10 @@ const MARCAS = document.getElementById('marcas');
 const MARCAS_TITLE = document.getElementById('titleMarcas');
 
 
+const PORTADA = document.getElementById('portada');
+const PORTADA_TITLE = document.getElementById('mainTitlePortada');
+
+
 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
@@ -100,5 +104,40 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     } else {
         document.getElementById('titleMarcas').textContent = DATA.error;
+    }
+});
+
+
+// Método del evento para cuando el documento ha cargado.
+document.addEventListener('DOMContentLoaded', async () => {
+    // Llamada a la función para mostrar el encabezado y pie del documento.
+    loadTemplate();
+    // Se establece el título del contenido principal.
+    PORTADA_TITLE.textContent = 'Ultimos lanzamientos';
+    const FORM = new FormData();
+    FORM.append('id_producto', PARAMS.get('id'));
+    // Petición para obtener las categorías disponibles.
+    const DATA = await fetchData(PRODUCTO_API, 'readProductosInicio');
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (DATA.status) {
+        // Se inicializa el contenedor de categorías.
+        PORTADA.innerHTML = '';
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        DATA.dataset.forEach(row => {
+            PORTADA.innerHTML += `
+                <div class="col-lg-4 col-md-6 col-sm-12 noti1">
+                    <a href="producto.html?id=${row.id_producto}">
+                        <img src="${SERVER_URL}images/productos/${row.imagen_producto}" class="img-fluid" alt="${row.nombre_producto}"
+                            data-nombre="${row.nombre_producto}"
+                            data-precio="${row.precio_producto}"
+                            data-cantidad="${row.cantidad_producto}"
+                            data-descripcion="${row.descripcion_producto}">
+                    </a>
+                </div>
+            `;
+        });
+    } else {
+        // Se asigna al título del contenido de la excepción cuando no existen datos para mostrar.
+        document.getElementById('PORTADA_TITLE').textContent = DATA.error;
     }
 });

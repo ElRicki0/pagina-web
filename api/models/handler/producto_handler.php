@@ -23,7 +23,7 @@ class ProductoHandler
     //Ruta para guardar imágenes
     const RUTA_IMAGEN = '../../images/productos/';
 
-    
+
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
     */
@@ -128,7 +128,7 @@ class ProductoHandler
         $sql = 'UPDATE tb_productos
                 SET  nombre_producto = ?, descripcion_producto = ?, precio_producto = ?, cantidad_producto = ?, id_categoria_producto = ?, id_admin = ?, imagen_producto = ?, id_marca=?
                 WHERE id_producto = ?';
-        $params = array($this->nombre, $this->descripcion, $this->precio, $this->cantidad, $this->categoria, $this->administrador, $this->imagen , $this->marca, $this->id);
+        $params = array($this->nombre, $this->descripcion, $this->precio, $this->cantidad, $this->categoria, $this->administrador, $this->imagen, $this->marca, $this->id);
         return Database::executeRow($sql, $params);
     }
 
@@ -163,7 +163,7 @@ class ProductoHandler
 
     public function readProductosMarca()
     {
-    $sql = 'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, cantidad_producto
+        $sql = 'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, cantidad_producto
     FROM tb_productos p
     INNER JOIN tb_marcas USING(id_marca)
     WHERE id_marca = ? 
@@ -171,5 +171,30 @@ class ProductoHandler
     ';
         $params = array($this->marca);
         return Database::getRows($sql, $params);
+    }
+
+    public function readProductosInicio()
+    {
+        $sql = 'SELECT 
+        p.id_producto,
+        p.nombre_producto, 
+        p.imagen_producto, 
+        p.descripcion_producto, 
+        c.nombre_categoria_producto AS categoria_producto, 
+        a.nombre_admin AS nombre_administrador, 
+        m.nombre_marca AS nombre_marca
+    FROM 
+        tb_productos p
+    INNER JOIN 
+        tb_categorias_productos c ON p.id_categoria_producto = c.id_categoria_producto
+    INNER JOIN 
+        tb_administradores a ON p.id_admin = a.id_admin
+    INNER JOIN 
+        tb_marcas m ON p.id_marca = m.id_marca
+    ORDER BY 
+        RAND()
+    LIMIT 6;
+    ';
+        return Database::getRows($sql);
     }
 }
