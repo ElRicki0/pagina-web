@@ -7,10 +7,11 @@
     <title>Perfil cliente</title>
     <!--Script para ponerle icono a la pagina-->
     <link rel="icon" href="../../resources/img/iconos/loguito.ico">
-    <!--Enlace para mandar a llamar propiedad de boostrap.css-->
     <link rel="stylesheet" href="../../resources/css/css_boostrap.css">
-    <!--Enlace para mandar a llamar el css-->
     <link rel="stylesheet" href="../../resources/css/csspublic.css">
+    <link rel="stylesheet" href="../../resources/css/boton.css">
+    <link rel="stylesheet" href="../../resources/css/botones_perfil.css">
+
 </head>
 
 <body>
@@ -21,92 +22,142 @@
     <!--Cuerpo de la pagina-->
     <main>
         <!--Aca solo es el un tipo titulo-->
-        <div class="py-2">
-            <p class="py-3"></p>
-            <p class="TituPerfiClie text-center fs-1 py-5">Datos de su cuenta</p>
+        <div class="espaciado">
+            <p class="TituPerfiClie text-center fs-1 " id="mainTitle"></p>
         </div>
 
 
         <!--Clase para poder alinear todo en una sola linea-->
         <div class="row">
-            <div class="row">
-                <!--Imagen de perfil-->
-                <div class=" col-md-5 text-center">
-                    <img id="modalProfileImage" class="rounded  mx-auto d-block img-fluid mt-3"
-                        src="../../resources/img/iconoPerfil.jpg" alt="..." width="300px">
-                    <input type="file" id="modalInputFile" style="display:none;" accept="image/*">
-                    <button type="button" class=" btn btn-outline-dark btn-lg order-2 mt-4  mb-4"
-                        onclick="abrirExploradorModal()">Insertar foto de perfil</button>
-                </div>
-                <div class="col">
-                    <form>
-                        <div class="form-group">
-                            <label for="CuadroNom" class="letraPer col-md-4 fs-3">Nombre</label>
-                            <input type="text" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
-                                id="CuadroNom" placeholder="Veronica">
-                        </div>
-                        <div class="form-group">
-                            <label for="CuadroApel" class="letraPer col-md-4 fs-3">Apellido</label>
-                            <input type="text" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
-                                id="CuadroApel" placeholder="Sanchez">
-                        </div>
-                        <div class="form-group">
-                            <label for="CuadroTel" class="letraPer col-md-4 fs-3">Telefono</label>
-                            <input type="number"
-                                class="form-control cuadroText col-md-8 fs-3 border border-dark rounded" id="CuadroTel"
-                                placeholder="1234-1234">
-                        </div>
-                        <div class="form-group">
-                            <label for="CuadroCorreo" class="letraPer col-md-8 fs-3">Residencial</label>
-                            <textarea class="form-control cuadroText mt-2 col-md-8 fs-3 border border-dark rounded mb-4"
-                                id="CuadroDirecRe" rows="3" placeholder="Escriba su dirección aca"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="CuadroApel" class="letraPer col-md-4 fs-3">Usuario</label>
-                            <input type="text" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
-                                id="CuadroApel" placeholder="Introdusca du usuario">
-                        </div>
-                        <div class="form-group">
-                            <label for="CuadroCorreo" class="letraPer col-md-8 fs-3">Correo electrónico</label>
-                            <input type="email" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
-                                id="CuadroCorreo" placeholder="Verititito@gmail.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="CuadroPass" class="letraPer col-md-10 fs-3">Contraseña</label>
-                            <input type="password"
-                                class="form-control cuadroText col-md-8 fs-3 border border-dark rounded" id="CuadroPass"
-                                placeholder="contraseña">
-                        </div>
-                    </form>
-                </div>
-                <!-- Botones para editar los datos del usuario-->
+            <form class="g-3" id="profileForm">
                 <div class="row">
-                    <div class="col">
-                        <button id="" onclick="alertMine('modificarUsu')" type="button"
-                            class="BotonActualizar btn btn-outline-dark col-md-4 btn-lg btn-block mx-auto d-block"> <img
-                                src="../../resources/img/actualizar.png" class="botones_productos" style="width: 50px;">
-                            <h5>Actualizar datos</h5>
-                        </button>
+                    <!--Imagen de perfil-->
+                    <div class="col-lg-5 col-md-5 col-sm-12 text-center">
+                        <img id="imagenR" class="rounded  mx-auto d-block img-fluid mt-3 imagen_R"
+                            src="../../resources/img/iconoPerfil.jpg" alt="..." width="300px">
+                        <input type="file" id="imagenCliente" name="imagenCliente" hidden>
+                        <label for="imagenCliente" class="buttonR btn-sm mb-4 p-2 mt-3">
+                            Inserte una imagen
+                        </label>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="form-group">
+                            <label for="nombreCliente" class="letraPer col-md-4 fs-3">Nombre</label>
+                            <input type="text" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
+                                id="nombreCliente" name="nombreCliente" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellidoCliente" class="letraPer col-md-4 fs-3">Apellido</label>
+                            <input type="text" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
+                                id="apellidoCliente" name="apellidoCliente" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="correoCliente" class="letraPer col-md-8 fs-3">Correo electrónico</label>
+                            <input type="email" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
+                                id="correoCliente" name="correoCliente" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefonoCliente" class="letraPer col-md-4 fs-3">Telefono</label>
+                            <input type="text" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
+                                id="telefonoCliente" placeholder="0000-0000" name="telefonoCliente" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="direccionCliente" class="letraPer col-md-8 fs-3">Direccion / Residencia</label>
+                            <textarea class="form-control cuadroText mt-2 col-md-8 fs-3 border border-dark rounded mb-4"
+                                id="direccionCliente" rows="3" name="direccionCliente" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="aliasCliente" class="letraPer col-md-4 fs-3">Usuario</label>
+                            <input type="text" class="form-control cuadroText col-md-8 fs-3 border border-dark rounded"
+                                id="aliasCliente" name="aliasCliente" required>
+                        </div>
+                        <div class="col mt-4">
+                            <button id="" type="submit" class="btn btn-outline-dark col-md-4 btn-block mx-auto d-block">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="50" fill="currentColor"
+                                    class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                                    <path
+                                        d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9" />
+                                    <path fill-rule="evenodd"
+                                        d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z" />
+                                </svg>
+                                <h5>Guardar</h5>
+                            </button>
+                        </div>
                     </div>
                 </div>
+            </form>
+            <!-- Boton para abrir modal de cambio de contraseña-->
+            <div class="col mt-4">
+                <button id="" type="submit" class="btn btn-outline-danger col-md-4 btn-block mx-auto d-block"
+                    onclick="openPassword()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="50" fill="currentColor"
+                        class="bi bi-shield-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.8 11.8 0 0 1-2.517 2.453 7 7 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7 7 0 0 1-1.048-.625 11.8 11.8 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 63 63 0 0 1 5.072.56" />
+                    </svg>
+                    <h5>Cambiar contraseña</h5>
+                </button>
             </div>
         </div>
+        <!-- Inclusión de la librería de mascaras. Para más información https://github.com/text-mask/text-mask -->
+        <script type="text/javascript" src="../../resources/js/vanillaTextMask.js"></script>
     </main>
     <footer class="test">
 
     </footer>
+
+    
+    <!-- Componente Modal para mostrar el formulario de cambio de contraseña -->
+    <div class="modal fade" id="passwordModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+            <!-- Contenido del componente Modal -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalTitle">Cambiar contraseña</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Formulario para actualizar contraseña -->
+                <form id="passwordForm">
+                    <div class="modal-body row">
+                        <div class="col-sm-12 col-md-6 offset-md-3">
+                            <label for="claveActual" class="form-label">Contraseña actual</label>
+                            <input id="claveActual" type="password" name="claveActual" class="form-control" required>
+                        </div>
+                        <div class="col-12 text-center mt-3 mb-3">
+                            <div>CONTRASEÑA NUEVA</div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <label for="claveNueva" class="form-label">Contraseña</label>
+                            <input id="claveNueva" type="password" name="claveNueva" class="form-control" required>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <label for="confirmarClave" class="form-label">Confirmar contraseña</label>
+                            <input id="confirmarClave" type="password" name="confirmarClave" class="form-control"
+                                required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn botonCancell">Cancelar</button>
+                        <button type="submit" class="btn BotonSave">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT -->
+    <!--Enlace para elementos del boostrap-->
+    <script src="../../resources/js/bootstrap.bundle.min.js"></script>
+    <!--Enlace para poder mostrar alertas-->
+    <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
+    <!-- Llamada al controlador general de la aplicación -->
+    <script type="text/javascript" src="../../controllers/utils/components.js"></script>
+    <!--Enlaces para archivos javascript-->
+    <script type="text/javascript" src="../../controllers/utils/public.js"></script>
+    <!-- Llamada al controlador de la página web -->
+    <script type="text/javascript" src="../../controllers/public/perfil.js"></script>
+
 </body>
-
-<!--Enlace para elementos del boostrap-->
-<script src="../../resources/js/bootstrap.bundle.min.js"></script>
-
-<!--Enlace para poder mostrar alertas-->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<!--Enlaces para archivos javascript-->
-<script src="../../controllers/public/alertas_publicas.js"></script>
-<script src="../../controllers/utils/explorador_modal.js"></script>
-<script src="../../controllers/public/navbar.js"></script>
-<script src="../../controllers/utils/footer.js"></script>
 
 </html>

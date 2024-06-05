@@ -66,9 +66,9 @@ class ClienteHandler
     public function readProfile()
     {
         $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, correo_cliente, telefono_cliente,residencia_cliente,alias_cliente
-                FROM id_cliente
-                WHERE id_admin = ?';
-        $params = array($_SESSION['id_cliente']);
+                FROM tb_clientes
+                WHERE id_cliente = ?';
+        $params = array($_SESSION['idCliente']);
         return Database::getRow($sql, $params);
     }
 
@@ -76,9 +76,9 @@ class ClienteHandler
     public function editProfile()
     {
         $sql = 'UPDATE tb_clientes
-                SET nombre_cliente = ?, apellido_cliente = ?,estado_cliente = ?, correo_cliente = ?, telefono_cliente = ?, residencia_cliente = ?, imagen_cliente = ?
+                SET nombre_cliente = ?, apellido_cliente = ?,estado_cliente = ?, correo_cliente = ?, telefono_cliente = ?, residencia_cliente = ?
                 WHERE id_cliente = ?';
-        $params = array($this->nombre, $this->apellido, $this->estado, $this->correo, $this->telefono, $this->direccion, $this->imagen, $this->id);
+        $params = array($this->nombre, $this->apellido, $this->estado, $this->correo, $this->telefono, $this->direccion,  $_SESSION['idCliente']);
         return Database::executeRow($sql, $params);
     }
 
@@ -96,7 +96,7 @@ class ClienteHandler
         $sql = 'SELECT pass_cliente
                 FROM tb_clientes
                 WHERE id_cliente = ?';
-        $params = array($_SESSION['id_cliente']);
+        $params = array($_SESSION['idCliente']);
         $data = Database::getRow($sql, $params);
         // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
         if (password_verify($password, $data['pass_cliente'])) {

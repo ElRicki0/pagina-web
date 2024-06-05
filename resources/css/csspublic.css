@@ -821,3 +821,39 @@ div iframe {
 .producto_imagen {
     margin-top: 10rem
 }
+
+
+
+/* Modal */
+.modal {
+    z-index: 1050; /* Asegura que el modal esté por encima del resto del contenido */
+    overflow-y: auto; /* Permite desplazarse verticalmente dentro del modal si es necesario */
+}
+
+.modal-dialog {
+    max-width: 60%; /* Ajusta el ancho máximo del modal según sea necesario */
+    margin: 1rem auto; /* Centra el modal verticalmente */
+}
+
+.modal-content {
+    border-radius: 20px; /* Ajusta el radio de borde del modal */
+}
+
+.modal-header {
+    background-color: #594de0;
+    color: white;
+    border-bottom: none; /* Elimina el borde inferior del encabezado */
+}
+
+.modal-body {
+    background-color: #fefefe; /* Color de fondo del cuerpo del modal */
+}
+
+.modal-footer {
+    background-color: #fefefe; /* Color de fondo del pie del modal */
+    border-top: none; /* Elimina el borde superior del pie del modal */
+}
+
+.modal-backdrop {
+    z-index: 1040; /* Asegura que el fondo oscuro esté por debajo del modal */
+}
