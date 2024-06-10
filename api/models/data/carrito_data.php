@@ -18,7 +18,7 @@ class CarritoHandler extends CarritoHandler
      *   Métodos para validar y establecer los datos.
      */
 
-    public function total($value)
+    public function Settotal($value)
     {
         if (Validator::validateNaturalNumber($value)) {
             $this->id = $value;

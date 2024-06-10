@@ -1,24 +1,17 @@
 // Constantes para completar las rutas de la API.
-const PRODUCTO_API = 'services/admin/producto.php';
-const PEDIDOS_API = 'services/admin/pedidos.php';
-const CLIENTE_API = 'services/admin/cliente.php';
-// Constante para establecer el formulario de buscar.
-const SEARCH_FORM = document.getElementById('searchForm');
-// Constantes para establecer el contenido de la tabla.
-const TABLE_BODY = document.getElementById('tableBody'),
-    ROWS_FOUND = document.getElementById('rowsFound');
-// Constantes para establecer los elementos del componente Modal.
+const CARRITO_API = 'services/admin/carrito.php';
 
-const DETALLE_MODAL = new bootstrap.Modal('#masInfo2'),
-    MODAL_TITLE = document.getElementById('modal2');
+// Constantes para establecer el contenido de la tabla.
+const TABLE_BODY = document.getElementById('tarjetas');
+
+// Constantes para establecer los elementos del componente Modal.
+const DETALLE_MODAL = new bootstrap.Modal('#masInfo2');
 // Constantes para establecer el contenido de la tabla de productos.
-const TABLE_BODY2 = document.getElementById('tableBody2'),
-    ROWS_FOUND2 = document.getElementById('rowsFound2');
 
 // Constante tipo objeto para obtener los parámetros disponibles en la URL.
 const PARAMS = new URLSearchParams(location.search);
 // // Constante para establecer el formulario de agregar un producto al carrito de compras.
-// const SHOPPING_FORM = document.getElementById('shoppingForm');
+const SHOPPING_FORM = document.getElementById('shoppingForm');
 
 // Método del eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
@@ -39,9 +32,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('idProducto').value = DATA.dataset.id_producto;
     } else {
         // Se presenta un mensaje de error cuando no existen datos para mostrar.
-        // document.getElementById('mainTitle').textContent = DATA.error;
+        document.getElementById('mainTitle').textContent = DATA.error;
         // // Se limpia el contenido cuando no hay datos para mostrar.
-        // document.getElementById('detalle').innerHTML = '';
+        document.getElementById('detalle').innerHTML = '';
     }
 });
 
@@ -56,8 +49,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (DATA.status) {
 
         // Se establece la página web de destino con los parámetros
-
-        // let url = `products.html?id=${row.id_producto}&nombre=${row.nombre_producto}`;
+        let url = `products.html?id=${row.id_producto}&nombre=${row.nombre_producto}`;
         // Se crean y concatenan las tarjetas con los datos de cada categoría.
         MARCAS.innerHTML = `
                     <a href="marca_producto_especifico.html?id=${DATA.dataset.id_marca}&nombre=${DATA.dataset.nombre_marca}&imagen=${DATA.dataset.imagen_marca}&descrip=
@@ -69,7 +61,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('mainTitle').textContent = DATA.error;
     }
 });
-
 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
@@ -100,13 +91,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             </div>
         </div>
     </div>`;
+    
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         DATA.dataset.forEach(row => {
 
             SUGPRODUCTO.innerHTML += `
-
-            
-
         <div class="carousel-item">
         <div class="d-flex justify-content-center">
             <div class="card">
