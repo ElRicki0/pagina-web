@@ -200,13 +200,15 @@ class ProductoHandler
 
     public function readComentarios()
     {
-        $sql = 'SELECT c.id_comentario,c.comentario,c.estrella,c.id_producto,cl.alias_cliente,cl.imagen_cliente,
+        $sql = 'SELECT c.id_comentario,c.comentario,c.estrella,c.id_producto,cl.nombre_cliente,cl.imagen_cliente,
         c.estado_comentario, c.fecha_comentario
     FROM 
         tb_comentarios c
     INNER JOIN 
         tb_clientes cl ON c.id_cliente = cl.id_cliente
+        where c.id_producto = ?
     ';
-        return Database::getRows($sql);
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
     }
 }

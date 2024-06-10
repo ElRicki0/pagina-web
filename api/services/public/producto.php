@@ -89,7 +89,7 @@ if (isset($_GET['action'])) {
             }
             break;
         case 'readComentarios':
-            if (!$producto->setId($_POST['idProducto'])) {
+            if (!$producto->setId($_POST['idProducto2'])) {
                 $result['error'] = $producto->getDataError();
             } elseif ($result['dataset'] = $producto->readComentarios()) {
                 $result['status'] = 1;
@@ -97,8 +97,6 @@ if (isset($_GET['action'])) {
                 $result['error'] = 'Este producto no ha sido comentado';
             }
             break;
-
-
         default:
             $result['error'] = 'Acción no disponible';
     }

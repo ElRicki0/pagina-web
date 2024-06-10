@@ -5,6 +5,11 @@ const SUGPRODUCTO = document.getElementById('sugerenciasProductos');
 const COMENTARIOS = document.getElementById('comentarios');
 
 
+// Constantes para establecer los elementos de la tabla.
+const TABLE_BODY = document.getElementById('tableBody'),
+    ROWS_FOUND = document.getElementById('rowsFound');
+
+
 // Constante tipo objeto para obtener los parámetros disponibles en la URL.
 const PARAMS = new URLSearchParams(location.search);
 // // Constante para establecer el formulario de agregar un producto al carrito de compras.
@@ -12,7 +17,8 @@ const PARAMS = new URLSearchParams(location.search);
 
 // Método del eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
-
+    // Llamada a la función para mostrar el encabezado y pie del documento.
+    loadTemplate();
     // Constante tipo objeto con los datos del producto seleccionado.
     const FORM = new FormData();
     FORM.append('idProducto', PARAMS.get('id'));
@@ -126,9 +132,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 const stars = document.querySelectorAll('.star');
 
 let rating = 0;  // Variable global para almacenar el valor del rating
- 
-stars.forEach(function(star, index) {
-    star.addEventListener('click', function() {
+
+stars.forEach(function (star, index) {
+    star.addEventListener('click', function () {
         for (let i = 0; i <= index; i++) {
             stars[i].classList.add('checked');
         }
@@ -142,58 +148,52 @@ stars.forEach(function(star, index) {
     });
 });
 
-
-
 document.addEventListener('DOMContentLoaded', async () => {
-    COMENTARIOS.innerHTML = '';
-    
+
+    const idProducto = PARAMS.get('id'); // Supongo que el id del producto se obtiene de los parámetros de la URL.
+
+    // Se inicializa el contenido de la tabla.
+    ROWS_FOUND.textContent = '';
+    TABLE_BODY.innerHTML = '';
+
+
     const FORM = new FormData();
-    FORM.append('idProducto', PARAMS.get('id'));
-    // Petición para obtener las categorías disponibles.
-    const DATA = await fetchData(PRODUCTO_API, 'readComentarios');
+    FORM.append('idProducto2', idProducto);
+
+    // Petición para obtener los comentarios del producto.
+    const DATA = await fetchData(PRODUCTO_API, 'readComentarios', FORM);
+
     if (DATA.status) {
         DATA.dataset.forEach(row => {
-            COMENTARIOS.innerHTML += `
-                <div class="row py-3">
-                    <div class="col-1 py-2">
-                        <img class="rounded-circle" width="75" height="75" alt="${row.alias_cliente}" src="${SERVER_URL}images/clientes/${row.imagen_cliente}">
-                    </div>
-                    <div class="col-12 col-lg-10 comentarios_clientes">
-                        <div class="row">
-                            <div class="col-9 col-lg-12 py-2 px-4">
-                                <p>${row.comentario}</p>
-                                <div class="row">
-                                    <div class="col-8 col-lg-8">
-                                        ${generateStars(row.estrlla)}
-                                    </div>
-                                    <div class="col-8 col-lg-4">
-                                        <p class="fs-6"><b>${row.fecha_comentario}</b></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
+            TABLE_BODY.innerHTML += `
+                <tr>
+                    <td>
+                        <img class="rounded-circle" width="75" height="75" alt="${row.nombre_cliente}" src="${SERVER_URL}images/clientes/${row.imagen_cliente}">
+                    </td>
+                    <td>${row.nombre_cliente}</td>
+                    <td>${row.comentario}</td>
+                    <td>${generateStars(row.estrella)}</td>
+                    <td>${row.fecha_comentario}</td>
+                </tr>`;
         });
     } else {
+        // Se asigna al título del contenido de la excepción cuando no existen datos para mostrar.
         document.getElementById('mainTitle').textContent = DATA.error;
     }
 });
-
 
 const generateStars = (rating) => {
     let starsHTML = '';
     for (let i = 1; i <= 5; i++) {
         if (i <= rating) {
             starsHTML += `
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-star-fill estrella_ejemplo" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#4A00BB" class="bi bi-star-fill " viewBox="0 0 16 16">
                     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                 </svg>
             `;
         } else {
             starsHTML += `
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-star-fill estrella_ejemplo_apagada" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#000000" class="bi bi-star " viewBox="0 0 16 16">
                     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                 </svg>
             `;
