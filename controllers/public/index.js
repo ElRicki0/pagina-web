@@ -92,9 +92,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             MARCAS.innerHTML += `
 <div class="carousel-item">
     <div class="d-flex justify-content-center">
-        <div class="card" style="width: 25rem;">
+        <div class="card">
             <div>
-                <a href="../public/marca_especifica.html" type="button">
+                <a href="../public/marca_producto_especifico.html?id=${row.id_marca}&nombre=${row.nombre_marca}&imagen=${row.imagen_marca}&descrip=${row.descripcion_marca}" type="button">
                     <img src="${SERVER_URL}images/marcas/${row.imagen_marca}" class="card-img-top" alt="Sedal">
                 </a>
             </div>
