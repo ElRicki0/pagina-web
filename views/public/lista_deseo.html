@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>list de deseos</title>
     <link rel="icon" href="../../resources/img/iconos/iconoPagina.ico">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../resources/css/css_boostrap.css">
     <link rel="stylesheet" href="../../resources/css/csspublic.css">
 </head>
 
@@ -20,7 +19,7 @@
 
         <div class="row">
             <h1 class="titulo_ld text-center">Lista de deseos</h1>
-            <div class="col-lg-8">
+            <div class="col-lg-8" id="lista">
                 <!--productos en card-->
 
                 <div class="card mb-12 w-100">
@@ -45,194 +44,7 @@
                                         </svg>
                                     </div>
                                     <div class="btn btn-outline-danger" onclick="alertMine('eliminarProductoCompra')">
-                                        <img id="" src="../../resources/img/iconos/papelera.png"
-                                            class="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card mb-12 w-100">
-                    <div class="row g-0">
-                        <div class="col-md-4 mt-3 text-center">
-                            <img src="../../resources/img/productos/img1.jpg" width="150px"
-                                class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body shadow-lg">
-                                <h5 class="card-title">Producto ejemplo</h5>
-                                <p class="card-text">Descubre la perfección en cada aplicación con nuestro nuevo [Nombre
-                                    del Producto]. Su fórmula de alta calidad y suavidad incomparable te dejarán
-                                    radiante en segundos.</p>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">$5.20</h6>
-                                <div class="text-end">
-                                    <div class="btn btn-outline-success" onclick="alertMine('agregarAlCarrito')">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" fill="#000000"
-                                            class="bi bi-cart mx-3" viewBox="0 0 16 16">
-                                            <path
-                                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
-                                        </svg>
-                                    </div>
-                                    <div class="btn btn-outline-danger" onclick="alertMine('eliminarProductoCompra')">
-                                        <img id="" src="../../resources/img/iconos/papelera.png"
-                                            class="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card mb-12 w-100">
-                    <div class="row g-0">
-                        <div class="col-md-4 mt-3 text-center">
-                            <img src="../../resources/img/productos/img1.jpg" width="150px"
-                                class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body shadow-lg">
-                                <h5 class="card-title">Producto ejemplo</h5>
-                                <p class="card-text">Descubre la perfección en cada aplicación con nuestro nuevo [Nombre
-                                    del Producto]. Su fórmula de alta calidad y suavidad incomparable te dejarán
-                                    radiante en segundos.</p>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">$5.20</h6>
-                                <div class="text-end">
-                                    <div class="btn btn-outline-success" onclick="alertMine('agregarAlCarrito')">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" fill="#000000"
-                                            class="bi bi-cart mx-3" viewBox="0 0 16 16">
-                                            <path
-                                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
-                                        </svg>
-                                    </div>
-                                    <div class="btn btn-outline-danger" onclick="alertMine('eliminarProductoCompra')">
-                                        <img id="" src="../../resources/img/iconos/papelera.png"
-                                            class="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card mb-12 w-100">
-                    <div class="row g-0">
-                        <div class="col-md-4 mt-3 text-center">
-                            <img src="../../resources/img/productos/img1.jpg" width="150px"
-                                class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body shadow-lg">
-                                <h5 class="card-title">Producto ejemplo</h5>
-                                <p class="card-text">Descubre la perfección en cada aplicación con nuestro nuevo [Nombre
-                                    del Producto]. Su fórmula de alta calidad y suavidad incomparable te dejarán
-                                    radiante en segundos.</p>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">$5.20</h6>
-                                <div class="text-end">
-                                    <div class="btn btn-outline-success" onclick="alertMine('agregarAlCarrito')">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" fill="#000000"
-                                            class="bi bi-cart mx-3" viewBox="0 0 16 16">
-                                            <path
-                                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
-                                        </svg>
-                                    </div>
-                                    <div class="btn btn-outline-danger" onclick="alertMine('eliminarProductoCompra')">
-                                        <img id="" src="../../resources/img/iconos/papelera.png"
-                                            class="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card mb-12 w-100">
-                    <div class="row g-0">
-                        <div class="col-md-4 mt-3 text-center">
-                            <img src="../../resources/img/productos/img1.jpg" width="150px"
-                                class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body shadow-lg">
-                                <h5 class="card-title">Producto ejemplo</h5>
-                                <p class="card-text">Descubre la perfección en cada aplicación con nuestro nuevo [Nombre
-                                    del Producto]. Su fórmula de alta calidad y suavidad incomparable te dejarán
-                                    radiante en segundos.</p>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">$5.20</h6>
-                                <div class="text-end">
-                                    <div class="btn btn-outline-success" onclick="alertMine('agregarAlCarrito')">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" fill="#000000"
-                                            class="bi bi-cart mx-3" viewBox="0 0 16 16">
-                                            <path
-                                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
-                                        </svg>
-                                    </div>
-                                    <div class="btn btn-outline-danger" onclick="alertMine('eliminarProductoCompra')">
-                                        <img id="" src="../../resources/img/iconos/papelera.png"
-                                            class="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card mb-12 w-100">
-                    <div class="row g-0">
-                        <div class="col-md-4 mt-3 text-center">
-                            <img src="../../resources/img/productos/img1.jpg" width="150px"
-                                class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body shadow-lg">
-                                <h5 class="card-title">Producto ejemplo</h5>
-                                <p class="card-text">Descubre la perfección en cada aplicación con nuestro nuevo [Nombre
-                                    del Producto]. Su fórmula de alta calidad y suavidad incomparable te dejarán
-                                    radiante en segundos.</p>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">$5.20</h6>
-                                <div class="text-end">
-                                    <div class="btn btn-outline-success" onclick="alertMine('agregarAlCarrito')">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" fill="#000000"
-                                            class="bi bi-cart mx-3" viewBox="0 0 16 16">
-                                            <path
-                                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
-                                        </svg>
-                                    </div>
-                                    <div class="btn btn-outline-danger" onclick="alertMine('eliminarProductoCompra')">
-                                        <img id="" src="../../resources/img/iconos/papelera.png"
-                                            class="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card mb-12 w-100">
-                    <div class="row g-0">
-                        <div class="col-md-4 mt-3 text-center">
-                            <img src="../../resources/img/productos/img1.jpg" width="150px"
-                                class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body shadow-lg">
-                                <h5 class="card-title">Producto ejemplo</h5>
-                                <p class="card-text">Descubre la perfección en cada aplicación con nuestro nuevo [Nombre
-                                    del Producto]. Su fórmula de alta calidad y suavidad incomparable te dejarán
-                                    radiante en segundos.</p>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">$5.20</h6>
-                                <div class="text-end">
-                                    <div class="btn btn-outline-success" onclick="alertMine('agregarAlCarrito')">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" fill="#000000"
-                                            class="bi bi-cart mx-3" viewBox="0 0 16 16">
-                                            <path
-                                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
-                                        </svg>
-                                    </div>
-                                    <div class="btn btn-outline-danger" onclick="alertMine('eliminarProductoCompra')">
-                                        <img id="" src="../../resources/img/iconos/papelera.png"
-                                            class="">
+                                        <img id="" src="../../resources/img/iconos/papelera.png" class="">
                                     </div>
                                 </div>
                             </div>
@@ -243,7 +55,7 @@
             </div>
 
             <!---->
-            <div class="col-lg-4 d-flex flex-column align-items-center">
+            <div class="col-lg-4 d-flex flex-column align-items-center" id="sugerencia">
 
                 <h3 class="text-secondary-emphasis mb-4">Productos que te pueden interesar</h3>
 
@@ -255,27 +67,13 @@
                         <p class="card-text">Transforma tu rutina de cuidado facial con nuestro innovador Suero
                             Rejuvenecedor. Su fórmula avanzada revitaliza la piel para un aspecto radiante y juvenil en
                             solo minutos</p>
-                            <div class="text-start mt-2">
-                                <a href="../public/descripcion_producto.html"
-                                    class="btn btn_ver_mas">Ir al producto</a>
-                            </div>
+                        <div class="text-start mt-2">
+                            <a href="../public/descripcion_producto.html" class="btn btn_ver_mas">Ir al producto</a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="card" style="width: 18rem;">
-                    <img src="../../resources/img/productos/pd1.jpg" width="150px" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h4 class="card-title">Sugerencia</h4>
-                        <h5 class="card-text">Brillos labiales</h5>
-                        <p class="card-text">Transforma tu rutina de cuidado facial con nuestro innovador Suero
-                            Rejuvenecedor. Su fórmula avanzada revitaliza la piel para un aspecto radiante y juvenil en
-                            solo minutos</p>
-                            <div class="text-start mt-2">
-                                <a href="../public/descripcion_producto.html"
-                                    class="btn btn_ver_mas">Ir al producto</a>
-                            </div>
-                    </div>
-                </div>
+                
             </div>
 
         </div>
@@ -284,18 +82,20 @@
 
     </footer>
 
+
+    <!--Enlace para elementos del boostrap-->
+    <script src="../../resources/js/bootstrap.bundle.min.js"></script>
+
+    <!--Enlace para poder mostrar alertas-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--Enlaces para archivos javascript-->
+    <script type="text/javascript" src="../../controllers/utils/components.js"></script>
+    <script src="../../controllers/public/alertas_publicas.js"></script>
+    <script src="../../controllers/utils/public.js"></script>
+    <script src="../../controllers/public/lista_deseo.js"></script>
 </body>
 
-<!--Enlace para elementos del boostrap-->
-<script src="../../resources/js/bootstrap.bundle.min.js"></script>
-
-<!--Enlace para poder mostrar alertas-->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<!--Enlaces para archivos javascript-->
-<script src="../../controllers/public/navbar.js"></script>
-<script src="../../controllers/public/alertas_publicas.js"></script>
-<script src="../../controllers/utils/footer.js"></script>
 
 
 
