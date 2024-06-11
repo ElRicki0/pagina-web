@@ -34,6 +34,19 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Ocurrió un problema al eliminar el producto';
                 }
                 break;
+            case 'createRow':
+                if (
+                    !$lista->setIdProducto($_POST['idProducto'])
+                ) {
+                    $result['error'] = $lista->getDataError();
+                } elseif ($lista->createRow()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Producto agregado correctamente';
+                } else {
+                    $result['error'] = 'Ocurrió un problema al agregar el producto';
+                }
+                break;
+
             default:
                 $result['error'] = 'Acción no disponible dentro de la sesión';
         }

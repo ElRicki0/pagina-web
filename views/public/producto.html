@@ -30,15 +30,15 @@
                         class="rounded  mx-auto d-block border producto_imagen" width="300px">
                     <br>
                     <br>
-                    <input type="file" id="modalInputFile" style="display:none;" accept="image/*">
                     <div class="row align-items-center">
                         <h5 class="precioCarito">Precio de producto $: </h5>
                         <b id="precioProducto"></b>
                         <h5 class="precioCarito">Cantidad producto</h5>
                         <b id="cantidadProducto"></b>
                         <div class="col-auto margenIzquierda">
+
                             <div class="con-like">
-                                <input class="like" type="checkbox" title="like">
+                                <input class="like" type="checkbox" title="like" id="listaProducto" onclick="createRowLista()">
                                 <div class="checkmark">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="outline" viewBox="0 0 24 24">
                                         <path
@@ -60,6 +60,8 @@
                                     </svg>
                                 </div>
                             </div>
+
+
                         </div>
                     </div>
                     <!--precio de producto-->

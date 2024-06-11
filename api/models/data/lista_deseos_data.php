@@ -28,6 +28,30 @@ class ListaData extends ListaHandler
         }
     }
 
+    public function setIdProducto($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->idProducto = $value;
+            return true;
+        } else {
+            $this->data_error = 'El identificador del producto';
+            return false;
+        }
+    }
+
+    public function setIdCliente($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->idCliente = $value;
+            return true;
+        } else {
+            $this->data_error = 'El identificador del cliente';
+            return false;
+        }
+    }
+
+
+
     // Método para obtener el error de los datos.
     public function getDataError()
     {

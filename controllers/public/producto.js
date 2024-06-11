@@ -1,4 +1,5 @@
 const PRODUCTO_API = 'services/public/producto.php';
+const LISTA_API = 'services/public/lista_deseo.php';
 
 const MARCAS = document.getElementById('marcas');
 const SUGPRODUCTO = document.getElementById('sugerenciasProductos');
@@ -33,6 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('precioProducto').textContent = DATA.dataset.precio_producto;
         document.getElementById('cantidadProducto').textContent = DATA.dataset.cantidad_producto;
         document.getElementById('idProducto').value = DATA.dataset.id_producto;
+        document.getElementById('listaProducto').value = DATA.dataset.id_producto;
     } else {
         // Se presenta un mensaje de error cuando no existen datos para mostrar.
         // document.getElementById('mainTitle').textContent = DATA.error;
@@ -182,6 +184,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
+
 const generateStars = (rating) => {
     let starsHTML = '';
     for (let i = 1; i <= 5; i++) {
@@ -200,4 +203,32 @@ const generateStars = (rating) => {
         }
     }
     return starsHTML;
+}
+
+
+/*
+*   Función asíncrona para agregar un producto a la lista de deseos.
+*   Parámetros: id (identificador del registro seleccionado).
+*   Retorno: ninguno.
+*/
+const createRowLista = async () => {
+    // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
+    const RESPONSE = await confirmAction('¿Desea agregar producto a lista de deseos?');
+    // Se verifica la respuesta del mensaje.
+    if (RESPONSE) {
+        // Se define una constante tipo objeto con los datos del registro seleccionado.
+        const FORM = new FormData();
+        FORM.append('idProducto', document.getElementById('listaProducto').value);
+        // Petición para eliminar el registro seleccionado.
+        const DATA = await fetchData(LISTA_API, 'createRow', FORM);
+        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+        if (DATA.status) {
+            // Se muestra un mensaje de éxito.
+            await sweetAlert(1, DATA.message, true);
+            // Se carga nuevamente la tabla para visualizar los cambios.
+            fillTable();
+        } else {
+            sweetAlert(2, DATA.error, false);
+        }
+    }
 }
