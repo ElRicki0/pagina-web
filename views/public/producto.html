@@ -105,6 +105,9 @@
             <!-- Parte del input y las estrellas -->
             <div class="col-lg-6 col-sm-12">
                 <div class="starcom">
+                    <form action="" id="saveForm">
+
+                    </form>
                     <div class="letraPer fs-3">Reseñas de clientes</div>
                     <!-- Estrellas comentadas del producto -->
                     <h2 class="CuantasEstrellas">5.00</h2>
@@ -123,12 +126,11 @@
                 </div>
                 <div class="cocomen">
                     <div class="letraPer fs-3">Comenta del producto</div>
-                    <textarea id="textoComentario" type="text" class="form-control fs-3"
-                        aria-label="Sizing example input" style="height: 150px;"
+                    <textarea id="comentarioValoracion" name="comentarioValoracion" type="text"
+                        class="form-control fs-3" aria-label="Sizing example input" style="height: 150px;"
                         aria-describedby="inputGroup-sizing-default"></textarea>
                     <div class="text-center mt-3">
-                        <button id="BtnCorrecto" onclick="alertMine('agregarComentario')" class="btnañacarrito btn"
-                            type="button">Añadir Comentario</button>
+                        <button class="btnañacarrito btn" type="submit">Añadir Comentario</button>
                     </div>
                 </div>
             </div>
