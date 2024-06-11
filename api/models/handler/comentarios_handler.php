@@ -36,9 +36,8 @@ class ComentarioHandler
 
     public function createRow()
     {
-        $sql = 'INSERT INTO tb_comentarios (comentario, id_producto, id_cliente, estado_comentario, estrella, fecha_comentario)
-        VALUES (?, ?, ?, ?);';
-        $params = array($this->comentario, $this->producto, $this->cliente, $this->estado, $this->estrella, $this->fecha);
+        $sql = 'CALL insertar_comentario(?, ?, ?, ?, 1);';
+        $params = array($this->comentario,$this->estrella, $this->producto, $this->cliente, $this->estado);
         return Database::executeRow($sql, $params);
     }
 

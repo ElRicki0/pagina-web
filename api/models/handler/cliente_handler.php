@@ -76,9 +76,9 @@ class ClienteHandler
     public function editProfile()
     {
         $sql = 'UPDATE tb_clientes
-                SET nombre_cliente = ?, apellido_cliente = ?,estado_cliente = ?,  telefono_cliente = ?, residencia_cliente = ?, imagen_cliente = ?
+                SET nombre_cliente = ?, apellido_cliente = ?,  telefono_cliente = ?, residencia_cliente = ?, alias_cliente = ?, imagen_cliente = ?
                 WHERE id_cliente = ?';
-        $params = array($this->nombre, $this->apellido, $this->estado, $this->telefono, $this->direccion, $this->imagen,  $_SESSION['idCliente']);
+        $params = array($this->nombre, $this->apellido, $this->telefono, $this->direccion, $this->alias, $this->imagen,  $_SESSION['idCliente']);
         return Database::executeRow($sql, $params);
     }
 
