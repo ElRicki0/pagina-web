@@ -94,6 +94,21 @@ class ProductoHandler
         return Database::getRows($sql);
     }
 
+    public function read2Products()
+    {
+        $sql = 'SELECT p.id_producto, p.imagen_producto, p.nombre_producto, p.descripcion_producto, p.precio_producto, p.cantidad_producto, p.id_categoria_producto, 
+                c.nombre_categoria_producto AS categoria_producto, 
+                a.nombre_admin AS nombre_administrador, 
+                m.nombre_marca AS nombre_marca
+                FROM tb_productos p
+                INNER JOIN tb_categorias_productos c ON p.id_categoria_producto = c.id_categoria_producto
+                INNER JOIN tb_administradores a ON p.id_admin = a.id_admin
+                INNER JOIN tb_marcas m ON p.id_marca = m.id_marca
+                ORDER BY RAND()
+                limit 2';
+        return Database::getRows($sql);
+    }
+
     public function readOne()
     {
         $sql = 'SELECT *

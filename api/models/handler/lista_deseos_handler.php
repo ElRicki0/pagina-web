@@ -14,6 +14,7 @@ class ListaHandler
     public function readOne()
     {
         $sql = 'SELECT 
+                    tb_productos.id_producto,
                     tb_listas_deseos.id_lista_deseo,
                     tb_productos.imagen_producto, 
                     tb_productos.nombre_producto, 
