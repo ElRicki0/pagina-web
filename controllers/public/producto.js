@@ -3,6 +3,28 @@ const PRODUCTO_API = 'services/public/producto.php';
 const MARCAS = document.getElementById('marcas');
 const SUGPRODUCTO = document.getElementById('sugerenciasProductos');
 const COMENTARIOS = document.getElementById('comentarios');
+const SHOPPING_FORM = document.getElementById('shoppingForm');
+
+// Constantes para completar las rutas de la API.
+const CARRITO_API = 'services/public/carrito.php';
+
+// Método del evento para cuando se envía el formulario de agregar un producto al carrito.
+SHOPPING_FORM.addEventListener('submit', async (event) => {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Constante tipo objeto con los datos del formulario.
+    const FORM = new FormData(SHOPPING_FORM);
+    // Petición para guardar los datos del formulario.
+    const DATA = await fetchData(CARRITO_API, 'createDetail', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se constata si el cliente ha iniciado sesión.
+    if (DATA.status) {
+        sweetAlert(1, DATA.message, false, 'cart.html');
+    } else if (DATA.session) {
+        sweetAlert(2, DATA.error, false);
+    } else {
+        sweetAlert(3, DATA.error, true, 'login.html');
+    }
+});
 
 
 // Constantes para establecer los elementos de la tabla.
@@ -126,8 +148,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('mainTitle').textContent = DATA.error;
     }
 });
-
-
 
 const stars = document.querySelectorAll('.star');
 

@@ -4,14 +4,10 @@ const CARRITO_API = 'services/admin/carrito.php';
 // Constantes para establecer el contenido de la tabla.
 const TABLE_BODY = document.getElementById('tarjetas');
 
-// Constantes para establecer los elementos del componente Modal.
-const DETALLE_MODAL = new bootstrap.Modal('#masInfo2');
 // Constantes para establecer el contenido de la tabla de productos.
 
 // Constante tipo objeto para obtener los parámetros disponibles en la URL.
 const PARAMS = new URLSearchParams(location.search);
-// // Constante para establecer el formulario de agregar un producto al carrito de compras.
-const SHOPPING_FORM = document.getElementById('shoppingForm');
 
 // Método del eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
