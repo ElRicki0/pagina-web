@@ -2,6 +2,9 @@
 // Se incluye la clase del modelo.
 require_once('../../models/data/productos_data.php');
 
+require_once('../../models/data/comentarios_data.php');
+
+
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
     // Se instancia la clase correspondiente.
@@ -103,6 +106,24 @@ if (isset($_GET['action'])) {
                 $result['status'] = 1;
             } else {
                 $result['error'] = 'Este producto no ha sido comentado';
+            }
+            break;
+        case 'createComentario':
+            $_POST = Validator::validateForm($_POST);
+            // Verificar si el cliente ha comprado el producto antes de permitir la valoración
+            if (
+                !$comentario->setComentario($_POST['comentario']) or
+                !$comentario->setEstado(isset($_POST['estadoComentario']) ? 1 : 0) or
+                !$comentario->setProducto($_POST['idProducto']) or
+                !$comentario->setCliente($_SESSION['idCliente']) or
+                !$comentario->setEstrella($_POST['estrellaComentario'])
+            ) {
+                $result['error'] = $comentario->getDataError();
+            } elseif ($comentario->createRow()) {
+                $result['status'] = 1;
+                $result['message'] = 'Comentario agregado';
+            } else {
+                $result['error'] = 'Ocurrió un problema al guardar el comentario';
             }
             break;
         default:
