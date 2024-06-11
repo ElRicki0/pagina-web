@@ -11,7 +11,7 @@ CREATE TABLE tb_clientes (
   id_cliente int auto_increment primary key ,
   nombre_cliente VARCHAR(50) NOT NULL,
   apellido_cliente VARCHAR(50) NOT NULL,
-  telefono_cliente INT NOT NULL,
+  telefono_cliente VARCHAR(10) NOT NULL,
   residencia_cliente VARCHAR(500) NOT NULL,
   alias_cliente varchar(50) UNIQUE NOT NULL,
   correo_cliente VARCHAR(50) UNIQUE NOT NULL,
