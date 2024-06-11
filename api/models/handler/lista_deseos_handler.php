@@ -13,7 +13,9 @@ class ListaHandler
 
     public function readOne()
     {
-        $sql = 'SELECT tb_productos.imagen_producto, 
+        $sql = 'SELECT 
+                    tb_listas_deseos.id_lista_deseo,
+                    tb_productos.imagen_producto, 
                     tb_productos.nombre_producto, 
                     tb_productos.cantidad_producto, 
                     tb_productos.precio_producto, 
@@ -39,5 +41,11 @@ class ListaHandler
         return Database::getRows($sql, $params);
     }
 
-    
+    public function deleteRow()
+    {
+        $sql = 'DELETE FROM tb_listas_deseos
+                WHERE id_lista_deseo = ?';
+        $params = array($this->id);
+        return Database::executeRow($sql, $params);
+    }
 }

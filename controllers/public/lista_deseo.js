@@ -8,7 +8,15 @@ const PARAMS = new URLSearchParams(location.search);
 
 
 // Método del evento para cuando el documento ha cargado.
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
+    // Llamada a la función para mostrar el encabezado y pie del documento.
+    loadTemplate();
+    // Llamada a la función para llenar la tabla con los registros existentes.
+    fillTable();
+});
+
+// Método del evento para cuando el documento ha cargado.
+const fillTable = async (form = null) => {
     // Llamada a la función para mostrar el encabezado y pie del documento.
     loadTemplate();
     
@@ -45,9 +53,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                                                 d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
                                         </svg>
                                     </div>
-                                    <div class="btn btn-outline-danger" onclick="alertMine('eliminarProductoCompra')">
+                                    <button class="btn btn-outline-danger" onclick="openDelete(${row.id_lista_deseo})">
                                         <img id="" src="../../resources/img/iconos/papelera.png" class="">
-                                    </div>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -55,8 +63,31 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </div>
 `;
         });
+        
     } else {
-        // Se asigna al título del contenido de la excepción cuando no existen datos para mostrar.
-        // document.getElementById('mainTitle').textContent = DATA.error;
+        sweetAlert(4, DATA.error, true);
     }
-});
+}
+
+
+const openDelete = async (id) => {
+    // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
+    const RESPONSE = await confirmAction('¿Desea eliminar el producto de lista de deseos?');
+    // Se verifica la respuesta del mensaje.
+    if (RESPONSE) {
+        // Se define una constante tipo objeto con los datos del registro seleccionado.
+        const FORM = new FormData();
+        FORM.append('id_lista_deseo', id);
+        // Petición para eliminar el registro seleccionado.
+        const DATA = await fetchData(LISTA_API, 'deleteRow', FORM);
+        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+        if (DATA.status) {
+            // Se muestra un mensaje de éxito.
+            await sweetAlert(1, DATA.message, true);
+            // Se carga nuevamente la tabla para visualizar los cambios.
+            fillTable();
+        } else {
+            sweetAlert(2, DATA.error, false);
+        }
+    }
+}

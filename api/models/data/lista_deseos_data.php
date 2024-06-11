@@ -23,7 +23,7 @@ class ListaData extends ListaHandler
             $this->id = $value;
             return true;
         } else {
-            $this->data_error = 'El identificador del cliente es incorrecto';
+            $this->data_error = 'El identificador del la lista es incorrecto';
             return false;
         }
     }

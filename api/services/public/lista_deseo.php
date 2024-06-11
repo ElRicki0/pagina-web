@@ -14,7 +14,7 @@ if (isset($_GET['action'])) {
     if (isset($_SESSION['idCliente'])) {
         $result['session'] = 1;
         switch ($_GET['action']) {
-            
+
             case 'readOne':
                 if ($result['dataset'] = $lista->readOne()) {
                     $result['status'] = 1;
@@ -22,7 +22,18 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'lista inexistente';
                 }
                 break;
-
+            case 'deleteRow':
+                if (
+                    !$lista->setId($_POST['id_lista_deseo'])
+                ) {
+                    $result['error'] = $lista->getDataError();
+                } elseif ($lista->deleteRow()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Producto eliminado correctamente';
+                } else {
+                    $result['error'] = 'Ocurrió un problema al eliminar el producto';
+                }
+                break;
             default:
                 $result['error'] = 'Acción no disponible dentro de la sesión';
         }
