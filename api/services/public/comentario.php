@@ -2,6 +2,9 @@
 // Se incluye la clase del modelo.
 require_once('../../models/data/comentarios_data.php');
 
+require_once('../../models/data/producto.php');
+
+
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
     session_start();
@@ -11,48 +14,37 @@ if (isset($_GET['action'])) {
 
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'dataset' => null, 'error' => null, 'exception' => null, 'fileStatus' => null);
- 
+
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
     if (isset($_SESSION['idCliente'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
-            //Metódo que permite editar la información del admin que se ha logueado.    
-            case 'createValoracion':
+                //Metódo que permite editar la información del admin que se ha logueado.    
+            case 'createComentario':
                 $_POST = Validator::validateForm($_POST);
                 // Verificar si el cliente ha comprado el producto antes de permitir la valoración
-                if (!$valoraciones->setId($_SESSION['idCliente']) || !$valoraciones->setId($_POST['idProducto'])) {
-                    $result['error'] = 'Datos inválidos';
-                } elseif ($valoraciones->readCountValoracion() == 0) {
-                    $result['error'] = 'No puedes valorar este producto porque no lo has comprado';
-                } elseif (
-                    !$valoraciones->setCalificaionValoracion($_POST['calificacionValoracion']) ||
-                    !$valoraciones->setComentarioValoracion($_POST['comentarioValoracion'])
+                if (
+                    !$comentario->setComentario($_POST['comentario']) or
+                    !$comentario->setEstado(isset($_POST['estadoComentario']) ? 1 : 0) or
+                    !$comentario->setProducto($_POST['idProducto']) or
+                    !$comentario->setCliente($_SESSION['idCliente']) or
+                    !$comentario->setEstrella($_POST['estrellaComentario'])
                 ) {
-                    $result['error'] = $valoraciones->getDataError();
-                } elseif ($valoraciones->createValoracion()) {
+                    $result['error'] = $comentario->getDataError();
+                } elseif ($comentario->createRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Valoración agregada';
+                    $result['message'] = 'Comentario agregado';
                 } else {
-                    $result['error'] = 'Ocurrió un problema al guardar la valoración';
+                    $result['error'] = 'Ocurrió un problema al guardar el comentario';
                 }
                 break;
-                default:
+            default:
                 $result['error'] = 'Acción no disponible';
                 break;
         }
-    }
-    else {
+    } else {
         switch ($_GET['action']) {
-            case 'readComentarios':
-                if (!$valoraciones->setIdProducto($_POST['idProducto'])) {
-                    $result['error'] = $valoraciones->getDataError();
-                } elseif ($result['dataset'] = $valoraciones->readComentarios()) {
-                    $result['status'] = 1;
-                } else {
-                    $result['error'] = 'Este producto no ha sido comentado';
-                }
-                break;
-                default:
+            default:
                 $result['error'] = 'Acción no disponible';
                 break;
         }
