@@ -15,9 +15,6 @@ INSERT INTO tb_clientes (nombre_cliente, apellido_cliente, telefono_cliente, res
 ('Diego', 'Gómez', 2223334445, 'Camino Real 21, Ciudad I', 'dgomez', 'diego.gomez@example.com', 'pass654mno', 'diego.jpg', 1),
 ('Elena', 'Jiménez', 1112223336, 'Ruta del Sol 45, Ciudad J', 'ejimenez', 'elena.jimenez@example.com', 'pass987pqr', 'elena.jpg', 0);
 
--- Inserción de datos en tb_administradores
-INSERT INTO tb_administradores (nombre_admin, apellido_admin, correo_admin, telefono_admin, numero_emerjencia_admin, DUI_admin, alias_admin, pass_admin) VALUES
-('Juan', 'Martínez', 'juan@example.com', '1234567890', '9876543210', 123456789, 'juan_admin', 'password123');
 
 -- Inserción de datos en tb_categorias_productos
 INSERT INTO tb_categorias_productos (nombre_categoria_producto, descripcion_categoria_producto, imagen_categoria_producto) VALUES

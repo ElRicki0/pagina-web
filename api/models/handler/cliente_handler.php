@@ -65,7 +65,7 @@ class ClienteHandler
 
     public function readProfile()
     {
-        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, correo_cliente, telefono_cliente,residencia_cliente,alias_cliente
+        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, correo_cliente, telefono_cliente,residencia_cliente,alias_cliente, imagen_cliente
                 FROM tb_clientes
                 WHERE id_cliente = ?';
         $params = array($_SESSION['idCliente']);
@@ -76,9 +76,9 @@ class ClienteHandler
     public function editProfile()
     {
         $sql = 'UPDATE tb_clientes
-                SET nombre_cliente = ?, apellido_cliente = ?,estado_cliente = ?, correo_cliente = ?, telefono_cliente = ?, residencia_cliente = ?
+                SET nombre_cliente = ?, apellido_cliente = ?,estado_cliente = ?,  telefono_cliente = ?, residencia_cliente = ?, imagen_cliente = ?
                 WHERE id_cliente = ?';
-        $params = array($this->nombre, $this->apellido, $this->estado, $this->correo, $this->telefono, $this->direccion,  $_SESSION['idCliente']);
+        $params = array($this->nombre, $this->apellido, $this->estado, $this->telefono, $this->direccion, $this->imagen,  $_SESSION['idCliente']);
         return Database::executeRow($sql, $params);
     }
 
@@ -123,10 +123,29 @@ class ClienteHandler
 
     public function createRow()
     {
+        // Inserta el nuevo cliente en tb_clientes
         $sql = 'INSERT INTO tb_clientes(nombre_cliente, apellido_cliente, alias_cliente, correo_cliente, telefono_cliente, residencia_cliente, pass_cliente, estado_cliente, imagen_cliente)
-                VALUES(?, ?, ?, ?, ?, ?, ?,true, ?)';
-        $params = array($this->nombre, $this->apellido,$this->alias, $this->correo, $this->telefono, $this->direccion, $this->clave, $this->imagen);
-        return Database::executeRow($sql, $params);
+                VALUES(?, ?, ?, ?, ?, ?, ?, true, ?)';
+        $params = array($this->nombre, $this->apellido, $this->alias, $this->correo, $this->telefono, $this->direccion, $this->clave, $this->imagen);
+        $clientCreated = Database::executeRow($sql, $params);
+    
+        if ($clientCreated) {
+            // Consulta para obtener el ID del último cliente creado
+            $sql = 'SELECT MAX(id_cliente) AS last_id FROM tb_clientes';
+            $lastClientId = Database::getRow($sql);  // Asumiendo que tienes un método que devuelve un resultado de una consulta
+    
+            if ($lastClientId) {
+                $lastClientId = $lastClientId['last_id'];
+    
+                // Inserta un nuevo registro en tb_pedidos con el ID del cliente
+                $sql = 'INSERT INTO tb_pedidos (id_cliente) VALUES(?)';
+                $params = array($lastClientId);
+                return Database::executeRow($sql, $params);
+            } else {
+                throw new Exception("No se pudo obtener el ID del cliente recién creado.");
+            }
+        }
+        return false;
     }
 
     public function readAll()
