@@ -6,10 +6,11 @@ const SEARCH_FORM = document.getElementById('searchForm');
 
 
 const PRODUCTOS = document.getElementById('productos');
-const MAIN_TITLE = document.getElementById('mainTitle');
 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
+    // Llamada a la función para mostrar el encabezado y pie del documento.
+    loadTemplate();
     // Se establece el título del contenido principal.
     MAIN_TITLE.textContent = 'Listado Productos';
     // Llamada a la función para llenar la tabla con los registros existentes.
