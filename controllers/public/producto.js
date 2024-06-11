@@ -112,9 +112,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <h5 class="card-title">${row.nombre_producto}</h5>
                     <p class="">$${row.precio_producto}
                     </p>
-                    <div class="text-center mt-2">
-                    <a href="producto.html?id=${row.id_producto}" class="btn">Ver detalle</a>
-                    </div>
+                    <a href="producto.html?id=${row.id_producto}" class="card-button text-center">
+                    <button class="btn">Ver detalle</button>
+                </a>
                 </div>
             </div>
         </div>

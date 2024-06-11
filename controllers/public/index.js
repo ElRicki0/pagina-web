@@ -48,9 +48,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <p class="product-description mb-4">Descripción: ${row.descripcion_producto}</p>
                     </div>
                 </div>
-                <button class="card-button">
-                    <a href="producto.html?id=${row.id_producto}" class="btn">Ver detalle</a>
-                </button>
+                <a href="producto.html?id=${row.id_producto}" class="card-button text-center">
+                    <button class="btn">Ver detalle</button>
+                </a>
             </div>
         </div>
 `;
