@@ -57,6 +57,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         TELEFONO_CLIENTE.value = ROW.telefono_cliente;
         RESIDENCIA_CLIENTE.value = ROW.residencia_cliente;
         ALIAS_CLIENTE.value = ROW.alias_cliente;
+        // Actualizar la URL de la imagen del perfil.
+        const imagenUrl = `${SERVER_URL}images/clientes/${ROW.imagen_cliente}`;
+        document.getElementById('imagenR').src = imagenUrl;
     } else {
         sweetAlert(2, DATA.error, null);
     }

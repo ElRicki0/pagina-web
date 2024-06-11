@@ -43,16 +43,19 @@ if (isset($_GET['action'])) {
                 if (
                     !$cliente->setNombre($_POST['nombreCliente']) or
                     !$cliente->setApellido($_POST['apellidoCliente']) or
-                    !$cliente->setCorreo($_POST['correoCliente']) or
-                    !$cliente->setTelefono($_POST['telefonoCliente']) or                    !$cliente->setNombre($_POST['nombreCliente']) or
+                    !$cliente->setTelefono($_POST['telefonoCliente']) or                   
                     !$cliente->setDireccion($_POST['direccionCliente']) or
-                    !$cliente->setAlias($_POST['aliasCliente'])
+                    !$cliente->setAlias($_POST['aliasCliente']) or
+                    !$cliente->setImagen($_FILES['imagenCliente'], $cliente->getFilename())
+
                 ) {
                     $result['error'] = $cliente->getDataError();
                 } elseif ($cliente->editProfile()) {
                     $result['status'] = 1;
                     $result['message'] = 'Perfil modificado correctamente';
                     $_SESSION['aliasCliente'] = $_POST['aliasCliente'];
+                     // Se asigna el estado del archivo después de actualizar.
+                     $result['fileStatus'] = Validator::changeFile($_FILES['imagenCliente'], $cliente::RUTA_IMAGEN, $cliente->getFilename());
                 } else {
                     $result['error'] = 'Ocurrió un problema al modificar el perfil';
                 }
