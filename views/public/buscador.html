@@ -6,10 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Principal</title>
     <link rel="icon" href="../../resources/img/iconos/iconoPagina.ico">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!--Enlace para mandar a llamar propiedad de boostrap.css-->
+    <link rel="stylesheet" href="../../resources/css/css_boostrap.css">
     <link rel="stylesheet" href="../../resources/css/estilo_Marca_Producto.css">
-    <link rel="stylesheet" href="../../resources/css/scrooll.css">
     <link rel="stylesheet" href="../../resources/css/csspublic.css">
 </head>
 
@@ -20,15 +19,28 @@
 
     <main class="producto_imagen">
         <!-- Formulario de búsqueda -->
-        <h3 id="mainTitle"></h3>
+        <h3 id="mainTitle" class="text-center"></h3>
         <form class=" col-sm-12 col-md-6" id="searchForm">
             <div class="row">
                 <div class="col-6">
-                    <input type="search" class="form-control" name="search" placeholder="Buscar " required>
+                    <input type="search" class="form-control" name="search" placeholder="Producto, Marca y descrip "
+                        required>
                 </div>
                 <div class="col-6">
-                    <button type="submit" class="btn btn-success">
-                        <img src="../../resources/img/lupa.png" width="20px" alt="error cargar imagen">
+                    <button type="submit" class="btn buscador1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                        </svg>
+                    </button>
+                    <button type="reset" class="btn buscador2" onclick="fillTable()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-x-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                            <path
+                                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                        </svg>
                     </button>
                 </div>
             </div>
@@ -41,24 +53,23 @@
 
     </main>
 
-    <footer>
+    <footer class="test">
 
     </footer>
+
+    <!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT -->
+    <!--Enlace para elementos del boostrap-->
+    <script src="../../resources/js/bootstrap.bundle.min.js"></script>
+    <!--Enlace para poder mostrar alertas-->
+    <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
+    <!-- Llamada al controlador general de la aplicación -->
+    <script type="text/javascript" src="../../controllers/utils/components.js"></script>
+    <!--Enlaces para archivos javascript-->
+    <script type="text/javascript" src="../../controllers/utils/public.js"></script>
+    <!-- Llamada al controlador de la página web -->
+    <script type="text/javascript" src="../../controllers/public/buscador.js"></script>
+
 </body>
-
-<!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT -->
-<!--Enlace para elementos del boostrap-->
-<script src="../../resources/js/bootstrap.bundle.min.js"></script>
-<!--Enlace para poder mostrar alertas-->
-<script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
-<!-- Llamada al controlador general de la aplicación -->
-<script type="text/javascript" src="../../controllers/utils/components.js"></script>
-<!--Enlaces para archivos javascript-->
-<script src="../../controllers/public/navbar.js"></script>
-<script src="../../controllers/utils/footer.js"></script>
-<!-- Llamada al controlador de la página web -->
-<script type="text/javascript" src="../../controllers/public/buscador.js"></script>
-
 
 
 </html>

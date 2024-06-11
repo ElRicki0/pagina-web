@@ -196,7 +196,7 @@ MAIN.insertAdjacentHTML('beforebegin', `
 }
 // Se agrega el pie de la página web después del contenido principal.
 MAIN.insertAdjacentHTML('afterend', `
-<footer>
+<footer class = "test">
     <div class="social-icons-container ">
         <a href="https://www.instagram.com/ivanecare?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank" class="social-icons"></a>

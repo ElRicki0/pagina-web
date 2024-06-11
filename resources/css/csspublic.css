@@ -857,3 +857,16 @@ div iframe {
 .modal-backdrop {
     z-index: 1040; /* Asegura que el fondo oscuro esté por debajo del modal */
 }
+
+
+/* Parte de buscador */
+
+.buscador1{
+    background-color: #3D0059;
+    color: white;
+}
+
+.buscador2{
+    background-color: #7800af;
+    color: white;
+}
