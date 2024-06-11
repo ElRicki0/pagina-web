@@ -1,5 +1,5 @@
 DROP DATABASE IF EXISTS ivaneDB;
-CREATE DATABASE ivaneDB;
+CREATE DATABASE IF NOT EXISTS ivaneDB;
 
 USE ivaneDB;
 
@@ -9,14 +9,14 @@ USE ivaneDB;
 
 CREATE TABLE tb_clientes (
   id_cliente int auto_increment primary key ,
-  nombre_cliente VARCHAR(50) UNIQUE NOT NULL,
+  nombre_cliente VARCHAR(50) NOT NULL,
   apellido_cliente VARCHAR(50) NOT NULL,
   telefono_cliente INT NOT NULL,
   residencia_cliente VARCHAR(500) NOT NULL,
   alias_cliente varchar(50) UNIQUE NOT NULL,
   correo_cliente VARCHAR(50) UNIQUE NOT NULL,
-  pass_cliente VARCHAR(50) NOT NULL,
-  imagen_cliente varchar(100),
+  pass_cliente VARCHAR(100) NOT NULL,
+  imagen_cliente varchar(50),
   estado_cliente BOOLEAN NOT NULL
 );
 
@@ -29,12 +29,16 @@ CREATE TABLE tb_administradores (
   correo_admin VARCHAR(50) UNIQUE NOT NULL,
   telefono_admin VARCHAR(10) UNIQUE NOT NULL,
   numero_emerjencia_admin VARCHAR(10) UNIQUE NOT NULL,
-  DUI_admin VARCHAR  (11) UNIQUE NOT NULL,
+  DUI_admin VARCHAR(11) UNIQUE NOT NULL,
   alias_admin VARCHAR(50) UNIQUE NOT NULL,
   pass_admin VARCHAR(500) UNIQUE NOT NULL
 );
 
-SELECT * FROM tb_administradores;
+SELECT * FROM tb_clientes;
+
+
+
+
 
 -- insercion de datos de ejemplo 
 
@@ -55,7 +59,6 @@ CREATE TABLE tb_marcas (
   descripcion_marca VARCHAR(500) NOT NULL,
   imagen_marca varchar(500)
 );
-
 
 
 select*from tb_marcas;
@@ -81,6 +84,7 @@ CREATE TABLE tb_productos (
   FOREIGN KEY (id_marca)
   REFERENCES tb_marcas(id_marca)
 );
+
 
 -- Creacion de tabla tb_comentarios  
 CREATE TABLE tb_comentarios (
@@ -114,8 +118,8 @@ CREATE TABLE tb_listas_deseos (
   REFERENCES tb_clientes(id_cliente)
 );
 
-
 -- Creacion de tabla tb_pedidos
+
 CREATE TABLE tb_pedidos (
   id_pedido int auto_increment primary key,
   fecha_pedido DATE NOT NULL,
