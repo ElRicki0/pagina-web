@@ -28,9 +28,11 @@
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">precio total a pagar </h5>
-                        <h6 class="card-subtitle mb-2 text-body-secondary" id="cantidadproducto">8 productos en carrito </h6>
-                        <h1 class="card-text">$56.98</h1>
-                        <button type="button" class="btn btn-primary btn-lg" id="total">Pagar ahora</button>
+                        <h6 class="card-subtitle mb-2 text-body-secondary" id="cantidadproducto">0 productos en carrito
+                        </h6>
+                        <h1 class="card-text" id="total">$00.00</h1>
+                        <button type="button" class="btn btn-primary btn-lg" id="pagar">Pagar ahora</button>
+                        <button type="button" class="btn btn-danger btn-lg" id="cancelar">Cancelar</button>
                     </div>
                 </div>
 
@@ -40,9 +42,22 @@
             <div class="col-lg-8">
                 <!--productos en card-->
 
-                <div id="tarjetas"></div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Precio unitario</th>
+                            <th scope="col">Subtotal</th>
+                        </tr>
+                    <tbody id="tarjetas">
 
-                
+                    </tbody>
+                    </thead>
+                </table>
+
+
             </div>
         </div>
     </main>
@@ -62,7 +77,14 @@
 <script src="../../controllers/public/navbar.js"></script>
 <script src="../../controllers/public/alertas_publicas.js"></script>
 <script src="../../controllers/utils/footer.js"></script>
-
+<!--Enlace para poder mostrar alertas-->
+<script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
+<!-- Llamada al controlador general de la aplicación -->
+<script type="text/javascript" src="../../controllers/utils/components.js"></script>
+<!--Enlaces para archivos javascript-->
+<script type="text/javascript" src="../../controllers/utils/public.js"></script>
+<!-- Llamada al controlador de la página web -->
+<script src="../../controllers/public/carrito.js"></script>
 
 
 </html>

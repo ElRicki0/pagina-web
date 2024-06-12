@@ -10,13 +10,13 @@ class CarritoHandler
      *   Declaración de atributos para el manejo de datos.
      */
 
-     protected $id_pedido = null;
-     protected $id_detalle = null;
-     protected $precio = null;
-     protected $cliente = null;
-     protected $producto = null;
-     protected $cantidad = null;
-     protected $estado = null;
+    protected $id_pedido = null;
+    protected $id_detalle = null;
+    protected $precio = null;
+    protected $cliente = null;
+    protected $producto = null;
+    protected $cantidad = null;
+    protected $estado = null;
     /*
      *   Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
      */
@@ -27,7 +27,7 @@ class CarritoHandler
     {
         $this->estado = 'Pendiente';
         $sql = 'SELECT id_pedido
-                FROM pedido
+                FROM tb_pedidos
                 WHERE estado_pedido = ? AND id_cliente = ?';
         $params = array($this->estado, $_SESSION['idCliente']);
         if ($data = Database::getRow($sql, $params)) {
@@ -43,9 +43,11 @@ class CarritoHandler
         if ($this->getOrder()) {
             return true;
         } else {
-            $sql = 'INSERT INTO pedido(direccion_pedido, id_cliente)
-                    VALUES((SELECT direccion_cliente FROM cliente WHERE id_cliente = ?), ?)';
-            $params = array($_SESSION['idCliente'], $_SESSION['idCliente']);
+            $this->estado = 'Pendiente';
+            // cambiar direccion_cliente por residencia_cliente según db
+            $sql = 'INSERT INTO tb_pedidos(direccion_pedido, id_cliente, estado_pedido, fecha_pedido)
+                    VALUES((SELECT direccion_cliente FROM tb_clientes WHERE id_cliente = ?), ?, ?, CURDATE())';
+            $params = array($_SESSION['idCliente'], $_SESSION['idCliente'], $this->estado);
             // Se obtiene el ultimo valor insertado de la llave primaria en la tabla pedido.
             if ($_SESSION['idPedido'] = Database::getLastRow($sql, $params)) {
                 return true;
@@ -55,47 +57,35 @@ class CarritoHandler
         }
     }
 
-     public function createRow()
-     {
-         // Insert the new client into tb_clientes
-         $sql = 'INSERT INTO tb_clientes(nombre_cliente, apellido_cliente, alias_cliente, correo_cliente, telefono_cliente, residencia_cliente, pass_cliente, estado_cliente, imagen_cliente)
+    public function createRow()
+    {
+        // Insert the new client into tb_clientes
+        $sql = 'INSERT INTO tb_clientes(nombre_cliente, apellido_cliente, alias_cliente, correo_cliente, telefono_cliente, residencia_cliente, pass_cliente, estado_cliente, imagen_cliente)
                  VALUES(?, ?, ?, ?, ?, ?, ?, true, ?)';
-         $params = array($this->nombre, $this->apellido, $this->alias, $this->correo, $this->telefono, $this->direccion, $this->clave, $this->imagen);
-         $clientCreated = Database::executeRow($sql, $params);
-     
-         if ($clientCreated) {
-             // Get the ID of the newly created client
-             $lastClientId = Database::getLastId();
-     
-             // Insert a new record in tb_pedidos with the client's ID
-             $sql = 'INSERT INTO tb_pedidos (id_cliente) VALUES(?)';
-             $params = array($lastClientId);
-             return Database::executeRow($sql, $params);
-         }
-         return false;
-     }
+        $params = array($this->nombre, $this->apellido, $this->alias, $this->correo, $this->telefono, $this->direccion, $this->clave, $this->imagen);
+        $clientCreated = Database::executeRow($sql, $params);
+
+        if ($clientCreated) {
+            // Get the ID of the newly created client
+            $lastClientId = Database::getLastId();
+
+            // Insert a new record in tb_pedidos with the client's ID
+            $sql = 'INSERT INTO tb_pedidos (id_cliente) VALUES(?)';
+            $params = array($lastClientId);
+            return Database::executeRow($sql, $params);
+        }
+        return false;
+    }
 
     public function readAll()
     {
-
         $sql = 'SELECT dp.id_detalle_entrega, dp.cantidad_pedido, dp.precio_pedido, ped.direccion_pedido AS direccion_pedido, ped.fecha_pedido AS fecha_pedido ,p.nombre_producto AS nombre_producto,c.nombre_cliente AS nombre_cliente
         FROM tb_detalles_pedidos dp
         INNER JOIN tb_pedidos ped ON dp.id_pedido = ped.id_pedido
         INNER JOIN tb_productos p ON dp.id_producto = p.id_producto
         INNER JOIN tb_clientes c ON ped.id_cliente = c.id_cliente
         ORDER BY dp.id_detalle_entrega';
-          return Database::getRows($sql);
-             $sql = 'SELECT dp.id_detalle_entrega, dp.cantidad_pedido, dp.precio_pedido, ped.direccion_pedido AS direccion_pedido, ped.fecha_pedido AS fecha_pedido ,p.nombre_producto AS nombre_producto,c.nombre_cliente AS nombre_cliente
-        FROM tb_detalles_pedidos dp
-         INNER JOIN tb_pedidos ped ON dp.id_pedido = ped.id_pedido
-         INNER JOIN tb_productos p ON dp.id_producto = p.id_producto
-         INNER JOIN tb_clientes c ON ped.id_cliente = c.id_cliente
-        ORDER BY dp.id_detalle_entrega';
-
-          return Database::getRows($sql);
-
-
-
+        return Database::getRows($sql);
     }
     public function readOnee()
     {
@@ -108,11 +98,12 @@ class CarritoHandler
 
     public function readlistcarrito()
     {
-        $sql = 'SELECT p.nombre_producto
-        FROM tb_pedidos pe
-        JOIN tb_detalles_pedidos dp ON pe.id_pedido = dp.id_pedido
-        JOIN tb_productos p ON dp.id_producto = p.id_producto
-        WHERE pe.id_pedido = ?';
+        $sql = 'SELECT p.nombre_producto, dp.cantidad_pedido, 
+        dp.cantidad_pedido * dp.precio_pedido as precio 
+                FROM tb_pedidos pe
+        JOIN tb_detalles_pedidos dp ON pe.id_pedido = dp.id_pedido 
+        JOIN tb_productos p ON dp.id_producto = p.id_producto 
+        WHERE pe.id_pedido =  ?';
         $params = array($this->id);
         return Database::getRows($sql, $params);
     }
@@ -138,8 +129,8 @@ class CarritoHandler
     public function createDetail()
     {
         // Se realiza una subconsulta para obtener el precio del producto.
-        $sql = 'INSERT INTO detalle_pedido(id_producto, precio_producto, cantidad_producto, id_pedido)
-                VALUES(?, (SELECT precio_producto FROM producto WHERE id_producto = ?), ?, ?)';
+        $sql = 'INSERT INTO tb_detalles_pedidos(id_producto, precio_pedido, cantidad_pedido, id_pedido)
+                VALUES(?, (SELECT precio_producto FROM tb_productos WHERE id_producto = ?), ?, ?)';
         $params = array($this->producto, $this->producto, $this->cantidad, $_SESSION['idPedido']);
         return Database::executeRow($sql, $params);
     }
@@ -147,11 +138,12 @@ class CarritoHandler
     // Método para obtener los productos que se encuentran en el carrito de compras.
     public function readDetail()
     {
-        $sql = 'SELECT id_detalle, nombre_producto, detalle_pedido.precio_producto, detalle_pedido.cantidad_producto
-                FROM detalle_pedido
-                INNER JOIN pedido USING(id_pedido)
-                INNER JOIN producto USING(id_producto)
-                WHERE id_pedido = ?';
+        $sql = 'SELECT dp.id_detalle_entrega, dp.precio_pedido,
+        p.nombre_producto, dp.cantidad_pedido, ROUND(dp.cantidad_pedido * dp.precio_pedido, 2) as precio 
+        FROM tb_pedidos pe 
+        JOIN tb_detalles_pedidos dp ON pe.id_pedido = dp.id_pedido 
+        JOIN tb_productos p ON dp.id_producto = p.id_producto 
+        WHERE pe.id_pedido = ?';
         $params = array($_SESSION['idPedido']);
         return Database::getRows($sql, $params);
     }
@@ -160,7 +152,7 @@ class CarritoHandler
     public function finishOrder()
     {
         $this->estado = 'Finalizado';
-        $sql = 'UPDATE pedido
+        $sql = 'UPDATE tb_pedidos
                 SET estado_pedido = ?
                 WHERE id_pedido = ?';
         $params = array($this->estado, $_SESSION['idPedido']);
@@ -170,14 +162,15 @@ class CarritoHandler
     // Método para actualizar la cantidad de un producto agregado al carrito de compras.
     public function updateDetail()
     {
-        $sql = 'UPDATE detalle_pedido
-                SET cantidad_producto = ?
-                WHERE id_detalle = ? AND id_pedido = ?';
-        $params = array($this->cantidad, $this->id_detalle, $_SESSION['idPedido']);
+        $sql = 'UPDATE tb_pedidos
+                SET estado_pedido = ?
+                WHERE id_pedido = ?';
+        $params = array('Cancelado', $_SESSION['idPedido']);
         return Database::executeRow($sql, $params);
     }
-    
+
     // Método para eliminar un producto que se encuentra en el carrito de compras.
+    // no se usa
     public function deleteDetail()
     {
         $sql = 'DELETE FROM detalle_pedido
