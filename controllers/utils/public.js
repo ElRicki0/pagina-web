@@ -105,6 +105,7 @@ MAIN.insertAdjacentHTML('beforebegin', `
                         <img class="rounded-circle profile-icon" src="../../resources/img/iconoPerfil.jpg" alt="Perfil">
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="cuentaDropdown">
+                        <li><a class="dropdown-item" href="historial_compra.html">historial</a></li>
                         <li><a class="dropdown-item" href="perfil_cliente.html">Editar perfil</a></li>
                         <li>
                             <hr class="dropdown-divider">
