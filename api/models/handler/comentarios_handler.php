@@ -23,7 +23,7 @@ class ComentarioHandler
     public function searchRows()
     {
         $value = '%' . Validator::getSearchValue() . '%';
-            $sql = 'SELECT c.id_comentario, c.comentario, p.nombre_producto AS nombre_producto, cl.nombre_cliente AS nombre_cliente, c.estado_comentario
+        $sql = 'SELECT c.id_comentario, c.comentario, p.nombre_producto AS nombre_producto, cl.nombre_cliente AS nombre_cliente, c.estado_comentario
             FROM tb_comentarios c
             INNER JOIN tb_productos p ON c.id_producto = p.id_producto
             INNER JOIN tb_clientes cl ON c.id_cliente = cl.id_cliente
@@ -34,10 +34,21 @@ class ComentarioHandler
         return Database::getRows($sql, $params);
     }
 
+    /* 
     public function createRow()
     {
         $sql = 'CALL insertar_comentario(?, ?, ?, ?, 1);';
         $params = array($this->comentario,$this->estrella, $this->producto, $this->cliente, $this->estado);
+        return Database::executeRow($sql, $params);
+    }
+    */
+
+
+    public function createRow()
+    {
+        $sql = 'INSERT INTO tb_comentarios(comentario, estrella)
+            VALUES(?, ?)';
+        $params = array($this->comentario, $this->estrella);
         return Database::executeRow($sql, $params);
     }
 
@@ -83,5 +94,49 @@ class ComentarioHandler
         $sql = 'CALL cambiar_estado_comentario(?);';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
+    }
+
+
+    public function verifyPurchase()
+    {
+        // SQL query para verificar la compra de un producto específico por un cliente específico
+        $sql = 'SELECT dp.id_detalle_entrega as id
+            FROM tb_detalles_pedidos dp
+            INNER JOIN tb_pedidos p ON dp.id_pedido = p.id_pedido
+            WHERE p.id_cliente = ?
+            AND dp.id_producto = ?
+            AND dp.estado_pedido = 1
+            ORDER BY dp.id_detalle_entrega DESC
+            LIMIT 1;';
+        // Parámetros para la consulta: idCliente y productos
+        $params = array($_SESSION['idCliente'], $this->producto);
+        // Ejecuta la consulta y obtiene una fila de resultado
+        if ($data = Database::getRow($sql, $params)) {
+            // Si se encuentra un registro, guarda el idDetalle y producto en la sesión
+            $_SESSION['idDetalle'] = $data['id'];
+            $_SESSION['producto'] = $this->producto;
+            return true;
+        } else {
+            // Si no se encuentra ningún registro, retorna false
+            return false;
+        }
+    }
+
+
+    public function createComment()
+    {
+        // Verifica si el cliente ha comprado el producto
+        if ($this->verifyPurchase()) {
+            // Inserta un nuevo comentario en la tabla tb_comentarios
+            $sql = 'INSERT INTO tb_comentarios(estrella, comentario, id_producto, id_cliente, estado_comentario)
+                VALUES(?, ?, ?, ?, ?)';
+            // Parámetros para la consulta: estrella, comentario, id_producto, id_cliente, estado_comentario
+            $params = array($this->estrella, $this->comentario, $_SESSION['producto'], $_SESSION['idCliente'], 1);
+            // Ejecuta la consulta y retorna el resultado
+            return Database::executeRow($sql, $params);
+        } else {
+            // Si no ha comprado el producto, retorna false
+            return false;
+        }
     }
 }

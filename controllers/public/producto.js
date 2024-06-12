@@ -1,6 +1,10 @@
 const PRODUCTO_API = 'services/public/producto.php';
 const LISTA_API = 'services/public/lista_deseo.php';
 
+// Se manda a llamar la api de comentarios para que pueda comentar
+const COMENTARIOS_API = 'services/public/comentario.php';
+
+
 const MARCAS = document.getElementById('marcas');
 const SUGPRODUCTO = document.getElementById('sugerenciasProductos');
 const COMENTARIOS = document.getElementById('comentarios');
@@ -8,10 +12,10 @@ const SHOPPING_FORM = document.getElementById('shoppingForm');
 
 
 //FORMULARIO PARA GUARDAR VALORACIONES
-const SAVE_FORM = document.getElementById('saveForm'),
-    COMENTARIO_VALORACION = document.getElementById('comentario');
+const SAVE_FORM = document.getElementById('saveForm');
+// COMENTARIO_VALORACION = document.getElementById('comentario');
 
-const IDPRODUCTO = PARAMS.get("producto");
+// const IDPRODUCTO = PARAMS.get("producto");
 
 
 // Constantes para completar las rutas de la API.
@@ -181,40 +185,83 @@ stars.forEach(function (star, index) {
 });
 
 
+// SAVE_FORM.addEventListener('submit', async (event) => {
+//     // Se evita recargar la página web después de enviar el formulario.
+//     event.preventDefault();
+//     // Se verifica la acción a realizar.
+//     const action = 'createRow';
+//     // Constante tipo objeto con los datos del formulario.
+//     const FORM = new FormData(SAVE_FORM);
+//     FORM.append('idProducto', IDPRODUCTO);
+//     FORM.append('calificacionValoracion', rating);  // Utiliza la variable global rating
+//     // Petición para guardar los datos del formulario.
+//     const DATA = await fetchData(PRODUCTO_API, action, FORM);
+//     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+//     if (DATA.status) {
+//         // Se muestra un mensaje de éxito.
+//         sweetAlert(1, DATA.message);
+//         COMENTARIO_VALORACION.value = '';  // Borra el texto del comentario
+//         stars.forEach(function(star) {
+//             star.classList.remove('checked');  // Reinicia las estrellas a 0
+//         });
+//         rating = 0;  // Reinicia la variable de rating a 0
+//     } else {
+//         sweetAlert(2, DATA.error, false);
+//         console.log(DATA.message);
+//     }
+// });
+
+
+
+// Método del evento para cuando se envía el formulario de guardar.
 SAVE_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
-    // Se verifica la acción a realizar.
-    const action = 'createRow';
+
+    // Obtener todas las estrellas (calificaciones) y encontrar la seleccionada.
+    const estrellas = document.getElementsByName('rating');
+    let seleccion = null;
+    for (const estrella of estrellas) {
+        if (estrella.checked) {
+            seleccion = estrella.value;
+            break;
+        }
+    }
+
+    console.log(PARAMS.get('id'));
+    console.log(seleccion);
+
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
-    FORM.append('idProducto', IDPRODUCTO);
-    FORM.append('calificacionValoracion', rating);  // Utiliza la variable global rating
+    FORM.append('id_producto', PARAMS.get('id')); // Cambiado a id_producto
+    FORM.append('estrella', seleccion); // Cambiado a estrella
+
+    console.log(FORM);
+
     // Petición para guardar los datos del formulario.
-    const DATA = await fetchData(PRODUCTO_API, action, FORM);
+    const DATA = await fetchData(COMENTARIOS_API, 'createComentario', FORM);
+    console.log(DATA);
+
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
         // Se muestra un mensaje de éxito.
-        sweetAlert(1, DATA.message);
-        COMENTARIO_VALORACION.value = '';  // Borra el texto del comentario
-        stars.forEach(function(star) {
-            star.classList.remove('checked');  // Reinicia las estrellas a 0
-        });
-        rating = 0;  // Reinicia la variable de rating a 0
+        sweetAlert(5, DATA.message, true);
+        // Actualiza los comentarios del producto.
+        await updateComments();
     } else {
+        // Se muestra un mensaje de error.
         sweetAlert(2, DATA.error, false);
-        console.log(DATA.message);
     }
 });
 
-document.addEventListener('DOMContentLoaded', async () => {
 
+// Función para actualizar los comentarios del producto.
+async function updateComments() {
     const idProducto = PARAMS.get('id'); // Supongo que el id del producto se obtiene de los parámetros de la URL.
 
     // Se inicializa el contenido de la tabla.
     ROWS_FOUND.textContent = '';
     TABLE_BODY.innerHTML = '';
-
 
     const FORM = new FormData();
     FORM.append('idProducto2', idProducto);
@@ -239,7 +286,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Se asigna al título del contenido de la excepción cuando no existen datos para mostrar.
         document.getElementById('mainTitle').textContent = DATA.error;
     }
-});
+}
+
+// Llamada inicial para cargar los comentarios cuando se carga la página.
+document.addEventListener('DOMContentLoaded', updateComments);
 
 
 const generateStars = (rating) => {

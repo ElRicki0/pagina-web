@@ -100,7 +100,7 @@ CREATE TABLE tb_comentarios (
   FOREIGN KEY (id_cliente)
   REFERENCES tb_clientes(id_cliente),
   estado_comentario BOOLEAN,
-  fecha_comentario DATE NOT NULL 
+  fecha_comentario TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL  
 );
 
 

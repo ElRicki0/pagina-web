@@ -38,18 +38,19 @@ class ComentarioData extends ComentarioHandler
             $this->comentario = $value;
             return true;
         } else {
-            $this->data_error = 'el comentario debe tener una longitud entre ' . $min . ' y ' . $max;
+            $this->data_error = 'El comentario debe tener una longitud entre ' . $min . ' y ' . $max;
             return false;
         }
     }
 
     public function setEstado($value)
     {
-        if (Validator::validateBoolean($value)) {
-            $this->estado = $value;
+        // Valida que el estado esté en la lista de estados posibles.
+        if (in_array($value, array_column($this->estado, 0))) {
+            $this->estado = $value; // Asigna el estado del comentario.
             return true;
         } else {
-            $this->data_error = 'Estado incorrecto';
+            $this->data_error = 'Estado incorrecto'; // Almacena mensaje de error.
             return false;
         }
     }
@@ -71,21 +72,20 @@ class ComentarioData extends ComentarioHandler
             $this->cliente = $value;
             return true;
         } else {
-            $this->data_error = 'El identificador del producto es incorrecto';
+            $this->data_error = 'El identificador del cliente es incorrecto';
             return false;
         }
     }
 
-    public function setEstrella($value){
-        if (!is_int($value)) {
-            $this->data_error = 'La estrella debe ser un número entero';
-            return false;
-        } elseif ($value < 1 || $value > 5) {
-            $this->data_error = 'La estrella debe estar entre 1 y 5';
-            return false;
-        } else {
-            $this->estrella = $value;
+    public function setEstrella($value)
+    {
+        // Valida que el identificador sea un número natural.
+        if (Validator::validateNaturalNumber($value)) {
+            $this->estrella = $value; // Asigna el valor de la nota.
             return true;
+        } else {
+            $this->data_error = 'No se ha seleccionado una o mas  estrella/as'; // Almacena mensaje de error.
+            return false;
         }
     }
 

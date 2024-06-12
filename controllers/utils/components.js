@@ -58,21 +58,31 @@ const sweetAlert = async (type, text, timer, url = null) => {
             icon = 'info';
             break;
         case 5:
-            title = 'Exito';
-            icon = 'https://media.tenor.com/aL_YP04sKkEAAAAi/kirby-emblem.gif';
+            title = 'Agregado';
+            icon = '../../resources/img/alertasImagenes/kirby2.png';
             break;
     }
     // Se define un objeto con las opciones principales para el mensaje.
     let options = {
         title: title,
         text: text,
-        icon: icon,
+        icon: type === 5 ? '' : icon, // Vaciar el icono si es el caso 5
         closeOnClickOutside: false,
         closeOnEsc: false,
         button: {
             text: 'Aceptar'
         }
     };
+    // Si es el caso 5, agregar la imagen personalizada
+    if (type === 5) {
+        options.content = {
+            element: "img",
+            attributes: {
+                src: icon,
+                alt: "Custom image"
+            },
+        };
+    }
     // Se verifica el uso del temporizador.
     (timer) ? options.timer = 3000 : options.timer = null;
     // Se muestra el mensaje.

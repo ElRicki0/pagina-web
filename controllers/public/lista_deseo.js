@@ -38,7 +38,7 @@ const fillTable = async (form = null) => {
             <div class="card mb-12 ">
                     <div class="row g-0">
                         <div class="col-md-4 mt-3 text-center">
-                            <img src="${SERVER_URL}images/SUGERENCIA/${row.imagen_producto}" width="150px"
+                            <img src="${SERVER_URL}images/productos/${row.imagen_producto}" width="150px"
                                 class="img-fluid rounded-start" alt="...">
                         </div>
                         <div class="col-md-8">
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div class="card mb-3">
                 <div class="card-details">
                     <div class="d-flex justify-content-center">
-                        <img src="${SERVER_URL}images/SUGERENCIA/${row.imagen_producto}" class="card-img-top mb-3 imagenMar" alt="${row.nombre_producto}">
+                        <img src="${SERVER_URL}images/productos/${row.imagen_producto}" class="card-img-top mb-3 imagenMar" alt="${row.nombre_producto}">
                     </div>
                     <h5 class="card-title">${row.nombre_producto}</h5>
                     <div class="product-info">

@@ -2,9 +2,6 @@
 // Se incluye la clase del modelo.
 require_once('../../models/data/comentarios_data.php');
 
-require_once('../../models/data/producto.php');
-
-
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
     session_start();
@@ -25,27 +22,28 @@ if (isset($_GET['action'])) {
                 // Verificar si el cliente ha comprado el producto antes de permitir la valoración
                 if (
                     !$comentario->setComentario($_POST['comentario']) or
-                    !$comentario->setEstado(isset($_POST['estadoComentario']) ? 1 : 0) or
-                    !$comentario->setProducto($_POST['idProducto']) or
-                    !$comentario->setCliente($_SESSION['idCliente']) or
-                    !$comentario->setEstrella($_POST['estrellaComentario'])
+                    !$comentario->setProducto($_POST['id_producto']) or
+                    !$comentario->setEstrella($_POST['estrella'])
                 ) {
                     $result['error'] = $comentario->getDataError();
-                } elseif ($comentario->createRow()) {
+                } elseif ($comentario->createComment()) {
                     $result['status'] = 1;
+                    $result['cliente'] = $_SESSION['idCliente'];
+                    $result['producto'] = $_SESSION['producto'];
+                    $result['detalle'] = $_SESSION['idDetalle'];
                     $result['message'] = 'Comentario agregado';
                 } else {
-                    $result['error'] = 'Ocurrió un problema al guardar el comentario';
+                    $result['error'] = 'Primero, debe de comprar el producto';
                 }
                 break;
             default:
-                $result['error'] = 'Acción no disponible';
+                $result['error'] = 'Error fatal';
                 break;
         }
     } else {
         switch ($_GET['action']) {
             default:
-                $result['error'] = 'Acción no disponible';
+                $result['error'] = 'Acceso denegado';
                 break;
         }
     }
