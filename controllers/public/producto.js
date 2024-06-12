@@ -11,7 +11,7 @@ const SHOPPING_FORM = document.getElementById('shoppingForm');
 const SAVE_FORM = document.getElementById('saveForm'),
     COMENTARIO_VALORACION = document.getElementById('comentario');
 
-const IDPRODUCTO = PARAMS.get("producto");
+// const IDPRODUCTO = PARAMS.get("producto");
 
 
 // Constantes para completar las rutas de la API.
@@ -181,31 +181,31 @@ stars.forEach(function (star, index) {
 });
 
 
-SAVE_FORM.addEventListener('submit', async (event) => {
-    // Se evita recargar la página web después de enviar el formulario.
-    event.preventDefault();
-    // Se verifica la acción a realizar.
-    const action = 'createRow';
-    // Constante tipo objeto con los datos del formulario.
-    const FORM = new FormData(SAVE_FORM);
-    FORM.append('idProducto', IDPRODUCTO);
-    FORM.append('calificacionValoracion', rating);  // Utiliza la variable global rating
-    // Petición para guardar los datos del formulario.
-    const DATA = await fetchData(PRODUCTO_API, action, FORM);
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-    if (DATA.status) {
-        // Se muestra un mensaje de éxito.
-        sweetAlert(1, DATA.message);
-        COMENTARIO_VALORACION.value = '';  // Borra el texto del comentario
-        stars.forEach(function(star) {
-            star.classList.remove('checked');  // Reinicia las estrellas a 0
-        });
-        rating = 0;  // Reinicia la variable de rating a 0
-    } else {
-        sweetAlert(2, DATA.error, false);
-        console.log(DATA.message);
-    }
-});
+// SAVE_FORM.addEventListener('submit', async (event) => {
+//     // Se evita recargar la página web después de enviar el formulario.
+//     event.preventDefault();
+//     // Se verifica la acción a realizar.
+//     const action = 'createRow';
+//     // Constante tipo objeto con los datos del formulario.
+//     const FORM = new FormData(SAVE_FORM);
+//     FORM.append('idProducto', IDPRODUCTO);
+//     FORM.append('calificacionValoracion', rating);  // Utiliza la variable global rating
+//     // Petición para guardar los datos del formulario.
+//     const DATA = await fetchData(PRODUCTO_API, action, FORM);
+//     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+//     if (DATA.status) {
+//         // Se muestra un mensaje de éxito.
+//         sweetAlert(1, DATA.message);
+//         COMENTARIO_VALORACION.value = '';  // Borra el texto del comentario
+//         stars.forEach(function(star) {
+//             star.classList.remove('checked');  // Reinicia las estrellas a 0
+//         });
+//         rating = 0;  // Reinicia la variable de rating a 0
+//     } else {
+//         sweetAlert(2, DATA.error, false);
+//         console.log(DATA.message);
+//     }
+// });
 
 document.addEventListener('DOMContentLoaded', async () => {
 
