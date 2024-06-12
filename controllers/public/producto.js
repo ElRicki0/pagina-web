@@ -6,6 +6,8 @@ const SUGPRODUCTO = document.getElementById('sugerenciasProductos');
 const COMENTARIOS = document.getElementById('comentarios');
 const SHOPPING_FORM = document.getElementById('shoppingForm');
 
+// Se manda a llamar la api de comentarios para que pueda comentar
+const COMENTARIOS_API = 'services/public/comentario.php';
 
 //FORMULARIO PARA GUARDAR VALORACIONES
 const SAVE_FORM = document.getElementById('saveForm');
@@ -179,34 +181,50 @@ stars.forEach(function (star, index) {
     });
 });
 
-
+// Método del evento para cuando se envía el formulario de guardar.
 SAVE_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
-    // Se verifica la acción a realizar.
-    const action = 'createRow';
+
+    // Obtener todas las estrellas (calificaciones) y encontrar la seleccionada.
+    const estrellas = document.getElementsByName('rating');
+    let seleccion = null;
+    for (const estrella of estrellas) {
+        if (estrella.checked) {
+            seleccion = estrella.value;
+            break;
+        }
+    }
+
+    console.log(PARAMS.get('id'));
+    console.log(seleccion);
+
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
-    FORM.append('idProducto', IDPRODUCTO);
-    FORM.append('calificacionValoracion', rating);  // Utiliza la variable global rating
+    FORM.append('id_producto', PARAMS.get('id')); // Cambiado a id_producto
+    FORM.append('estrella', seleccion); // Cambiado a estrella
+
+    console.log(FORM);
+
     // Petición para guardar los datos del formulario.
-    const DATA = await fetchData(PRODUCTO_API, action, FORM);
+    const DATA = await fetchData(COMENTARIOS_API, 'createComentario', FORM);
+    console.log(DATA);
+
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
         // Se muestra un mensaje de éxito.
-        sweetAlert(1, DATA.message);
-        COMENTARIO_VALORACION.value = '';  // Borra el texto del comentario
-        stars.forEach(function (star) {
-            star.classList.remove('checked');  // Reinicia las estrellas a 0
-        });
-        rating = 0;  // Reinicia la variable de rating a 0
+        sweetAlert(5, DATA.message, true);
+        // Actualiza los comentarios del producto.
+        await updateComments();
     } else {
+        // Se muestra un mensaje de error.
         sweetAlert(2, DATA.error, false);
-        console.log(DATA.message);
     }
 });
 
-document.addEventListener('DOMContentLoaded', async () => {
+
+// Función para actualizar los comentarios del producto.
+async function updateComments() {
     // Se inicializa el contenido de la tabla.
     ROWS_FOUND.textContent = '';
     TABLE_BODY.innerHTML = '';
@@ -235,7 +253,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Se asigna al título del contenido de la excepción cuando no existen datos para mostrar.
         document.getElementById('mainTitle').textContent = DATA.error;
     }
-});
+};
 
 
 const generateStars = (rating) => {

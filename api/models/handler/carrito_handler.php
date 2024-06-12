@@ -16,6 +16,8 @@ class CarritoHandler
     protected $cliente = null;
     protected $producto = null;
     protected $cantidad = null;
+    
+    protected $id = null;
     protected $estado = null;
     /*
      *   Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
@@ -46,7 +48,7 @@ class CarritoHandler
             $this->estado = 'Pendiente';
             // cambiar direccion_cliente por residencia_cliente según db
             $sql = 'INSERT INTO tb_pedidos(direccion_pedido, id_cliente, estado_pedido, fecha_pedido)
-                    VALUES((SELECT direccion_cliente FROM tb_clientes WHERE id_cliente = ?), ?, ?, CURDATE())';
+                    VALUES((SELECT residencia_cliente FROM tb_clientes WHERE id_cliente = ?), ?, ?, CURDATE())';
             $params = array($_SESSION['idCliente'], $_SESSION['idCliente'], $this->estado);
             // Se obtiene el ultimo valor insertado de la llave primaria en la tabla pedido.
             if ($_SESSION['idPedido'] = Database::getLastRow($sql, $params)) {
