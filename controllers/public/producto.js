@@ -1,10 +1,6 @@
 const PRODUCTO_API = 'services/public/producto.php';
 const LISTA_API = 'services/public/lista_deseo.php';
 
-// Se manda a llamar la api de comentarios para que pueda comentar
-const COMENTARIOS_API = 'services/public/comentario.php';
-
-
 const MARCAS = document.getElementById('marcas');
 const SUGPRODUCTO = document.getElementById('sugerenciasProductos');
 const COMENTARIOS = document.getElementById('comentarios');
@@ -13,42 +9,14 @@ const SHOPPING_FORM = document.getElementById('shoppingForm');
 
 //FORMULARIO PARA GUARDAR VALORACIONES
 const SAVE_FORM = document.getElementById('saveForm');
-// COMENTARIO_VALORACION = document.getElementById('comentario');
+const COMENTARIO_VALORACION = document.getElementById('comentario');
 
-// const IDPRODUCTO = PARAMS.get("producto");
-
+const PARAMS = new URLSearchParams(window.location.search);
+// OBTENIENDO EL ID DEL PRODUCTO
+const IDPRODUCTO = PARAMS.get('id');
 
 // Constantes para completar las rutas de la API.
 const CARRITO_API = 'services/public/carrito.php';
-
-// Método del evento para cuando se envía el formulario de agregar un producto al carrito.
-SHOPPING_FORM.addEventListener('submit', async (event) => {
-    // Se evita recargar la página web después de enviar el formulario.
-    event.preventDefault();
-    // Constante tipo objeto con los datos del formulario.
-    const FORM = new FormData(SHOPPING_FORM);
-    // Petición para guardar los datos del formulario.
-    const DATA = await fetchData(CARRITO_API, 'createDetail', FORM);
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se constata si el cliente ha iniciado sesión.
-    if (DATA.status) {
-        sweetAlert(1, DATA.message, false, 'cart.html');
-    } else if (DATA.session) {
-        sweetAlert(2, DATA.error, false);
-    } else {
-        sweetAlert(3, DATA.error, true, 'login.html');
-    }
-});
-
-
-// Constantes para establecer los elementos de la tabla.
-const TABLE_BODY = document.getElementById('tableBody'),
-    ROWS_FOUND = document.getElementById('rowsFound');
-
-
-// Constante tipo objeto para obtener los parámetros disponibles en la URL.
-const PARAMS = new URLSearchParams(location.search);
-// // Constante para establecer el formulario de agregar un producto al carrito de compras.
-// const SHOPPING_FORM = document.getElementById('shoppingForm');
 
 // Método del eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
@@ -56,7 +24,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     loadTemplate();
     // Constante tipo objeto con los datos del producto seleccionado.
     const FORM = new FormData();
-    FORM.append('idProducto', PARAMS.get('id'));
+    FORM.append('idProducto', IDPRODUCTO);
+    console.log(PARAMS.get('id'));
     // Petición para solicitar los datos del producto seleccionado.
     const DATA = await fetchData(PRODUCTO_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -77,11 +46,37 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
+// Método del evento para cuando se envía el formulario de agregar un producto al carrito.
+SHOPPING_FORM.addEventListener('submit', async (event) => {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Constante tipo objeto con los datos del formulario.
+    const FORM = new FormData(SHOPPING_FORM);
+    // Petición para guardar los datos del formulario.
+    const DATA = await fetchData(CARRITO_API, 'createDetail', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se constata si el cliente ha iniciado sesión.
+    if (DATA.status) {
+        sweetAlert(1, DATA.message, false, 'carrito_compra.html' + '?idpedido=' + encodeURIComponent(DATA.dataset));
+    } else if (DATA.session) {
+        sweetAlert(2, DATA.error, false);
+    } else {
+        sweetAlert(3, DATA.error, true, 'producto.html');
+    }
+});
+
+
+// Constantes para establecer los elementos de la tabla.
+const TABLE_BODY = document.getElementById('tableBody'),
+    ROWS_FOUND = document.getElementById('rowsFound');
+
+// // Constante para establecer el formulario de agregar un producto al carrito de compras.
+// const SHOPPING_FORM = document.getElementById('shoppingForm');
+
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
 
     const FORM = new FormData();
-    FORM.append('idProducto', PARAMS.get('id'));
+    FORM.append('idProducto', IDPRODUCTO);
     // Petición para obtener las categorías disponibles.
     const DATA = await fetchData(PRODUCTO_API, 'readOneMarca', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -106,7 +101,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 document.addEventListener('DOMContentLoaded', async () => {
 
     const FORM = new FormData();
-    FORM.append('id_producto', PARAMS.get('id'));
+    FORM.append('id_producto', IDPRODUCTO);
     // Petición para obtener las categorías disponibles.
     const DATA = await fetchData(PRODUCTO_API, 'read8Products');
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -185,32 +180,83 @@ stars.forEach(function (star, index) {
 });
 
 
-// SAVE_FORM.addEventListener('submit', async (event) => {
-//     // Se evita recargar la página web después de enviar el formulario.
-//     event.preventDefault();
-//     // Se verifica la acción a realizar.
-//     const action = 'createRow';
-//     // Constante tipo objeto con los datos del formulario.
-//     const FORM = new FormData(SAVE_FORM);
-//     FORM.append('idProducto', IDPRODUCTO);
-//     FORM.append('calificacionValoracion', rating);  // Utiliza la variable global rating
-//     // Petición para guardar los datos del formulario.
-//     const DATA = await fetchData(PRODUCTO_API, action, FORM);
-//     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-//     if (DATA.status) {
-//         // Se muestra un mensaje de éxito.
-//         sweetAlert(1, DATA.message);
-//         COMENTARIO_VALORACION.value = '';  // Borra el texto del comentario
-//         stars.forEach(function(star) {
-//             star.classList.remove('checked');  // Reinicia las estrellas a 0
-//         });
-//         rating = 0;  // Reinicia la variable de rating a 0
-//     } else {
-//         sweetAlert(2, DATA.error, false);
-//         console.log(DATA.message);
-//     }
-// });
+SAVE_FORM.addEventListener('submit', async (event) => {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Se verifica la acción a realizar.
+    const action = 'createRow';
+    // Constante tipo objeto con los datos del formulario.
+    const FORM = new FormData(SAVE_FORM);
+    FORM.append('idProducto', IDPRODUCTO);
+    FORM.append('calificacionValoracion', rating);  // Utiliza la variable global rating
+    // Petición para guardar los datos del formulario.
+    const DATA = await fetchData(PRODUCTO_API, action, FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (DATA.status) {
+        // Se muestra un mensaje de éxito.
+        sweetAlert(1, DATA.message);
+        COMENTARIO_VALORACION.value = '';  // Borra el texto del comentario
+        stars.forEach(function (star) {
+            star.classList.remove('checked');  // Reinicia las estrellas a 0
+        });
+        rating = 0;  // Reinicia la variable de rating a 0
+    } else {
+        sweetAlert(2, DATA.error, false);
+        console.log(DATA.message);
+    }
+});
 
+document.addEventListener('DOMContentLoaded', async () => {
+    // Se inicializa el contenido de la tabla.
+    ROWS_FOUND.textContent = '';
+    TABLE_BODY.innerHTML = '';
+
+
+    const FORM = new FormData();
+    FORM.append('idProducto2', IDPRODUCTO);
+
+    // Petición para obtener los comentarios del producto.
+    const DATA = await fetchData(PRODUCTO_API, 'readComentarios', FORM);
+
+    if (DATA.status) {
+        DATA.dataset.forEach(row => {
+            TABLE_BODY.innerHTML += `
+                <tr>
+                    <td>
+                        <img class="rounded-circle" width="75" height="75" alt="${row.nombre_cliente}" src="${SERVER_URL}images/clientes/${row.imagen_cliente}">
+                    </td>
+                    <td>${row.nombre_cliente}</td>
+                    <td>${row.comentario}</td>
+                    <td>${generateStars(row.estrella)}</td>
+                    <td>${row.fecha_comentario}</td>
+                </tr>`;
+        });
+    } else {
+        // Se asigna al título del contenido de la excepción cuando no existen datos para mostrar.
+        document.getElementById('mainTitle').textContent = DATA.error;
+    }
+});
+
+
+const generateStars = (rating) => {
+    let starsHTML = '';
+    for (let i = 1; i <= 5; i++) {
+        if (i <= rating) {
+            starsHTML += `
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#4A00BB" class="bi bi-star-fill " viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                </svg>
+            `;
+        } else {
+            starsHTML += `
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#000000" class="bi bi-star " viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                </svg>
+            `;
+        }
+    }
+    return starsHTML;
+}
 
 
 // Método del evento para cuando se envía el formulario de guardar.
@@ -290,29 +336,6 @@ async function updateComments() {
 
 // Llamada inicial para cargar los comentarios cuando se carga la página.
 document.addEventListener('DOMContentLoaded', updateComments);
-
-
-const generateStars = (rating) => {
-    let starsHTML = '';
-    for (let i = 1; i <= 5; i++) {
-        if (i <= rating) {
-            starsHTML += `
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#4A00BB" class="bi bi-star-fill " viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                </svg>
-            `;
-        } else {
-            starsHTML += `
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#000000" class="bi bi-star " viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                </svg>
-            `;
-        }
-    }
-    return starsHTML;
-}
-
-
 /*
 *   Función asíncrona para agregar un producto a la lista de deseos.
 *   Parámetros: id (identificador del registro seleccionado).
