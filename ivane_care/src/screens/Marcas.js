@@ -9,7 +9,7 @@ const Marcas = () => {
     return (
         <View style={styles.container}>
             <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-                <Ionicons name="arrow-back" size={50} color="#6C5FFF" />
+                <Ionicons name="arrow-back" size={60} color="#6C5FFF" />
             </TouchableOpacity>
             <Text style={styles.title}>Marcas</Text>
             {/* Aquí puedes agregar más contenido de la pantalla */}
@@ -19,7 +19,7 @@ const Marcas = () => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        marginTop: 10,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -29,9 +29,9 @@ const styles = StyleSheet.create({
         left: 20, // Alinea el botón 20 unidades desde la izquierda
     },
     title: {
-        fontSize: 24,
+        fontSize: 30,
         fontWeight: 'bold',
-        marginTop: 20, // Espacio adicional arriba del título
+        marginTop: 30, // Espacio adicional arriba del título
     },
 });
 
