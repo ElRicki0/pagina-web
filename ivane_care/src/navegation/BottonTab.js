@@ -6,12 +6,11 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; // Importa 
 
 // Pantallas de navegación
 import HomeScreen from '../screens/HomeScreen';
-import ProductosScreen from '../screens/Productos';
 import CarritoScreen from '../screens/Carrito';
 import FavoritoScreen from '../screens/Favoritos';
 import PerfilScreen from '../screens/Perfil';
-import Marcas from '../screens/Marcas';
-import ProductosStack from '../navegation/ProductosStack';
+import ProductosStack from '../navegation/ProductosStack'; // Importa este stack para hacer la navegacion entre productos (categorias y marcas)
+
 
 
 
