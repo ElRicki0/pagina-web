@@ -1,10 +1,17 @@
 // Utilidades de React Navigation
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; // Importa el paquete de iconos
+
 
 // Pantallas de navegación
 import HomeScreen from '../screens/HomeScreen';
 import ProductosScreen from '../screens/Productos';
+import CarritoScreen from '../screens/Carrito';
+import FavoritoScreen from '../screens/Favoritos';
+import PerfilScreen from '../screens/Perfil';
+
+
 
 
 // Navegador Bottom Tabs Navigator
@@ -20,11 +27,17 @@ export default function BottomTab() {
           if (route.name === 'HomeScreen') {
             iconName = 'home';
           } else if (route.name === 'ProductosScreen') {
+            iconName = 'store';
+          } else if (route.name === 'CarritoScreen') {
             iconName = 'cart';
+          } else if (route.name === 'FavoritoScreen') {
+            iconName = 'heart';
+          } else if (route.name === 'PerfilScreen') {
+            iconName = 'account-circle';
           }
 
           // Puedes devolver cualquier componente que desees aquí.
-          return <Ionicons name={iconName} size={size} color={color} />;
+          return <Icon name={iconName} size={size} color={color} />;
         },
         tabBarActiveTintColor: '#FFFFFF',
         tabBarInactiveTintColor: 'gray',
@@ -43,7 +56,7 @@ export default function BottomTab() {
           fontSize: 25, // Tamaño de la fuente del título del header
           fontWeight: 'bold', // Peso de la fuente
           color: '#fff', // Color del texto del título del header
-        } 
+        }
       })}
     >
       <Tab.Screen
@@ -53,11 +66,32 @@ export default function BottomTab() {
           title: 'ivane Care',
         }}
       />
-       <Tab.Screen
+      <Tab.Screen
         name="ProductosScreen"
         component={ProductosScreen}
         options={{
           title: 'Productos',
+        }}
+      />
+      <Tab.Screen
+        name="CarritoScreen"
+        component={CarritoScreen}
+        options={{
+          title: 'Carrito',
+        }}
+      />
+      <Tab.Screen
+        name="FavoritoScreen"
+        component={FavoritoScreen}
+        options={{
+          title: 'Favoritos',
+        }}
+      />
+      <Tab.Screen
+        name="PerfilScreen"
+        component={PerfilScreen}
+        options={{
+          title: 'Perfil',
         }}
       />
     </Tab.Navigator>
