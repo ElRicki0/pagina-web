@@ -10,7 +10,8 @@ import ProductosScreen from '../screens/Productos';
 import CarritoScreen from '../screens/Carrito';
 import FavoritoScreen from '../screens/Favoritos';
 import PerfilScreen from '../screens/Perfil';
-
+import Marcas from '../screens/Marcas';
+import ProductosStack from '../navegation/ProductosStack';
 
 
 
@@ -68,7 +69,7 @@ export default function BottomTab() {
       />
       <Tab.Screen
         name="ProductosScreen"
-        component={ProductosScreen}
+        component={ProductosStack}
         options={{
           title: 'Productos',
         }}

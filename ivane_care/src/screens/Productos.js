@@ -1,13 +1,20 @@
-// ProfileScreen.js
-
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import Boton from '../components/Button/Boton';
 
-export default function Productos() {
+const Productos = () => {
+  const navigation = useNavigation();
+
+  const irAMarcas = () => {
+    navigation.navigate('Marcas');
+  };
+
   return (
     <View style={styles.container}>
-      <Text>Productos </Text>
-      {/* Aquí puedes agregar más contenido de la pantalla */}
+      <Text>Productos</Text>
+      <Boton textoBoton="Marcas" accionBoton={irAMarcas} />
+      <Boton textoBoton="Categoria" accionBoton={irAMarcas} />
     </View>
   );
 }
@@ -19,3 +26,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
+
+export default Productos;
