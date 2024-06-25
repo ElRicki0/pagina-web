@@ -11,6 +11,10 @@ const Productos = () => {
     navigation.navigate('Marcas');
   };
 
+  const irACategorias = () => {
+    navigation.navigate('Categorias');
+  };
+
   // Definir la ruta de la imagen de fondo con require
   const backgroundImage = require('../img/Fondo.png');
 
@@ -21,7 +25,7 @@ const Productos = () => {
 
           <View style={styles.containerBoton}>
             <Boton textoBoton="Marcas" accionBoton={irAMarcas} iconName="alpha-r-circle-outline" />
-            <Boton textoBoton="Categoria" accionBoton={irAMarcas} iconName="label-outline" />
+            <Boton textoBoton="Categoria" accionBoton={irACategorias} iconName="label-outline" />
           </View>
         </View>
         <Text style={styles.title}>Nuestros productos</Text>
