@@ -41,6 +41,7 @@ export default function BottomTab() {
         },
         tabBarActiveTintColor: '#FFFFFF',
         tabBarInactiveTintColor: 'gray',
+        tabBarActiveBackgroundColor: 'rgba(255, 255, 255, 0.3)', // Fondo semitransparente para el tab activo
         tabBarStyle: {
           borderRadius: 15,
           margin: 10,
