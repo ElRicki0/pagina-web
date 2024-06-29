@@ -328,7 +328,7 @@ async function updateComments() {
     TABLE_BODY.innerHTML = '';
 
     const FORM = new FormData();
-    FORM.append('idProducto2', idProducto);
+    FORM.append('idProducto2', IDPRODUCTO);
 
     // Petición para obtener los comentarios del producto.
     const DATA = await fetchData(PRODUCTO_API, 'readComentarios', FORM);

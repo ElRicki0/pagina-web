@@ -43,7 +43,7 @@ class CarritoData extends CarritoHandler
     public function setCarritopedido($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->pedido = $value;
+            $this->id_pedido = $value;
             return true;
         } else {
             $this->data_error = 'El identificador del pedido es incorrecto';

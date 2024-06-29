@@ -37,6 +37,7 @@ if (isset($_GET['action'])) {
             case 'readDetail':
                 if (!$pedido->getOrder()) {
                     $result['error'] = 'No ha agregado productos al carrito';
+                    $result['status'] = 2;
                 } elseif ($result['dataset'] = $pedido->readDetail()) {
                     $result['status'] = 1;
                     // $result['dataset'] = $_S;
@@ -45,7 +46,24 @@ if (isset($_GET['action'])) {
                 }
                 break;
                 // Acción para remover un producto del carrito de compras.
+            case 'cancelDetail':
+                if (!$pedido->setCarritopedido($_POST['idpedido'])) {
+                    $result['error'] = $pedido->getDataError();
+                } elseif ($pedido->updateDetail()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Orden removida correctamente';
+                } else {
+                    $result['error'] = 'Ocurrió un problema al remover la orden';
+                }
+                break;
             case 'deleteDetail':
+                if (!$pedido->setId($_POST['idDetalle'])) {
+                    $result['error'] = $pedido->getDataError();
+                } else if ($pedido->deleteDetail()) {
+                    $result['status'] = "1";
+                }
+                break;
+/*            case 'deleteOrder':
                 if (!$pedido->setCarritopedido($_POST['idpedido'])) {
                     $result['error'] = $pedido->getDataError();
                 } elseif ($pedido->updateDetail()) {
@@ -55,6 +73,8 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Ocurrió un problema al remover el producto';
                 }
                 break;
+                
+*/
                 // Acción para finalizar el carrito de compras.
             case 'finishOrder':
                 if ($pedido->finishOrder()) {
