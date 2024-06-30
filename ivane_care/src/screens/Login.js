@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import Input from '../components/Input/InputLogin';
 import Boton from '../components/Button/Boton';
 
-const LogIn = ({ setLogueado }) => {
+const LogIn = ({ logueado, setLogueado }) => {
   const navigation = useNavigation();
   const [correo, setUsuario] = useState('');
   const [clave, setClave] = useState('');
@@ -27,7 +27,7 @@ const LogIn = ({ setLogueado }) => {
         // Muestra una alerta de éxito
         Alert.alert('Inicio de sesión exitoso', '¡Bienvenido!', [
           { text: 'OK', onPress: () => {
-              setLogueado(true);
+              setLogueado(!logueado);
               navigation.navigate('Main');
             }
           }
