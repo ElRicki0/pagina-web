@@ -1,4 +1,1 @@
-export const SERVER = "http://10.10.0.168:80//pagina-web/api/";
-
-
-
+export const SERVER = "http://192.168.1.15:80//pagina-web/api/";
