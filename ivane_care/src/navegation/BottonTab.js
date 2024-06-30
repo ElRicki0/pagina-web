@@ -1,16 +1,15 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Ionicons from '@expo/vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import HomeScreen from '../screens/HomeScreen';
 import CarritoScreen from '../screens/Carrito';
 import FavoritoScreen from '../screens/Favoritos';
 import PerfilScreen from '../screens/Perfil';
-import ProductosStack from '../navegation/ProductosStack';
+import ProductosStackScreen from '../navegation/ProductosStack';
 
 const Tab = createBottomTabNavigator();
 
-export default function BottomTab({ logueado, setLogueado }) {
+const BottomTab = ({ logueado, setLogueado }) => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -62,7 +61,7 @@ export default function BottomTab({ logueado, setLogueado }) {
       />
       <Tab.Screen
         name="ProductosScreen"
-        component={ProductosStack}
+        component={ProductosStackScreen}
         options={{
           title: 'Productos',
         }}
@@ -92,3 +91,5 @@ export default function BottomTab({ logueado, setLogueado }) {
     </Tab.Navigator>
   );
 }
+
+export default BottomTab;

@@ -27,7 +27,7 @@ const LogIn = ({ logueado, setLogueado }) => {
         // Muestra una alerta de éxito
         Alert.alert('Inicio de sesión exitoso', '¡Bienvenido!', [
           { text: 'OK', onPress: () => {
-              setLogueado(true);
+              setLogueado(!logueado);
               navigation.navigate('Main');
             }
           }

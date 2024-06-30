@@ -6,7 +6,7 @@ import Categorias from '../screens/Categoria';
 
 const ProductosStack = createStackNavigator();
 
-const ProductosStackScreen = ({ route, navigation }) => (
+const ProductosStackScreen = ({ route }) => (
   <ProductosStack.Navigator>
     <ProductosStack.Screen
       name="Productos"
