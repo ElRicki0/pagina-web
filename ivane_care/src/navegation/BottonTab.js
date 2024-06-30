@@ -9,7 +9,7 @@ import ProductosStackScreen from '../navegation/ProductosStack';
 
 const Tab = createBottomTabNavigator();
 
-const BottomTab = ({ logueado, setLogueado }) => {
+const BottomTab = ({ setLogueado }) => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -59,6 +59,7 @@ const BottomTab = ({ logueado, setLogueado }) => {
         }}
         initialParams={{ logueado, setLogueado }}
       />
+
       <Tab.Screen
         name="ProductosScreen"
         component={ProductosStackScreen}
@@ -73,6 +74,7 @@ const BottomTab = ({ logueado, setLogueado }) => {
         options={{
           title: 'Carrito',
         }}
+        initialParams={{ logueado, setLogueado }}
       />
       <Tab.Screen
         name="FavoritoScreen"
@@ -80,6 +82,7 @@ const BottomTab = ({ logueado, setLogueado }) => {
         options={{
           title: 'Favoritos',
         }}
+        initialParams={{ logueado, setLogueado }}
       />
       <Tab.Screen
         name="PerfilScreen"
@@ -87,6 +90,7 @@ const BottomTab = ({ logueado, setLogueado }) => {
         options={{
           title: 'Perfil',
         }}
+        initialParams={{ logueado, setLogueado }}
       />
     </Tab.Navigator>
   );

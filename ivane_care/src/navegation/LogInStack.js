@@ -5,13 +5,12 @@ import SignUpScreen from '../screens/SignUp';
 
 const Stack = createStackNavigator();
 
-const LoginStackScreen = ({ navigation }) => {
+const LoginStackScreen = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
         name='LoginScreen'
         options={{ headerShown: false }}
-        initialParams={{ navigation }}
       >
         {(props) => <LoginScreen {...props} />}
       </Stack.Screen>

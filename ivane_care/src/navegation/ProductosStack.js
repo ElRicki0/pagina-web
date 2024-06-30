@@ -12,7 +12,7 @@ const ProductosStackScreen = ({ route }) => (
       name="Productos"
       component={Productos}
       options={{ headerShown: false }}
-      initialParams={{ logueado: route.params?.logueado, setLogueado: route.params?.setLogueado }}
+      initialParams={{ setLogueado: route.params?.setLogueado }}
     />
     <ProductosStack.Screen
       name="Marcas"
