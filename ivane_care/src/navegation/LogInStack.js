@@ -1,17 +1,27 @@
+import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import LogInScreen from '../screens/Login';
+import LoginScreen from '../screens/Login';
 import SignUpScreen from '../screens/SignUp';
 
+const Stack = createStackNavigator();
 
-const LoginStack = createStackNavigator();
-
-const LoginStackScreen = () => (
-    <LoginStack.Navigator>
-        <LoginStack.Screen name="LogIn" component={LogInScreen} options={{ headerShown: false }}// Oculta el encabezado en la pantalla Productos 
-        />
-        <LoginStack.Screen name="SignUp" component={SignUpScreen} options={{ headerShown: false }}// Oculta el encabezado en la pantalla Productos 
-        />
-    </LoginStack.Navigator>
-);
+const LoginStackScreen = ({ navigation }) => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name='LoginScreen'
+        options={{ headerShown: false }}
+        initialParams={{ navigation }}
+      >
+        {(props) => <LoginScreen {...props} />}
+      </Stack.Screen>
+      <Stack.Screen
+        name='SignUp'
+        component={SignUpScreen}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+};
 
 export default LoginStackScreen;

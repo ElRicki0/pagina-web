@@ -1,23 +1,16 @@
-// Utilidades de React Navigation
+import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; // Importa el paquete de iconos
-
-
-// Pantallas de navegación
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import HomeScreen from '../screens/HomeScreen';
 import CarritoScreen from '../screens/Carrito';
 import FavoritoScreen from '../screens/Favoritos';
 import PerfilScreen from '../screens/Perfil';
-import ProductosStack from '../navegation/ProductosStack'; // Importa este stack para hacer la navegacion entre productos (categorias y marcas)
+import ProductosStack from '../navegation/ProductosStack';
 
-
-
-
-// Navegador Bottom Tabs Navigator
 const Tab = createBottomTabNavigator();
 
-export default function BottomTab() {
+export default function BottomTab({ logueado, setLogueado }) {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -36,27 +29,26 @@ export default function BottomTab() {
             iconName = 'account-circle';
           }
 
-          // Puedes devolver cualquier componente que desees aquí.
           return <Icon name={iconName} size={size} color={color} />;
         },
         tabBarActiveTintColor: '#FFFFFF',
         tabBarInactiveTintColor: 'gray',
-        tabBarActiveBackgroundColor: 'rgba(255, 255, 255, 0.3)', // Fondo semitransparente para el tab activo
+        tabBarActiveBackgroundColor: 'rgba(255, 255, 255, 0.3)',
         tabBarStyle: {
           borderRadius: 15,
           margin: 10,
-          backgroundColor: '#0E333B', // Color de fondo del tab bar
+          backgroundColor: '#0E333B',
         },
         headerStyle: {
           borderRadius: 15,
-          backgroundColor: '#0E333B', // Color del header
+          backgroundColor: '#0E333B',
         },
-        headerTintColor: '#fff', // Color del texto en el header
-        headerTitleAlign: 'center', // Alinea el texto del título del header al centro
+        headerTintColor: '#fff',
+        headerTitleAlign: 'center',
         headerTitleStyle: {
-          fontSize: 25, // Tamaño de la fuente del título del header
-          fontWeight: 'bold', // Peso de la fuente
-          color: '#fff', // Color del texto del título del header
+          fontSize: 25,
+          fontWeight: 'bold',
+          color: '#fff',
         }
       })}
     >
@@ -64,8 +56,9 @@ export default function BottomTab() {
         name="HomeScreen"
         component={HomeScreen}
         options={{
-          title: 'ivane Care',
+          title: 'Inicio',
         }}
+        initialParams={{ logueado, setLogueado }}
       />
       <Tab.Screen
         name="ProductosScreen"
@@ -73,6 +66,7 @@ export default function BottomTab() {
         options={{
           title: 'Productos',
         }}
+        initialParams={{ logueado, setLogueado }}
       />
       <Tab.Screen
         name="CarritoScreen"
