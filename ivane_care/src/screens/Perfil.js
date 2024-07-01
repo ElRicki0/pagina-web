@@ -6,18 +6,24 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
 
-
 const Perfil = (logueado, setLogueado) => {
     const ip = '192.168.137.1';
+    const navigation = useNavigation();
 
-    // console.log(logueado)
+    const goToLogin = () => {
+        navigation.navigate('LoginScreen')
+    }
+
+    // console.log(goToLogin());
+    //Constante de cierre de sesión
     const handleLogOut = async () => {
         const url = `http://${ip}/pagina-web/api/services/public/cliente.php?action=logOut`;
         try {
             const fetchApi = await fetch(url);
             const datos = await fetchApi.json();
             if (datos.status) {
-                Alert.alert('Sesión cerrada', 'Has cerrado sesión correctamente.');-9*
+                goToLogin();
+                Alert.alert('Sesión cerrada', 'Has cerrado sesión correctamente.'); -9 *
                 setLogueado(false); // Actualiza el estado de logueado
             } else {
                 Alert.alert('Error al cerrar sesión', datos.error);
@@ -34,6 +40,9 @@ const Perfil = (logueado, setLogueado) => {
             <Text>Perfil </Text>
             <TouchableOpacity onPress={handleLogOut}>
                 <Text style={styles.signUp}>Cerrar</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.backButton} onPress={handleLogOut}>
+                <Icon name="logout" size={60} color="#6C5FFF" />
             </TouchableOpacity>
         </View>
     );

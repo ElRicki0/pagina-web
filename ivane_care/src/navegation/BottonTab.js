@@ -10,7 +10,7 @@ import ProductosStackScreen from '../navegation/ProductosStack';
 const Tab = createBottomTabNavigator();
 
 const  
-BottomTab = ({ setLogueado, logueado, name }) => {
+BottomTab = ({ setLogueado, logueado }) => {
   return (
     <Tab.Navigator
       initialRouteName='HomeScreen' screenOptions={({ route }) => ({

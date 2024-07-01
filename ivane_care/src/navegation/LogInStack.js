@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from '../screens/Login';
 import SignUpScreen from '../screens/SignUp';
+import PerfilScreen from '../screens/Perfil';
 import SplashScreen from '../screens/SplashScreen';
 import BottomTab from '../navegation/BottonTab';
 
@@ -19,18 +20,24 @@ const LoginStackScreen = ({ logueado, setLogueado }) => {
         name='LoginScreen'
         options={{ headerShown: false }}
       >
-        {(props) => <LoginScreen {...props} />}
+        {(props) => <LoginScreen {...props} setLogueado={setLogueado} />}
       </Stack.Screen>
       <Stack.Screen
         name='BottomTab'
         options={{ headerShown: false }}>
-        {(props) => <BottomTab {...props} logueado={logueado} setLogueado={logueado} name={'Susan'} />}
+        {(props) => <BottomTab {...props} logueado={logueado} setLogueado={logueado}  />}
       </Stack.Screen>
       <Stack.Screen
         name='SignUp'
         component={SignUpScreen}
         options={{ headerShown: false }}
       />
+      <Stack.Screen
+        name='Perfil'
+        options={{ headerShown: false }}
+      >
+        {(props) => <PerfilScreen {...props} />}
+      </Stack.Screen>
     </Stack.Navigator>
   );
 };
