@@ -7,8 +7,7 @@ import Marcas from '../screens/Marcas';
 
 const Stack = createStackNavigator();
 
-const NavStack = ({ route }) => {
-  const { logueado, setLogueado } = route.params || {};
+const NavStack = () => {
 
   return (
     <Stack.Navigator>
@@ -21,7 +20,6 @@ const NavStack = ({ route }) => {
         name='Productos'
         component={Productos}
         options={{ headerShown: false }}
-        initialParams={{ logueado, setLogueado }} // Pasa las props a través de initialParams
       />
       <Stack.Screen
         name='Perfil'

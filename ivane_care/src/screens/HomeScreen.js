@@ -5,7 +5,7 @@ import Boton from '../components/Button/Boton'; // Se importa el componente de b
 
 
 
-const HomeScreen = () => {
+const HomeScreen = ({logueado, setLogueado}) => {
 
   // Nada mas es prueba para ver como mando a llamar un componente
   const handlePress = () => {

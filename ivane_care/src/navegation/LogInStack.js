@@ -5,7 +5,7 @@ import SignUpScreen from '../screens/SignUp';
 
 const Stack = createStackNavigator();
 
-const LoginStackScreen = () => {
+const LoginStackScreen = ({ logueado, setLogueado }) => {
   return (
     <Stack.Navigator>
       <Stack.Screen

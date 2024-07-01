@@ -1,7 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+
+// Importación de las distintas pantallas del sistema 
 import SplashScreen from './src/screens/SplashScreen';
+import HomeScreen from './src/screens/HomeScreen';
+import MarcasScreen from './src/screens/Marcas';
+import CategoriaScreen from './src/screens/Categoria';
+import PerfilScreen from './src/screens/Perfil';
+import ProductosScreen from './src/screens/Productos';
+import SignUpScreen from './src/screens/SignUp';
+import FavoritosScreen from './src/screens/Favoritos';
+import CarritoScreen from './src/screens/Carrito';
+import LoginScreen from './src/screens/Login';
 import LoginNav from './src/navegation/LogInStack';
 import BottomTab from './src/navegation/BottonTab';
 
@@ -23,23 +34,18 @@ const App = () => {
       {isLoading ? (
         <SplashScreen />
       ) : (
-        <Stack.Navigator>
+        <Stack.Navigator  screenOptions={{ headerShown: false }}>
           {logueado ? (
-            <Stack.Screen
-              name="Main"
-              component={BottomTab}
-              options={{ headerShown: false }}
-            />
+            <Stack.Screen name="BottomTab" component={BottomTab} />
           ) : (
-            <Stack.Screen
-              name="Auth"
-              options={{
-                headerShown: false,
-              }}
-            >
+            <Stack.Screen name="Auth">
               {props => <LoginNav {...props} setLogueado={setLogueado} />}
             </Stack.Screen>
           )}
+          <Stack.Screen name="SignUp" component={SignUpScreen} />
+          <Stack.Screen name="BottomTab" component={BottomTab} />
+          <Stack.Screen name="Marcas" component={MarcasScreen} />
+          <Stack.Screen name="Categoria" component={CategoriaScreen} />
         </Stack.Navigator>
       )}
     </NavigationContainer>

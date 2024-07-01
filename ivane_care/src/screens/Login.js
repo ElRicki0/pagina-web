@@ -8,7 +8,7 @@ const LogIn = ({ logueado, setLogueado }) => {
   const navigation = useNavigation();
   const [correo, setUsuario] = useState('');
   const [clave, setClave] = useState('');
-  const ip = '192.168.1.3';
+  const ip = '192.168.137.1';
 
   const handelLogin = async () => {
     const url = `http://${ip}/pagina-web/api/services/public/cliente.php?action=logIn`;
@@ -27,8 +27,8 @@ const LogIn = ({ logueado, setLogueado }) => {
         // Muestra una alerta de éxito
         Alert.alert('Inicio de sesión exitoso', '¡Bienvenido!', [
           { text: 'OK', onPress: () => {
-              setLogueado(!logueado);
-              navigation.navigate('Main');
+              
+              navigation.navigate('BottomTab');
             }
           }
         ]);
