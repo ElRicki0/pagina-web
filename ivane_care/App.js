@@ -4,15 +4,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 // Importación de las distintas pantallas del sistema 
 import SplashScreen from './src/screens/SplashScreen';
-import HomeScreen from './src/screens/HomeScreen';
 import MarcasScreen from './src/screens/Marcas';
 import CategoriaScreen from './src/screens/Categoria';
-import PerfilScreen from './src/screens/Perfil';
-import ProductosScreen from './src/screens/Productos';
 import SignUpScreen from './src/screens/SignUp';
-import FavoritosScreen from './src/screens/Favoritos';
-import CarritoScreen from './src/screens/Carrito';
-import LoginScreen from './src/screens/Login';
 import LoginNav from './src/navegation/LogInStack';
 import BottomTab from './src/navegation/BottonTab';
 

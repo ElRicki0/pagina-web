@@ -1,11 +1,22 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Image, ScrollView, TextInput } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+
 
 import Boton from '../components/Button/Boton'; // Se importa el componente de boton para poder usarlo 
 
 
 
-const HomeScreen = ({logueado, setLogueado}) => {
+const HomeScreen = ({ logueado, setLogueado }) => {
+
+  // Estado, para la barra de busqueda 
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = (text) => {
+    setSearchQuery(text);
+    // Aquí podrías implementar la lógica para filtrar o buscar según 'text'
+  };
 
   // Nada mas es prueba para ver como mando a llamar un componente
   const handlePress = () => {
@@ -14,15 +25,24 @@ const HomeScreen = ({logueado, setLogueado}) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>
-        Consumo de apis externas
-      </Text>
-      <Text style={styles.descripcion}>
-        Ejemplo de consumo de API externa utilizando la función <Text style={styles.negrita}>FETCH</Text> nativa de JavaScript y <Text style={styles.negrita}>AXIOS</Text> que es una biblioteca de JavaScript utilizada para hacer solicitudes HTTP
-      </Text>
-      <Boton textoBoton="Aceptar" accionBoton={handlePress} />
-    </View>
+    <ScrollView style={styles.scrollView}
+      persistentScrollbar={true}
+      showsVerticalScrollIndicator={false} // Oculta el indicador de desplazamiento vertical 
+    >
+      <View style={styles.container}>
+        <View style={styles.containerSearch}>
+          <Icon name="magnify" size={30} color="#0A2B32" style={styles.searchIcon} />
+          <TextInput
+            style={[styles.input, { color: '#155A68' }]}
+            placeholder="Buscar..."
+            onChangeText={handleSearch}
+            value={searchQuery}
+          />
+        </View>
+        <Image source={require('../img/Portadita.png')} />
+      </View>
+    </ScrollView>
+
   );
 }
 
@@ -44,6 +64,12 @@ const styles = StyleSheet.create({
     marginTop: 10,
     textTransform: 'uppercase',
   },
+  input: {
+    flex: 1,
+    height: 40,
+    paddingHorizontal: 10,
+    color: '#155A68',
+  },
   descripcion: {
     fontSize: 16,
     fontWeight: '400',
@@ -52,5 +78,24 @@ const styles = StyleSheet.create({
   },
   negrita: {
     fontWeight: 'bold'
-  }
+  },
+  scrollView: {
+    marginHorizontal: 10,
+    backgroundColor: '#fff',
+  },
+  containerSearch: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 20,
+    paddingHorizontal: 10,
+    marginTop: 10,
+    marginBottom: 20,
+  },
+  searchIcon: {
+    marginRight: 5,
+    marginLeft: 5,
+  },
 });
