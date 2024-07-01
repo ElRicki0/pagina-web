@@ -25,7 +25,7 @@ const LogIn = ({ logueado, setLogueado }) => {
 
       if (datos.status) {
         // Muestra una alerta de éxito
-        Alert.alert('Inicio de sesión exitoso', '¡Bienvenido!', [
+        Alert.alert( '¡Bienvenido!','Inicio de sesión exitoso', [
           { text: 'OK', onPress: () => {
               
               navigation.navigate('BottomTab');
@@ -64,7 +64,7 @@ const LogIn = ({ logueado, setLogueado }) => {
   return (
     <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}>
       <View style={styles.container}>
-        <Text style={styles.title}>Log in</Text>
+        <Text style={styles.title}>Iniciar Sesión</Text>
         <Input
           placeHolder='correo...'
           style={styles.input}
@@ -107,15 +107,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: 'left',
     color: 'black',
-  },
-  input: {
-    marginBottom: 15,
-    backgroundColor: 'white',
-    borderRadius: 25,
-    paddingHorizontal: 15,
-    height: 50,
-    fontSize: 16,
-    color: '#000',
   },
   forgotPassword: {
     color: '#fff',

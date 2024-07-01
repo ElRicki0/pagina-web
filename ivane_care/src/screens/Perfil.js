@@ -10,6 +10,7 @@ const Perfil = (logueado, setLogueado) => {
     const ip = '192.168.137.1';
     const navigation = useNavigation();
 
+    // constante para cerar sesion (simplemente redirije al login si la accion esta completada)
     const goToLogin = () => {
         navigation.navigate('LoginScreen')
     }
@@ -38,10 +39,7 @@ const Perfil = (logueado, setLogueado) => {
     return (
         <View style={styles.container}>
             <Text>Perfil </Text>
-            <TouchableOpacity onPress={handleLogOut}>
-                <Text style={styles.signUp}>Cerrar</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.backButton} onPress={handleLogOut}>
+            <TouchableOpacity style={styles.LogOutButton} onPress={handleLogOut}>
                 <Icon name="logout" size={60} color="#6C5FFF" />
             </TouchableOpacity>
         </View>
@@ -61,6 +59,12 @@ const styles = StyleSheet.create({
         fontSize: 16,
         textDecorationLine: 'underline',
     },
+    LogOutButton:{
+        position: 'absolute',
+        top: 20, // Alinea el botón 20 unidades desde la parte superior
+        right: 20, // Alinea el botón 20 unidades desde la izquierda
+    }
+    
 });
 
 export default Perfil;

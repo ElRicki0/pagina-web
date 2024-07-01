@@ -20,8 +20,8 @@ return (
 const styles = StyleSheet.create({
     Input: {
         color: "#fff", 
-        fontWeight:'800',
-        height: 55, // Ajusta la altura según sea necesario
+        fontWeight:'900',
+        height: 70, // Ajusta la altura según sea necesario
         borderRadius: 20, // Redondeo de los bordes
         borderColor: 'white',
         borderWidth: 4,
@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         marginBottom: 20,
         color: '#ffffff',
+        fontSize: 17,
     },
 
 });
