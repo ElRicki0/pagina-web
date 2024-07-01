@@ -10,10 +10,10 @@ import ProductosStackScreen from '../navegation/ProductosStack';
 const Tab = createBottomTabNavigator();
 
 const  
-BottomTab = ({ setLogueado, logueado }) => {
+BottomTab = ({ setLogueado, logueado, name }) => {
   return (
     <Tab.Navigator
-      screenOptions={({ route }) => ({
+      initialRouteName='HomeScreen' screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => {
           let iconName;
 
@@ -87,12 +87,11 @@ BottomTab = ({ setLogueado, logueado }) => {
       />
       <Tab.Screen
         name="PerfilScreen"
-        component={PerfilScreen}
         options={{
           title: 'Perfil',
-        }}
-        // initialParams={{ logueado, setLogueado }}
-      />
+        }}>
+        {props => <PerfilScreen {...props} setLogueado={setLogueado} logueado={logueado} />}
+        </Tab.Screen>
     </Tab.Navigator>
   );
 }

@@ -12,36 +12,43 @@ import BottomTab from './src/navegation/BottonTab';
 
 const Stack = createStackNavigator();
 
-const App = () => {
+
+export const App = () => {
   const [isLoading, setIsLoading] = useState(true);
+  
   const [logueado, setLogueado] = useState(false);
 
+
+  const ip = '192.168.137.1';
+
+  // Realizando constante para poder cerrar la sesion
+  const sesionActiva = async () => {
+    const url = await fetch(`http://${ip}/pagina-web/api/services/public/cliente.php?action=getUser`, {
+        method: 'GET'
+    });
+    const data = await url.json();
+    console.log(data);
+    if (data.session) {
+      setLogueado(true);
+      console.log(data.session)
+    } else {
+      setLogueado(false);
+    }
+  }
+
+
   useEffect(() => {
-    // Simula un tiempo de carga antes de mostrar la pantalla de login
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 4000); // Ajusta el tiempo de espera según necesites
-  }, []);
+    sesionActiva();
+    console.log(logueado)
+  }, [logueado]);
 
   return (
     <NavigationContainer>
-      {isLoading ? (
-        <SplashScreen />
-      ) : (
-        <Stack.Navigator  screenOptions={{ headerShown: false }}>
           {logueado ? (
-            <Stack.Screen name="BottomTab" component={BottomTab} />
+            <BottomTab logueado={logueado} setLogueado={setLogueado} />
           ) : (
-            <Stack.Screen name="Auth">
-              {props => <LoginNav {...props} setLogueado={setLogueado} />}
-            </Stack.Screen>
+            <LoginNav logueado={logueado} setLogueado={setLogueado} />
           )}
-          <Stack.Screen name="SignUp" component={SignUpScreen} />
-          <Stack.Screen name="BottomTab" component={BottomTab} />
-          <Stack.Screen name="Marcas" component={MarcasScreen} />
-          <Stack.Screen name="Categoria" component={CategoriaScreen} />
-        </Stack.Navigator>
-      )}
     </NavigationContainer>
   );
 };
