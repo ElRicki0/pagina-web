@@ -20,33 +20,38 @@ ademas contamos con dos versiones, escritorio y aplicacion movil, em ambas se re
 
 ## General Sistema Escritorio:
 
-Espaciado : 4.
-Nombres de carpetas: minusculas.
-Nombre de archivos: minusculas.
-Comentarios: Se ha agregado comentarios acorde a las acciones que se estan realizando
+- Espaciado : 4.
+- Nombres de carpetas: minusculas.
+- Nombre de archivos: minusculas.
+- Comentarios: Se ha agregado comentarios acorde a las acciones que se estan realizando
 
 ## General Sistema Androide
 
-Espaciado: 4.
-Nombre de carpetas (principales):minusculas
-Nombre de carpetas (Secundarias):Inicia con mayusucla (PascalCase)
-Nombre de archivos : PascaCase 
-Comentarios: se han agregado comentarios acorde a las acciones a realizar 
+- Espaciado: 4.
+- Nombre de carpetas (principales):minusculas
+- Nombre de carpetas (Secundarias):Inicia con mayusucla (PascalCase)
+- Nombre de archivos : PascaCase
+- Comentarios: se han agregado comentarios acorde a las acciones a realizar
+- Nombres de clases de estilo (Style): camelCase(containerBoton).
+- Nombre de constantes (const) : camelCase (handleLogOut).
 
+  
 ## JavaScript
 
-Constantes principales: Screaming Snake Case (PRODUCTOS_API)
-Variables:
+- Constantes principales: Screaming Snake Case (PRODUCTOS_API)
+- Variables: camelCase(correoCliente)
 
 ## PHP ( Hypertext Preprocessor)
-Nombre de carpetas : minusculas
-nombre de archivos : Snake_case (comentarios_data)
-Nombre de clases : PascalCase (ClienteData)
-Variables: minusculas.
-Nombre de funciones: camelCase (setId)
-Nombres de casos (case) : camelCase(createRow)
+
+- Nombre de carpetas : minusculas
+- nombre de archivos : Snake_case (comentarios_data)
+- Nombre de clases : PascalCase (ClienteData)
+- Variables: minusculas.
+- Nombre de funciones: camelCase (setId)
+- Nombres de metodos (case) : camelCase(createRow)
 
 *Integrantes*
-Jeremy Leandro Castro Moreno
-Alisson Ivania Zepeda Cáceres
-Ricardo Nicolas Melara Rauda 
+
+- Jeremy Leandro Castro Moreno
+- Alisson Ivania Zepeda Cáceres
+- Ricardo Nicolas Melara Rauda 
