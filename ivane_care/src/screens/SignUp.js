@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { TextInputMask } from 'react-native-masked-text'; // Dependencia para el texto de telefono, esto es para poder utilizar una maskara de dijitos
 import Boton from '../components/Button/Boton';
 import Input from '../components/Input/InputSignUp';
 
@@ -22,29 +23,56 @@ const SignUp = () => {
     return (
         <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}>
             <Text style={styles.tittle}>Crear cuenta</Text>
-            <View style={styles.container}>
-                <View style={styles.containerInput}>
-                    <Input
-                        placeHolder='correo...'
-                        style={styles.input}
-                        setValor={correo}
-                        setTextChange={setCorreo}
-                    />
-                    <Text style={styles.Text}>Crear cuenta</Text>
-                    <Input
-                        placeHolder='Nombre...'
-                        style={styles.input}
-                        setValor={correo}
-                        setTextChange={setCorreo}
-                    />
-                    <Input
-                        placeHolder='contraseña...'
-                        setValor={clave}
-                        setTextChange={setClave}
-                        clave={true} // Esto asegura que sea campo de contraseña
-                    />
+            <ScrollView style={styles.scrollView}
+                persistentScrollbar={true}
+                showsVerticalScrollIndicator={false} // Oculta el indicador de desplazamiento vertical 
+            >
+                <View style={styles.container}>
+                    <View style={styles.containerInput}>
+                        <Text style={styles.Text}>Nombre</Text>
+                        <Input
+                            placeHolder='Nombre...'
+                            style={styles.input}
+                            setValor={nombre}
+                            setTextChange={setNombre}
+                        />
+                        <Text style={styles.Text}>Apellido</Text>
+                        <Input
+                            placeHolder='Apellido...'
+                            style={styles.input}
+                            setValor={apellido}
+                            setTextChange={setApellido}
+                        />
+                        <Text style={styles.Text}>Teléfono</Text>
+                        <TextInputMask
+                            type={'custom'}
+                            options={{
+                                mask: '9999-9999'
+                            }}
+                            style={styles.inputMask}
+                            value={telefono}
+                            onChangeText={setTelefono}
+                            keyboardType="numeric"
+                            placeholder='Teléfono...'
+                            placeholderTextColor='#000'
+                        />
+                        <Text style={styles.Text}>Correo electroníco</Text>
+                        <Input
+                            placeHolder='correo...'
+                            style={styles.input}
+                            setValor={correo}
+                            setTextChange={setCorreo}
+                        />
+                        <Text style={styles.Text}>contraseña</Text>
+                        <Input
+                            placeHolder='contraseña...'
+                            setValor={clave}
+                            setTextChange={setClave}
+                            clave={true} // Esto asegura que sea campo de contraseña
+                        />
+                    </View>
                 </View>
-            </View>
+            </ScrollView>
         </ImageBackground>
 
     );
@@ -57,7 +85,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     containerInput: {
-        marginVertical: 50,
+        marginVertical: 135,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -67,8 +95,12 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
-    Text:{
-        fontSize: 20,
+    Text: {
+        marginVertical: 12,
+        marginLeft: 30,
+        color: '#B8B8B8',
+        textDecorationStyle:'double',
+        fontSize: 24,
         textAlign: 'left', // Alinea el texto a la izquierda
         alignSelf: 'flex-start', // Asegura que el contenedor también se alinee a la izquierda 
     },
@@ -77,7 +109,21 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         top: 70, // Alinea el botón 20 unidades desde la parte superior
         color: 'white',
+        marginBottom:20,
     },
+    inputMask: {
+        color: "black",
+        fontWeight: '900',
+        width: 280,
+        height: 60, // Ajusta la altura según sea necesario
+        borderRadius: 20, // Redondeo de los bordes
+        borderColor: 'black',
+        borderWidth: 4,
+        backgroundColor: '#FFFFFF', // Color de fondo del input
+        paddingHorizontal: 19,
+        marginBottom: 4,
+        fontSize: 17,
+    }
 });
 
 export default SignUp;

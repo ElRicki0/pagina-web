@@ -1,5 +1,6 @@
 
 import { StyleSheet, Text, View,TextInput } from 'react-native';
+import { TextInputMask } from 'react-native-masked-text'; // Dependencia para el texto de telefono, esto es para poder utilizar una maskara de dijitos
 
 export default function Input({placeHolder, setValor, clave, setTextChange}) {
 
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
         borderWidth: 4,
         backgroundColor: '#FFFFFF', // Color de fondo del input
         paddingHorizontal: 19,
-        marginBottom: 15,
+        marginBottom: 4,
         fontSize: 17,
     },
 
