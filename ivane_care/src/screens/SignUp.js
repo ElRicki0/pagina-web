@@ -1,16 +1,32 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, ImageBackground, ScrollView } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, ImageBackground, ScrollView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { TextInputMask } from 'react-native-masked-text'; // Dependencia para el texto de telefono, esto es para poder utilizar una maskara de dijitos
 import Boton from '../components/Button/Boton';
 import Input from '../components/Input/InputSignUp';
 
 
-const backgroundImage = require('../img/FondoSigUp.png');
+const backgroundImage = require('../img/FondoSigUp.png'); // Fondo de pantalla
+const ip = '10.10.3.6'; // Dirección IP del servidor
+
+// Nada mas es prueba para ver como mando a llamar un componente
+const handlePress = () => {
+    // Función que maneja el onPress del botón
+    console.log('Botón presionado');
+};
 
 
 const SignUp = () => {
     const navigation = useNavigation();
+
+
+    
+    // constante para cerar sesion (simplemente redirije al login si la accion esta completada)
+    const goToLogin = () => {
+        navigation.navigate('LoginScreen')
+    }
+
+
     const [nombre, setNombre] = useState('');
     const [apellido, setApellido] = useState('');
     const [telefono, setTelefono] = useState('');
@@ -19,16 +35,82 @@ const SignUp = () => {
     const [correo, setCorreo] = useState('');
     const [clave, setClave] = useState('');
     const [claveConfirmar, setClaveConfirmar] = useState('');
+    const [clavesCoinciden, setClavesCoinciden] = useState(true); // Nuevo estado
+
+    // Función para verificar si las contraseñas coinciden
+    useEffect(() => {
+        setClavesCoinciden(clave === claveConfirmar);
+    }, [clave, claveConfirmar]);
+
+
+    // Logica para crear un nuevo cliente
+    const handelagregarCliente = async () => {
+        if (!clavesCoinciden) {
+            alert('Las contraseñas no coinciden.');
+            return;
+        }
+
+        try {
+            const url = `http://${ip}/pagina-web/api/services/public/cliente.php?action=CreateRow`;
+
+
+            // Se crea un nuevo objeto de "FormData" y se agrega los datos
+            const formData = new FormData();
+            formData.append('nombreCliente', nombre);
+            formData.append('apellidoCliente', apellido);
+            formData.append('correoCliente', correo);
+            formData.append('direccionCliente', direccion);
+            formData.append('telefonoCliente', telefono);
+            formData.append('aliasCliente', alias);
+            formData.append('claveCliente', clave);
+            formData.append('confirmarClave', claveConfirmar);
+
+
+            // Se realiza la peticion HTTP (El protocolo de transferencia de hipertexto)
+            //"es un protocolo o conjunto de reglas de comunicación para la comunicación cliente-servidor"
+            const response = await fetch(url, {
+                method: 'POST',
+                body: formData
+            });
+
+            // Analiza la respuesta
+            const responseData = await response.text();
+
+            if (responseData === 'success') {
+                console.log('Cliente agregado exitosamente');
+                // Aca se puede (creo) agregar la accion para ir a otra pantalla
+            } else {
+                console.error(responseData);
+                alert('Se ha creado su cuenta con exito');
+            }
+        } catch (error) {
+            console.error('Error al enviar la solucitud: ', error);
+            alert('Error al enviar la solicitud');
+        }
+        // Limpia los campos después de agregar un administrador
+        setNombre('');
+        setApellido('');
+        setCorreo('');
+        setTelefono('');
+        setDireccion('');
+        setAlias('');
+        setClave('');
+        setClaveConfirmar('');
+    }
 
     return (
         <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}>
-            <Text style={styles.tittle}>Crear cuenta</Text>
+            <View style={styles.containerTittle}>
+                <Text style={styles.tittle}>Crear cuenta</Text>
+            </View>
+
             <ScrollView style={styles.scrollView}
                 persistentScrollbar={true}
+                contentContainerStyle={styles.scrollViewContent}
                 showsVerticalScrollIndicator={false} // Oculta el indicador de desplazamiento vertical 
             >
                 <View style={styles.container}>
-                    <View style={styles.containerInput}>
+                    <View style={[styles.containerInput, styles.shadowProp]}>
                         <Text style={styles.Text}>Nombre</Text>
                         <Input
                             placeHolder='Nombre...'
@@ -53,8 +135,15 @@ const SignUp = () => {
                             value={telefono}
                             onChangeText={setTelefono}
                             keyboardType="numeric"
-                            placeholder='Teléfono...'
+                            placeholder='0000-0000'
                             placeholderTextColor='#000'
+                        />
+                        <Text style={styles.Text}>Dirección</Text>
+                        <Input
+                            placeHolder='Dirección...'
+                            style={styles.input}
+                            setValor={direccion}
+                            setTextChange={setDireccion}
                         />
                         <Text style={styles.Text}>Correo electroníco</Text>
                         <Input
@@ -63,14 +152,36 @@ const SignUp = () => {
                             setValor={correo}
                             setTextChange={setCorreo}
                         />
+                        <Text style={styles.Text}>Nombre de Usuario</Text>
+                        <Input
+                            placeHolder='Usuario...'
+                            style={styles.input}
+                            setValor={alias}
+                            setTextChange={setAlias}
+                        />
                         <Text style={styles.Text}>contraseña</Text>
                         <Input
-                            placeHolder='contraseña...'
+                            placeHolder='********'
                             setValor={clave}
                             setTextChange={setClave}
                             clave={true} // Esto asegura que sea campo de contraseña
                         />
+
+                        <Text style={styles.Text}>Confirmar contraseña</Text>
+                        <Input
+                            placeHolder='********'
+                            setValor={claveConfirmar}
+                            setTextChange={setClaveConfirmar}
+                            clave={true} // Esto asegura que sea campo de contraseña
+                        />
+                        <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
+                            <Text style={styles.signUp}>Ya tienes una cuenta?</Text>
+                        </TouchableOpacity>
+                        <View style={styles.containerBoton}>
+                            <Boton textoBoton="Crear cuenta" accionBoton={handelagregarCliente} />
+                        </View>
                     </View>
+
                 </View>
             </ScrollView>
         </ImageBackground>
@@ -82,12 +193,21 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'col',
-        marginTop: 20,
+    },
+    containerTittle: {
+        marginVertical: 20,
+        marginBottom: 138,
     },
     containerInput: {
-        marginVertical: 135,
         justifyContent: 'center',
         alignItems: 'center',
+        shadowColor: '#7759FF',
+        shadowOffset: { width: 0, height: 6 },
+        shadowOpacity: 0.3,
+        shadowRadius: 10,
+        elevation: 7, // Solo para Android
+        marginBottom: 20,
+        borderRadius: 10,
     },
     image: {
         flex: 1,
@@ -96,10 +216,11 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     Text: {
-        marginVertical: 12,
+        marginTop: 20,
+        marginBottom: 10,
         marginLeft: 30,
-        color: '#B8B8B8',
-        textDecorationStyle:'double',
+        color: '#0B003D',
+        textDecorationStyle: 'double',
         fontSize: 24,
         textAlign: 'left', // Alinea el texto a la izquierda
         alignSelf: 'flex-start', // Asegura que el contenedor también se alinee a la izquierda 
@@ -109,13 +230,12 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         top: 70, // Alinea el botón 20 unidades desde la parte superior
         color: 'white',
-        marginBottom:20,
     },
     inputMask: {
         color: "black",
         fontWeight: '900',
-        width: 280,
-        height: 60, // Ajusta la altura según sea necesario
+        width: 300,
+        height: 50, // Ajusta la altura según sea necesario
         borderRadius: 20, // Redondeo de los bordes
         borderColor: 'black',
         borderWidth: 4,
@@ -123,7 +243,21 @@ const styles = StyleSheet.create({
         paddingHorizontal: 19,
         marginBottom: 4,
         fontSize: 17,
-    }
+    },
+    scrollView: {
+        flex: 1,
+    },
+    scrollViewContent: {
+        flexGrow: 1,
+    },
+    signUp: {
+        color: '#444444',
+        textAlign: 'center',
+        marginTop: 20,
+        fontSize: 16,
+        textDecorationLine: 'underline',
+        marginBottom: 20,
+    },
 });
 
 export default SignUp;

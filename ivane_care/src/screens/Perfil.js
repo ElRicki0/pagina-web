@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
 const Perfil = (logueado, setLogueado) => {
-    const ip = '10.10.0.168';
+    const ip = '192.168.185.196';
     const navigation = useNavigation();
 
     // constante para cerar sesion (simplemente redirije al login si la accion esta completada)
