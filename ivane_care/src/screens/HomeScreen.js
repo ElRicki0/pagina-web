@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, TextInput } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, TextInput, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import Productos from '../components/Data/ProductosMuestra';
 
 
 import Boton from '../components/Button/Boton'; // Se importa el componente de boton para poder usarlo 
@@ -9,6 +9,8 @@ import Boton from '../components/Button/Boton'; // Se importa el componente de b
 
 
 const HomeScreen = ({ logueado, setLogueado }) => {
+
+  const ProductosLista = Productos;
 
   // Estado, para la barra de busqueda 
   const [searchQuery, setSearchQuery] = useState('');
@@ -40,6 +42,33 @@ const HomeScreen = ({ logueado, setLogueado }) => {
           />
         </View>
         <Image source={require('../img/Portadita.png')} />
+
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 23, marginBottom: 23 }}>
+          <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />
+          <View>
+            <Text style={{
+              width: 90, textAlign: 'center', fontWeight: 'bold', fontSize: 16, color: '#6C5FFF'
+            }}>Nuestros productos</Text>
+          </View>
+          <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />
+        </View>
+      </View>
+      <View style={styles.flatListContainer}>
+        <FlatList
+          data={ProductosLista}
+          horizontal={true}
+          renderItem={({ item }) => (
+            <View style={styles.cardContainer}>
+              <Image source={item.src} style={styles.image} />
+              <Text style={styles.title}>{item.title}</Text>
+              <Text style={styles.description}>{item.numero}</Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <View style={{ flex: 1, height: 1, backgroundColor: 'black', marginTop: 20, marginBottom: 30 }} />
+              </View>
+            </View>
+          )}
+          keyExtractor={(item) => item.id}
+        />
       </View>
     </ScrollView>
 
@@ -97,5 +126,48 @@ const styles = StyleSheet.create({
   searchIcon: {
     marginRight: 5,
     marginLeft: 5,
+  },
+  // Estilo de cards
+
+  flatListContainer: {
+    height: 250, // Altura fija para evitar el crecimiento automático
+    marginHorizontal: 5,
+    alignItems: 'center',
+  },
+  cardContainer: {
+    backgroundColor: '#fff',
+    borderRadius: 25,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    padding: 10,
+    marginBottom: 10,
+    marginHorizontal: 5,
+    marginVertical: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    alignItems: 'center',
+    width: 150, // Añadido para limitar el ancho de la tarjeta
+  },
+  image: {
+    width: 100,
+    height: 100,
+    marginBottom: 10,
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center', // Asegura que el texto esté centrado horizontalmente
+    marginBottom: 5, // Añadido para espacio entre título y descripción
+  },
+  description: {
+    fontSize: 14,
+    textAlign: 'center',
+    flexWrap: 'wrap', // Permite que el texto se ajuste a múltiples líneas si es necesario
   },
 });
