@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ImageBackground, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { TextInputMask } from 'react-native-masked-text'; // Dependencia para el texto de telefono, esto es para poder utilizar una maskara de dijitos
 import Boton from '../components/Button/Boton';
@@ -20,7 +20,7 @@ const SignUp = () => {
     const navigation = useNavigation();
 
 
-    
+
     // constante para cerar sesion (simplemente redirije al login si la accion esta completada)
     const goToLogin = () => {
         navigation.navigate('LoginScreen')
@@ -45,13 +45,56 @@ const SignUp = () => {
 
     // Logica para crear un nuevo cliente
     const handelagregarCliente = async () => {
+
+        if (!nombre || !apellido || !telefono || !alias || !direccion || !correo || !clave || !claveConfirmar) {
+            alert('Todos los campos son obligatorios.');
+            return;
+        }
+
+        // Pequeñas validaciones para que al momento de crear una cuenta, el usuario pueda distinguir de una mejor forma
+        // cual es el problema por el que no puede crear su cuenta
+
+        if (nombre.length < 4) {
+            Alert.alert('Nombre inválido', 'El nombre debe tener al menos 4 caracteres.');
+            return;
+        }
+
+        if (apellido.length < 4) {
+            Alert.alert('Apellido inválido','El apellido debe tener al menos 4 caracteres.');
+            return;
+        }
+
+        if (alias.length < 6) {
+            alert('El alias debe tener al menos una lonjitud de 6 caracteres');
+            return;
+        }
+
+        if (!/^[267]\d{3}-\d{4}$/.test(telefono)) {
+            alert('El teléfono debe tener el formato (2, 6, 7)###-####');
+            return;
+        }
+
+        if (clave.length < 8) {
+            alert('La contraseña debe de ser de al menos 8 carecteres');
+            return;
+        }
+
+
+        // /\S+@\S+\.\S+/: Esta es la expresión regular utilizada para validar el formato de un correo electrónico.
+        if (!/\S+@\S+\.\S+/.test(correo)) {
+            Alert.alert('Correo inválido', 'Ingrese un correo electrónico válido.');
+            return;
+        }
+        
+
+
         if (!clavesCoinciden) {
             alert('Las contraseñas no coinciden.');
             return;
         }
 
         try {
-            const url = `http://${ip}/pagina-web/api/services/public/cliente.php?action=CreateRow`;
+            const url = `http://${ip}/pagina-web/api/services/public/cliente.php?action=signUpMovil`;
 
 
             // Se crea un nuevo objeto de "FormData" y se agrega los datos
@@ -78,11 +121,10 @@ const SignUp = () => {
 
             if (responseData === 'success') {
                 console.log('Cliente agregado exitosamente');
-                // Aca se puede (creo) agregar la accion para ir a otra pantalla
             } else {
                 console.error(responseData);
                 alert('Se ha creado su cuenta con exito');
-            }
+                goToLogin();            }
         } catch (error) {
             console.error('Error al enviar la solucitud: ', error);
             alert('Error al enviar la solicitud');

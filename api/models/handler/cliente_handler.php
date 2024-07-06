@@ -148,6 +148,14 @@ class ClienteHandler
         return false;
     }
 
+    public function createRowMovil()
+    {
+        $sql = 'INSERT INTO tb_clientes(nombre_cliente, apellido_cliente, alias_cliente, correo_cliente, telefono_cliente, residencia_cliente, pass_cliente, estado_cliente, imagen_cliente)
+                VALUES(?, ?, ?, ?, ?, ?, ?, true, ?)';
+        $params = array($this->nombre, $this->apellido, $this->alias, $this->correo, $this->telefono, $this->direccion, $this->clave, $this->imagen);
+        return Database::executeRow($sql, $params);
+    }
+
     public function readAll()
     {
         $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, correo_cliente, estado_cliente, imagen_cliente
