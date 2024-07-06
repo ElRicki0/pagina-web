@@ -22,11 +22,19 @@ const LogIn = ({ logueado, setLogueado }) => {
   const goToHome = () => {
     navigation.navigate('BottomTab')
   }
+
+
   const [correo, setUsuario] = useState('');
   const [clave, setClave] = useState('');
   const ip = '192.168.1.15';
 
   const handelLogin = async () => {
+
+    if (!correo || !clave) {
+      alert('Todos los campos son obligatorios.');
+      return;
+    }
+
     const url = `http://${ip}/pagina-web/api/services/public/cliente.php?action=logIn`;
     const formData = new FormData();
     formData.append('correo', correo);
@@ -41,7 +49,7 @@ const LogIn = ({ logueado, setLogueado }) => {
 
       if (datos.status) {
         // Muestra una alerta de éxito
-       toggleModal(); // Muestra el modal;
+        toggleModal(); // Muestra el modal;
       } else {
         // Muestra una alerta de error de sesión
         Alert.alert('Error de sesión', datos.error);
