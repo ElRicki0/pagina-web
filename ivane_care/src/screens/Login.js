@@ -3,9 +3,25 @@ import { View, StyleSheet, Text, TouchableOpacity, ImageBackground, Alert } from
 import { useNavigation } from '@react-navigation/native';
 import Input from '../components/Input/InputLogin';
 import Boton from '../components/Button/Boton';
+// Se importan dependencias para modals de alertas
+import Modal from 'react-native-modal';
+import { Provider as PaperProvider, Button as PaperButton } from 'react-native-paper';
+
 
 const LogIn = ({ logueado, setLogueado }) => {
+
+  // Constante para ocultar modal hasta que se mande a llamar la accion
+  const [isModalVisible, setModalVisible] = useState(false);
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+
   const navigation = useNavigation();
+
+  // constante iniciar sesión (simplemente redirije al home si la accion esta completada)
+  const goToHome = () => {
+    navigation.navigate('BottomTab')
+  }
   const [correo, setUsuario] = useState('');
   const [clave, setClave] = useState('');
   const ip = '192.168.1.15';
@@ -25,13 +41,7 @@ const LogIn = ({ logueado, setLogueado }) => {
 
       if (datos.status) {
         // Muestra una alerta de éxito
-        Alert.alert( '¡Bienvenido!','Inicio de sesión exitoso', [
-          { text: 'OK', onPress: () => {
-              
-              navigation.navigate('BottomTab');
-            }
-          }
-        ]);
+       toggleModal(); // Muestra el modal;
       } else {
         // Muestra una alerta de error de sesión
         Alert.alert('Error de sesión', datos.error);
@@ -90,6 +100,15 @@ const LogIn = ({ logueado, setLogueado }) => {
           <Text style={styles.signUp}>cerrar</Text>
         </TouchableOpacity>
       </View>
+      <Modal isVisible={isModalVisible}>
+        <View style={styles.modalContent}>
+          <Text style={styles.modalTitle}>¡Bienvenido!</Text>
+          <Text style={styles.modalMessage}>Inicio de sesión exitoso</Text>
+          <PaperButton mode="contained" onPress={goToHome} style={styles.modalButton}>
+            OK
+          </PaperButton>
+        </View>
+      </Modal>
     </ImageBackground>
   );
 };
@@ -131,6 +150,25 @@ const styles = StyleSheet.create({
   containerBoton: {
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  // Estilo del modal para alerta
+  modalContent: {
+    backgroundColor: 'white',
+    padding: 20,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  modalTitle: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  modalMessage: {
+    fontSize: 16,
+    marginBottom: 20,
+  },
+  modalButton: {
+    marginTop: 10,
   },
 });
 

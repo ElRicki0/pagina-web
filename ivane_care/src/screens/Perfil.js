@@ -51,14 +51,14 @@ const Perfil = (logueado, setLogueado) => {
                 <Icon name="logout" size={60} color="#6C5FFF" />
             </TouchableOpacity>
             <Modal isVisible={isModalVisible}>
-                    <View style={styles.modalContent}>
-                        <Text style={styles.modalTitle}>Sesión cerrada</Text>
-                        <Text style={styles.modalMessage}>Has cerrado sesión correctamente</Text>
-                        <PaperButton mode="contained" onPress={goToLogin} style={styles.modalButton}>
-                            OK
-                        </PaperButton>
-                    </View>
-                </Modal>
+                <View style={styles.modalContent}>
+                    <Text style={styles.modalTitle}>Sesión cerrada</Text>
+                    <Text style={styles.modalMessage}>Has cerrado sesión correctamente</Text>
+                    <PaperButton mode="contained" onPress={goToLogin} style={styles.modalButton}>
+                        OK
+                    </PaperButton>
+                </View>
+            </Modal>
         </View>
     );
 
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         textDecorationLine: 'underline',
     },
-    LogOutButton:{
+    LogOutButton: {
         position: 'absolute',
         top: 20, // Alinea el botón 20 unidades desde la parte superior
         right: 20, // Alinea el botón 20 unidades desde la izquierda
