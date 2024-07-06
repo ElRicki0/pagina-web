@@ -8,7 +8,7 @@ const LogIn = ({ logueado, setLogueado }) => {
   const navigation = useNavigation();
   const [correo, setUsuario] = useState('');
   const [clave, setClave] = useState('');
-  const ip = '192.168.185.196';
+  const ip = '192.168.1.15';
 
   const handelLogin = async () => {
     const url = `http://${ip}/pagina-web/api/services/public/cliente.php?action=logIn`;
