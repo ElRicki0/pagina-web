@@ -49,10 +49,11 @@ const HomeScreen = ({ logueado, setLogueado }) => {
         <Text style={styles.cardText}><Text style={styles.boldText}>{item.nombre_producto}</Text></Text>
         <Text style={styles.cardTextDescrip}>{item.descripcion_producto}</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <View style={{ flex: 1, height: 4, backgroundColor: '#6C5FFF', marginTop: 20, marginBottom: 30 }} />
+          <View style={{ flex: 1, height: 4, borderRadius:30, backgroundColor: '#6C5FFF', marginTop: 20, marginBottom: 10 }} />
         </View>
-        <Text style={styles.cardText}><Text style={styles.boldText}>Precio:</Text> {item.precio_producto}</Text>
-        <Text style={styles.cardText}><Text style={styles.boldText}>Cantidad:</Text> {item.cantidad_producto}</Text>
+        <Text style={styles.cardText}>
+          <Text style={styles.boldText}>$ {item.precio_producto}</Text>
+        </Text>
       </TouchableOpacity>
     );
   };
@@ -69,9 +70,7 @@ const HomeScreen = ({ logueado, setLogueado }) => {
 
   return (
     <ScrollView style={styles.scrollView}
-      persistentScrollbar={true}
-      showsVerticalScrollIndicator={false} // Oculta el indicador de desplazamiento vertical 
-    >
+      persistentScrollbar={true}>
       <View style={styles.container}>
         <View style={styles.containerSearch}>
           <Icon name="magnify" size={30} color="#0A2B32" style={styles.searchIcon} />
@@ -102,8 +101,8 @@ const HomeScreen = ({ logueado, setLogueado }) => {
           if (index % 2 === 0) {
             return (
               <View style={styles.row}>
-                {renderProductCard({ item })} 
-                {index + 1 < ProductosL.length && renderProductCard({ item: ProductosL[index + 1] })} 
+                {renderProductCard({ item })}
+                {index + 1 < ProductosL.length && renderProductCard({ item: ProductosL[index + 1] })}
               </View>
             );
           } else {
@@ -172,8 +171,9 @@ const styles = StyleSheet.create({
   },
   // estilo de cards prueba base
   card: {
-    backgroundColor: '#fff',
+    backgroundColor: '#E7E7E7',
     width: 180, // Añadido para limitar el ancho de la tarjeta
+    height: 430,
     borderRadius: 10,
     padding: 20,
     marginBottom: 20,
@@ -189,20 +189,14 @@ const styles = StyleSheet.create({
   cardImage: {
     alignItems: 'center',
   },
-  cardTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 10,
-    color: '#333',
-  },
   cardText: {
     fontSize: 16,
     marginBottom: 5,
-    color: '#555',
+    color: '#260035',
     textAlign: 'center',
   },
   cardTextDescrip: {
-    fontSize: 14,
+    fontSize: 13,
     flexWrap: 'wrap', // Permite que el texto se ajuste a múltiples líneas si es necesario
   },
   boldText: {
