@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ImageBackground, ScrollView, TouchableOpacity, Image, FlatList } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground, ScrollView, TouchableOpacity, Image, FlatList ,RefreshControl} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Boton from '../components/Button/Boton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; // Importa el paquete de iconos
@@ -60,6 +60,17 @@ const Productos = () => {
   };
 
 
+  // constante para refrescar la pagina 
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      getProductos(); // Se manda a llamar de nuevo a getProductos para refrescar los datos
+      setRefreshing(false);
+    }, 2000);
+  }, []);
+
   const irAMarcas = () => {
     navigation.navigate('Marcas');
   };
@@ -75,7 +86,10 @@ const Productos = () => {
     <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}>
       <ScrollView style={styles.scrollView}
         persistentScrollbar={true}
-        showsVerticalScrollIndicator={false} // Oculta el indicador de desplazamiento vertical 
+        showsVerticalScrollIndicator={false} // Oculta el indicador de desplazamiento vertical
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        } 
       >
         <View style={styles.container}>
 
