@@ -21,7 +21,7 @@ const HomeScreen = ({ logueado, setLogueado }) => {
 
   const getProductos = async () => {
     try {
-      const response = await fetch(`http://${ip}/pagina-web/api/services/public/producto.php?action=readAll`, {
+      const response = await fetch(`http://${ip}/pagina-web/api/services/public/producto.php?action=read8Products`, {
         method: 'GET',
       });
 
@@ -39,11 +39,18 @@ const HomeScreen = ({ logueado, setLogueado }) => {
 
   // constante para renderizar los item de los productos
   const renderProductCard = ({ item }) => {
+    const imageUrl = `http://${ip}/pagina-web/api/images/productos/${item.imagen_producto}`;
+
     return (
       <TouchableOpacity style={styles.card}>
-        <Text style={styles.cardText}><Text style={styles.boldText}>imagen:</Text> {item.imagen_producto}</Text>
-        <Text style={styles.cardText}><Text style={styles.boldText}>Nombre:</Text> {item.nombre_producto}</Text>
-        <Text style={styles.cardText}><Text style={styles.boldText}>descripcion:</Text> {item.descripcion_producto}</Text>
+        <View style={styles.cardImage}>
+          <Image source={{ uri: imageUrl }} style={styles.productImage} />
+        </View>
+        <Text style={styles.cardText}><Text style={styles.boldText}>{item.nombre_producto}</Text></Text>
+        <Text style={styles.cardTextDescrip}>{item.descripcion_producto}</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <View style={{ flex: 1, height: 4, backgroundColor: '#6C5FFF', marginTop: 20, marginBottom: 30 }} />
+        </View>
         <Text style={styles.cardText}><Text style={styles.boldText}>Precio:</Text> {item.precio_producto}</Text>
         <Text style={styles.cardText}><Text style={styles.boldText}>Cantidad:</Text> {item.cantidad_producto}</Text>
       </TouchableOpacity>
@@ -58,12 +65,6 @@ const HomeScreen = ({ logueado, setLogueado }) => {
   const handleSearch = (text) => {
     setSearchQuery(text);
     // Aquí podrías implementar la lógica para filtrar o buscar según 'text'
-  };
-
-  // Nada mas es prueba para ver como mando a llamar un componente
-  const handlePress = () => {
-    // Función que maneja el onPress del botón
-    console.log('Botón presionado');
   };
 
   return (
@@ -82,50 +83,36 @@ const HomeScreen = ({ logueado, setLogueado }) => {
           />
         </View>
         <Image source={require('../img/Portadita.png')} />
+      </View>
 
-        <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 23, marginBottom: 23 }}>
-          <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />
-          <View>
-            <Text style={{
-              width: 90, textAlign: 'center', fontWeight: 'bold', fontSize: 16, color: '#6C5FFF'
-            }}>Nuestros productos</Text>
-          </View>
-          <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />
-        </View>
-      </View>
-      <View style={styles.flatListContainer}>
-        <FlatList
-          data={ProductosLista}
-          horizontal={true}
-          renderItem={({ item }) => (
-            <View style={styles.cardContainer}>
-              <Image source={item.src} style={styles.image} />
-              <Text style={styles.title}>{item.title}</Text>
-              <Text style={styles.description}>{item.numero}</Text>
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <View style={{ flex: 1, height: 1, backgroundColor: 'black', marginTop: 20, marginBottom: 30 }} />
-              </View>
-            </View>
-          )}
-          keyExtractor={(item) => item.id}
-        />
-      </View>
 
       <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 23, marginBottom: 23 }}>
         <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />
         <View>
           <Text style={{
             width: 90, textAlign: 'center', fontWeight: 'bold', fontSize: 16, color: '#6C5FFF'
-          }}>Nuestros productos base</Text>
+          }}>Nuestros productos </Text>
         </View>
         <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />
       </View>
-
       <FlatList
-        data={ProductosL}
-        renderItem={renderProductCard}
-        keyExtractor={(item) => item.id_producto.toString()}
+        data={ProductosL} // Los datos que se van a renderizar en la lista
+        renderItem={({ item, index }) => {
+          // Si el índice es par, se renderiza una fila con dos tarjetas
+          if (index % 2 === 0) {
+            return (
+              <View style={styles.row}>
+                {renderProductCard({ item })} 
+                {index + 1 < ProductosL.length && renderProductCard({ item: ProductosL[index + 1] })} 
+              </View>
+            );
+          } else {
+            return null; // Si el índice es impar, no se renderiza nada
+          }
+        }}
+        keyExtractor={(item) => item.id_producto.toString()} // Clave única para cada elemento de la lista
       />
+
     </ScrollView>
 
   );
@@ -183,53 +170,10 @@ const styles = StyleSheet.create({
     marginRight: 5,
     marginLeft: 5,
   },
-  // Estilo de cards
-  flatListContainer: {
-    height: 250, // Altura fija para evitar el crecimiento automático
-    marginHorizontal: 5,
-    alignItems: 'center',
-  },
-  cardContainer: {
-    backgroundColor: '#fff',
-    borderRadius: 25,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 10,
-    marginBottom: 10,
-    marginHorizontal: 5,
-    marginVertical: 10,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-    alignItems: 'center',
-    width: 150, // Añadido para limitar el ancho de la tarjeta
-  },
-  image: {
-    width: 100,
-    height: 100,
-    marginBottom: 10,
-  },
-  title: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    textAlign: 'center', // Asegura que el texto esté centrado horizontalmente
-    marginBottom: 5, // Añadido para espacio entre título y descripción
-  },
-  description: {
-    fontSize: 14,
-    textAlign: 'center',
-    flexWrap: 'wrap', // Permite que el texto se ajuste a múltiples líneas si es necesario
-  },
-
-
   // estilo de cards prueba base
   card: {
     backgroundColor: '#fff',
+    width: 180, // Añadido para limitar el ancho de la tarjeta
     borderRadius: 10,
     padding: 20,
     marginBottom: 20,
@@ -242,6 +186,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
+  cardImage: {
+    alignItems: 'center',
+  },
   cardTitle: {
     fontSize: 18,
     fontWeight: 'bold',
@@ -252,8 +199,25 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 5,
     color: '#555',
+    textAlign: 'center',
+  },
+  cardTextDescrip: {
+    fontSize: 14,
+    flexWrap: 'wrap', // Permite que el texto se ajuste a múltiples líneas si es necesario
   },
   boldText: {
     fontWeight: 'bold',
+  },
+  productImage: {
+    width: 150, // Ajusta el tamaño según sea necesario
+    height: 150, // Ajusta el tamaño según sea necesario
+    marginBottom: 10,
+    borderRadius: 10, // Opcional, para darle bordes redondeados a la imagen
+    alignItems: 'center',
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20, // Espacio entre las filas
   },
 });
