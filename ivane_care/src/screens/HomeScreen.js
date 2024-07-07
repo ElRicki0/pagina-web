@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, TextInput, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, TextInput, FlatList, TouchableOpacity, RefreshControl } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Productos from '../components/Data/ProductosMuestra';
 import Boton from '../components/Button/Boton'; // Se importa el componente de boton para poder usarlo 
 
 
 const ip = '192.168.1.15'; // Dirección IP del servidor 
 
 const HomeScreen = ({ logueado, setLogueado }) => {
-
-  const ProductosLista = Productos;
 
   // Funcion para mostrar productos segun la base
   const [ProductosL, setProductosL] = useState([]);
@@ -36,6 +33,16 @@ const HomeScreen = ({ logueado, setLogueado }) => {
     }
   };
 
+  // constante para refrescar la pagina 
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      getProductos(); // Se manda a llamar de nuevo a getProductos para refrescar los datos
+      setRefreshing(false);
+    }, 2000);
+  }, []);
 
   // constante para renderizar los item de los productos
   const renderProductCard = ({ item }) => {
@@ -49,7 +56,7 @@ const HomeScreen = ({ logueado, setLogueado }) => {
         <Text style={styles.cardText}><Text style={styles.boldText}>{item.nombre_producto}</Text></Text>
         <Text style={styles.cardTextDescrip}>{item.descripcion_producto}</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <View style={{ flex: 1, height: 4, borderRadius:30, backgroundColor: '#6C5FFF', marginTop: 20, marginBottom: 10 }} />
+          <View style={{ flex: 1, height: 4, borderRadius: 30, backgroundColor: '#6C5FFF', marginTop: 20, marginBottom: 10 }} />
         </View>
         <Text style={styles.cardText}>
           <Text style={styles.boldText}>$ {item.precio_producto}</Text>
@@ -69,8 +76,13 @@ const HomeScreen = ({ logueado, setLogueado }) => {
   };
 
   return (
-    <ScrollView style={styles.scrollView}
-      persistentScrollbar={true}>
+    <ScrollView
+      style={styles.scrollView}
+      persistentScrollbar={true}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+    >
       <View style={styles.container}>
         <View style={styles.containerSearch}>
           <Icon name="magnify" size={30} color="#0A2B32" style={styles.searchIcon} />
@@ -89,8 +101,8 @@ const HomeScreen = ({ logueado, setLogueado }) => {
         <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />
         <View>
           <Text style={{
-            width: 90, textAlign: 'center', fontWeight: 'bold', fontSize: 16, color: '#6C5FFF'
-          }}>Nuestros productos </Text>
+            width: 130, textAlign: 'center', fontWeight: 'bold', fontSize: 16, color: '#6C5FFF'
+          }}>Algunos de Nuestros productos </Text>
         </View>
         <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />
       </View>
