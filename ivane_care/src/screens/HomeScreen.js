@@ -82,6 +82,7 @@ const HomeScreen = ({ logueado, setLogueado }) => {
       refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }
+      showsVerticalScrollIndicator={false} // Oculta el indicador de desplazamiento vertical 
     >
       <View style={styles.container}>
         <View style={styles.containerSearch}>
