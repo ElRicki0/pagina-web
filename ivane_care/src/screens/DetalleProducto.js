@@ -9,7 +9,7 @@ import Boton2 from '../components/Button/BotonFavorito';
 
 
 
-const ip = '192.168.1.15'; // Dirección IP del servidor 
+const ip = '192.168.137.1'; // Dirección IP del servidor 
 
 const DetailProduct = ({ route }) => {
 
