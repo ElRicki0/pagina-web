@@ -1,33 +1,58 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet,Button  } from 'react-native';
-import Modal from 'react-native-modal';
-import { Provider as PaperProvider, Button as PaperButton } from 'react-native-paper';
+import { View, Text, StyleSheet, Button, ScrollView, TouchableOpacity } from 'react-native';
 import Boton from '../components/Button/Boton';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 
 const Carrito = () => {
-    const [isModalVisible, setModalVisible] = useState(false);
-
-    const toggleModal = () => {
-        setModalVisible(!isModalVisible);
-    };
-
     return (
-        <PaperProvider>
+        <ScrollView style={styles.scrollView}
+            persistentScrollbar={true}
+            showsVerticalScrollIndicator={false} // Oculta el indicador de desplazamiento vertical
+        >
             <View style={styles.container}>
-                <Boton  textoBoton="Crear cuenta" accionBoton={toggleModal} />
-
-                <Modal isVisible={isModalVisible}>
-                    <View style={styles.modalContent}>
-                        <Text style={styles.modalTitle}>Custom Alert</Text>
-                        <Text style={styles.modalMessage}>This is a custom alert message.</Text>
-                        <PaperButton mode="contained" onPress={toggleModal} style={styles.modalButton}>
-                            OK
-                        </PaperButton>
-                    </View>
-                </Modal>
+                <View style={styles.card}>
+                    <Text style={styles.cardText}><Text style={styles.boldText}>Productos:Delineador, maquillaje facial, crema facial</Text> </Text>
+                    <Text style={styles.cardText}><Text style={styles.boldText}>Cantidad: 200</Text> </Text>
+                    <Text style={styles.cardText}><Text style={styles.boldText}>Total a pagar: $300</Text> </Text>
+                    <TouchableOpacity style={styles.cartButton}>
+                        <Ionicons name="cart" size={24} color="white" />
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.card}>
+                    <Text style={styles.cardText}><Text style={styles.boldText}>Productos:Delineador, maquillaje facial, crema facial</Text> </Text>
+                    <Text style={styles.cardText}><Text style={styles.boldText}>Cantidad: 200</Text> </Text>
+                    <Text style={styles.cardText}><Text style={styles.boldText}>Total a pagar: $300</Text> </Text>
+                    <TouchableOpacity style={styles.cartButton}>
+                        <Ionicons name="cart" size={24} color="white" />
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.card}>
+                    <Text style={styles.cardText}><Text style={styles.boldText}>Productos:Delineador, maquillaje facial, crema facial</Text> </Text>
+                    <Text style={styles.cardText}><Text style={styles.boldText}>Cantidad: 200</Text> </Text>
+                    <Text style={styles.cardText}><Text style={styles.boldText}>Total a pagar: $300</Text> </Text>
+                    <TouchableOpacity style={styles.cartButton}>
+                        <Ionicons name="cart" size={24} color="white" />
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.card}>
+                    <Text style={styles.cardText}><Text style={styles.boldText}>Productos:Delineador, maquillaje facial, crema facial</Text> </Text>
+                    <Text style={styles.cardText}><Text style={styles.boldText}>Cantidad: 200</Text> </Text>
+                    <Text style={styles.cardText}><Text style={styles.boldText}>Total a pagar: $300</Text> </Text>
+                    <TouchableOpacity style={styles.cartButton}>
+                        <Ionicons name="cart" size={24} color="white" />
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.card}>
+                    <Text style={styles.cardText}><Text style={styles.boldText}>Productos:Delineador, maquillaje facial, crema facial</Text> </Text>
+                    <Text style={styles.cardText}><Text style={styles.boldText}>Cantidad: 200</Text> </Text>
+                    <Text style={styles.cardText}><Text style={styles.boldText}>Total a pagar: $300</Text> </Text>
+                    <TouchableOpacity style={styles.cartButton}>
+                        <Ionicons name="cart" size={24} color="white" />
+                    </TouchableOpacity>
+                </View>
             </View>
-        </PaperProvider>
+        </ScrollView>
     );
 };
 
@@ -36,24 +61,51 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        marginTop: 20,
     },
-    modalContent: {
-        backgroundColor: 'white',
-        padding: 20,
+    scrollView: {
+        backgroundColor: 'transparent',
+        marginHorizontal: 20,
+    },
+    card: {
+        backgroundColor: '#fff',
+        width: 330, // Añadido para limitar el ancho de la tarjeta
         borderRadius: 10,
+        padding: 20,
+        marginBottom: 20,
+        elevation: 10,
+        shadowColor: '#7600A5',
+        shadowOffset: {
+            width: 5,
+            height: 4,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 3.0,
+    },
+    cardImage: {
         alignItems: 'center',
     },
-    modalTitle: {
-        fontSize: 25,
+    cardTitle: {
+        fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 10,
+        color: '#333',
     },
-    modalMessage: {
+    cardText: {
         fontSize: 16,
-        marginBottom: 20,
+        marginBottom: 5,
+        color: '#555',
     },
-    modalButton: {
-        marginTop: 10,
+    boldText: {
+        fontWeight: 'bold',
+    },
+    cartButton: {
+        marginTop: 16,
+        padding: 10,
+        backgroundColor: '#6200EE',
+        borderRadius: 8,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 });
 

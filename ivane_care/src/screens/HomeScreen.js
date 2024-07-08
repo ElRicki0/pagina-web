@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, TextInput, FlatList, TouchableOpacity, RefreshControl } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Boton from '../components/Button/Boton'; // Se importa el componente de boton para poder usarlo 
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 
 const ip = '192.168.1.15'; // Dirección IP del servidor 
@@ -61,6 +62,9 @@ const HomeScreen = ({ logueado, setLogueado }) => {
         <Text style={styles.cardText}>
           <Text style={styles.boldText}>$ {item.precio_producto}</Text>
         </Text>
+        <TouchableOpacity style={styles.cartButton}>
+          <Ionicons name="cart" size={24} color="white" />
+        </TouchableOpacity>
       </TouchableOpacity>
     );
   };
@@ -181,6 +185,14 @@ const styles = StyleSheet.create({
   searchIcon: {
     marginRight: 5,
     marginLeft: 5,
+  },
+  cartButton: {
+    marginTop: 16,
+    padding: 10,
+    backgroundColor: '#6200EE',
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   // estilo de cards prueba base
   card: {
