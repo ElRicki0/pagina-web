@@ -5,6 +5,7 @@ import Marcas from '../screens/Marcas';
 import Categorias from '../screens/Categoria';
 import DetalleProducto from '../screens/DetalleProducto';
 import Carrito from '../screens/Carrito';
+import Favorito from '../screens/Favoritos';
 
 const ProductosStack = createStackNavigator();
 
@@ -30,9 +31,14 @@ const ProductosStackScreen = ({ route }) => (
       component={DetalleProducto}
       options={{ headerShown: false }}
     />
-     <ProductosStack.Screen
+    <ProductosStack.Screen
       name="Carrito"
       component={Carrito}
+      options={{ headerShown: false }}
+    />
+    <ProductosStack.Screen
+      name="Favorito"
+      component={Favorito}
       options={{ headerShown: false }}
     />
   </ProductosStack.Navigator>

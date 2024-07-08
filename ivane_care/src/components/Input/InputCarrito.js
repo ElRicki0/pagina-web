@@ -25,9 +25,10 @@ export default function Input({ placeHolder, setValor, clave, setTextChange }) {
 
 const styles = StyleSheet.create({
     Input: {
+        marginVertical: 5,
         color: "black",
-        fontWeight: '600',
-        width: 200,
+        fontWeight: '500',
+        width: 170,
         height: 40, // Ajusta la altura según sea necesario
         borderRadius: 20, // Redondeo de los bordes
         borderColor: '#0E333B',

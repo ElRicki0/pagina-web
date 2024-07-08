@@ -17,11 +17,11 @@ export default Boton;
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: '#6C5FFF',
+        backgroundColor: '#AD002F',
         padding: 7,
         margin: 10,
         borderRadius: 10,
-        width: 100,
+        width: 140,
         marginVertical: 5,
         alignItems: 'center',
         justifyContent: 'center',

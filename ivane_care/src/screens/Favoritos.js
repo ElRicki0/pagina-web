@@ -6,7 +6,7 @@ import { View, Text, StyleSheet } from 'react-native';
 export default function Carrito() {
     return (
         <View style={styles.container}>
-            <Text>Carrito </Text>
+            <Text>Favoritos </Text>
             {/* Aquí puedes agregar más contenido de la pantalla */}
         </View>
     );
