@@ -1,19 +1,16 @@
-// ProfileScreen.js
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ImageBackground, ScrollView, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Alert, TouchableOpacity     } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Modal from 'react-native-modal';
 import { Provider as PaperProvider, Button as PaperButton } from 'react-native-paper';
 import Boton from '../components/Button/Boton';
 import Input from '../components/Input/InputPerfil';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 
 const ip = '192.168.137.1'; // Dirección IP del servidor 
 
-const EditarPerfil = (logueado, setLogueado) => {
-    const [isModalVisible, setModalVisible] = useState(false);
-
+const EditarPerfil = ({ logueado, setLogueado }) => {
     const [Perfil, setPerfil] = useState({
         nombre_cliente: '',
         apellido_cliente: '',
@@ -23,13 +20,11 @@ const EditarPerfil = (logueado, setLogueado) => {
         correo_cliente: ''
     });
 
-    // Constante para obtener los datos del cliente
     const getCliente = async () => {
         try {
             const response = await fetch(`http://${ip}/pagina-web/api/services/public/cliente.php?action=readProfile`, {
                 method: 'GET',
             });
-
             const data = await response.json();
             if (data.status === 1 && data.dataset) {
                 setPerfil(data.dataset);
@@ -46,83 +41,64 @@ const EditarPerfil = (logueado, setLogueado) => {
         getCliente();
     }, []);
 
-    const toggleModal = () => {
-        setModalVisible(!isModalVisible);
-    };
-
     const navigation = useNavigation();
 
-    // constante para cerar sesion (simplemente redirije al login si la accion esta completada)
     const goToEdit = () => {
         navigation.navigate('EditPerfilScreen')
     }
 
-
     return (
         <View style={styles.container}>
+            <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+                <Ionicons name="arrow-back" size={60} color="#6C5FFF" />
+            </TouchableOpacity>
             <ScrollView style={styles.scrollView}
                 persistentScrollbar={true}
                 contentContainerStyle={styles.scrollViewContent}
-                showsVerticalScrollIndicator={false} // Oculta el indicador de desplazamiento vertical 
+                showsVerticalScrollIndicator={false}
             >
                 <Text style={styles.Text}>Nombre</Text>
                 <Input
                     placeHolder='Nombre...'
                     style={styles.input}
                     value={Perfil.nombre_cliente}
-                    editable={false}
                 />
                 <Text style={styles.Text}>Apellido</Text>
                 <Input
                     placeHolder='Nombre...'
                     style={styles.input}
                     value={Perfil.apellido_cliente}
-                    editable={false}
                 />
                 <Text style={styles.Text}>Correo</Text>
                 <Input
                     placeHolder='Correo...'
                     style={styles.input}
                     value={Perfil.correo_cliente}
-                    editable={false}
                 />
                 <Text style={styles.Text}>Usuario</Text>
                 <Input
                     placeHolder='Usuario...'
                     style={styles.input}
                     value={Perfil.alias_cliente}
-                    editable={false}
                 />
                 <Text style={styles.Text}>telefono</Text>
                 <Input
                     placeHolder='Telefono...'
                     style={styles.input}
                     value={Perfil.telefono_cliente}
-                    editable={false}
                 />
                 <Text style={styles.Text}>Dirección</Text>
                 <Input
                     placeHolder='Direccion...'
                     style={styles.input}
                     value={Perfil.residencia_cliente}
-                    editable={false}
                 />
                 <View style={styles.containerBoton}>
-                            <Boton textoBoton="Editar Perfil" accionBoton={goToEdit} />
-                        </View>
-            </ScrollView>
-            <Modal isVisible={isModalVisible}>
-                <View style={styles.modalContent}>
-                    <Text style={styles.modalTitle}>Sesión cerrada</Text>
-                    <Text style={styles.modalMessage}>Has cerrado sesión correctamente</Text>
-                    <PaperButton mode="contained" onPress={goToLogin} style={styles.modalButton}>
-                        OK
-                    </PaperButton>
+                    <Boton textoBoton="Guardar" accionBoton={goToEdit} />
                 </View>
-            </Modal>
+            </ScrollView>
         </View>
     );
-
 }
 const styles = StyleSheet.create({
     container: {
@@ -136,32 +112,8 @@ const styles = StyleSheet.create({
         color: '#0B003D',
         textDecorationStyle: 'double',
         fontSize: 24,
-        textAlign: 'left', // Alinea el texto a la izquierda
-        alignSelf: 'flex-start', // Asegura que el contenedor también se alinee a la izquierda 
-    },
-    LogOutButton: {
-        position: 'absolute',
-        top: 20, // Alinea el botón 20 unidades desde la parte superior
-        right: 20, // Alinea el botón 20 unidades desde la izquierda
-    },
-    // Estilo del modal para alerta
-    modalContent: {
-        backgroundColor: 'white',
-        padding: 20,
-        borderRadius: 10,
-        alignItems: 'center',
-    },
-    modalTitle: {
-        fontSize: 25,
-        fontWeight: 'bold',
-        marginBottom: 10,
-    },
-    modalMessage: {
-        fontSize: 16,
-        marginBottom: 20,
-    },
-    modalButton: {
-        marginTop: 10,
+        textAlign: 'left',
+        alignSelf: 'flex-start',
     },
     containerTittle: {
         marginVertical: 20,
@@ -174,7 +126,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 6 },
         shadowOpacity: 0.3,
         shadowRadius: 10,
-        elevation: 7, // Solo para Android
+        elevation: 7,
         marginBottom: 20,
         borderRadius: 10,
     },
@@ -184,31 +136,22 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
-    Text: {
-        marginTop: 20,
-        marginBottom: 10,
-        marginLeft: 30,
-        color: '#0B003D',
-        textDecorationStyle: 'double',
-        fontSize: 24,
-        textAlign: 'left', // Alinea el texto a la izquierda
-        alignSelf: 'flex-start', // Asegura que el contenedor también se alinee a la izquierda 
-    },
     inputMask: {
         color: "black",
         fontWeight: '900',
         width: 300,
-        height: 50, // Ajusta la altura según sea necesario
-        borderRadius: 20, // Redondeo de los bordes
+        height: 50,
+        borderRadius: 20,
         borderColor: 'black',
         borderWidth: 4,
-        backgroundColor: '#FFFFFF', // Color de fondo del input
+        backgroundColor: '#FFFFFF',
         paddingHorizontal: 19,
         marginBottom: 4,
         fontSize: 17,
     },
     scrollView: {
         flex: 1,
+        marginTop: 30,
     },
     scrollViewContent: {
         flexGrow: 1,
@@ -216,4 +159,3 @@ const styles = StyleSheet.create({
 });
 
 export default EditarPerfil;
-

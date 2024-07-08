@@ -49,6 +49,7 @@ const LogIn = ({ logueado, setLogueado }) => {
 
       if (datos.status) {
         // Muestra una alerta de éxito
+        setLogueado(!logueado);
         toggleModal(); // Muestra el modal;
       } else {
         // Muestra una alerta de error de sesión

@@ -7,6 +7,8 @@ import FavoritoScreen from '../screens/Favoritos';
 import PerfilScreen from '../screens/Perfil';
 import ProductosStackScreen from '../navegation/ProductosStack';
 
+import LoginStackScreen from '../navegation/LogInStack';
+
 const Tab = createBottomTabNavigator();
 
 const  
@@ -68,6 +70,14 @@ BottomTab = ({ setLogueado, logueado }) => {
           title: 'Productos',
         }}
         // initialParams={{ logueado, setLogueado }}
+      />
+      <Tab.Screen
+        name="LoginStackScreen"
+        component={LoginStackScreen}
+        options={({route}) => ({
+          tabBarButton:() => null,
+          headerShown: false
+        })}
       />
       <Tab.Screen
         name="CarritoScreen"

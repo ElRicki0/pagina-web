@@ -80,10 +80,8 @@ const HomeScreen = ({ logueado, setLogueado }) => {
     <ScrollView
       style={styles.scrollView}
       persistentScrollbar={true}
-      refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-      }
-      showsVerticalScrollIndicator={false} // Oculta el indicador de desplazamiento vertical 
+      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+      showsVerticalScrollIndicator={false} // Oculta el indicador de desplazamiento vertical
     >
       <View style={styles.container}>
         <View style={styles.containerSearch}>
@@ -95,41 +93,24 @@ const HomeScreen = ({ logueado, setLogueado }) => {
             value={searchQuery}
           />
         </View>
-        <Image source={require('../img/Portadita.png')} />
+        <Image source={require('../img/Portadita.png')} style={styles.image} />
       </View>
-
-
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 23, marginBottom: 23 }}>
-        <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />
-        <View>
-          <Text style={{
-            width: 130, textAlign: 'center', fontWeight: 'bold', fontSize: 16, color: '#6C5FFF'
-          }}>Algunos de Nuestros productos </Text>
-        </View>
-        <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />
+      <View style={styles.separatorContainer}>
+        <View style={styles.separatorLine} />
+        <Text style={styles.separatorText}>Algunos de Nuestros productos</Text>
+        <View style={styles.separatorLine} />
       </View>
-      <FlatList
-        data={ProductosL} // Los datos que se van a renderizar en la lista
-        renderItem={({ item, index }) => {
-          // Si el índice es par, se renderiza una fila con dos tarjetas
-          if (index % 2 === 0) {
-            return (
-              <View style={styles.row}>
-                {renderProductCard({ item })}
-                {index + 1 < ProductosL.length && renderProductCard({ item: ProductosL[index + 1] })}
-              </View>
-            );
-          } else {
-            return null; // Si el índice es impar, no se renderiza nada
-          }
-        }}
-        keyExtractor={(item) => item.id_producto.toString()} // Clave única para cada elemento de la lista
-      />
-
+      {ProductosL.map((item, index) => (
+        index % 2 === 0 ? (
+          <View style={styles.row} key={item.id_producto.toString()}>
+            {renderProductCard({ item })}
+            {index + 1 < ProductosL.length && renderProductCard({ item: ProductosL[index + 1] })}
+          </View>
+        ) : null
+      ))}
     </ScrollView>
-
   );
-}
+};
 
 export default HomeScreen;
 

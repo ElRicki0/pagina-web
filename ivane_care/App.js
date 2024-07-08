@@ -14,8 +14,6 @@ const Stack = createStackNavigator();
 
 
 export const App = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  
   const [logueado, setLogueado] = useState(false);
 
 
