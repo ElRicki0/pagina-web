@@ -50,6 +50,25 @@ ademas contamos con dos versiones, escritorio y aplicacion movil, em ambas se re
 - Nombre de funciones: camelCase (setId)
 - Nombres de metodos (case) : camelCase(createRow)
 
+## Dependencias Utilizadas
+
+"@react-navigation/bottom-tabs": "^6.5.20",
+    "@react-navigation/native": "^6.1.17",
+    "@react-navigation/stack": "^6.3.29",
+    "expo": "~51.0.14",
+    "expo-status-bar": "~1.12.1",
+    "react": "18.2.0",
+    "react-native": "0.74.2",
+    "react-native-gesture-handler": "~2.16.1",
+    "react-native-masked-text": "^1.13.0",
+    "react-native-modal": "^13.0.1",
+    "react-native-paper": "^5.12.3",
+    "react-native-reanimated": "~3.10.1",
+    "react-native-safe-area-context": "4.10.1",
+    "react-native-screens": "3.31.1",
+    "react-native-vector-icons": "^10.1.0"
+
+
 *Integrantes*
 
 - Jeremy Leandro Castro Moreno
