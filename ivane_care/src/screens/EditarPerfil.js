@@ -11,7 +11,7 @@ import Input from '../components/Input/InputPerfil';
 
 const ip = '192.168.137.1'; // Dirección IP del servidor 
 
-const Perfil = (logueado, setLogueado) => {
+const EditarPerfil = (logueado, setLogueado) => {
     const [isModalVisible, setModalVisible] = useState(false);
 
     const [Perfil, setPerfil] = useState({
@@ -53,36 +53,13 @@ const Perfil = (logueado, setLogueado) => {
     const navigation = useNavigation();
 
     // constante para cerar sesion (simplemente redirije al login si la accion esta completada)
-    const goToLogin = () => {
-        navigation.navigate('LoginScreen')
+    const goToEdit = () => {
+        navigation.navigate('EditPerfilScreen')
     }
-
-    // console.log(goToLogin());
-    //Constante de cierre de sesión
-    const handleLogOut = async () => {
-        const url = `http://${ip}/pagina-web/api/services/public/cliente.php?action=logOut`;
-        try {
-            const fetchApi = await fetch(url);
-            const datos = await fetchApi.json();
-            if (datos.status) {
-                console.log("data.status dentro de")
-                toggleModal(); // Muestra el modal
-                setLogueado(false); // Actualiza el estado de logueado
-            } else {
-                Alert.alert('Error al cerrar sesión', datos.error);
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            Alert.alert('Error', 'No se pudo conectar con el servidor.');
-        }
-    };
 
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.LogOutButton} onPress={handleLogOut}>
-                <Icon name="logout" size={60} color="#6C5FFF" />
-            </TouchableOpacity>
             <ScrollView style={styles.scrollView}
                 persistentScrollbar={true}
                 contentContainerStyle={styles.scrollViewContent}
@@ -131,12 +108,8 @@ const Perfil = (logueado, setLogueado) => {
                     editable={false}
                 />
                 <View style={styles.containerBoton}>
-                    <Boton textoBoton="Editar" accionBoton={goToLogin} />
-                </View>
-
-                <View style={styles.containerBoton}>
-                    <Boton textoBoton="Cerrar" accionBoton={handleLogOut} />
-                </View>
+                            <Boton textoBoton="Editar Perfil" accionBoton={goToEdit} />
+                        </View>
             </ScrollView>
             <Modal isVisible={isModalVisible}>
                 <View style={styles.modalContent}>
@@ -242,5 +215,5 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Perfil;
+export default EditarPerfil;
 

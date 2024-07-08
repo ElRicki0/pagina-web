@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from '../screens/Login';
 import SignUpScreen from '../screens/SignUp';
 import PerfilScreen from '../screens/Perfil';
+import EditPerfilScreen from '../screens/EditarPerfil';
 import SplashScreen from '../screens/SplashScreen';
 import BottomTab from '../navegation/BottonTab';
 
@@ -37,6 +38,12 @@ const LoginStackScreen = ({ logueado, setLogueado }) => {
         options={{ headerShown: false }}
       >
         {(props) => <PerfilScreen {...props} />}
+      </Stack.Screen>
+      <Stack.Screen
+        name='EditPerfilScreen'
+        options={{ headerShown: false }}
+      >
+        {(props) => <EditPerfilScreen {...props} />}
       </Stack.Screen>
     </Stack.Navigator>
   );
