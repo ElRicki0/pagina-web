@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ImageBackground, ScrollView, TouchableOpacity, Image, FlatList ,RefreshControl} from 'react-native';
+import { View, Text, StyleSheet, ImageBackground, ScrollView, TouchableOpacity, Image, FlatList, RefreshControl } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Boton from '../components/Button/Boton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; // Importa el paquete de iconos
@@ -44,13 +44,13 @@ const Productos = () => {
 
     return (
       <TouchableOpacity style={styles.card}
-      onPress={() => navigation.navigate('DetalleProducto', { 
-        id: item.id_producto,
-        nombre: item.nombre_producto,
-        descripcion: item.descripcion_producto,
-        precio: item.precio_producto,
-        imagen: item.imagen_producto 
-      })}>
+        onPress={() => navigation.navigate('DetalleProducto', {
+          id: item.id_producto,
+          nombre: item.nombre_producto,
+          descripcion: item.descripcion_producto,
+          precio: item.precio_producto,
+          imagen: item.imagen_producto
+        })}>
         <View style={styles.cardImage}>
           <Image source={{ uri: imageUrl }} style={styles.productImage} />
         </View>
@@ -97,7 +97,7 @@ const Productos = () => {
         showsVerticalScrollIndicator={false} // Oculta el indicador de desplazamiento vertical
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        } 
+        }
       >
         <View style={styles.container}>
 
@@ -107,24 +107,14 @@ const Productos = () => {
           </View>
         </View>
         <Text style={styles.title}>Nuestros productos</Text>
-        <FlatList
-          data={Productos} // Los datos que se van a renderizar en la lista
-          renderItem={({ item, index }) => {
-            // Si el índice es par, se renderiza una fila con dos tarjetas
-            if (index % 2 === 0) {
-              return (
-                <View style={styles.row}>
-                  {renderProductCard({ item })}
-                  {index + 1 < Productos.length && renderProductCard({ item: Productos[index + 1] })}
-                </View>
-              );
-            } else {
-              return null; // Si el índice es impar, no se renderiza nada
-            }
-          }}
-          keyExtractor={(item) => item.id_producto.toString()} // Clave única para cada elemento de la lista
-        />
-
+        {Productos.map((item, index) => (
+          index % 2 === 0 ? (
+            <View style={styles.row} key={item.id_producto.toString()}>
+              {renderProductCard({ item })}
+              {index + 1 < Productos.length && renderProductCard({ item: Productos[index + 1] })}
+            </View>
+          ) : null
+        ))}
       </ScrollView>
     </ImageBackground>
 

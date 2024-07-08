@@ -95,10 +95,14 @@ const HomeScreen = ({ logueado, setLogueado }) => {
         </View>
         <Image source={require('../img/Portadita.png')} style={styles.image} />
       </View>
-      <View style={styles.separatorContainer}>
-        <View style={styles.separatorLine} />
-        <Text style={styles.separatorText}>Algunos de Nuestros productos</Text>
-        <View style={styles.separatorLine} />
+      <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 23, marginBottom: 23 }}>
+        <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />
+        <View>
+          <Text style={{
+            width: 130, textAlign: 'center', fontWeight: 'bold', fontSize: 16, color: '#6C5FFF'
+          }}>Algunos de Nuestros productos </Text>
+        </View>
+        <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />
       </View>
       {ProductosL.map((item, index) => (
         index % 2 === 0 ? (
