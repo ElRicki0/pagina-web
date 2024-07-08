@@ -43,7 +43,14 @@ const Productos = () => {
     const imageUrl = `http://${ip}/pagina-web/api/images/productos/${item.imagen_producto}`;
 
     return (
-      <TouchableOpacity style={styles.card}>
+      <TouchableOpacity style={styles.card}
+      onPress={() => navigation.navigate('DetalleProducto', { 
+        id: item.id_producto,
+        nombre: item.nombre_producto,
+        descripcion: item.descripcion_producto,
+        precio: item.precio_producto,
+        imagen: item.imagen_producto 
+      })}>
         <View style={styles.cardImage}>
           <Image source={{ uri: imageUrl }} style={styles.productImage} />
         </View>
@@ -78,6 +85,7 @@ const Productos = () => {
   const irACategorias = () => {
     navigation.navigate('Categorias');
   };
+
 
   // Definir la ruta de la imagen de fondo con require
   const backgroundImage = require('../img/Fondo.png');

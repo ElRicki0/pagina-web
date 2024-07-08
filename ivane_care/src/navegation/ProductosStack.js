@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Productos from '../screens/Productos';
 import Marcas from '../screens/Marcas';
 import Categorias from '../screens/Categoria';
+import DetalleProducto from '../screens/DetalleProducto';
 
 const ProductosStack = createStackNavigator();
 
@@ -12,7 +13,6 @@ const ProductosStackScreen = ({ route }) => (
       name="Productos"
       component={Productos}
       options={{ headerShown: false }}
-      initialParams={{ setLogueado: route.params?.setLogueado }}
     />
     <ProductosStack.Screen
       name="Marcas"
@@ -22,6 +22,11 @@ const ProductosStackScreen = ({ route }) => (
     <ProductosStack.Screen
       name="Categorias"
       component={Categorias}
+      options={{ headerShown: false }}
+    />
+    <ProductosStack.Screen
+      name="DetalleProducto"
+      component={DetalleProducto}
       options={{ headerShown: false }}
     />
   </ProductosStack.Navigator>
