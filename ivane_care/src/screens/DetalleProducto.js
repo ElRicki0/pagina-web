@@ -108,7 +108,7 @@ const DetailProduct = ({ route }) => {
                 </View>
                 <View style={styles.CardContainer2}>
                     <Input
-                        placeHolder='Valor...'
+                        placeHolder='Cantidad...'
                         style={styles.input}
                         setValor={ValorCarrito}
                         setTextChange={setValorCarrito}
