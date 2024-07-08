@@ -62,9 +62,6 @@ const HomeScreen = ({ logueado, setLogueado }) => {
         <Text style={styles.cardText}>
           <Text style={styles.boldText}>$ {item.precio_producto}</Text>
         </Text>
-        <TouchableOpacity style={styles.cartButton}>
-          <Ionicons name="cart" size={24} color="white" />
-        </TouchableOpacity>
       </TouchableOpacity>
     );
   };
@@ -185,14 +182,6 @@ const styles = StyleSheet.create({
   searchIcon: {
     marginRight: 5,
     marginLeft: 5,
-  },
-  cartButton: {
-    marginTop: 16,
-    padding: 10,
-    backgroundColor: '#6200EE',
-    borderRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   // estilo de cards prueba base
   card: {
