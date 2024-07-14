@@ -241,4 +241,14 @@ class ProductoHandler
             ORDER BY porcentaje DESC';
         return Database::getRows($sql);
     }
+
+    public function productosMasVendidos()
+    {
+        $sql = 'SELECT p.nombre_producto, SUM(dp.cantidad_pedido) AS total_vendido
+            FROM tb_productos p
+            INNER JOIN tb_detalles_pedidos dp ON p.id_producto = dp.id_producto
+            GROUP BY p.nombre_producto
+            ORDER BY total_vendido DESC';
+        return Database::getRows($sql);
+    }
 }

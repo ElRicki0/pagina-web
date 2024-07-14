@@ -123,6 +123,92 @@ const fillSelect = async (filename, action, select, selected = null) => {
     document.getElementById(select).innerHTML = content;
 }
 
+/*
+*   Función para generar un gráfico de barras verticales.
+*   Requiere la librería chart.js para funcionar.
+*   Parámetros: canvas (identificador de la etiqueta canvas), xAxis (datos para el eje X), yAxis (datos para el eje Y), legend (etiqueta para los datos) y title (título del gráfico).
+*   Retorno: ninguno.
+*/
+const barGraph = (canvas, xAxis, yAxis, legend, title) => {
+    // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
+    let colors = [];
+    // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
+    xAxis.forEach(() => {
+        colors.push('#' + (Math.random().toString(16)).substring(2, 8));
+    });
+    // Se crea una instancia para generar el gráfico con los datos recibidos.
+    new Chart(document.getElementById(canvas), {
+        type: 'bar',
+        data: {
+            labels: xAxis,
+            datasets: [{
+                label: legend,
+                data: yAxis,
+                backgroundColor: colors
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: title
+                },
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+}
+
+
+/*
+*   Función para generar un gráfico de lineas.
+*   Requiere la librería chart.js para funcionar.
+*   Parámetros: canvas (identificador de la etiqueta canvas), xAxis (datos para el eje X), yAxis (datos para el eje Y), legend (etiqueta para los datos) y title (título del gráfico).
+*   Retorno: ninguno.
+*/
+
+const lineGraph = (canvas, xAxis, yAxis, legend, title) => {
+    // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
+    let colors = [];
+    // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
+    xAxis.forEach(() => {
+       // Generar componente rojo (R) y azul (B) altos, y componente verde (G) bajo
+       const r = Math.floor(Math.random() * 128 + 128).toString(16).padStart(2, '0'); // 80 to FF
+       const g = Math.floor(Math.random() * 64).toString(16).padStart(2, '0'); // 00 to 3F
+       const b = Math.floor(Math.random() * 128 + 128).toString(16).padStart(2, '0'); // 80 to FF
+       const color = `#${r}${g}${b}`;
+       colors.push(color);
+    });
+    // Se crea una instancia para generar el gráfico con los datos recibidos.
+    new Chart(document.getElementById(canvas), {
+        type: 'line',
+        data: {
+            labels: xAxis,
+            datasets: [{
+                label: legend,
+                data: yAxis,
+                borderColor: colors,
+                backgroundColor: colors.map(color => color + '33'), // añade transparencia al color de fondo
+                fill: false // no rellenar el area bajo la linea
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: title
+                },
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+}
+
 
 /*
 *   Función para generar un gráfico de pastel.

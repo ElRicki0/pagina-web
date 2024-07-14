@@ -36,7 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
     MAIN_TITLE.textContent = 'Gestionar productos';
     // Llamada a la función para llenar la tabla con los registros existentes.
     fillTable();
+    // Llamado de funcionses asincronas para mostrar los graficos
     graficoPastelCategorias();
+    graficoLinealProductosVendidos();
 });
 
 // Método del evento para cuando se envía el formulario de buscar.
@@ -280,6 +282,63 @@ const graficoPastelCategorias = async () => {
         pieGraph('chart2', categorias, porcentajes, 'Porcentaje de productos por categoría');
     } else {
         document.getElementById('chart2').remove();
+        console.log(DATA.error);
+    }
+}
+
+
+/*
+*   Función asíncrona para mostrar un gráfico de barras con la cantidad de productos por categoría.
+*   Parámetros: ninguno.
+*   Retorno: ninguno.
+*/
+const graficoBarrasCategorias = async () => {
+    // Petición para obtener los datos del gráfico.
+    const DATA = await fetchData(PRODUCTO_API, 'cantidadProductosCategoria');
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+    if (DATA.status) {
+        // Se declaran los arreglos para guardar los datos a graficar.
+        let categorias = [];
+        let cantidades = [];
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        DATA.dataset.forEach(row => {
+            // Se agregan los datos a los arreglos.
+            categorias.push(row.nombre_categoria);
+            cantidades.push(row.cantidad);
+        });
+        // Llamada a la función para generar y mostrar un gráfico de barras. Se encuentra en el archivo components.js
+        barGraph('chart1', categorias, cantidades, 'Cantidad de productos', 'Cantidad de productos por categoría');
+    } else {
+        document.getElementById('chart1').remove();
+        console.log(DATA.error);
+    }
+}
+
+
+/*
+*   Función asíncrona para mostrar un gráfico de líneas con la cantidad de productos vendidos por producto.
+*   Parámetros: ninguno.
+*   Retorno: ninguno.
+*/
+
+const graficoLinealProductosVendidos = async () => {
+    // Petición para obtener los datos del gráfico.
+    const DATA = await fetchData(PRODUCTO_API, 'productosMasVendidos');
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+    if (DATA.status) {
+        // Se declaran los arreglos para guardar los datos a graficar.
+        let productos = [];
+        let cantidadesVendidas = [];
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        DATA.dataset.forEach(row => {
+            // Se agregan los datos a los arreglos.
+            productos.push(row.nombre_producto);
+            cantidadesVendidas.push(row.total_vendido);
+        });
+        // Llamada a la función para generar y mostrar un gráfico de líneas. Se encuentra en el archivo components.js
+        lineGraph('chart1', productos, cantidadesVendidas, 'Cantidad Vendida', 'Cantidad de productos más vendidos');
+    } else {
+        document.getElementById('chart1').remove();
         console.log(DATA.error);
     }
 }
