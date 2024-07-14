@@ -226,4 +226,19 @@ class ProductoHandler
         $params = array($this->id);
         return Database::getRows($sql, $params);
     }
+
+    /*
+    *   Métodos para generar gráficos.
+    */
+    public function porcentajeProductosCategoria()
+    {
+        $sql = 'SELECT nombre_categoria_producto, 
+                   ROUND((COUNT(id_producto) * 100.0 / (SELECT COUNT(id_producto) FROM tb_productos)), 2) AS porcentaje
+            FROM tb_productos
+            INNER JOIN tb_categorias_productos 
+            ON tb_productos.id_categoria_producto = tb_categorias_productos.id_categoria_producto
+            GROUP BY nombre_categoria_producto 
+            ORDER BY porcentaje DESC';
+        return Database::getRows($sql);
+    }
 }

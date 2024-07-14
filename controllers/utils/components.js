@@ -125,6 +125,46 @@ const fillSelect = async (filename, action, select, selected = null) => {
 
 
 /*
+*   Función para generar un gráfico de pastel.
+*   Requiere la librería chart.js para funcionar.
+*   Parámetros: canvas (identificador de la etiqueta canvas), legends (valores para las etiquetas), values (valores de los datos) y title (título del gráfico).
+*   Retorno: ninguno.
+*/
+const pieGraph = (canvas, legends, values, title) => {
+    // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
+    let colors = [];
+    // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
+    values.forEach(() => {
+        // Generar componente rojo (R) y azul (B) altos, y componente verde (G) bajo
+        const r = Math.floor(Math.random() * 128 + 128).toString(16).padStart(2, '0'); // 80 to FF
+        const g = Math.floor(Math.random() * 64).toString(16).padStart(2, '0'); // 00 to 3F
+        const b = Math.floor(Math.random() * 128 + 128).toString(16).padStart(2, '0'); // 80 to FF
+        const color = `#${r}${g}${b}`;
+        colors.push(color);
+    });
+    // Se crea una instancia para generar el gráfico con los datos recibidos.
+    new Chart(document.getElementById(canvas), {
+        type: 'polarArea',
+        data: {
+            labels: legends,
+            datasets: [{
+                data: values,
+                backgroundColor: colors
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: title
+                }
+            }
+        }
+    });
+}
+
+
+/*
 *   Función asíncrona para cerrar la sesión del usuario.
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
