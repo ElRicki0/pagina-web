@@ -26,7 +26,7 @@ if (isset($_GET['action'])) {
                 break;
             case 'createRow':
                 $_POST = Validator::validateForm($_POST);
-                    // accion para tomar la infromacion de las marcas.
+                // accion para tomar la infromacion de las marcas.
                 if (
                     !$categoria->setNombre($_POST['nombreCategoria']) or
                     !$categoria->setDescripcion($_POST['descripcionCategoria']) or
@@ -43,7 +43,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readAll':
-            // Accion para ver registros.
+                // Accion para ver registros.
                 if ($result['dataset'] = $categoria->readAll()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
@@ -52,7 +52,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
-             // Accion que muestre todos los datos 
+                // Accion que muestre todos los datos 
                 if (!$categoria->setId($_POST['idCategoria'])) {
                     $result['error'] = $categoria->getDataError();
                 } elseif ($result['dataset'] = $categoria->readOne()) {
@@ -94,6 +94,13 @@ if (isset($_GET['action'])) {
                     $result['fileStatus'] = Validator::deleteFile($categoria::RUTA_IMAGEN, $categoria->getFilename());
                 } else {
                     $result['error'] = 'Ocurrió un problema al eliminar la categoría';
+                }
+                break;
+            case 'categoriasMasVendidas':
+                if ($result['dataset'] = $categoria->categoriasMasVendidas()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['error'] = 'No hay datos disponibles';
                 }
                 break;
             default:

@@ -82,4 +82,16 @@ class CategoriaHandler
         return Database::executeRow($sql, $params);
     }
 
+    public function categoriasMasVendidas()
+    {
+        $sql = 'SELECT c.nombre_categoria_producto, SUM(dp.cantidad_pedido) AS total_categoria_vendido
+                FROM tb_categorias_productos c
+                INNER JOIN tb_productos p ON c.id_categoria_producto = p.id_categoria_producto
+                INNER JOIN tb_detalles_pedidos dp ON p.id_producto = dp.id_producto
+                GROUP BY c.nombre_categoria_producto
+                ORDER BY total_categoria_vendido DESC
+                LIMIT 5';
+        return Database::getRows($sql);
+    }
+    
 }
