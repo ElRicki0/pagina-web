@@ -248,7 +248,8 @@ class ProductoHandler
             FROM tb_productos p
             INNER JOIN tb_detalles_pedidos dp ON p.id_producto = dp.id_producto
             GROUP BY p.nombre_producto
-            ORDER BY total_vendido DESC';
+            ORDER BY total_vendido DESC
+            limit 5';
         return Database::getRows($sql);
     }
 }

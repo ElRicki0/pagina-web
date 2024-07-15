@@ -230,7 +230,7 @@ const pieGraph = (canvas, legends, values, title) => {
     });
     // Se crea una instancia para generar el gráfico con los datos recibidos.
     new Chart(document.getElementById(canvas), {
-        type: 'polarArea',
+        type: 'doughnut',
         data: {
             labels: legends,
             datasets: [{

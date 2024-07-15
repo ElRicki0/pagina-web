@@ -336,7 +336,7 @@ const graficoLinealProductosVendidos = async () => {
             cantidadesVendidas.push(row.total_vendido);
         });
         // Llamada a la función para generar y mostrar un gráfico de líneas. Se encuentra en el archivo components.js
-        lineGraph('chart1', productos, cantidadesVendidas, 'Cantidad Vendida', 'Cantidad de productos más vendidos');
+        lineGraph('chart1', productos, cantidadesVendidas, 'Cantidad Vendida', 'Top 5 productos más vendidos');
     } else {
         document.getElementById('chart1').remove();
         console.log(DATA.error);
