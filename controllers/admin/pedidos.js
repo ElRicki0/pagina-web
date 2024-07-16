@@ -58,20 +58,20 @@ const fillTable = async (form = null) => {
             let icon;
 
             switch (row.estado_pedido) {
-                case 0:
+                case 'Pendiente':
                     icon = 'bi bi-eye-slash-fill'; // Estado 0: Icono de ojo tachado
                     break;
-                case 1:
+                case 'Finalizado':
                     icon = 'bi bi-eye-fill'; // Estado 1: Icono de ojo lleno
                     break;
-                case 2:
+                case 'Entregado':
                     icon = 'otro-icono-1'; // Estado 2: Primer icono adicional
                     break;
-                case 3:
+                case 'Anulado':
                     icon = 'otro-icono-2'; // Estado 3: Segundo icono adicional
                     break;
-                default:
-                    icon = 'bi bi-question'; // Para otros estados no definidos, puedes mostrar un icono de pregunta
+                // default:
+                //     icon = 'bi bi-question'; // Para otros estados no definidos, puedes mostrar un icono de pregunta
             }
 
             // Luego puedes usar el icono definido en el switch para mostrarlo en la tabla

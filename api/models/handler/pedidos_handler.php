@@ -57,12 +57,12 @@ ORDER BY p.nombre_producto;
     public function readAll()
     {
 
-        $sql = 'SELECT dp.id_detalle_entrega, dp.cantidad_pedido, dp.precio_pedido, ped.direccion_pedido AS direccion_pedido, ped.fecha_registro AS fecha_registro,p.nombre_producto AS nombre_producto,c.nombre_cliente AS nombre_cliente
+        $sql = 'SELECT dp.id_detalle_entrega, dp.cantidad_pedido, dp.precio_pedido, ped.direccion_pedido AS direccion_pedido, ped.fecha_registro AS fecha_registro,p.nombre_producto AS nombre_producto,c.nombre_cliente AS nombre_cliente, ped.estado_pedido
         FROM tb_detalles_pedidos dp
         INNER JOIN tb_pedidos ped ON dp.id_pedido = ped.id_pedido
         INNER JOIN tb_productos p ON dp.id_producto = p.id_producto
         INNER JOIN tb_clientes c ON ped.id_cliente = c.id_cliente
-        ORDER BY dp.id_detalle_entrega; 
+        ORDER BY dp.id_detalle_entrega; ; 
 ';
         return Database::getRows($sql);
         //     $sql = 'SELECT dp.id_detalle_entrega, dp.cantidad_pedido, dp.precio_pedido, ped.direccion_pedido AS direccion_pedido, ped.fecha_pedido AS fecha_pedido ,p.nombre_producto AS nombre_producto,c.nombre_cliente AS nombre_cliente

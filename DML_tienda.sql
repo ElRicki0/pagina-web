@@ -108,10 +108,10 @@ INSERT INTO tb_comentarios (comentario, estrella, id_producto, id_cliente, estad
 -- Inserción de datos en tb_detalles_pedidos
 INSERT INTO tb_detalles_pedidos (id_pedido, id_producto, precio_pedido, cantidad_pedido, estado_pedido) VALUES
 (1, 1, 15.99, 2, 1), -- Detalle del pedido 1: 2 unidades de Crema Hidratante para Juan
-(2, 2, 9.99, 1, 1), -- Detalle del pedido 2: 1 unidad de Labial Rojo Intenso para Ana
-(3, 3, 12.50, 3, 1), -- Detalle del pedido 3: 3 unidades de Polvo Compacto Matificante para Carlos
-(4, 4, 8.50, 1, 1), -- Detalle del pedido 4: 1 unidad de Delineador Líquido Negro para María
-(5, 5, 18.99, 2, 1), -- Detalle del pedido 5: 2 unidades de Mascarilla Facial Purificante para Pedro
+(2, 2, 9.99, 1, 2), -- Detalle del pedido 2: 1 unidad de Labial Rojo Intenso para Ana
+(3, 3, 12.50, 3, 3), -- Detalle del pedido 3: 3 unidades de Polvo Compacto Matificante para Carlos
+(4, 4, 8.50, 1, 4), -- Detalle del pedido 4: 1 unidad de Delineador Líquido Negro para María
+(5, 5, 18.99, 2, 0), -- Detalle del pedido 5: 2 unidades de Mascarilla Facial Purificante para Pedro
 (6, 6, 22.99, 1, 1), -- Detalle del pedido 6: 1 unidad de Paleta de Sombras Nude para Luisa
 (7, 7, 14.99, 2, 1), -- Detalle del pedido 7: 2 unidades de Máscara de Pestañas Volumen para Miguel
 (8, 8, 10.99, 1, 1), -- Detalle del pedido 8: 1 unidad de Corrector Líquido Alta Cobertura para Sofía
