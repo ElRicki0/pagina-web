@@ -20,6 +20,10 @@ let countpedidos = 0;
 const PEDIDO = PARAMS.get('idpedido')
 // Método del eventos para cuando el documento ha cargado.
 
+// Llamada a la función para mostrar el encabezado y pie del documento.
+loadTemplate();
+
+
 // metodo para cargar carrito
 const load = async () => {
     // Constante tipo objeto con los datos del producto seleccionado.
@@ -38,7 +42,7 @@ const load = async () => {
         let total = 0;
         let subtotal = [];
         // agregando los datos de la db al DOM
-         
+
         DATA.dataset.forEach(element => {
             i++;
             TOTAL.innerText = '';
@@ -82,7 +86,7 @@ const load = async () => {
                     if (JSON.status) {
                         sweetAlert(1, JSON.message, false)
                     } else {
-                        sweetAlert(2, JSON.error, false);  
+                        sweetAlert(2, JSON.error, false);
                     }
                     console.log();
                     await load();
