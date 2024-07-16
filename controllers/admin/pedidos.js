@@ -55,15 +55,36 @@ const fillTable = async (form = null) => {
         // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
         DATA.dataset.forEach(row => {
             // Se establece un icono para el estado del producto.
-            (row.estado_pedido) ? icon = 'bi bi-eye-fill' : icon = 'bi bi-eye-slash-fill';
+            let icon;
+
+            switch (row.estado_pedido) {
+                case 0:
+                    icon = 'bi bi-eye-slash-fill'; // Estado 0: Icono de ojo tachado
+                    break;
+                case 1:
+                    icon = 'bi bi-eye-fill'; // Estado 1: Icono de ojo lleno
+                    break;
+                case 2:
+                    icon = 'otro-icono-1'; // Estado 2: Primer icono adicional
+                    break;
+                case 3:
+                    icon = 'otro-icono-2'; // Estado 3: Segundo icono adicional
+                    break;
+                default:
+                    icon = 'bi bi-question'; // Para otros estados no definidos, puedes mostrar un icono de pregunta
+            }
+
+            // Luego puedes usar el icono definido en el switch para mostrarlo en la tabla
+
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TABLE_BODY.innerHTML += `
             <tr>
                 <td>${row.nombre_cliente}</td>
-                <td>${row.fecha_pedido}</td>
+                <td>${row.fecha_registro}</td>
                 <td>${row.direccion_pedido}</td>
                 <td>${row.precio_pedido}</td>
                 <td>${row.cantidad_pedido}</td>
+                <td>${row.nombre_producto}</td>
                 <td><i class="${icon}"></i></td>
                 <td>
                 <button type="button" class="btn editar-btn" onclick="openState(${row.id_detalle_entrega})">
