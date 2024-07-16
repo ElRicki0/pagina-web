@@ -167,6 +167,44 @@ const barGraph = (canvas, xAxis, yAxis, legend, title) => {
 }
 
 
+const barGraphAlternative = (canvas, xAxis, yAxis, legend, title) => {
+    // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
+    let colors = [];
+    // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
+    xAxis.forEach(() => {
+        // Generar componente verde (G) alto y componentes rojo (R) y azul (B) bajos
+        const r = Math.floor(Math.random() * 128).toString(16).padStart(2, '0'); // 00 to 7F
+        const g = Math.floor(Math.random() * 128).toString(16).padStart(2, '0'); // 80 to FF
+        const b = Math.floor(Math.random() * 128 + 64).toString(16).padStart(2, '0'); // 00 to 7F
+        const color = `#${r}${g}${b}`;
+        colors.push(color);
+    });    
+    // Se crea una instancia para generar el gráfico con los datos recibidos.
+    new Chart(document.getElementById(canvas), {
+        type: 'bar',
+        data: {
+            labels: xAxis,
+            datasets: [{
+                label: legend,
+                data: yAxis,
+                backgroundColor: colors
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: title
+                },
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+}
+
+
 /*
 *   Función para generar un gráfico de lineas.
 *   Requiere la librería chart.js para funcionar.

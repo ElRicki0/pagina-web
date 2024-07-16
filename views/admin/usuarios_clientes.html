@@ -76,10 +76,15 @@
         <!-- Contenedor de gráficos -->
         <div class="row text-center justify-content-md-center">
             <p class="fs-2 fw-medium">Top 5 "Clientes con más compras"</p>
-            <div class="col-sm-12 col-md-6 col-lg-6 text-center">
+            <div class="col-sm-12 col-md-6 col-lg-6 text-center grafica">
                 <!-- Se muestra un gráfico con el porcentaje de productos por categoría -->
                 <canvas id="chart2"></canvas>
                 <figcaption class="figure-caption text-end mt-3">La grafica esta estructurada de forma descendiente (Mayor - Menor).</figcaption>
+            </div>
+            <p class="fs-2 fw-medium">Clientes conectados / desconectados"</p>
+            <div class="col-sm-12 col-md-6 col-lg-5 text-center grafica">
+                <!-- Se muestra un gráfico con el porcentaje de productos por categoría -->
+                <canvas id="chartEstate"></canvas>
             </div>
         </div>
         <!-- Importación de la librería para generar los gráficos. Para más información https://www.chartjs.org/ -->

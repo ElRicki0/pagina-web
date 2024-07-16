@@ -86,15 +86,18 @@
 
         <!-- Contenedor de gráficos -->
         <div class="row justify-content-md-center">
-            <div class="col-sm-12 col-md-6 col-lg-5">
+            <div class="col-sm-12 col-md-6 col-lg-4 grafica">
+                <p class="fs-2 fw-medium text-center">Top 5 "Clientes con más compras"</p>
                 <!-- Se muestra un gráfico con el porcentaje de productos por categoría -->
                 <canvas id="chart2"></canvas>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-6 texto-beneficio">
+            <div class="col-lg-1">
+                <div class="texto-beneficio"></div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6  grafica mt-3">
                 <!-- Se muestra un gráfico con el porcentaje de productos por categoría -->
                 <canvas id="chart1"></canvas>
             </div>
-
         </div>
         <!-- Importación de la librería para generar los gráficos. Para más información https://www.chartjs.org/ -->
         <script type="text/javascript" src="../../resources/js/chart.umd.min.js"></script>
