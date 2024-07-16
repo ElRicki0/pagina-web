@@ -32,7 +32,7 @@ class ClienteHandler
                 FROM tb_clientes
                 WHERE correo_cliente = ?';
         $params = array($mail);
-        if(!($data = Database::getRow($sql, $params))){
+        if (!($data = Database::getRow($sql, $params))) {
             return false;
         } elseif (password_verify($password, $data['pass_cliente'])) {
             $this->id = $data['id_cliente'];
@@ -129,15 +129,15 @@ class ClienteHandler
                 VALUES(?, ?, ?, ?, ?, ?, ?, true, ?)';
         $params = array($this->nombre, $this->apellido, $this->alias, $this->correo, $this->telefono, $this->direccion, $this->clave, $this->imagen);
         $clientCreated = Database::executeRow($sql, $params);
-    
+
         if ($clientCreated) {
             // Consulta para obtener el ID del último cliente creado
             $sql = 'SELECT MAX(id_cliente) AS last_id FROM tb_clientes';
             $lastClientId = Database::getRow($sql);  // Asumiendo que tienes un método que devuelve un resultado de una consulta
-    
+
             if ($lastClientId) {
                 $lastClientId = $lastClientId['last_id'];
-    
+
                 // Inserta un nuevo registro en tb_pedidos con el ID del cliente
                 $sql = 'INSERT INTO tb_pedidos (id_cliente) VALUES(?)';
                 $params = array($lastClientId);
@@ -179,7 +179,7 @@ class ClienteHandler
         $sql = 'UPDATE tb_clientes
                 SET estado_cliente = ?, imagen_cliente = ?
                 WHERE id_cliente = ?';
-        $params = array( $this->estado, $this->imagen, $this->id);
+        $params = array($this->estado, $this->imagen, $this->id);
         print_r($params);
         return Database::executeRow($sql, $params);
     }
@@ -221,13 +221,27 @@ class ClienteHandler
     // Función para grafica : Mostrar el top 5 de clientes con mas pedidos o compras.
     public function ClientesMasCompras()
     {
-        $sql = 'SELECT c.id_cliente, c.nombre_cliente, COUNT(dp.id_detalle_entrega) AS total_compras
-                FROM tb_clientes c
-                INNER JOIN tb_pedidos p ON c.id_cliente = p.id_cliente
-                INNER JOIN tb_detalles_pedidos dp ON p.id_pedido = dp.id_pedido
-                GROUP BY c.id_cliente, c.nombre_cliente, c.apellido_cliente
-                ORDER BY total_compras ASC
-	            LIMIT 5';
+        $sql = 'SELECT 
+    c.nombre_cliente,  COUNT(p.id_pedido) AS total_compras
+    FROM tb_clientes c
+    INNER JOIN tb_pedidos p ON c.id_cliente = p.id_cliente
+    GROUP BY c.nombre_cliente
+    ORDER BY total_compras DESC
+	LIMIT 5';
+        return Database::getRows($sql);
+    }
+
+    // Función para obtener la cantidad de usuarios conectados y desconectados
+    public function GraficaUsuariosEstados()
+    {
+        $sql = 'SELECT 
+        CASE 
+            WHEN estado_cliente = 1 THEN "Conectados"
+            ELSE "Desconectados"
+        END AS estado,
+        COUNT(*) AS cantidad
+    FROM tb_clientes
+    GROUP BY estado_cliente';
         return Database::getRows($sql);
     }
 }

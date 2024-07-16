@@ -54,7 +54,7 @@ class MarcaData extends MarcasHandler
             $this->imagen = $filename;
             return true;
         } else {
-            $this->imagen = 'default.png';
+            $this->imagen = 'Imagen_marca.png';
             return true;
         }
     }

@@ -31,7 +31,7 @@ if (isset($_GET['action'])) {
                     $result['cliente'] = $_SESSION['idCliente'];
                     $result['producto'] = $_SESSION['producto'];
                     $result['detalle'] = $_SESSION['idDetalle'];
-                    $result['message'] = 'Comentario agregado';
+                    $result['message'] = 'Comentario agregado, espere a que un administrador lo acepte';
                 } else {
                     $result['error'] = 'Primero, debe de comprar el producto';
                 }

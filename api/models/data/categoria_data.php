@@ -68,7 +68,7 @@ class CategoriaData extends CategoriaHandler
             $this->imagen = $filename;
             return true;
         } else {
-            $this->imagen = 'default.png';
+            $this->imagen = 'imagen_categoria.png';
             return true;
         }
     }
