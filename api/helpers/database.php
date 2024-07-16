@@ -97,7 +97,7 @@ class Database
                 self::$error = 'Acceso denegado';
                 break;
             case '42S02':
-                self::$error;
+                self::$error = $message . PHP_EOL;
                 break;
             case '42S22':
                 self::$error = 'Columna no encontrada';

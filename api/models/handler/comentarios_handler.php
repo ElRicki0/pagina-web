@@ -139,4 +139,16 @@ class ComentarioHandler
             return false;
         }
     }
+
+    public function ProductosmejorComentados()
+    {
+        $sql = 'SELECT p.nombre_producto, SUM(dp.cantidad_comentados) AS total_comentado
+            FROM tb_productos p
+            INNER JOIN tb_comentarios dp ON p.id_producto = dp.id_producto
+            GROUP BY p.nombre_producto
+            ORDER BY total_vendido DESC
+            limit 5';
+        return Database::getRows($sql);
+    }
 }
+
