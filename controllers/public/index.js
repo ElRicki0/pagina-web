@@ -94,6 +94,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     <div class="d-flex justify-content-center">
         <a href="../public/marca_producto_especifico.html?id=${row.id_marca}&nombre=${row.nombre_marca}&imagen=${row.imagen_marca}&descrip=${row.descripcion_marca}" type="button">
             <img src="${SERVER_URL}images/marcas/${row.imagen_marca}" class="img-fluid rounded mb-3 mt-3" alt="${row.nombre_marca}" style="width: 300px; height: 300px;">
+                                    <p class="fw-medium fs-3 text-center text-light">${row.nombre_marca}</p>
+
         </a>
     </div>
 </div>
