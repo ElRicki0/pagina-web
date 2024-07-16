@@ -60,9 +60,9 @@ SHOPPING_FORM.addEventListener('submit', async (event) => {
     if (DATA.status) {
         sweetAlert(1, DATA.message, false, 'carrito_compra.html' + '?idpedido=' + encodeURIComponent(DATA.dataset));
     } else if (DATA.session) {
-        sweetAlert(2, DATA.error, false);
+        sweetAlert(2, DATA.error, false, 'inicio_sesion.html');
     } else {
-        sweetAlert(3, DATA.error, true, 'producto.html');
+        sweetAlert(3, DATA.error, true, 'inicio_sesion.html');
     }
 });
 
