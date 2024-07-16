@@ -59,7 +59,7 @@ if (isset($_GET['action'])) {
                 } elseif ($result['dataset'] = $pedido->readOne()) {
                     $result['status'] = 1;
                 } else {
-                    $result['error'] = 'Pedido inexistente';
+                    $result['error'] = 'Producto inexistente';
                 }
                 break;
             case 'readOnePedido':
@@ -93,15 +93,18 @@ if (isset($_GET['action'])) {
                 break;
                 // Caso para poder cambiar el estado del comentario
             case 'changeState':
+                $_POST = Validator::validateForm($_POST);
                 if (
-                    !$pedido->setId($_POST['idPedido'])
+
+                    !$pedido->setId($_POST['idPedido']) or
+                    !$pedido->setEstado($_POST['estadoPedido'])
                 ) {
                     $result['error'] = $pedido->getDataError();
                 } elseif ($pedido->changeState()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Estado del pedido cambiado correctamente';
+                    $result['message'] = 'Estado pedido modificado correctamente';
                 } else {
-                    $result['error'] = 'Ocurrió un problema al alterar el estado del pedido';
+                    $result['error'] = 'Ocurrió un problema al modificar el estado';
                 }
                 break;
             case 'deleteRow':

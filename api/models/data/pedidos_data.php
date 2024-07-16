@@ -24,7 +24,7 @@ class PedidoData extends PedidoHandler
             $this->id = $value;
             return true;
         } else {
-            $this->data_error = 'El identificador del producto es incorrecto';
+            $this->data_error = 'El identificador del pedido es incorrecto';
             return false;
         }
     }
@@ -110,13 +110,16 @@ class PedidoData extends PedidoHandler
         }
     }
 
-    public function setEstado($value)
+    public function setEstado($value, $min = 2, $max = 250)
     {
-        if (Validator::validateBoolean($value)) {
+        if (!Validator::validateString($value)) {
+            $this->data_error = 'La dirección contiene caracteres prohibidos';
+            return false;
+        } elseif(Validator::validateLength($value, $min, $max)) {
             $this->estado = $value;
             return true;
         } else {
-            $this->data_error = 'Estado incorrecto';
+            $this->data_error = 'La dirección debe tener una longitud entre ' . $min . ' y ' . $max;
             return false;
         }
     }

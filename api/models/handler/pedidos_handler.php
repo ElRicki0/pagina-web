@@ -57,13 +57,9 @@ ORDER BY p.nombre_producto;
     public function readAll()
     {
 
-        $sql = 'SELECT dp.id_detalle_entrega, dp.cantidad_pedido, dp.precio_pedido, ped.direccion_pedido AS direccion_pedido, ped.fecha_registro AS fecha_registro,p.nombre_producto AS nombre_producto,c.nombre_cliente AS nombre_cliente, ped.estado_pedido
-        FROM tb_detalles_pedidos dp
-        INNER JOIN tb_pedidos ped ON dp.id_pedido = ped.id_pedido
-        INNER JOIN tb_productos p ON dp.id_producto = p.id_producto
-        INNER JOIN tb_clientes c ON ped.id_cliente = c.id_cliente
-        ORDER BY dp.id_detalle_entrega; ; 
-';
+        $sql = 'SELECT p.id_pedido, p.fecha_registro, p.direccion_pedido, p.estado_pedido, c.nombre_cliente
+                from tb_pedidos p 
+                inner join tb_clientes c on p.id_cliente= c.id_cliente';
         return Database::getRows($sql);
         //     $sql = 'SELECT dp.id_detalle_entrega, dp.cantidad_pedido, dp.precio_pedido, ped.direccion_pedido AS direccion_pedido, ped.fecha_pedido AS fecha_pedido ,p.nombre_producto AS nombre_producto,c.nombre_cliente AS nombre_cliente
         // FROM tb_detalles_pedidos dp
@@ -76,8 +72,8 @@ ORDER BY p.nombre_producto;
     public function readOne()
     {
         $sql = 'SELECT *
-                FROM tb_detalles_pedidos
-                WHERE id_detalle_entrega = ?';
+                FROM tb_pedidos
+                WHERE id_pedido = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
@@ -104,8 +100,9 @@ ORDER BY p.nombre_producto;
 
     public function deleteRow()
     {
-        $sql = 'DELETE FROM tb_detalles_pedidos
-                WHERE id_detalle_entrega = ?';
+        $sql = 'UPDATE tb_pedidos
+                SET estado_pedido = "Finalizado"
+                WHERE id_pedido = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
@@ -113,8 +110,10 @@ ORDER BY p.nombre_producto;
     //Función para cambiar el estado de un comentario.
     public function changeState()
     {
-        $sql = 'CALL cambiar_estado_detalle_pedido(?);';
-        $params = array($this->id);
+        $sql = 'UPDATE tb_pedidos
+                SET estado_pedido = ?
+                WHERE id_pedido = ?';
+        $params = array($this->estado, $this->id);
         return Database::executeRow($sql, $params);
     }
 }

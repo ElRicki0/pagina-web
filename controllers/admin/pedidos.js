@@ -9,6 +9,16 @@ const TABLE_BODY = document.getElementById('tableBody'),
     ROWS_FOUND = document.getElementById('rowsFound');
 // Constantes para establecer los elementos del componente Modal.
 
+
+// Constantes para establecer los elementos del componente Modal.
+const SAVE_MODAL = new bootstrap.Modal('#saveModal'),
+    MODAL_TITLE2 = document.getElementById('modalTitle');
+// Constantes para establecer los elementos del formulario de guardar.
+const SAVE_FORM = document.getElementById('saveForm'),
+    ID_PEDIDO = document.getElementById('idPedido'),
+    ESTADO_PEDIDO = document.getElementById('estadoPedido');
+
+//información del pedido
 const DETALLE_MODAL = new bootstrap.Modal('#masInfo2'),
     MODAL_TITLE = document.getElementById('modal2');
 // Constantes para establecer el contenido de la tabla de productos.
@@ -35,7 +45,26 @@ SEARCH_FORM.addEventListener('submit', (event) => {
     fillTable(FORM);
 });
 
-
+// Método del evento para cuando se envía el formulario de guardar.
+SAVE_FORM.addEventListener('submit', async (event) => {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Constante tipo objeto con los datos del formulario.
+    const FORM = new FormData(SAVE_FORM);
+    // Petición para guardar los datos del formulario.
+    const DATA = await fetchData(PEDIDOS_API, 'changeState', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (DATA.status) {
+        // Se cierra la caja de diálogo.
+        SAVE_MODAL.hide();
+        // Se muestra un mensaje de éxito.
+        sweetAlert(1, DATA.message, true);
+        // Se carga nuevamente la tabla para visualizar los cambios.
+        fillTable();
+    } else {
+        sweetAlert(2, DATA.error, false);
+    }
+});
 
 /*
 *   Función asíncrona para llenar la tabla con los registros disponibles.
@@ -82,18 +111,15 @@ const fillTable = async (form = null) => {
                 <td>${row.nombre_cliente}</td>
                 <td>${row.fecha_registro}</td>
                 <td>${row.direccion_pedido}</td>
-                <td>${row.precio_pedido}</td>
-                <td>${row.cantidad_pedido}</td>
-                <td>${row.nombre_producto}</td>
                 <td><i class="${icon}"></i>${row.estado_pedido}</td>
                 <td>
-                <button type="button" class="btn editar-btn" onclick="openState(${row.id_detalle_entrega})">
+                <button type="button" class="btn editar-btn" onclick="openState(${row.id_pedido})">
                 <img src="../../resources/img/iconos/intercambiar.png">
                 </button>
-                <button type="button" class="btn borrar-btn" onclick="openDelete(${row.id_detalle_entrega})">
+                <button type="button" class="btn borrar-btn" onclick="openDelete(${row.id_pedido})">
                     <img src="../../resources/img/iconos/papelera.png">
                 </button>
-                <button type="button" class="btn borrar-btn" onclick="openDetalle(${row.id_detalle_entrega})">
+                <button type="button" class="btn borrar-btn" onclick="openDetalle(${row.id_pedido})">
                     <img src="../../resources/img/iconos/mas.png" width=30px>
                 </button>
                 </td>
@@ -107,45 +133,32 @@ const fillTable = async (form = null) => {
     }
 }
 
-
-
-
-
 /*
 *   Función asíncrona para cambiar el estado de un registro.
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 */
 const openState = async (id) => {
-    // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea cambiar el estado del pedido?');
-    try {
-        // Se verifica la respuesta del mensaje.
-        if (RESPONSE) {
-            // Se define una constante tipo objeto con los datos del registro seleccionado.
-            const FORM = new FormData();
-            FORM.append('idPedido', id);
-            console.log(id);
-            // Petición para eliminar el registro seleccionado.
-            const DATA = await fetchData(PEDIDOS_API, 'changeState', FORM);
-            console.log(DATA.status);
-            // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-            if (DATA.status) {
-                // Se muestra un mensaje de éxito.
-                await sweetAlert(1, DATA.message, true);
-                // Se carga nuevamente la tabla para visualizar los cambios.
-                fillTable();
-            } else {
-                sweetAlert(2, DATA.error, false);
-            }
-        }
-    }
-    catch (Error) {
-        console.log(Error + ' Error al cargar el mensaje');
+    // Se define un objeto con los datos del registro seleccionado.
+    const FORM = new FormData();
+    FORM.append('idPedido', id);
+    // Petición para obtener los datos del registro solicitado.
+    const DATA = await fetchData(PEDIDOS_API, 'readOne', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (DATA.status) {
+        // Se muestra la caja de diálogo con su título.
+        SAVE_MODAL.show();
+        MODAL_TITLE.textContent = 'Actualizar estado';
+        // Se prepara el formulario.
+        SAVE_FORM.reset();
+        // Se inicializan los campos con los datos.
+        const ROW = DATA.dataset;
+        ID_PEDIDO.value = ROW.id_pedido;
+        ESTADO_PEDIDO.value = ROW.estado_pedido;
+    } else {
+        sweetAlert(2, DATA.error, false);
     }
 }
-
-
 
 /*
 *   Función asíncrona para eliminar un registro.
@@ -184,7 +197,7 @@ const openDetalle = async (id) => {
 
 const openDelete = async (id) => {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar el pedido de forma permanente?');
+    const RESPONSE = await confirmAction('Completar el pedido?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
