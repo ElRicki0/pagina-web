@@ -221,13 +221,13 @@ class ClienteHandler
     // Función para grafica : Mostrar el top 5 de clientes con mas pedidos o compras.
     public function ClientesMasCompras()
     {
-        $sql = 'SELECT c.id_cliente, c.nombre_cliente, COUNT(dp.id_detalle_entrega) AS total_compras
-                FROM tb_clientes c
-                INNER JOIN tb_pedidos p ON c.id_cliente = p.id_cliente
-                INNER JOIN tb_detalles_pedidos dp ON p.id_pedido = dp.id_pedido
-                GROUP BY c.id_cliente, c.nombre_cliente, c.apellido_cliente
-                ORDER BY total_compras ASC
-	            LIMIT 5';
+        $sql = 'SELECT 
+    c.nombre_cliente,  COUNT(p.id_pedido) AS total_compras
+    FROM tb_clientes c
+    INNER JOIN tb_pedidos p ON c.id_cliente = p.id_cliente
+    GROUP BY c.nombre_cliente
+    ORDER BY total_compras DESC
+	 LIMIT 5';
         return Database::getRows($sql);
     }
 }

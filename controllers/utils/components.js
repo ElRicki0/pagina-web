@@ -134,7 +134,12 @@ const barGraph = (canvas, xAxis, yAxis, legend, title) => {
     let colors = [];
     // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
     xAxis.forEach(() => {
-        colors.push('#' + (Math.random().toString(16)).substring(2, 8));
+       // Generar componente rojo (R) y azul (B) altos, y componente verde (G) bajo
+       const r = Math.floor(Math.random() * 128 + 128).toString(16).padStart(2, '0'); // 80 to FF
+       const g = Math.floor(Math.random() * 64).toString(16).padStart(2, '0'); // 00 to 3F
+       const b = Math.floor(Math.random() * 128 + 128).toString(16).padStart(2, '0'); // 80 to FF
+       const color = `#${r}${g}${b}`;
+       colors.push(color);
     });
     // Se crea una instancia para generar el gráfico con los datos recibidos.
     new Chart(document.getElementById(canvas), {

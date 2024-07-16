@@ -215,7 +215,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         // Se muestra un mensaje de éxito.
         sweetAlert(5, DATA.message, true);
         // Actualiza los comentarios del producto.
-        await updateComments();
+        // await updateComments();
     } else {
         // Se muestra un mensaje de error.
         sweetAlert(2, DATA.error, false);
@@ -277,46 +277,6 @@ const generateStars = (rating) => {
 }
 
 
-// Método del evento para cuando se envía el formulario de guardar.
-SAVE_FORM.addEventListener('submit', async (event) => {
-    // Se evita recargar la página web después de enviar el formulario.
-    event.preventDefault();
-
-    // Obtener todas las estrellas (calificaciones) y encontrar la seleccionada.
-    const estrellas = document.getElementsByName('rating');
-    let seleccion = null;
-    for (const estrella of estrellas) {
-        if (estrella.checked) {
-            seleccion = estrella.value;
-            break;
-        }
-    }
-
-    console.log(PARAMS.get('id'));
-    console.log(seleccion);
-
-    // Constante tipo objeto con los datos del formulario.
-    const FORM = new FormData(SAVE_FORM);
-    FORM.append('id_producto', PARAMS.get('id')); // Cambiado a id_producto
-    FORM.append('estrella', seleccion); // Cambiado a estrella
-
-    console.log(FORM);
-
-    // Petición para guardar los datos del formulario.
-    const DATA = await fetchData(COMENTARIOS_API, 'createComentario', FORM);
-    console.log(DATA);
-
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-    if (DATA.status) {
-        // Se muestra un mensaje de éxito.
-        sweetAlert(5, DATA.message, true);
-        // Actualiza los comentarios del producto.
-        await updateComments();
-    } else {
-        // Se muestra un mensaje de error.
-        sweetAlert(2, DATA.error, false);
-    }
-});
 
 
 // Función para actualizar los comentarios del producto.

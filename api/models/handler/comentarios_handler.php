@@ -100,18 +100,18 @@ class ComentarioHandler
     public function verifyPurchase()
     {
         // SQL query para verificar la compra de un producto específico por un cliente específico
-        $sql = 'SELECT dp.id_detalle_entrega as id
+        $sql = "SELECT dp.id_detalle_entrega as id
             FROM tb_detalles_pedidos dp
             INNER JOIN tb_pedidos p ON dp.id_pedido = p.id_pedido
             WHERE p.id_cliente = ?
             AND dp.id_producto = ?
-            AND dp.estado_pedido = 1
-            ORDER BY dp.id_detalle_entrega DESC
-            LIMIT 1;';
+            AND p.estado_pedido = 'Finalizado'
+            ORDER BY dp.id_detalle_entrega DESC";
         // Parámetros para la consulta: idCliente y productos
         $params = array($_SESSION['idCliente'], $this->producto);
+        $data = Database::getRow($sql, $params);
         // Ejecuta la consulta y obtiene una fila de resultado
-        if ($data = Database::getRow($sql, $params)) {
+        if ($data) {
             // Si se encuentra un registro, guarda el idDetalle y producto en la sesión
             $_SESSION['idDetalle'] = $data['id'];
             $_SESSION['producto'] = $this->producto;
