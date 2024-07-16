@@ -224,7 +224,7 @@ const graficoLinealCategoriasVendidas = async () => {
         // Llamada a la función para generar y mostrar un gráfico de líneas. Se encuentra en el archivo components.js
         lineGraph('chart2', categorias, cantidadesVendidas, 'Cantidad Vendida', '');
     } else {
-        document.getElementById('chart1').remove();
+        document.getElementById('chart2').remove();
         console.log(DATA.error);
     }
 }

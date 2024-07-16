@@ -81,4 +81,16 @@ class MarcasHandler
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+
+    public function marcasMasVendidas()
+    {
+        $sql = 'SELECT m.nombre_marca, SUM(dp.cantidad_pedido) AS total_marca_vendido
+                FROM tb_marcas m
+                INNER JOIN tb_productos p ON m.id_marca = p.id_marca
+                INNER JOIN tb_detalles_pedidos dp ON p.id_producto = dp.id_producto
+                GROUP BY m.nombre_marca
+                ORDER BY total_marca_vendido ASC
+                LIMIT 5';
+        return Database::getRows($sql);
+    }
 }
