@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
     MAIN_TITLE.textContent = 'Gestionar marca';
     // Llamada a la función para llenar la tabla con los registros existentes.
     fillTable();
+    // Llamado a la función de grafico
+    graficoLinealMarcassVendidas();
 });
 
 // Método del evento para cuando se envía el formulario de buscar.
@@ -183,3 +185,31 @@ const openDelete = async (id) => {
 //     // Se abre el reporte en una nueva pestaña.
 //     window.open(PATH.href);
 // }
+
+/*
+*   Función asíncrona para mostrar un gráfico de líneas con la cantidad de productos vendidos por producto.
+*   Parámetros: ninguno.
+*   Retorno: ninguno.
+*/
+
+const graficoLinealMarcassVendidas = async () => {
+    // Petición para obtener los datos del gráfico.
+    const DATA = await fetchData(MARCA_API, 'marcasMasVendidas');
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+    if (DATA.status) {
+        // Se declaran los arreglos para guardar los datos a graficar.
+        let marcas = [];
+        let cantidadesVendidas = [];
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        DATA.dataset.forEach(row => {
+            // Se agregan los datos a los arreglos.
+            marcas.push(row.nombre_marca);
+            cantidadesVendidas.push(row.total_marca_vendido);
+        });
+        // Llamada a la función para generar y mostrar un gráfico de líneas. Se encuentra en el archivo components.js
+        lineGraph('chart1', marcas, cantidadesVendidas, 'Cantidad Vendida', '');
+    } else {
+        document.getElementById('chart1').remove();
+        console.log(DATA.error);
+    }
+}
