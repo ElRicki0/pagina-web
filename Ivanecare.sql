@@ -118,9 +118,7 @@ CREATE TABLE tb_detalles_pedidos (
   id_producto int NOT NULL,
   CONSTRAINT fk_id_producto_detalle_P FOREIGN KEY (id_producto) REFERENCES tb_productos(id_producto),
   precio_pedido FLOAT NOT null,
-  cantidad_pedido INT NOT NULL,
-  estado_pedido BOOLEAN NOT NULL
+  cantidad_pedido INT NOT NULL
 );
-
 -- las imagenes se cambiaron por varchar(50) en logar de LONGTEXT
 -- la asignacion de autoincrement y de primary key se hacen directamente desde la creacion de la tabla y no se altera nada afuera de estas
