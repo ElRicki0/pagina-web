@@ -59,16 +59,16 @@ const fillTable = async (form = null) => {
 
             switch (row.estado_pedido) {
                 case 'Pendiente':
-                    icon = 'bi bi-eye-slash-fill'; // Estado 0: Icono de ojo tachado
+                    icon = 'bi bi-clock-fill'; // Estado 0: Icono de reloj
                     break;
                 case 'Finalizado':
-                    icon = 'bi bi-eye-fill'; // Estado 1: Icono de ojo lleno
+                    icon = 'bi bi-bag-dash-fill'; // Estado 1: Icono de bolsa tachada
                     break;
                 case 'Entregado':
-                    icon = 'otro-icono-1'; // Estado 2: Primer icono adicional
+                    icon = 'bi bi-bag-check-fill'; // Estado 2: Icono de bolsa cheque
                     break;
                 case 'Anulado':
-                    icon = 'otro-icono-2'; // Estado 3: Segundo icono adicional
+                    icon = 'bi bi-bag-x-fill'; // Estado 3: Icono de bolsa con  X
                     break;
                 // default:
                 //     icon = 'bi bi-question'; // Para otros estados no definidos, puedes mostrar un icono de pregunta
