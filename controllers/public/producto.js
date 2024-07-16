@@ -216,6 +216,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         sweetAlert(5, DATA.message, true);
         // Actualiza los comentarios del producto.
         // await updateComments();
+        SAVE_FORM.reset();
     } else {
         // Se muestra un mensaje de error.
         sweetAlert(2, DATA.error, false);
@@ -280,37 +281,37 @@ const generateStars = (rating) => {
 
 
 // Función para actualizar los comentarios del producto.
-async function updateComments() {
-    const idProducto = PARAMS.get('id'); // Supongo que el id del producto se obtiene de los parámetros de la URL.
+// async function updateComments() {
+//     const idProducto = PARAMS.get('id'); // Supongo que el id del producto se obtiene de los parámetros de la URL.
 
-    // Se inicializa el contenido de la tabla.
-    ROWS_FOUND.textContent = '';
-    TABLE_BODY.innerHTML = '';
+//     // Se inicializa el contenido de la tabla.
+//     ROWS_FOUND.textContent = '';
+//     TABLE_BODY.innerHTML = '';
 
-    const FORM = new FormData();
-    FORM.append('idProducto2', IDPRODUCTO);
+//     const FORM = new FormData();
+//     FORM.append('idProducto2', IDPRODUCTO);
 
-    // Petición para obtener los comentarios del producto.
-    const DATA = await fetchData(PRODUCTO_API, 'readComentarios', FORM);
+//     // Petición para obtener los comentarios del producto.
+//     const DATA = await fetchData(PRODUCTO_API, 'readComentarios', FORM);
 
-    if (DATA.status) {
-        DATA.dataset.forEach(row => {
-            TABLE_BODY.innerHTML += `
-                <tr>
-                    <td>
-                        <img class="rounded-circle" width="75" height="75" alt="${row.nombre_cliente}" src="${SERVER_URL}images/clientes/${row.imagen_cliente}">
-                    </td>
-                    <td>${row.nombre_cliente}</td>
-                    <td>${row.comentario}</td>
-                    <td>${generateStars(row.estrella)}</td>
-                    <td>${row.fecha_comentario}</td>
-                </tr>`;
-        });
-    } else {
-        // Se asigna al título del contenido de la excepción cuando no existen datos para mostrar.
-        document.getElementById('mainTitle').textContent = DATA.error;
-    }
-}
+//     if (DATA.status) {
+//         DATA.dataset.forEach(row => {
+//             TABLE_BODY.innerHTML += `
+//                 <tr>
+//                     <td>
+//                         <img class="rounded-circle" width="75" height="75" alt="${row.nombre_cliente}" src="${SERVER_URL}images/clientes/${row.imagen_cliente}">
+//                     </td>
+//                     <td>${row.nombre_cliente}</td>
+//                     <td>${row.comentario}</td>
+//                     <td>${generateStars(row.estrella)}</td>
+//                     <td>${row.fecha_comentario}</td>
+//                 </tr>`;
+//         });
+//     } else {
+//         // Se asigna al título del contenido de la excepción cuando no existen datos para mostrar.
+//         document.getElementById('mainTitle').textContent = DATA.error;
+//     }
+// }
 
 // Llamada inicial para cargar los comentarios cuando se carga la página.
 document.addEventListener('DOMContentLoaded', updateComments);

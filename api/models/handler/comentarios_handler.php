@@ -131,7 +131,7 @@ class ComentarioHandler
             $sql = 'INSERT INTO tb_comentarios(estrella, comentario, id_producto, id_cliente, estado_comentario)
                 VALUES(?, ?, ?, ?, ?)';
             // Parámetros para la consulta: estrella, comentario, id_producto, id_cliente, estado_comentario
-            $params = array($this->estrella, $this->comentario, $_SESSION['producto'], $_SESSION['idCliente'], 1);
+            $params = array($this->estrella, $this->comentario, $_SESSION['producto'], $_SESSION['idCliente'], 0);
             // Ejecuta la consulta y retorna el resultado
             return Database::executeRow($sql, $params);
         } else {
