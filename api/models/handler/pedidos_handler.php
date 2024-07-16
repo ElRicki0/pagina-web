@@ -80,11 +80,15 @@ ORDER BY p.nombre_producto;
 
     public function readOnePedido()
     {
-        $sql = 'SELECT p.nombre_producto
-        FROM tb_pedidos pe
-        JOIN tb_detalles_pedidos dp ON pe.id_pedido = dp.id_pedido
-        JOIN tb_productos p ON dp.id_producto = p.id_producto
-        WHERE pe.id_pedido = ?';
+        $sql = 'SELECT dp.precio_pedido from tb_detalles_pedidos dp;
+        SELECT dp.cantidad_pedido, dp.precio_pedido ,p.nombre_producto AS nombre_producto, c.nombre_cliente AS nombre_cliente
+        FROM tb_detalles_pedidos dp
+        INNER JOIN tb_pedidos ped ON dp.id_pedido = ped.id_pedido
+        INNER JOIN tb_productos p ON dp.id_producto = p.id_producto
+        INNER JOIN tb_clientes c ON ped.id_cliente = c.id_cliente
+        WHERE dp.id_pedido = ?
+        ORDER BY dp.id_detalle_entrega;
+        ?';
         $params = array($this->id);
         return Database::getRows($sql, $params);
     }
