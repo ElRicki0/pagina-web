@@ -85,7 +85,7 @@ const fillTable = async (form = null) => {
                 <td>${row.precio_pedido}</td>
                 <td>${row.cantidad_pedido}</td>
                 <td>${row.nombre_producto}</td>
-                <td><i class="${icon}"></i></td>
+                <td><i class="${icon}"></i>${row.estado_pedido}</td>
                 <td>
                 <button type="button" class="btn editar-btn" onclick="openState(${row.id_detalle_entrega})">
                 <img src="../../resources/img/iconos/intercambiar.png">
