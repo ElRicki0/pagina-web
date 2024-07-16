@@ -294,7 +294,7 @@ const graficoBarrasClientesEstado = async () => {
             cantidad.push(row.cantidad);
         });
         // Llamada a la función para generar y mostrar un gráfico de líneas. Se encuentra en el archivo components.js
-        barGraphAlternative('chartEstate', estado, cantidad, 'Cantidad usuarios conectados', '');
+        barGraphAlternative('chartEstate', estado, cantidad, 'Cantidad usuarios ', '');
     } else {
         document.getElementById('chartEstate').remove();
         console.log(DATA.error);
