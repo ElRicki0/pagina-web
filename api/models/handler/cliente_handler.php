@@ -227,7 +227,7 @@ class ClienteHandler
     INNER JOIN tb_pedidos p ON c.id_cliente = p.id_cliente
     GROUP BY c.nombre_cliente
     ORDER BY total_compras DESC
-	 LIMIT 5';
+	LIMIT 5';
         return Database::getRows($sql);
     }
 }
