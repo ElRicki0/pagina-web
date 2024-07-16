@@ -22,3 +22,12 @@
     max-height: 400px;
     overflow-y: auto;
 }
+
+/* Borde divisor en graficas */
+.texto-beneficio {
+    border-left-color: rgb(164, 0, 179);
+    border-left-style: solid;
+    border-left-width: 6px; /* Cambiando este valor, puedes cambiar el ancho del borde */
+    border-top-left-radius: 10px ;
+    padding-right: 12px; /* Con este padding, puedes separar el texto del borde */ 
+}
