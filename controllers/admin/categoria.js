@@ -222,7 +222,7 @@ const graficoLinealCategoriasVendidas = async () => {
             cantidadesVendidas.push(row.total_categoria_vendido);
         });
         // Llamada a la función para generar y mostrar un gráfico de líneas. Se encuentra en el archivo components.js
-        lineGraph('chart2', categorias, cantidadesVendidas, 'Cantidad Vendida', 'Top 5 productos más vendidos');
+        lineGraph('chart2', categorias, cantidadesVendidas, 'Cantidad Vendida', '');
     } else {
         document.getElementById('chart1').remove();
         console.log(DATA.error);
