@@ -47,9 +47,9 @@ class CarritoHandler
         } else {
             $this->estado = 'Pendiente';
             // cambiar direccion_cliente por residencia_cliente según db
-            $sql = 'INSERT INTO tb_pedidos(direccion_pedido, id_cliente, estado_pedido, fecha_pedido)
-                    VALUES((SELECT residencia_cliente FROM tb_clientes WHERE id_cliente = ?), ?, ?, CURDATE())';
-            $params = array($_SESSION['idCliente'], $_SESSION['idCliente'], $this->estado);
+            $sql = 'INSERT INTO tb_pedidos(direccion_pedido, id_cliente)
+                    VALUES((SELECT residencia_cliente FROM tb_clientes WHERE id_cliente = ?), ?)';
+            $params = array($_SESSION['idCliente'], $_SESSION['idCliente']);
             // Se obtiene el ultimo valor insertado de la llave primaria en la tabla pedido.
             if ($_SESSION['idPedido'] = Database::getLastRow($sql, $params)) {
                 return true;
@@ -84,19 +84,18 @@ class CarritoHandler
 
     /**    definición de valor para estado_pedido
      *  0 - pendiente
-      *  1 - finalizado
-      *  2 - cancelado
+     *  1 - finalizado
+     *  2 - cancelado
      */
 
     // Método para agregar un producto al carrito de compras.
     public function createDetail()
     {
-        $estado = 0;    
         // Se realiza una subconsulta para obtener el precio del producto.
-        $sql = 'INSERT INTO tb_detalles_pedidos(id_producto, precio_pedido, cantidad_pedido, id_pedido, estado_pedido)
-                VALUES(?, (SELECT precio_producto FROM tb_productos WHERE id_producto = ?), ?, ?, ?)';
-    
-        $params = array($this->producto, $this->producto, $this->cantidad, $_SESSION['idPedido'], $estado);
+        $sql = 'INSERT INTO tb_detalles_pedidos(id_producto, precio_pedido, cantidad_pedido, id_pedido)
+                VALUES(?, (SELECT precio_producto FROM tb_productos WHERE id_producto = ?), ?, ?)';
+
+        $params = array($this->producto, $this->producto, $this->cantidad, $_SESSION['idPedido']);
         return Database::executeRow($sql, $params);
     }
 
@@ -131,9 +130,9 @@ class CarritoHandler
 
     // método para cambiar el estado de la irden de un detalle
     public function finishDetail()
-    { 
+    {
         // estado de detalle comprado
-        $estado = 2; 
+        $estado = 2;
         $sql = 'UPDATE tb_detalles_pedidos
                 SET estado_pedido = ?
                 WHERE id_pedido = ?';
