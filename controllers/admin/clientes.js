@@ -36,6 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
     MAIN_TITLE.textContent = 'Gestionar clientes';
     // Llamada a la función para llenar la tabla con los registros existentes.
     fillTable();
+    // Llamada a la función de graficas
+    graficoLinealClientesCompras();
 });
 
 // Método del evento para cuando se envía el formulario de buscar.
@@ -239,3 +241,33 @@ const openDelete = async (id) => {
         }
     }
 }
+
+
+/*
+*   Función asíncrona para mostrar un gráfico de líneas con la cantidad de clientes con mas compras.
+*   Parámetros: ninguno.
+*   Retorno: ninguno.
+*/
+
+const graficoLinealClientesCompras = async () => {
+    // Petición para obtener los datos del gráfico.
+    const DATA = await fetchData(CLIENTE_API, 'ClientesMasCompras');
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+    if (DATA.status) {
+        // Se declaran los arreglos para guardar los datos a graficar.
+        let cliente = [];
+        let cantidadesCompras = [];
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        DATA.dataset.forEach(row => {
+            // Se agregan los datos a los arreglos.
+            cliente.push(row.nombre_cliente);
+            cantidadesCompras.push(row.total_compras);
+        });
+        // Llamada a la función para generar y mostrar un gráfico de líneas. Se encuentra en el archivo components.js
+        barGraph('chart2', cliente, cantidadesCompras, 'Cantidad compras', '');
+    } else {
+        document.getElementById('chart2').remove();
+        console.log(DATA.error);
+    }
+}
+
