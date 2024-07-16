@@ -77,27 +77,21 @@ INSERT INTO tb_listas_deseos (id_producto, id_cliente) VALUES
 (5, 3); -- Mascarilla Facial Purificante agregada a la lista de deseos de Elena
 
 
--- Inserción de datos en tb_pedidos
-INSERT INTO tb_pedidos (fecha_pedido, direccion_pedido, id_cliente) VALUES
-('2024-05-01', 'Calle Principal 123, Ciudad A', 1), -- Pedido de Juan el 1 de mayo de 2024
-('2024-05-02', 'Avenida Central 456, Ciudad B', 2), -- Pedido de Ana el 2 de mayo de 2024
-('2024-05-03', 'Boulevard Secundario 789, Ciudad C', 3), -- Pedido de Carlos el 3 de mayo de 2024
-('2024-05-04', 'Plaza Principal 321, Ciudad D', 4), -- Pedido de María el 4 de mayo de 2024
-('2024-05-05', 'Calle Secundaria 654, Ciudad E', 5), -- Pedido de Pedro el 5 de mayo de 2024
-('2024-05-06', 'Avenida Principal 987, Ciudad F', 6), -- Pedido de Luisa el 6 de mayo de 2024
-('2024-05-07', 'Boulevard Central 234, Ciudad G', 7), -- Pedido de Miguel el 7 de mayo de 2024
-('2024-05-08', 'Calle Central 567, Ciudad H', 1), -- Pedido de Juan el 8 de mayo de 2024
-('2024-05-09', 'Avenida Principal 890, Ciudad I', 2), -- Pedido de Ana el 9 de mayo de 2024
-('2024-05-10', 'Boulevard Principal 123, Ciudad J', 3), -- Pedido de Carlos el 10 de mayo de 2024
-('2024-05-11', 'Calle Central 456, Ciudad K', 4), -- Pedido de María el 11 de mayo de 2024
-('2024-05-12', 'Avenida Principal 789, Ciudad L', 5), -- Pedido de Pedro el 12 de mayo de 2024
-('2024-05-13', 'Boulevard Secundario 321, Ciudad M', 6), -- Pedido de Luisa el 13 de mayo de 2024
-('2024-05-14', 'Plaza Principal 654, Ciudad N', 7), -- Pedido de Miguel el 14 de mayo de 2024
-('2024-05-15', 'Calle Principal 987, Ciudad O', 8); -- Pedido de Sofía el 15 de mayo de 2024
-
-
-
-
+-- Inserción de datos en la tabla tb_pedidos
+INSERT INTO tb_pedidos (direccion_pedido, estado_pedido, id_cliente)
+VALUES
+  ('123 Calle Falsa', 'Pendiente', 1),
+  ('456 Avenida Real', 'Finalizado', 2),
+  ('789 Boulevard Principal', 'Entregado', 3),
+  ('101 Calle Secundaria', 'Anulado', 4),
+  ('202 Calle Terciaria', 'Pendiente', 5),
+  ('303 Avenida de las Rosas', 'Finalizado', 6),
+  ('404 Calle del Sol', 'Entregado', 7), 
+  ('505 Avenida Libertad', 'Pendiente', 1),
+  ('606 Calle Luna', 'Entregado', 2),
+  ('707 Boulevard de los Sueños', 'Anulado', 3),
+  ('808 Calle Esperanza', 'Finalizado', 4);
+4zRE4
 -- Inserción de datos en tb_comentarios
 INSERT INTO tb_comentarios (comentario, estrella, id_producto, id_cliente, estado_comentario, fecha_comentario) VALUES
 ('¡Me encanta esta crema hidratante!', 5, 1, 1, 1, '2024-05-01'),
@@ -123,11 +117,7 @@ INSERT INTO tb_detalles_pedidos (id_pedido, id_producto, precio_pedido, cantidad
 (8, 8, 10.99, 1, 1), -- Detalle del pedido 8: 1 unidad de Corrector Líquido Alta Cobertura para Sofía
 (9, 9, 19.99, 1, 1), -- Detalle del pedido 9: 1 unidad de Base de Maquillaje Mate para Juan
 (10, 10, 29.99, 1, 1), -- Detalle del pedido 10: 1 unidad de Set de Brochas Profesional para Ana
-(11, 1, 15.99, 3, 1), -- Detalle del pedido 11: 3 unidades de Crema Hidratante para Carlos
-(12, 2, 9.99, 1, 1), -- Detalle del pedido 12: 1 unidad de Labial Rojo Intenso para María
-(13, 3, 12.50, 2, 1), -- Detalle del pedido 13: 2 unidades de Polvo Compacto Matificante para Pedro
-(14, 4, 8.50, 1, 1), -- Detalle del pedido 14: 1 unidad de Delineador Líquido Negro para Luisa
-(15, 5, 18.99, 2, 1); -- Detalle del pedido 15: 2 unidades de Mascarilla Facial Purificante para Miguel
-	
+(11, 1, 15.99, 3, 1); -- Detalle del pedido 11: 3 unidades de Crema Hidratante para Carlos
+
 	SELECT * FROM tb_detalles_pedidos
 

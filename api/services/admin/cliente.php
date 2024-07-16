@@ -17,7 +17,7 @@ if (isset($_GET['action'])) {
         switch ($_GET['action']) {
             case 'createRow':
                 $_POST = Validator::validateForm($_POST);
-                 // Accion para agregar los datos de los clientes.
+                // Accion para agregar los datos de los clientes.
                 if (
                     !$cliente->setNombre($_POST['nombreCliente']) or
                     !$cliente->setApellido($_POST['apellidoCliente']) or
@@ -60,7 +60,7 @@ if (isset($_GET['action'])) {
                 break;
             case 'updateRow':
                 $_POST = Validator::validateForm($_POST);
-            // Accion para mensaje de inexistencia.
+                // Accion para mensaje de inexistencia.
                 if (
                     !$cliente->setId($_POST['idCliente']) or
                     !$cliente->setFilename() or
@@ -77,7 +77,7 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Ocurrió un problema al modificar el registro';
                 }
                 break;
-            // Estado
+                // Estado
             case 'changeState':
                 if (
                     !$cliente->setId($_POST['idCliente'])
@@ -165,6 +165,13 @@ if (isset($_GET['action'])) {
                     $result['message'] = 'Contraseña cambiada correctamente';
                 } else {
                     $result['error'] = 'Ocurrió un problema al cambiar la contraseña';
+                }
+                break;
+            case 'ClientesMasCompras':
+                if ($result['dataset'] = $cliente->ClientesMasCompras()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['error'] = 'No hay datos disponibles';
                 }
                 break;
             default:
