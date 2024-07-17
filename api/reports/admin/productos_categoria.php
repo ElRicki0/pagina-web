@@ -21,21 +21,22 @@ if (isset($_GET['idCategoria'])) {
             // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
             if ($dataProductos = $producto->productosCategoria()) {
                 // Se establece un color de relleno para los encabezados.
-                $pdf->setFillColor(240, 240, 240);
+                $pdf->setFillColor(0, 21, 26);
                 // Se establece la fuente para los encabezados.
-                $pdf->setFont('Arial', 'B', 11);
+                $pdf->setFont('Times', 'B', 15);
+                $pdf->SetTextColor(237, 237, 237);
                 // Se imprimen las celdas con los encabezados.
-                $pdf->cell(126, 10, 'Nombre', 1, 0, 'C', 1);
-                $pdf->cell(30, 10, 'Precio (US$)', 1, 0, 'C', 1);
+                $pdf->cell(120, 10, 'Nombre', 1, 0, 'C', 1);
+                $pdf->cell(40, 10, 'Precio (US$)', 1, 0, 'C', 1);
                 $pdf->cell(30, 10, 'Cantidad', 1, 1, 'C', 1);
                 // Se establece la fuente para los datos de los productos.
-                $pdf->setFont('Arial', '', 11);
+                $pdf->setFont('Times', '', 11);
                 // Se recorren los registros fila por fila.
                 foreach ($dataProductos as $rowProducto) {
                     // ($rowProducto['estado_producto']) ? $estado = 'Activo' : $estado = 'Inactivo';
                     // Se imprimen las celdas con los datos de los productos.
-                    $pdf->cell(126, 10, $pdf->encodeString($rowProducto['nombre_producto']), 1, 0);
-                    $pdf->cell(30, 10, $rowProducto['precio_producto'], 1, 0);
+                    $pdf->cell(120, 10, $pdf->encodeString($rowProducto['nombre_producto']), 1, 0);
+                    $pdf->cell(40, 10, $rowProducto['precio_producto'], 1, 0);
                     $pdf->cell(30, 10, $rowProducto['cantidad_producto'], 1, 1);
                 }
             } else {

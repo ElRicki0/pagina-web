@@ -62,11 +62,12 @@ class Report extends FPDF
         $this->image('../../images/logo.png', 15, 15, 20);
         // Se ubica el título.
         $this->cell(20);
-        $this->setFont('Arial', 'B', 15);
+        $this->setFont('Times', '', 20);
+        $this->SetTextColor(237, 237, 237);
         $this->cell(166, 10, $this->encodeString($this->title), 0, 1, 'C');
         // Se ubica la fecha y hora del servidor.
         $this->cell(20);
-        $this->setFont('Arial', '', 10);
+        $this->setFont('Times', '', 10);
         $this->cell(166, 10, 'Fecha/Hora: ' . date('d-m-Y H:i:s'), 0, 1, 'C');
         // Se agrega un salto de línea para mostrar el contenido principal del documento.
         $this->ln(10);
@@ -81,7 +82,9 @@ class Report extends FPDF
         // Se establece la posición para el número de página (a 15 milímetros del final).
         $this->setY(-15);
         // Se establece la fuente para el número de página.
-        $this->setFont('Arial', 'I', 8);
+        $this->setFont('Times', 'I', 10);
+        // Se estable un color al texto, en este caso color blanco
+        $this->SetTextColor(237, 237, 237);
         // Se imprime una celda con el número de página.
         $this->cell(0, 10, $this->encodeString('Página ') . $this->pageNo() . '/{nb}', 0, 0, 'C');
     }
