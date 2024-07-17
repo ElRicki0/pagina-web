@@ -303,9 +303,21 @@ const graficoLinealProductosVendidos = async () => {
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 */
-const openReport = () => {
+const openReportbrands = () => {
     // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
     const PATH = new URL(`${SERVER_URL}reports/admin/productos_marca_general.php`);
+    // Se abre el reporte en una nueva pestaña.
+    window.open(PATH.href);
+}
+
+/*
+*   Función para abrir un reporte automático de productos por marca.
+*   Parámetros: ninguno.
+*   Retorno: ninguno.
+*/
+const openReportcategories = () => {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/admin/productos_categoria_general.php`);
     // Se abre el reporte en una nueva pestaña.
     window.open(PATH.href);
 }
