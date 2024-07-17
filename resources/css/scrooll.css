@@ -28,13 +28,6 @@
     border-left: 6px solid rgb(164, 0, 179);
 }
 
-/* Ajustes para móviles */
-@media (max-width: 767px) {
-    .texto-beneficio {
-        display: none; /* Ocultar la línea en pantallas pequeñas */
-    }
-}
-
 .grafica{
     background: linear-gradient(rgba(138, 138, 138, 0.274), rgba(177, 177, 177, 0.247));
     border-radius: 20px;

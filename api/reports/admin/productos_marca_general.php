@@ -26,7 +26,7 @@ if ($dataMarcas = $marca->readAll()) {
     // Se establece un color de relleno para mostrar el nombre de la categoría.
     $pdf->setFillColor(0, 21, 26);
     // Se establece la fuente para los datos de los productos.
-    $pdf->setFont('Times', '', 11);
+    $pdf->setFont('Times', '', 14);
 
     // Se recorren los registros fila por fila.
     foreach ($dataMarcas as $rowMarca) {
