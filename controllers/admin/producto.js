@@ -211,25 +211,6 @@ const openAdd = (id) => {
 
 }
 
-// const openAdd = async (id) => {
-//     // Se define un objeto con los datos del registro seleccionado.
-//     const FORM = new FormData();
-//     FORM.append('idProducto', id);
-//     // Petición para obtener los datos del registro solicitado.
-//     const DATA = await fetchData(PRODUCTO_API, 'agregarProducto', FORM);
-//     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-//     if (DATA.status) {
-//         // Se muestra la caja de diálogo con su título.
-//         PRODUCTO_MODAL.show();
-//         PRODUCTO_MODAL.textContent = 'agregar producto';
-//         // Se prepara el formulario.
-//         CANTIDAD_FORM.reset();
-//         ID_PRODUCTO2.value=id;
-
-//     } else {
-//         sweetAlert(2, DATA.error, false);
-//     }
-// }
 
 /*
 *   Función asíncrona para eliminar un registro.
@@ -314,4 +295,17 @@ const graficoLinealProductosVendidos = async () => {
         document.getElementById('chart1').remove();
         console.log(DATA.error);
     }
+}
+
+
+/*
+*   Función para abrir un reporte automático de productos por marca.
+*   Parámetros: ninguno.
+*   Retorno: ninguno.
+*/
+const openReport = () => {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/admin/productos_marca_general.php`);
+    // Se abre el reporte en una nueva pestaña.
+    window.open(PATH.href);
 }

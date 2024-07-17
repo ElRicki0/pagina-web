@@ -252,7 +252,7 @@ class ProductoHandler
         return Database::getRows($sql);
     }
 
-        /*
+    /*
     *   Métodos para generar reportes.
     */
     public function productosCategoria()
@@ -263,6 +263,19 @@ class ProductoHandler
                 WHERE id_categoria_producto = ?
                 ORDER BY nombre_producto';
         $params = array($this->categoria);
+        return Database::getRows($sql, $params);
+    }
+
+
+    public function productosMarca()
+    {
+        $sql = '
+                SELECT nombre_producto, precio_producto, cantidad_producto
+                FROM tb_productos
+                INNER JOIN tb_marcas USING(id_marca)
+                WHERE id_marca = ?
+                ORDER BY nombre_producto;';
+        $params = array($this->marca);
         return Database::getRows($sql, $params);
     }
 }
