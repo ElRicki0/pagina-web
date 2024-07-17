@@ -216,7 +216,7 @@ class ProductoHandler
     public function readComentarios()
     {
         $sql = 'SELECT c.id_comentario, c.comentario, c.estrella, c.id_producto, cl.nombre_cliente, cl.imagen_cliente,
-                       c.estado_comentario, c.fecha_comentario
+                c.estado_comentario, c.fecha_comentario
                 FROM tb_comentarios c
                 INNER JOIN tb_clientes cl ON c.id_cliente = cl.id_cliente
                 WHERE c.id_producto = ? AND c.estado_comentario = 1';
@@ -250,5 +250,19 @@ class ProductoHandler
             ORDER BY total_vendido DESC
             limit 5';
         return Database::getRows($sql);
+    }
+
+        /*
+    *   Métodos para generar reportes.
+    */
+    public function productosCategoria()
+    {
+        $sql = 'SELECT nombre_producto, precio_producto, cantidad_producto
+                FROM tb_productos
+                INNER JOIN tb_categorias_productos USING(id_categoria_producto)
+                WHERE id_categoria_producto = ?
+                ORDER BY nombre_producto';
+        $params = array($this->categoria);
+        return Database::getRows($sql, $params);
     }
 }

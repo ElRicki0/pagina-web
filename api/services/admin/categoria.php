@@ -103,6 +103,18 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'No hay datos disponibles';
                 }
                 break;
+
+            // Accion para reporte : lee los productos segun la categoria 
+            case 'readproductosCategoria':
+                // Accion que muestre todos los datos 
+                if (!$categoria->setId($_POST['idCategoria'])) {
+                    $result['error'] = $categoria->getDataError();
+                } elseif ($result['dataset'] = $categoria->productosCategoria()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['error'] = 'Categoría inexistente';
+                }
+                break;
             default:
                 $result['error'] = 'Acción no disponible dentro de la sesión';
         }

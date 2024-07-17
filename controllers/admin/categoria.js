@@ -91,6 +91,9 @@ const fillTable = async (form = null) => {
             <button type="button" class="btn borrar-btn" onclick="openDelete(${row.id_categoria_producto})">
                 <img src="../../resources/img/iconos/papelera.png">
             </button>
+            <button type="button" class="btn borrar-btn" onclick="openReport(${row.id_categoria_producto})">
+                <img src="../../resources/img/iconos/reporte.png">
+            </button>
             </td>
         </tr>
             `;
@@ -172,33 +175,6 @@ const openDelete = async (id) => {
     }
 }
 
-/*
-*   Función asíncrona para mostrar un gráfico de pastel con las categorias mas vendidas.
-*   Parámetros: ninguno.
-*   Retorno: ninguno.
-*/
-// const graficoPastelCategoriasVendidas = async () => {
-//     // Petición para obtener los datos del gráfico.
-//     const DATA = await fetchData(CATEGORIA_API, 'categoriasMasVendidas');
-//     // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
-//     if (DATA.status) {
-//         // Se declaran los arreglos para guardar los datos a gráficar.
-//         let categorias = [];
-//         let cantidadesVendidas = [];
-//         // Se recorre el conjunto de registros fila por fila a través del objeto row.
-//         DATA.dataset.forEach(row => {
-//             // Se agregan los datos a los arreglos.
-//             categorias.push(row.nombre_categoria_producto);
-//             cantidadesVendidas.push(row.total_categoria_vendido);
-//         });
-//         // Llamada a la función para generar y mostrar un gráfico de pastel. Se encuentra en el archivo components.js
-//         pieGraph('chart2', categorias, cantidadesVendidas, 'Categorias más vendidas');
-//     } else {
-//         document.getElementById('chart2').remove();
-//         console.log(DATA.error);
-//     }
-// }
-
 
 
 /*
@@ -227,4 +203,18 @@ const graficoLinealCategoriasVendidas = async () => {
         document.getElementById('chart2').remove();
         console.log(DATA.error);
     }
+}
+
+/*
+*   Función para abrir un reporte parametrizado.
+*   Parámetros: id (identificador del registro seleccionado).
+*   Retorno: ninguno.
+*/
+const openReport = (id) => {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/admin/productos_categoria.php`);
+    // Se agrega un parámetro a la ruta con el valor del registro seleccionado.
+    PATH.searchParams.append('idCategoria', id);
+    // Se abre el reporte en una nueva pestaña.
+    window.open(PATH.href);
 }

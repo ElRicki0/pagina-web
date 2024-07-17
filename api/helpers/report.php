@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase para generar archivos PDF.
-require_once('../libraries/fpdf185');
+require_once('../../libraries/fpdf185/fpdf.php');
 
 /*
 *   Clase para definir las plantillas de los reportes del sitio privado.
@@ -56,6 +56,8 @@ class Report extends FPDF
     */
     public function header()
     {
+        // Agregar imagen de fondo
+        $this->image('../../images/FondoReporte.png', 0, 0, 215.9, 279.4);
         // Se establece el logo.
         $this->image('../../images/logo.png', 15, 15, 20);
         // Se ubica el título.

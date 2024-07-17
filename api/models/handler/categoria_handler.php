@@ -93,5 +93,19 @@ class CategoriaHandler
                 LIMIT 5';
         return Database::getRows($sql);
     }
+
+        /*
+    *   Métodos para generar reportes.
+    */
+    public function productosCategoria()
+    {
+        $sql = 'SELECT nombre_producto, precio_producto, cantidad_producto
+                FROM tb_productos
+                INNER JOIN tb_categorias_productos USING(id_categoria_producto)
+                WHERE id_categoria_producto = ?
+                ORDER BY nombre_producto';
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
+    }
     
 }
