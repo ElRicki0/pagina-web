@@ -1,11 +1,12 @@
 <?php
 // Se incluye la clase para generar archivos PDF.
-// require_once('../../libraries/fpdf185/fpdf.php');
+require_once('../libraries/fpdf185');
 
 /*
 *   Clase para definir las plantillas de los reportes del sitio privado.
 *   Para más información http://www.fpdf.org/
 */
+
 class Report extends FPDF
 {
     // Constante para definir la ruta de las vistas del sitio privado.
@@ -27,7 +28,7 @@ class Report extends FPDF
             // Se asigna el título del documento a la propiedad de la clase.
             $this->title = $title;
             // Se establece el título del documento (true = utf-8).
-            $this->setTitle('CoffeeShop - Reporte', true);
+            $this->setTitle('IvaneCare - Reporte', true);
             // Se establecen los margenes del documento (izquierdo, superior y derecho).
             $this->setMargins(15, 15, 15);
             // Se añade una nueva página al documento con orientación vertical y formato carta, llamando implícitamente al método header()
