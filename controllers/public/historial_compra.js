@@ -21,6 +21,9 @@ const fillTable = async (form = null) => {
     // Llamada a la función para mostrar el encabezado y pie del documento.
     loadTemplate();
 
+    const FORM = new FormData();
+    FORM.append('id_producto', PARAMS.get('id'));
+
     // Petición para obtener las categorías disponibles.
     const DATA = await fetchData(HISTORIAL_API, 'readAll');
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -43,12 +46,15 @@ const fillTable = async (form = null) => {
                         </div>
                         <div class="col-md-8">
                             <div class="card-body shadow-lg">
-                                <h5 class="card-title">${row.fecha_pedido}</h5>
+                                <h5 class="card-title">${row.nombre_producto}</h5>
                                 <p class="card-text">${row.direccion_pedido}</p>
-                                <p class="card-text">${row.nombre_producto}</p>
+                                <p class="card-text">${row.fecha_registro}</p>
                                 <div class="text-end">
                                 </div>
                             </div>
+                            <a href="producto.html?id=${row.id_producto}" class="card-button text-center">
+                                <button class="btn">Ver detalle</button>
+                            </a>
                         </div>
                     </div>
                 </div>
