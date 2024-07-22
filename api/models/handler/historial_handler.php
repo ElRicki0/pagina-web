@@ -10,7 +10,7 @@ class HistorialHandler
 
     public function readAll()
     {
-        $sql = 'SELECT p.id_pedido, p.fecha_registro, p.direccion_pedido AS direccion_pedido, pr.id_producto, pr.nombre_producto AS nombre_producto
+        $sql = 'SELECT p.id_pedido, p.fecha_registro, pr.imagen_producto, p.direccion_pedido AS direccion_pedido, pr.id_producto, pr.nombre_producto AS nombre_producto
                     FROM tb_pedidos p
                     INNER JOIN tb_clientes c ON p.id_cliente = c.id_cliente
                     INNER JOIN tb_detalles_pedidos dp ON p.id_pedido = dp.id_pedido

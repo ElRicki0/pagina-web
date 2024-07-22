@@ -14,7 +14,7 @@ if (isset($_GET['action'])) {
     if (isset($_SESSION['idAdministrador'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
-        // Caso para poder utilizar el metodo de busqueda
+                // Caso para poder utilizar el metodo de busqueda
             case 'searchRows':
                 if (!Validator::validateSearch($_POST['search'])) {
                     $result['error'] = Validator::getSearchError();
@@ -32,7 +32,7 @@ if (isset($_GET['action'])) {
                     !$comentario->setComentario($_POST['comentario']) or
                     !$comentario->setEstado(isset($_POST['estadoComentario']) ? 1 : 0) or
                     !$comentario->setProducto($_POST['productoComentario']) or
-                    !$comentario->setCliente($_POST['clienteComentario'])or
+                    !$comentario->setCliente($_POST['clienteComentario']) or
                     !$comentario->setEstrella($_POST['estrellaComentario'])
                 ) {
                     $result['error'] = $comentario->getDataError();
@@ -76,7 +76,7 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Ocurrió un problema al modificar el comentaio';
                 }
                 break;
-            // Caso para poder cambiar el estado del comentario
+                // Caso para poder cambiar el estado del comentario
             case 'changeState':
                 if (
                     !$comentario->setId($_POST['idComentario'])
@@ -101,6 +101,20 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Ocurrió un problema al eliminar el comentario';
                 }
                 break;
+            case 'ProductosmasComentados':
+                if ($result['dataset'] = $comentario->ProductosmasComentados()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['error'] = 'No hay datos disponibles';
+                }
+                break;
+            case 'ProductosmejorCalificados':
+                if ($result['dataset'] = $comentario->ProductosmejorCalificados()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['error'] = 'No hay datos disponibles';
+                }
+                break;
             default:
                 $result['error'] = 'Acción no disponible dentro de la sesión';
         }
@@ -116,5 +130,3 @@ if (isset($_GET['action'])) {
 } else {
     print(json_encode('Recurso no disponible'));
 }
-
-

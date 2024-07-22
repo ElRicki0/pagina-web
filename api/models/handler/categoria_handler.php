@@ -94,7 +94,7 @@ class CategoriaHandler
         return Database::getRows($sql);
     }
 
-        /*
+    /*
     *   Métodos para generar reportes.
     */
     public function productosCategoria()

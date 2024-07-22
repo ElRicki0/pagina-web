@@ -116,6 +116,9 @@ const fillTable = async (form = null) => {
                         <button type="button" class="btn borrar-btn" onclick="openDelete(${row.id_cliente})">
                             <img src="../../resources/img/iconos/papelera.png">
                         </button>
+                        <button type="button" class="btn borrar-btn" onclick="openReport(${row.id_cliente})">
+                            <img src="../../resources/img/iconos/reporte.png">
+                        </button>
                     </td>
                 </tr>
             `;
@@ -299,4 +302,18 @@ const graficoBarrasClientesEstado = async () => {
         document.getElementById('chartEstate').remove();
         console.log(DATA.error);
     }
+}
+
+/*
+*   Función para abrir un reporte parametrizado.
+*   Parámetros: id (identificador del registro seleccionado).
+*   Retorno: ninguno.
+*/
+const openReport = (id) => {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/admin/pedidos_cliente.php`);
+    // Se agrega un parámetro a la ruta con el valor del registro seleccionado.
+    PATH.searchParams.append('idCliente', id);
+    // Se abre el reporte en una nueva pestaña.
+    window.open(PATH.href);
 }

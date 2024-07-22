@@ -75,6 +75,27 @@
                 </table>
             </div>
         </div>
+
+
+                    <!-- Contenedor de gráficos -->
+        <div class="row justify-content-md-center">
+            <div class="col-sm-12 col-md-6 col-lg-5 grafica">
+                <p class="fs-2 fw-medium text-center">Top 5 productos mas comentados</p>
+                <!-- Se muestra un gráfico con el porcentaje de productos por comentario  -->
+                <canvas id="comen1"></canvas>
+            </div>
+            
+            <div class="col-sm-12 col-md-6 col-lg-5 ms-4 grafica ">
+                <p class="fs-2 fw-medium text-center">Top 5 productos mejor calificados</p>
+                <canvas id="califi1"></canvas>
+            </div>
+        </div>
+        <!-- Importación de la librería para generar los gráficos. Para más información https://www.chartjs.org/ -->
+        <script type="text/javascript" src="../../resources/js/chart.umd.min.js"></script>
+
+            <!-- Importación de la librería para generar los gráficos. Para más información https://www.chartjs.org/ -->
+            <script type="text/javascript" src="../../resources/js/chart.umd.min.js"></script>
+
     </main>
     <footer class="test ">
     </footer>
@@ -111,15 +132,8 @@
             </div>
         </div>
     </div>
-    
 
-        <!-- Contenedor de gráficos -->
-        <div class="row justify-content-md-center">
-            <div class="col-sm-12 col-md-6 col-lg-5">
-                <!-- Se muestra un gráfico con el porcentaje de productos mejor valorados -->
-                <canvas id="comen1"></canvas>
-            </div>
-
+        
 
     <!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT -->
     <!-- Llamada al framework y librería de mensajes -->
