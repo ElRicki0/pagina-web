@@ -93,6 +93,9 @@ const fillTable = async (form = null) => {
                 <button type="button" class="btn borrar-btn" onclick="openDelete(${row.id_marca})">
                     <img src="../../resources/img/iconos/papelera.png">
                 </button>
+                <button type="button" class="btn borrar-btn" onclick="openReport(${row.id_marca})">
+                    <img src="../../resources/img/iconos/reporte.png">
+                </button>
                     </td>
                 </tr>
             `;
@@ -172,19 +175,20 @@ const openDelete = async (id) => {
     }
 }
 
-// /*
-// *   Función para abrir un reporte parametrizado de productos de una categoría.
-// *   Parámetros: id (identificador del registro seleccionado).
-// *   Retorno: ninguno.
-// */
-// const openReport = (id) => {
-//     // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
-//     const PATH = new URL(`${SERVER_URL}reports/admin/productos_categoria.php`);
-//     // Se agrega un parámetro a la ruta con el valor del registro seleccionado.
-//     PATH.searchParams.append('idCategoria', id);
-//     // Se abre el reporte en una nueva pestaña.
-//     window.open(PATH.href);
-// }
+
+/*
+*   Función para abrir un reporte parametrizado.
+*   Parámetros: id (identificador del registro seleccionado).
+*   Retorno: ninguno.
+*/
+const openReport = (id) => {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/admin/productos_marca.php`);
+    // Se agrega un parámetro a la ruta con el valor del registro seleccionado.
+    PATH.searchParams.append('idMarca', id);
+    // Se abre el reporte en una nueva pestaña.
+    window.open(PATH.href);
+}
 
 /*
 *   Función asíncrona para mostrar un gráfico de líneas con la cantidad de productos vendidos por producto.
