@@ -55,6 +55,9 @@ const fillTable = async (form = null) => {
                             <a href="producto.html?id=${row.id_producto}" class="card-button text-center">
                                 <button class="btn">Ver detalle</button>
                             </a>
+                                            <button type="button" class="btn borrar-btn" onclick="openReport(${row.id_pedido})">
+                <img src="../../resources/img/iconos/reporte.png">
+                </button>
                         </div>
                     </div>
                 </div>
@@ -109,3 +112,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         // document.getElementById('mainTitle').textContent = DATA.error;
     }
 });
+
+/*
+*   Función para abrir un reporte parametrizado.
+*   Parámetros: id (identificador del registro seleccionado).
+*   Retorno: ninguno.
+*/
+const openReport = (id) => {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/public/historial_cliente.php`);
+    // Se agrega un parámetro a la ruta con el valor del registro seleccionado.
+    PATH.searchParams.append('idPedido', id);
+    // Se abre el reporte en una nueva pestaña.
+    window.open(PATH.href);
+}
