@@ -41,23 +41,23 @@ const fillTable = async (form = null) => {
             <div class="card mb-12 ">
                     <div class="row g-0">
                         <div class="col-md-4 mt-3 text-center">
-                            <img src="${SERVER_URL}images/SUGERENCIA/${row.imagen_producto}" width="150px"
-                                class="img-fluid rounded-start" alt="...">
+                            <img src="${SERVER_URL}images/productos/${row.imagen_producto}" width="150px"
+                                class="img-fluid rounded-start" alt="${row.nombre_producto}">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body shadow-lg">
-                                <h5 class="card-title">${row.nombre_producto}</h5>
-                                <p class="card-text">${row.direccion_pedido}</p>
-                                <p class="card-text">${row.fecha_registro}</p>
+                                <h5 class="card-title">Nombre de uno de los productos: ${row.nombre_producto}</h5>
+                                <p class="card-text"> Dirección del pedido: ${row.direccion_pedido}</p>
+                                <p class="card-text"> Fecha del pedido: ${row.fecha_registro}</p>
                                 <div class="text-end">
                                 </div>
                             </div>
                             <a href="producto.html?id=${row.id_producto}" class="card-button text-center">
-                                <button class="btn">Ver detalle</button>
+                                <button class="btn">Detalle del producto</button>
                             </a>
-                                            <button type="button" class="btn borrar-btn" onclick="openReport(${row.id_pedido})">
-                <img src="../../resources/img/iconos/reporte.png">
-                </button>
+                            <button type="button" class="btn borrar-btn" onclick="openReport(${row.id_pedido})">
+                                <img src="../../resources/img/iconos/reporte.png">
+                        </button>
                         </div>
                     </div>
                 </div>
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div class="card mb-3">
                 <div class="card-details">
                     <div class="d-flex justify-content-center">
-                        <img src="${SERVER_URL}images/SUGERENCIA/${row.imagen_producto}" class="card-img-top mb-3 imagenMar" alt="${row.nombre_producto}">
+                        <img src="${SERVER_URL}images/productos/${row.imagen_producto}" class="card-img-top mb-3 imagenMar" alt="${row.nombre_producto}">
                     </div>
                     <h5 class="card-title">${row.nombre_producto}</h5>
                     <div class="product-info">
