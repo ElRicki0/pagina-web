@@ -13,10 +13,14 @@ const TABLE_BODY = document.getElementById('tableBody'),
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para mostrar el encabezado y pie del documento.
     loadTemplate();
+
+
     // Se establece el título del contenido principal.
     MAIN_TITLE.textContent = 'Gestionar comentarios';
     // Llamada a la función para llenar la tabla con los registros existentes.
     fillTable();
+    ProductosmasComentados();
+    ProductosmejorCalificados();
 });
 
 // Método del evento para cuando se envía el formulario de buscar.
@@ -131,25 +135,47 @@ const openDelete = async (id) => {
     }
 }
 
-const graficoPastelCategorias = async () => {
+const ProductosmasComentados = async () => {
     // Petición para obtener los datos del gráfico.
-    const DATA = await fetchData(PRODUCTO_API, 'porcentajeProductosCategoria');
+    const DATA = await fetchData(COMENTARIO_API, 'ProductosmasComentados');
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
     if (DATA.status) {
         // Se declaran los arreglos para guardar los datos a gráficar.
-        let categorias = [];
+        let comentarios = [];
         let porcentajes = [];
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         DATA.dataset.forEach(row => {
             // Se agregan los datos a los arreglos.
-            categorias.push(row.nombre_categoria_producto);
-            porcentajes.push(row.porcentaje);
+            comentarios.push(row.nombre_producto); // Se ajusta el nombre de la propiedad
+            porcentajes.push(row.total_comentarios); // Se ajusta el nombre de la propiedad
         });
         // Llamada a la función para generar y mostrar un gráfico de pastel. Se encuentra en el archivo components.js
-        pieGraph('comen1', categorias, porcentajes, 'Porcentaje de productos por categoría');
+        pieGraph('comen1', comentarios, porcentajes,);
     } else {
         document.getElementById('comen1').remove();
         console.log(DATA.error);
     }
 }
 
+    const ProductosmejorCalificados = async () => {
+        // Petición para obtener los datos del gráfico.
+        const DATA = await fetchData(COMENTARIO_API, 'ProductosmejorCalificados');
+        // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+        if (DATA.status) {
+            // Se declaran los arreglos para guardar los datos a gráficar.
+            let estrellas = [];
+            let porcentajes = [];
+            // Se recorre el conjunto de registros fila por fila a través del objeto row.
+            DATA.dataset.forEach(row => {
+                // Se agregan los datos a los arreglos.
+                porcentajes.push(row.nombre_producto); // Se ajusta el nombre de la propiedad
+                estrellas.push(row.estrella); // Se ajusta el nombre de la propiedad
+            });
+            // Llamada a la función para generar y mostrar un gráfico de pastel. Se encuentra en el archivo components.js
+            pieGraph('califi1', porcentajes, estrellas);
+        } else {
+            document.getElementById('califi1').remove();
+            console.log(DATA.error);
+        }
+
+    }
