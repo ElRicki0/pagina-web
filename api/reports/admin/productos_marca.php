@@ -17,7 +17,7 @@ if (isset($_GET['idMarca'])) {
         // Se verifica si la categoría existe, de lo contrario se muestra un mensaje.
         if ($rowMarca = $marca->readOne()) {
             // Se inicia el reporte con el encabezado del documento.
-            $pdf->startReport('Marca de la categoría : ' . $rowMarca['nombre_marca']);
+            $pdf->startReport('Productos de la marca : ' . $rowMarca['nombre_marca']);
             // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
             if ($dataProductos = $producto->productosMarca()) {
                 // Se establece un color de relleno para los encabezados.
@@ -35,6 +35,7 @@ if (isset($_GET['idMarca'])) {
                 foreach ($dataProductos as $rowProducto) {
                     // ($rowProducto['estado_producto']) ? $estado = 'Activo' : $estado = 'Inactivo';
                     // Se imprimen las celdas con los datos de los productos.
+                    $pdf->setFont('Times', '', 15);
                     $pdf->cell(120, 10, $pdf->encodeString($rowProducto['nombre_producto']), 1, 0);
                     $pdf->cell(40, 10, $rowProducto['precio_producto'], 1, 0);
                     $pdf->cell(30, 10, $rowProducto['cantidad_producto'], 1, 1);
