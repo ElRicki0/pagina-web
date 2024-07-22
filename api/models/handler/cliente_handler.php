@@ -254,13 +254,28 @@ class ClienteHandler
     public function reporteCliente()
     {
         $sql = ' 
-         SELECT p.id_pedido, p.fecha_registro, c.nombre_cliente, p.direccion_pedido AS direccion_pedido, pr.id_producto, pr.nombre_producto AS nombre_producto, COUNT(p.id_pedido) AS cantidad_pedidos 
-            FROM tb_pedidos p
-            INNER JOIN tb_clientes c ON p.id_cliente = c.id_cliente
-            INNER JOIN tb_detalles_pedidos dp ON p.id_pedido = dp.id_pedido
-            INNER JOIN tb_productos pr ON dp.id_producto = pr.id_producto
-            where c.id_cliente = ?
-GROUP BY p.id_pedido, p.fecha_registro, c.nombre_cliente, p.direccion_pedido, pr.id_producto, pr.nombre_producto;';
+          SELECT 
+    p.id_pedido, 
+    p.fecha_registro, 
+    c.nombre_cliente, 
+    p.direccion_pedido AS direccion_pedido, 
+    GROUP_CONCAT(DISTINCT pr.nombre_producto ORDER BY pr.nombre_producto ASC SEPARATOR ", ") AS productos_pedidos, 
+    COUNT(pr.id_producto) AS cantidad_productos_pedidos
+FROM 
+    tb_pedidos p
+INNER JOIN 
+    tb_clientes c ON p.id_cliente = c.id_cliente
+INNER JOIN 
+    tb_detalles_pedidos dp ON p.id_pedido = dp.id_pedido
+INNER JOIN 
+    tb_productos pr ON dp.id_producto = pr.id_producto
+WHERE 
+    c.id_cliente = ?
+GROUP BY 
+    p.id_pedido, 
+    p.fecha_registro, 
+    c.nombre_cliente, 
+    p.direccion_pedido;';
         $params = array($this->id);
         return Database::getRows($sql, $params);
     }
