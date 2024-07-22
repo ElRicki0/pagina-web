@@ -172,7 +172,7 @@ const ProductosmasComentados = async () => {
                 estrellas.push(row.estrella); // Se ajusta el nombre de la propiedad
             });
             // Llamada a la función para generar y mostrar un gráfico de pastel. Se encuentra en el archivo components.js
-            pieGraph('califi1', porcentajes, estrellas);
+            barGraph('califi1', porcentajes, estrellas);
         } else {
             document.getElementById('califi1').remove();
             console.log(DATA.error);

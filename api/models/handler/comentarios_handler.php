@@ -158,8 +158,9 @@ class ComentarioHandler
         $sql = 'SELECT p.id_producto, p.nombre_producto, c.estrella
         FROM tb_productos p 
         JOIN tb_comentarios c ON p.id_producto = c.id_producto 
-        WHERE c.estrella = 5';
+        WHERE c.estrella = 5
+        LIMIT 5;';;
         return Database::getRows($sql);
     }
-    
+
 }
