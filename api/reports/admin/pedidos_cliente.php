@@ -61,6 +61,7 @@ if (isset($_GET['idCliente'])) {
                 }
             } else {
                 // Si no hay pedidos, se muestra un mensaje en el reporte.
+                $pdf->SetTextColor(237, 237, 237);
                 $pdf->cell(0, 10, $pdf->encodeString('No hay pedidos de este cliente'), 1,  'C');
             }
 
