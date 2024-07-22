@@ -15,7 +15,8 @@ class HistorialHandler
                     INNER JOIN tb_clientes c ON p.id_cliente = c.id_cliente
                     INNER JOIN tb_detalles_pedidos dp ON p.id_pedido = dp.id_pedido
                     INNER JOIN tb_productos pr ON dp.id_producto = pr.id_producto
-                    where c.id_cliente=?';
+                    where c.id_cliente=?
+                    order by p.fecha_registro desc';
         $params = array($_SESSION['idCliente']);
         return Database::getRows($sql, $params);
     }
