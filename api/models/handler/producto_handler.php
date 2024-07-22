@@ -267,14 +267,15 @@ class ProductoHandler
     }
 
 
+    /*
+    *   Métodos para generar reportes.
+    */
     public function productosMarca()
     {
-        $sql = '
-                SELECT nombre_producto, precio_producto, cantidad_producto
-                FROM tb_productos
-                INNER JOIN tb_marcas USING(id_marca)
-                WHERE id_marca = ?
-                ORDER BY nombre_producto;';
+        $sql = 'SELECT nombre_producto, precio_producto, cantidad_producto
+                from tb_productos 
+                inner join tb_marcas  using(id_marca)
+                where id_marca=?';
         $params = array($this->marca);
         return Database::getRows($sql, $params);
     }
