@@ -120,4 +120,5 @@ ORDER BY p.nombre_producto;
         $params = array($this->estado, $this->id);
         return Database::executeRow($sql, $params);
     }
+
 }
