@@ -16,7 +16,7 @@ vanillaTextMask.maskInput({
     mask: [/\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
 });
 
-// Llamada a la función para establecer la mascara del campo teléfono emergenci.
+// Llamada a la función para establecer la mascara del campo teléfono emergencia.
 vanillaTextMask.maskInput({
     inputElement: document.getElementById('telefonoEmerAdministrador'),
     mask: [/\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const DATA = await fetchData(USER_API, 'readUsers');
     // Se comprueba si existe una sesión, de lo contrario se sigue con el flujo normal.
     if (DATA.session) {
-        // Se direcciona a la página web de bienvenida.
+        // Se disecciona a la página web de bienvenida.
         location.href = 'productos.html';
     } else if (DATA.status) {
         // Se establece el título del contenido principal.

@@ -140,7 +140,7 @@ const ProductosmasComentados = async () => {
     const DATA = await fetchData(COMENTARIO_API, 'ProductosmasComentados');
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
     if (DATA.status) {
-        // Se declaran los arreglos para guardar los datos a gráficar.
+        // Se declaran los arreglos para guardar los datos a gráfica.
         let comentarios = [];
         let porcentajes = [];
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
@@ -162,7 +162,7 @@ const ProductosmasComentados = async () => {
         const DATA = await fetchData(COMENTARIO_API, 'ProductosmejorCalificados');
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
         if (DATA.status) {
-            // Se declaran los arreglos para guardar los datos a gráficar.
+            // Se declaran los arreglos para guardar los datos a gráfica.
             let estrellas = [];
             let porcentajes = [];
             // Se recorre el conjunto de registros fila por fila a través del objeto row.

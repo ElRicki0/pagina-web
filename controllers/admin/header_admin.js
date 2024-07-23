@@ -1,5 +1,5 @@
 
-// Codigo para tener el header, para luego mandarlo a llamar
+// Código para tener el header, para luego mandarlo a llamar
 
 const header = document.querySelector("header");
 

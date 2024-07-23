@@ -250,7 +250,7 @@ const graficoPastelCategorias = async () => {
     const DATA = await fetchData(PRODUCTO_API, 'porcentajeProductosCategoria');
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
     if (DATA.status) {
-        // Se declaran los arreglos para guardar los datos a gráficar.
+        // Se declaran los arreglos para guardar los datos a gráfica.
         let categorias = [];
         let porcentajes = [];
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
@@ -280,7 +280,7 @@ const graficoLinealProductosVendidos = async () => {
     const DATA = await fetchData(PRODUCTO_API, 'productosMasVendidos');
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
     if (DATA.status) {
-        // Se declaran los arreglos para guardar los datos a graficar.
+        // Se declaran los arreglos para guardar los datos a gráfica.
         let productos = [];
         let cantidadesVendidas = [];
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
