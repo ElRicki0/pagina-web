@@ -28,7 +28,7 @@ if (isset($_GET['idCliente'])) {
                 $pdf->setFillColor(0, 21, 26);
                 // Se establece la fuente para los encabezados.
                 $pdf->setFont('Times', 'B', 15);
-                $pdf->SetTextColor(237, 237, 237);
+                $pdf->SetTextColor(223, 223, 223);
                 // Se imprimen las celdas con los encabezados.
                 $pdf->cell(85, 10, 'Nombre Producto', 1, 0, 'C', 1);
                 $pdf->cell(40, 10, $pdf->encodeString('Dirección Pedido'), 1, 0, 'C', 1);
@@ -41,27 +41,46 @@ if (isset($_GET['idCliente'])) {
 
                 // Se recorren los registros fila por fila.
                 foreach ($dataClientes as $rowCliente) {
+                    $pdf->SetTextColor(10, 10, 10);
+                    $pdf->setFont('Times', 'B', 16);
+
                     // Guardar la posición Y actual
                     $yStart = $pdf->GetY();
                     // Guardar la posición X antes de la multicelda
                     $xStart = $pdf->GetX();
 
-                    // Imprimir la multicelda y obtener su altura
+                    // Imprimir la multicelda de productos_pedidos y obtener su altura
                     $pdf->MultiCell(85, 10, $pdf->encodeString($rowCliente['productos_pedidos']), 1, 'C');
-                    $yEnd = $pdf->GetY();
-                    $multiCellHeight = $yEnd - $yStart;
+                    $yEndProductos = $pdf->GetY();
+                    $multiCellHeightProductos = $yEndProductos - $yStart;
 
                     // Volver a la posición X inicial y Y inicial
                     $pdf->SetXY($xStart + 85, $yStart);
 
-                    // Imprimir las celdas fijas con la altura de la multicelda
-                    $pdf->cell(40, $multiCellHeight, $rowCliente['direccion_pedido'], 1, 0, 'C');
+                    // Guardar la posición X antes de la multicelda de direccion_pedido
+                    $xStartDireccion = $pdf->GetX();
+
+                    // Imprimir la multicelda de direccion_pedido y obtener su altura
+                    $pdf->MultiCell(40, 10, $rowCliente['direccion_pedido'], 1, 'C');
+                    $yEndDireccion = $pdf->GetY();
+                    $multiCellHeightDireccion = $yEndDireccion - $yStart;
+
+                    // Obtener la altura máxima entre las dos multiceldas
+                    $multiCellHeight = max($multiCellHeightProductos, $multiCellHeightDireccion);
+
+                    // Volver a la posición Y inicial para la siguiente celda
+                    $pdf->SetXY($xStartDireccion + 40, $yStart);
+
+                    // Imprimir las celdas fijas con la altura de la multicelda más alta
                     $pdf->cell(30, $multiCellHeight, $rowCliente['cantidad_productos_pedidos'], 1, 0, 'C');
                     $pdf->cell(40, $multiCellHeight, $rowCliente['fecha_registro'], 1, 1, 'C');
+
+                    // Ajustar la posición Y para la siguiente fila
+                    $pdf->SetY($yStart + $multiCellHeight);
                 }
             } else {
-                // Si no hay pedidos, se muestra un mensaje en el reporte.
-                $pdf->SetTextColor(237, 237, 237);
+                $pdf->SetTextColor(10, 10, 10);
+                $pdf->setFont('Times', 'B', 16);
                 $pdf->cell(0, 10, $pdf->encodeString('No hay pedidos de este cliente'), 1,  'C');
             }
 
