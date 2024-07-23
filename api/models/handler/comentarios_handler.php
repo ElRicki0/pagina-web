@@ -141,7 +141,7 @@ class ComentarioHandler
     }
 
 
-    // Generar grafica
+    // Generar gráfica
     public function ProductosmasComentados()
     {
 
