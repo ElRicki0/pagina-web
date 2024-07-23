@@ -46,7 +46,7 @@ class CarritoHandler
             return true;
         } else {
             $this->estado = 'Pendiente';
-            // cambiar direccion_cliente por residencia_cliente según db
+            // cambiar dirección_cliente por residencia_cliente según db
             $sql = 'INSERT INTO tb_pedidos(direccion_pedido, id_cliente)
                     VALUES((SELECT residencia_cliente FROM tb_clientes WHERE id_cliente = ?), ?)';
             $params = array($_SESSION['idCliente'], $_SESSION['idCliente']);
@@ -91,7 +91,7 @@ class CarritoHandler
     // Método para agregar un producto al carrito de compras.
     public function createDetail()
     {
-        // Se realiza una subconsulta para obtener el precio del producto.
+        // Se realiza una subConsulta para obtener el precio del producto.
         $sql = 'INSERT INTO tb_detalles_pedidos(id_producto, precio_pedido, cantidad_pedido, id_pedido)
                 VALUES(?, (SELECT precio_producto FROM tb_productos WHERE id_producto = ?), ?, ?)';
 
@@ -128,7 +128,7 @@ class CarritoHandler
         return $exec;
     }
 
-    // método para cambiar el estado de la irden de un detalle
+    // método para cambiar el estado de la orden de un detalle
     public function finishDetail()
     {
         // estado de detalle comprado

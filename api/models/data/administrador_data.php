@@ -15,7 +15,7 @@ class AdministradorData extends AdministradorHandler
      *  Métodos para validar y asignar valores de los atributos.
      */
 
-    // Funcion para asignar y validar id
+    // Función para asignar y validar id
     public function setId($value)
     {
         if (Validator::validateNaturalNumber($value)) {
@@ -27,7 +27,7 @@ class AdministradorData extends AdministradorHandler
         }
     }
 
-    // Funcion para asignar y validar nombre
+    // Función para asignar y validar nombre
     public function setNombre($value, $min = 2, $max = 50)
     {
         if (!Validator::validateAlphabetic($value)) {
@@ -42,7 +42,7 @@ class AdministradorData extends AdministradorHandler
         }
     }
 
-        // Funcion para asignar y validar apellido
+        // Función para asignar y validar apellido
     public function setApellido($value, $min = 2, $max = 50)
     {
         if (!Validator::validateAlphabetic($value)) {
@@ -57,7 +57,7 @@ class AdministradorData extends AdministradorHandler
         }
     }
 
-    // Funcion para asignar y validar correo
+    // Función para asignar y validar correo
     public function setCorreo($value, $min = 8, $max = 100)
     {
         if (!Validator::validateEmail($value)) {
@@ -75,7 +75,7 @@ class AdministradorData extends AdministradorHandler
         }
     }
 
-    // Funcion para asignar y validar telefono
+    // Función para asignar y validar teléfono
     public function setTelefono($value)
     {
         if (Validator::validatePhone($value)) {
@@ -87,7 +87,7 @@ class AdministradorData extends AdministradorHandler
         }
     }
 
-    // Funcion para asignar y validar telefono emergencia
+    // Función para asignar y validar teléfono emergencia
     public function setTelefonoEmer($value)
     {
         if (Validator::validatePhone($value)) {
@@ -99,7 +99,7 @@ class AdministradorData extends AdministradorHandler
         }
     }
 
-    // Funcion para asignar y validar DUI
+    // Función para asignar y validar DUI
     public function setDUI($value)
     {
         if (!Validator::validateDUI($value)) {
@@ -114,7 +114,7 @@ class AdministradorData extends AdministradorHandler
         }
     }
 
-    // Funcion para asignar y validar alias/usuario
+    // Función para asignar y validar alias/usuario
     public function setAlias($value, $min = 6, $max = 25)
     {
         if (!Validator::validateAlphanumeric($value)) {
@@ -129,7 +129,7 @@ class AdministradorData extends AdministradorHandler
         }
     }
 
-    // Funcion para asignar y validar contraseña
+    // Función para asignar y validar contraseña
     public function setClave($value)
     {
         if (Validator::validatePassword($value)) {

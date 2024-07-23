@@ -219,9 +219,9 @@ class ClienteHandler
     }
 
     /*
-    *   Métodos para generar graficas.
+    *   Métodos para generar gráficas.
     */
-    // Función para grafica : Mostrar el top 5 de clientes con mas pedidos o compras.
+    // Función para gráfica : Mostrar el top 5 de clientes con mas pedidos o compras.
     public function ClientesMasCompras()
     {
         $sql = 'SELECT 
