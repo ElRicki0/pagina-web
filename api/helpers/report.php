@@ -57,13 +57,13 @@ class Report extends FPDF
     public function header()
     {
         // Agregar imagen de fondo
-        $this->image('../../images/FondoReporte.png', 0, 0, 215.9, 279.4);
+        $this->image('../../images/FondoReporte3.png', 0, 0, 215.9, 279.4);
         // Se establece el logo.
         $this->image('../../images/logo.png', 15, 15, 20);
         // Se ubica el título.
         $this->cell(20);
-        $this->setFont('Times', '', 25);
-        $this->SetTextColor(237, 237, 237);
+        $this->setFont('Times', '', 30);
+        $this->SetTextColor(0, 0, 0);
         $this->cell(166, 10, $this->encodeString($this->title), 0, 1, 'C');
         // Se ubica la fecha y hora del servidor.
         $this->cell(20);
@@ -82,13 +82,13 @@ class Report extends FPDF
         // Se establece la posición para el número de página (a 15 milímetros del final).
         $this->setY(-25);
         // Se establece la fuente para el número de página.
-        $this->setFont('Times', 'I', 15);
+        $this->setFont('Times', 'I', 20);
         // Se estable un color al texto, en este caso color blanco
         $this->SetTextColor(237, 237, 237);
         // Se imprime una celda con el número de página.
         $this->cell(0, 10, $this->encodeString('Página ') . $this->pageNo() . '/{nb}', 0, 0, 'C');
         $this->Ln(10); // Salto de línea
-        $this->setFont('Times', 'I', 20);
+        $this->setFont('Times', 'I', 25);
         $this->cell(0, 10, "Reporte generado por el usuario : ' ".$this->encodeString($_SESSION['aliasAdministrador']) . " ' ", 0, 0, 'C');
         $this->Ln(10); // Salto de línea
     }
