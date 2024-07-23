@@ -14,7 +14,7 @@ $marca = new MarcaData;
 // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
 if ($dataMarcas = $marca->readAll()) {
     // Se establece un color de relleno para los encabezados.
-    $pdf->setFillColor(25, 83, 97);
+    $pdf->setFillColor(0, 21, 26);
     // Se establece la fuente para los encabezados.
     $pdf->setFont('Times', 'B', 18);
     $pdf->SetTextColor(223, 223, 223);
@@ -24,7 +24,7 @@ if ($dataMarcas = $marca->readAll()) {
     $pdf->cell(30, 10, 'Cantidad', 1, 1, 'C', 1);
 
     // Se establece un color de relleno para mostrar el nombre de la categoría.
-    $pdf->setFillColor(25, 83, 97);
+    $pdf->setFillColor(0, 21, 26);
     // Se establece la fuente para los datos de los productos.
     $pdf->setFont('Times', 'B', 18);
 
@@ -44,7 +44,6 @@ if ($dataMarcas = $marca->readAll()) {
                 foreach ($dataProductos as $rowProducto) {
                     $pdf->SetTextColor(10, 10, 10);
                     $pdf->setFont('Times', 'B', 16);
-
                     // Se imprimen las celdas con los datos de los productos.
                     $pdf->cell(120, 10, $pdf->encodeString($rowProducto['nombre_producto']), 1, 0);
                     $pdf->cell(40, 10, $rowProducto['precio_producto'], 1, 0);
