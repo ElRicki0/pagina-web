@@ -62,6 +62,13 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Producto inexistente';
                 }
                 break;
+                case 'porcentajeProductosCategoria':
+                    if ($result['dataset'] = $producto->porcentajeProductosCategoria()) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['error'] = 'No hay datos disponibles';
+                    }
+                    break;
             case 'readOnePedido':
                 if (!$pedido->setId($_POST['idPedido'])) {
                     $result['error'] = $pedido->getDataError();

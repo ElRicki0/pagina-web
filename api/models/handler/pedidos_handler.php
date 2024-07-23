@@ -121,4 +121,17 @@ ORDER BY p.nombre_producto;
         return Database::executeRow($sql, $params);
     }
 
+      /*
+    *   Métodos para generar reportes.
+    */
+
+    public function ReporteListaPedido()
+    {
+        $sql = 'SELECT p.id_pedido, p.fecha_registro, p.estado_pedido, c.nombre_cliente
+                from tb_pedidos p 
+                inner join tb_clientes c on p.id_cliente= c.id_cliente;';
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
+    }
+
 }

@@ -163,4 +163,5 @@ class ComentarioHandler
         return Database::getRows($sql);
     }
 
+ 
 }
