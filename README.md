@@ -6,8 +6,8 @@
    Bienvenidos a todos a "IvaneCare" ,tu destino online para productos de belleza de alta calidad. Ofrecemos una amplia variedad de artículos que van desde maquillaje, cuidado de la piel,
 cuidado del cabello, hasta fragancias y accesorios de belleza. Nuestro catálogo incluye marcas reconocidas y productos naturales que se adaptan a todo tipo de piel y preferencias. 
 
-  En nuestro sistema, ademas encontraras una amplia variadad de funcionalidades acordes a la marca, contamos con un estilo de imagen agradable al estilo de cada una de las mujeres,
-ademas contamos con dos versiones, escritorio y aplicacion movil, em ambas se realizarian las siguientes acciones:
+  En nuestro sistema, ademas encontraras una amplia variedad de funcionalidades acordes a la marca, contamos con un estilo de imagen agradable al estilo de cada una de las mujeres,
+ademas contamos con dos versiones, escritorio y aplicación móvil, em ambas se realizarían las siguientes acciones:
 
   - Creación de usuario
   - Vista de catalogo de productos, divididos por (generales, marcas y categorias).
@@ -16,23 +16,23 @@ ademas contamos con dos versiones, escritorio y aplicacion movil, em ambas se re
   - Vista de pedido realizado
   - Modificación de perfil
 
-*Estandares de programación*
+*Estándares de programación*
 
 ## General Sistema Escritorio:
 
 - Espaciado : 4.
-- Nombres de carpetas: minusculas.
-- Nombre de archivos: minusculas.
-- Comentarios: Se ha agregado comentarios acorde a las acciones que se estan realizando
+- Nombres de carpetas: minúsculas.
+- Nombre de archivos: minúsculas.
+- Comentarios: Se ha agregado comentarios acorde a las acciones que se están realizando
 
 ## General Sistema Androide
 
 - Espaciado: 4.
-- Nombre de carpetas (principales):minusculas
-- Nombre de carpetas (Secundarias):Inicia con mayusucla (PascalCase)
-- Nombre de archivos : PascaCase
+- Nombre de carpetas (principales):minúsculas
+- Nombre de carpetas (Secundarias):Inicia con mayúscula (PascalCase)
+- Nombre de archivos : PascalCase
 - Comentarios: se han agregado comentarios acorde a las acciones a realizar
-- Nombres de clases de estilo (Style): camelCase(containerBoton).
+- Nombres de clases de estilo (Style): camelCase(containerBotón).
 - Nombre de constantes (const) : camelCase (handleLogOut).
 
   
@@ -43,12 +43,12 @@ ademas contamos con dos versiones, escritorio y aplicacion movil, em ambas se re
 
 ## PHP ( Hypertext Preprocessor)
 
-- Nombre de carpetas : minusculas
+- Nombre de carpetas : minúsculas
 - nombre de archivos : Snake_case (comentarios_data)
 - Nombre de clases : PascalCase (ClienteData)
-- Variables: minusculas.
+- Variables: minúsculas.
 - Nombre de funciones: camelCase (setId)
-- Nombres de metodos (case) : camelCase(createRow)
+- Nombres de métodos (case) : camelCase(createRow)
 
 ## Dependencias Utilizadas
 

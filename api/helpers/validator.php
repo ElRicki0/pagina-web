@@ -136,7 +136,7 @@ class Validator
     }
 
     /*
-    *   Método para validar una cadena de texto (letras, digitos, espacios en blanco y signos de puntuación).
+    *   Método para validar una cadena de texto (letras, dígitos, espacios en blanco y signos de puntuación).
     *   Parámetros: $value (dato a validar).
     *   Retorno: booleano (true si el valor es correcto o false en caso contrario).
     */
@@ -266,7 +266,7 @@ class Validator
     */
     public static function validateDate($value)
     {
-        // Se dividen las partes de la fecha y se guardan en un arreglo con el siguiene orden: año, mes y día.
+        // Se dividen las partes de la fecha y se guardan en un arreglo con el siguiere orden: año, mes y día.
         $date = explode('-', $value);
         if (checkdate($date[1], $date[2], $date[0])) {
             return true;
