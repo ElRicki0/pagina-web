@@ -49,7 +49,7 @@ const Perfil = ({ logueado, setLogueado }) => {
 
     console.log(logueado)
 
-    const ip = '192.168.137.1';
+    const ip = '192.168.1.3';
     const navigation = useNavigation();
 
     // constante para cerar sesion (simplemente redirije al login si la accion esta completada)

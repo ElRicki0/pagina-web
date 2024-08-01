@@ -5,7 +5,7 @@ import Boton from '../components/Button/Boton'; // Se importa el componente de b
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 
-const ip = '192.168.137.1'; // Dirección IP del servidor 
+const ip = '192.168.1.3'; // Dirección IP del servidor 
 
 const HomeScreen = ({ logueado, setLogueado }) => {
 

@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, Button, ScrollView, TouchableOpacity } from 're
 import Boton from '../components/Button/Boton';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
+const ip = '192.168.1.3'; // Dirección IP del servidor 
+
 
 const Carrito = () => {
     return (
@@ -11,38 +13,6 @@ const Carrito = () => {
             showsVerticalScrollIndicator={false} // Oculta el indicador de desplazamiento vertical
         >
             <View style={styles.container}>
-                <View style={styles.card}>
-                    <Text style={styles.cardText}><Text style={styles.boldText}>Productos:Delineador, maquillaje facial, crema facial</Text> </Text>
-                    <Text style={styles.cardText}><Text style={styles.boldText}>Cantidad: 200</Text> </Text>
-                    <Text style={styles.cardText}><Text style={styles.boldText}>Total a pagar: $300</Text> </Text>
-                    <TouchableOpacity style={styles.cartButton}>
-                        <Ionicons name="cart" size={24} color="white" />
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.card}>
-                    <Text style={styles.cardText}><Text style={styles.boldText}>Productos:Delineador, maquillaje facial, crema facial</Text> </Text>
-                    <Text style={styles.cardText}><Text style={styles.boldText}>Cantidad: 200</Text> </Text>
-                    <Text style={styles.cardText}><Text style={styles.boldText}>Total a pagar: $300</Text> </Text>
-                    <TouchableOpacity style={styles.cartButton}>
-                        <Ionicons name="cart" size={24} color="white" />
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.card}>
-                    <Text style={styles.cardText}><Text style={styles.boldText}>Productos:Delineador, maquillaje facial, crema facial</Text> </Text>
-                    <Text style={styles.cardText}><Text style={styles.boldText}>Cantidad: 200</Text> </Text>
-                    <Text style={styles.cardText}><Text style={styles.boldText}>Total a pagar: $300</Text> </Text>
-                    <TouchableOpacity style={styles.cartButton}>
-                        <Ionicons name="cart" size={24} color="white" />
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.card}>
-                    <Text style={styles.cardText}><Text style={styles.boldText}>Productos:Delineador, maquillaje facial, crema facial</Text> </Text>
-                    <Text style={styles.cardText}><Text style={styles.boldText}>Cantidad: 200</Text> </Text>
-                    <Text style={styles.cardText}><Text style={styles.boldText}>Total a pagar: $300</Text> </Text>
-                    <TouchableOpacity style={styles.cartButton}>
-                        <Ionicons name="cart" size={24} color="white" />
-                    </TouchableOpacity>
-                </View>
                 <View style={styles.card}>
                     <Text style={styles.cardText}><Text style={styles.boldText}>Productos:Delineador, maquillaje facial, crema facial</Text> </Text>
                     <Text style={styles.cardText}><Text style={styles.boldText}>Cantidad: 200</Text> </Text>
