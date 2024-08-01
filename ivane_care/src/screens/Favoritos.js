@@ -4,6 +4,9 @@ import Boton from '../components/Button/Boton';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 
+const ip = '192.168.1.3'; // Dirección IP del servidor 
+
+
 const Favorito = () => {
     return (
         <ScrollView style={styles.scrollView}
@@ -18,42 +21,6 @@ const Favorito = () => {
                         <Ionicons name="cart" size={24} color="white" />
                     </TouchableOpacity>
                 </View>
-                <View style={styles.card}>
-                    <Text style={styles.cardText}><Text style={styles.boldText}>Producto:Delineador lindo</Text> </Text>
-                    <Text style={styles.cardText}><Text style={styles.boldText}>precio: $300</Text> </Text>
-                    <TouchableOpacity style={styles.cartButton}>
-                        <Ionicons name="cart" size={24} color="white" />
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.card}>
-                    <Text style={styles.cardText}><Text style={styles.boldText}>Producto:Delineador lindo</Text> </Text>
-                    <Text style={styles.cardText}><Text style={styles.boldText}>precio: $300</Text> </Text>
-                    <TouchableOpacity style={styles.cartButton}>
-                        <Ionicons name="cart" size={24} color="white" />
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.card}>
-                    <Text style={styles.cardText}><Text style={styles.boldText}>Producto:Delineador lindo</Text> </Text>
-                    <Text style={styles.cardText}><Text style={styles.boldText}>precio: $300</Text> </Text>
-                    <TouchableOpacity style={styles.cartButton}>
-                        <Ionicons name="cart" size={24} color="white" />
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.card}>
-                    <Text style={styles.cardText}><Text style={styles.boldText}>Producto:Delineador lindo</Text> </Text>
-                    <Text style={styles.cardText}><Text style={styles.boldText}>precio: $300</Text> </Text>
-                    <TouchableOpacity style={styles.cartButton}>
-                        <Ionicons name="cart" size={24} color="white" />
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.card}>
-                    <Text style={styles.cardText}><Text style={styles.boldText}>Producto:Delineador lindo</Text> </Text>
-                    <Text style={styles.cardText}><Text style={styles.boldText}>precio: $300</Text> </Text>
-                    <TouchableOpacity style={styles.cartButton}>
-                        <Ionicons name="cart" size={24} color="white" />
-                    </TouchableOpacity>
-                </View>
-                
             </View>
         </ScrollView>
     );

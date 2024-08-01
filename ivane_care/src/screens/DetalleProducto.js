@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Input from '../components/Input/InputCarrito';
 import Boton from '../components/Button/BotonCarrito';
+import Modal from 'react-native-modal';
 
 import Boton2 from '../components/Button/BotonFavorito';
 
@@ -12,9 +13,15 @@ import Boton2 from '../components/Button/BotonFavorito';
 const ip = '192.168.1.3'; // Dirección IP del servidor 
 
 const DetailProduct = ({ route }) => {
+    console.log('Route params:', route.params); // Agrega este console.log para verificar los parámetros
 
     // Funcion para mostrar productos segun la base
     const [Productos, setProductos] = useState([]);
+    const [Cantidad, setCantidad] = useState([]);
+    const [isModalVisible, setModalVisible] = useState(false);
+
+
+    const { idProducto } = route.params;
 
     useEffect(() => {
         getProductos();
@@ -68,6 +75,44 @@ const DetailProduct = ({ route }) => {
     };
 
 
+    // const toggleModal = () => {
+    //     setModalVisible(!isModalVisible);
+    //     setTimeout(() => {
+    //         SendToFavorite();
+    //     }, 1000);
+    // };
+
+    // Constante para dirigir al cliente a su lista de deseos "Aca esta la acción para poder añadir a favoritos"
+    const SendToFavorite = async () => {
+        if (!id) {
+            console.error("idProducto está indefinido");
+            return;
+        }
+    
+        try {
+            const form = new FormData();
+            form.append('idProducto', id);
+    
+            const response = await fetch(`http://${ip}/pagina-web/api/services/public/lista_deseo.php?action=createRow`, {
+                method: 'POST',
+                body: form,
+            });
+    
+            const data = await response.json();
+            console.log('Response data:', data);
+            console.log('idProducto:', id);
+    
+            if (data.status) {
+                alert('Producto agregado a su lista de favoritos.');
+                irAFavorito();
+            } else {
+                alert('Ocurrió un error.');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    
 
     const [ValorCarrito, setValorCarrito] = useState('');
 
@@ -103,7 +148,7 @@ const DetailProduct = ({ route }) => {
                         <Text style={styles.productTitle}>{nombre}</Text>
                         <Text style={styles.productDescription}>{descripcion}</Text>
                         <Text style={styles.productPrice}>$ {precio}</Text>
-                        <Boton2 textoBoton="" accionBoton={irAFavorito} iconName="heart-circle" />
+                        <Boton2 textoBoton="" accionBoton={SendToFavorite} iconName="heart-circle" />
                     </View>
                 </View>
                 <View style={styles.CardContainer2}>
