@@ -88,20 +88,20 @@ const DetailProduct = ({ route }) => {
             console.error("idProducto está indefinido");
             return;
         }
-    
+
         try {
             const form = new FormData();
             form.append('idProducto', id);
-    
+
             const response = await fetch(`http://${ip}/pagina-web/api/services/public/lista_deseo.php?action=createRow`, {
                 method: 'POST',
                 body: form,
             });
-    
+
             const data = await response.json();
             console.log('Response data:', data);
             console.log('idProducto:', id);
-    
+
             if (data.status) {
                 alert('Producto agregado a su lista de favoritos.');
                 irAFavorito();
@@ -112,7 +112,7 @@ const DetailProduct = ({ route }) => {
             console.log(error);
         }
     };
-    
+
 
     const [ValorCarrito, setValorCarrito] = useState('');
 
@@ -123,9 +123,13 @@ const DetailProduct = ({ route }) => {
     };
 
     const irAFavorito = () => {
-        navigation.navigate('Favorito');
+        const producto = { id, nombre, descripcion, precio, imagen };
+        console.log('Navegando a Favorito con producto:', JSON.stringify(producto)); // Verifica los parámetros
+
+        navigation.navigate('Favorito', { producto });
     };
 
+    
 
     const { id, nombre, descripcion, precio, imagen } = route.params;
     const imageUrl = `http://${ip}/pagina-web/api/images/productos/${imagen}`;
