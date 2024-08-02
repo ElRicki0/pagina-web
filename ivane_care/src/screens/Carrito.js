@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Button, ScrollView, TouchableOpacity } from 're
 import Boton from '../components/Button/Boton';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-const ip = '192.168.1.3'; // Dirección IP del servidor 
+const ip = '192.168.1.15'; // Dirección IP del servidor 
 
 
 const Carrito = () => {
