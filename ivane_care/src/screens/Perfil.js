@@ -160,7 +160,7 @@ const Perfil = ({ logueado, setLogueado }) => {
 
             <Modal isVisible={isModalVisible}>
                 <View style={styles.modalContent}>
-                    <Text style={styles.modalTitle}>Actualizacion de datos</Text>
+                    <Text style={styles.modalTitle}>Sesión cerrada</Text>
                     <Text style={styles.modalMessage}>Has cerrado sesión correctamente</Text>
                     <ScrollView
                         style={styles.scrollView}
