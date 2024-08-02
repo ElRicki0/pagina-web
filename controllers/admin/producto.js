@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Llamado de funcionses asincronas para mostrar los graficos
     graficoPastelCategorias();
     graficoLinealProductosVendidos();
+    graficoPastelCategoriasGoogle();
 });
 
 // Método del evento para cuando se envía el formulario de buscar.
@@ -240,6 +241,8 @@ const openDelete = async (id) => {
 }
 
 
+
+
 /*
 *   Función asíncrona para mostrar un gráfico de pastel con el porcentaje de productos por categoría.
 *   Parámetros: ninguno.
@@ -296,6 +299,80 @@ const graficoLinealProductosVendidos = async () => {
         console.log(DATA.error);
     }
 }
+
+
+
+// Prueba de grafica con la "libreria de google"
+
+// Definir la función que dibuja el gráfico de pastel
+const graficoPastelCategoriasGoogle = async () => {
+    // Petición para obtener los datos del gráfico.
+    const DATA = await fetchData(PRODUCTO_API, 'porcentajeProductosCategoria');
+    
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+    if (DATA.status) {
+        // Se declaran los arreglos para guardar los datos a gráfica.
+        let categorias = [];
+        let porcentajes = [];
+        
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        DATA.dataset.forEach(row => {
+            // Se agregan los datos a los arreglos.
+            categorias.push(row.nombre_categoria_producto);
+            porcentajes.push(row.porcentaje);
+        });
+
+        // Obtener el contexto del canvas
+        const ctx = document.getElementById('chart3').getContext('2d');
+
+        // Destruir el gráfico anterior si existe
+        if (window.myPieChart) {
+            window.myPieChart.destroy();
+        }
+
+        // Crear el nuevo gráfico de pastel
+        window.myPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: categorias,
+                datasets: [{
+                    data: porcentajes,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: false,
+                    }
+                }
+            }
+        });
+    } else {
+        document.getElementById('chart3').remove();
+        console.log(DATA.error);
+    }
+};
 
 
 /*
