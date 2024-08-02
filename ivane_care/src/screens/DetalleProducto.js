@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ImageBackground, ScrollView, TouchableOpacity, Image, FlatList, RefreshControl } from 'react-native';
+import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity, RefreshControl } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Input from '../components/Input/InputCarrito';
@@ -8,18 +8,15 @@ import Modal from 'react-native-modal';
 
 import Boton2 from '../components/Button/BotonFavorito';
 
-
-
 const ip = '192.168.1.15'; // Dirección IP del servidor 
 
 const DetailProduct = ({ route }) => {
     console.log('Route params:', route.params); // Agrega este console.log para verificar los parámetros
 
-    // Funcion para mostrar productos segun la base
     const [Productos, setProductos] = useState([]);
     const [Cantidad, setCantidad] = useState([]);
     const [isModalVisible, setModalVisible] = useState(false);
-
+    const [refreshing, setRefreshing] = useState(false);
 
     const { idProducto } = route.params;
 
@@ -27,7 +24,6 @@ const DetailProduct = ({ route }) => {
         getProductos();
     }, []);
 
-    // Constante para obtener los productos
     const getProductos = async () => {
         try {
             const response = await fetch(`http://${ip}/pagina-web/api/services/public/producto.php?action=read2Products`, {
@@ -45,8 +41,6 @@ const DetailProduct = ({ route }) => {
         }
     };
 
-
-    // constante para renderizar los item de los productos
     const renderProductCard = ({ item }) => {
         const imageUrl = `http://${ip}/pagina-web/api/images/productos/${item.imagen_producto}`;
 
@@ -74,15 +68,11 @@ const DetailProduct = ({ route }) => {
         );
     };
 
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+        getProductos().finally(() => setRefreshing(false));
+    }, []);
 
-    // const toggleModal = () => {
-    //     setModalVisible(!isModalVisible);
-    //     setTimeout(() => {
-    //         SendToFavorite();
-    //     }, 1000);
-    // };
-
-    // Constante para dirigir al cliente a su lista de deseos "Aca esta la acción para poder añadir a favoritos"
     const SendToFavorite = async () => {
         if (!id) {
             console.error("idProducto está indefinido");
@@ -103,8 +93,11 @@ const DetailProduct = ({ route }) => {
             console.log('idProducto:', id);
 
             if (data.status) {
-                alert('Producto agregado a su lista de favoritos.');
-                irAFavorito();
+                setModalVisible(true); // Muestra el modal cuando el producto se agrega a favoritos
+                setTimeout(() => {
+                    setModalVisible(false); // Oculta el modal después de 2 segundos
+                    irAFavorito();
+                }, 2000);
             } else {
                 alert('Ocurrió un error.');
             }
@@ -112,7 +105,6 @@ const DetailProduct = ({ route }) => {
             console.log(error);
         }
     };
-
 
     const [ValorCarrito, setValorCarrito] = useState('');
 
@@ -124,61 +116,58 @@ const DetailProduct = ({ route }) => {
 
     const irAFavorito = () => {
         const producto = { id, nombre, descripcion, precio, imagen };
-        console.log('Navegando a Favorito con producto:', JSON.stringify(producto)); // Verifica los parámetros
+        console.log('Navegando a Favorito con producto:', JSON.stringify(producto));
 
         navigation.navigate('Favorito', { producto });
     };
-
-    
 
     const { id, nombre, descripcion, precio, imagen } = route.params;
     const imageUrl = `http://${ip}/pagina-web/api/images/productos/${imagen}`;
 
     return (
-        <ScrollView
-            style={styles.scrollView}
-            persistentScrollbar={true}
-            showsVerticalScrollIndicator={false} // Oculta el indicador de desplazamiento vertical 
-        >
-            <View style={styles.container}>
-                <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-                    <Ionicons name="arrow-back" size={60} color="#6C5FFF" />
-                </TouchableOpacity>
-                <View style={styles.CardContainer}>
-                    <View style={styles.imageContainer}>
-                        <Image source={{ uri: imageUrl }} style={styles.productImage} />
-                    </View>
-                    <View style={styles.detailsContainer}>
-                        <Text style={styles.productTitle}>{nombre}</Text>
-                        <Text style={styles.productDescription}>{descripcion}</Text>
-                        <Text style={styles.productPrice}>$ {precio}</Text>
-                        <Boton2 textoBoton="" accionBoton={SendToFavorite} iconName="heart-circle" />
-                    </View>
-                </View>
-                <View style={styles.CardContainer2}>
-                    <Input
-                        placeHolder='Cantidad...'
-                        style={styles.input}
-                        setValor={ValorCarrito}
-                        setTextChange={setValorCarrito}
-                    />
-                    <Boton textoBoton="" accionBoton={irACarrito} iconName="cart" />
-                </View>
-
-            </View>
-            <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 23, marginBottom: 23 }}>
-                <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />
-                <View>
-                    <Text style={{
-                        width: 130, textAlign: 'center', fontWeight: 'bold', fontSize: 16, color: '#6C5FFF'
-                    }}>Algunos de Nuestros productos </Text>
-                </View>
-                <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />
-            </View>
+        <>
             <FlatList
-                data={Productos} // Los datos que se van a renderizar en la lista
+                style={styles.flatList}
+                ListHeaderComponent={
+                    <>
+                        <View style={styles.container}>
+                            <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+                                <Ionicons name="arrow-back" size={60} color="#6C5FFF" />
+                            </TouchableOpacity>
+                            <View style={styles.CardContainer}>
+                                <View style={styles.imageContainer}>
+                                    <Image source={{ uri: imageUrl }} style={styles.productImage} />
+                                </View>
+                                <View style={styles.detailsContainer}>
+                                    <Text style={styles.productTitle}>{nombre}</Text>
+                                    <Text style={styles.productDescription}>{descripcion}</Text>
+                                    <Text style={styles.productPrice}>$ {precio}</Text>
+                                    <Boton2 textoBoton="" accionBoton={SendToFavorite} iconName="heart-circle" />
+                                </View>
+                            </View>
+                            <View style={styles.CardContainer2}>
+                                <Input
+                                    placeHolder='Cantidad...'
+                                    style={styles.input}
+                                    setValor={ValorCarrito}
+                                    setTextChange={setValorCarrito}
+                                />
+                                <Boton textoBoton="" accionBoton={irACarrito} iconName="cart" />
+                            </View>
+                        </View>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 23, marginBottom: 23 }}>
+                            <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />
+                            <View>
+                                <Text style={{
+                                    width: 130, textAlign: 'center', fontWeight: 'bold', fontSize: 16, color: '#6C5FFF'
+                                }}>Algunos de Nuestros productos </Text>
+                            </View>
+                            <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />
+                        </View>
+                    </>
+                }
+                data={Productos}
                 renderItem={({ item, index }) => {
-                    // Si el índice es par, se renderiza una fila con dos tarjetas
                     if (index % 2 === 0) {
                         return (
                             <View style={styles.row}>
@@ -187,39 +176,47 @@ const DetailProduct = ({ route }) => {
                             </View>
                         );
                     } else {
-                        return null; // Si el índice es impar, no se renderiza nada
+                        return null;
                     }
                 }}
-                keyExtractor={(item) => item.id_producto.toString()} // Clave única para cada elemento de la lista
+                keyExtractor={(item) => item.id_producto.toString()}
+                refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
             />
-        </ScrollView>
+
+            <Modal isVisible={isModalVisible}>
+                <View style={styles.modalContent}>
+                    <Text style={styles.modalTitle}>Producto agregado</Text>
+                    <Text style={styles.modalMessage}>Producto agregado a su lista de deseos</Text>
+                </View>
+            </Modal>
+        </>
     );
 }
 
 const styles = StyleSheet.create({
+    flatList: {
+        backgroundColor: 'transparent',
+        marginHorizontal: 10,
+    },
     container: {
         flex: 1,
         marginTop: 20,
-    },
-    scrollView: {
-        backgroundColor: 'transparent',
-        marginHorizontal: 10,
     },
     CardContainer: {
         backgroundColor: '#E7E7E7',
         borderRadius: 20,
         flexDirection: 'row',
-        width: '100%', // Ajusta el ancho del contenedor de la tarjeta
+        width: '100%',
     },
     CardContainer2: {
         marginTop: 20,
         backgroundColor: '#E7E7E7',
         borderRadius: 20,
         flexDirection: 'row',
-        width: '100%', // Ajusta el ancho del contenedor de la tarjeta
+        width: '100%',
     },
     imageContainer: {
-        flex: 1, // Ocupa la mitad del espacio disponible
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         marginLeft: 20,
@@ -231,7 +228,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     detailsContainer: {
-        flex: 1, // Ocupa la mitad del espacio disponible
+        flex: 1,
         justifyContent: 'center',
         paddingHorizontal: 10,
     },
@@ -239,20 +236,22 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 10,
+        textAlign: 'center',
     },
     productDescription: {
         fontSize: 16,
         marginBottom: 20,
+        textAlign: 'center',
     },
     productPrice: {
         fontSize: 20,
         fontWeight: 'bold',
+        textAlign: 'center',
     },
-    // estilo de cards prueba base
     card: {
         backgroundColor: '#E7E7E7',
-        width: 165, // Añadido para limitar el ancho de la tarjeta
-        height: 430,
+        width: 175,
+        height: 470,
         borderRadius: 10,
         padding: 20,
         marginBottom: 20,
@@ -264,8 +263,13 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
+        alignItems: 'center',
     },
     cardImage: {
+        width: '100%',
+        height: 200,
+        marginBottom: 10,
+        justifyContent: 'center',
         alignItems: 'center',
     },
     cardText: {
@@ -276,22 +280,36 @@ const styles = StyleSheet.create({
     },
     cardTextDescrip: {
         fontSize: 13,
-        flexWrap: 'wrap', // Permite que el texto se ajuste a múltiples líneas si es necesario
+        flexWrap: 'wrap',
     },
     boldText: {
         fontWeight: 'bold',
     },
-    productImage: {
-        width: 150, // Ajusta el tamaño según sea necesario
-        height: 150, // Ajusta el tamaño según sea necesario
-        marginBottom: 10,
-        borderRadius: 10, // Opcional, para darle bordes redondeados a la imagen
-        alignItems: 'center',
-    },
     row: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginBottom: 20, // Espacio entre las filas
+        marginBottom: 20,
+    },
+
+    // Estilo del modal para alerta
+    modalContent: {
+        backgroundColor: 'white',
+        padding: 20,
+        borderRadius: 10,
+        alignItems: 'center',
+    },
+    modalTitle: {
+        fontSize: 25,
+        fontWeight: 'bold',
+        marginBottom: 10,
+    },
+    modalMessage: {
+        fontSize: 16,
+        marginBottom: 20,
+        textAlign: 'center',
+    },
+    modalButton: {
+        marginTop: 10,
     },
 });
 
