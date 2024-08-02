@@ -11,14 +11,13 @@ import Boton2 from '../components/Button/BotonFavorito';
 const ip = '192.168.1.15'; // Dirección IP del servidor 
 
 const DetailProduct = ({ route }) => {
-    console.log('Route params:', route.params); // Agrega este console.log para verificar los parámetros
+    // console.log('Route params:', route.params); // Agrega este console.log para verificar los parámetros
 
+    const navigation = useNavigation();
     const [Productos, setProductos] = useState([]);
-    const [Cantidad, setCantidad] = useState([]);
     const [isModalVisible, setModalVisible] = useState(false);
     const [refreshing, setRefreshing] = useState(false);
-
-    const { idProducto } = route.params;
+    const [ValorCarrito, setValorCarrito] = useState('');
 
     useEffect(() => {
         getProductos();
@@ -106,11 +105,49 @@ const DetailProduct = ({ route }) => {
         }
     };
 
-    const [ValorCarrito, setValorCarrito] = useState('');
 
-    const navigation = useNavigation();
+
+    // Función para que funcione el carrito 
+
+    const SendToCart = async () => {
+        if (!id) {
+            console.error("idProducto está indefinido");
+            return;
+        }
+
+        try {
+            const form = new FormData();
+            form.append('idProducto', id);
+            form.append('cantidadProducto', ValorCarrito);
+
+
+            const response = await fetch(`http://${ip}/pagina-web/api/services/public/carrito.php?action=createDetail`, {
+                method: 'POST',
+                body: form,
+            });
+
+            const data = await response.json();
+            console.log('Response data:', data);
+            console.log('idProducto:', id);
+            console.log('cantidadProducto:', ValorCarrito);
+
+
+            if (data.status) {
+                alert('Producto agregado a su carrito de compras.');
+                irACarrito();
+            } else {
+                alert('Ocurrió un error.');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+
 
     const irACarrito = () => {
+        const producto = { id, nombre, descripcion, precio, imagen };
+        console.log('Navegando a Carrito con producto:', JSON.stringify(producto));
         navigation.navigate('Carrito');
     };
 
@@ -152,7 +189,7 @@ const DetailProduct = ({ route }) => {
                                     setValor={ValorCarrito}
                                     setTextChange={setValorCarrito}
                                 />
-                                <Boton textoBoton="" accionBoton={irACarrito} iconName="cart" />
+                                <Boton textoBoton="" accionBoton={SendToCart} iconName="cart" />
                             </View>
                         </View>
                         <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 23, marginBottom: 23 }}>
