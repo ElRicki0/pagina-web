@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, RefreshControl } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -8,6 +8,8 @@ const ip = '192.168.1.15'; // Dirección IP del servidor
 const Favorito = () => {
     const navigation = useNavigation();
     const [productos, setProductos] = useState([]);
+    const [refreshing, setRefreshing] = useState(false);
+
 
     useEffect(() => {
         fetchProductos();
@@ -57,10 +59,17 @@ const Favorito = () => {
         );
     };
 
+
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+        fetchProductos().finally(() => setRefreshing(false)); // Refresca los datos y luego establece refreshing en false
+    }, []);
+
     return (
         <ScrollView style={styles.scrollView}
             persistentScrollbar={true}
             showsVerticalScrollIndicator={false}
+            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
         >
             <View style={styles.container}>
                 {productos.map((item) => renderProductCard({ item }))}
