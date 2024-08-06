@@ -25,7 +25,7 @@ const Carrito = () => {
                 method: 'GET',
             });
             const data = await response.json();
-    
+
             if (data.status && Array.isArray(data.dataset)) {
                 console.log('Productos obtenidos:', data.dataset); // Log para verificar datos
                 setProductos(data.dataset); // Asegúrate de que estás accediendo a la propiedad correcta
@@ -36,13 +36,13 @@ const Carrito = () => {
             console.error('Error en la solicitud fetch:', error);
         }
     };
-    
+
 
     const renderProductCard = ({ item }) => {
         // const imageUrl = `http://${ip}/pagina-web/api/images/productos/${item.imagen_producto}`;
 
         return (
-            <TouchableOpacity style={styles.card}
+            <TouchableOpacity key={item.id_producto} style={styles.card}
                 onPress={() => navigation.navigate('DetalleProducto', {
                     id: item.id_producto,
                     nombre: item.nombre_producto,
@@ -65,15 +65,24 @@ const Carrito = () => {
         );
     };
 
-
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+        fetchProductos().finally(() => setRefreshing(false)); // Refresca los datos y luego establece refreshing en false
+    }, []);
 
     return (
         <ScrollView style={styles.scrollView}
             persistentScrollbar={true}
             showsVerticalScrollIndicator={false}
+            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
         >
             <View style={styles.container}>
-                {productos.map((item) => renderProductCard({ item }))}
+                {productos.map((item) =>
+                (
+                    <View key={item.id_producto}>
+                        {renderProductCard({ item })}
+                    </View>
+                ))}
             </View>
         </ScrollView>
     );

@@ -36,7 +36,7 @@ const Favorito = () => {
         const imageUrl = `http://${ip}/pagina-web/api/images/productos/${item.imagen_producto}`;
 
         return (
-            <TouchableOpacity style={styles.card}
+            <TouchableOpacity  key={item.id_producto} style={styles.card}
                 onPress={() => navigation.navigate('DetalleProducto', {
                     id: item.id_producto,
                     nombre: item.nombre_producto,
