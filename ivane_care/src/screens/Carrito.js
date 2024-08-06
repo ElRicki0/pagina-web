@@ -37,19 +37,45 @@ const Carrito = () => {
         }
     };
 
+    const deleteProduct = async (idDetalle) => {
+        console.log('ID a eliminar:', idDetalle); // Verifica que idDetalle tenga un valor
+    
+        // Crea un nuevo objeto FormData
+        const FORM = new FormData();
+        FORM.append('idDetalle', idDetalle); // Usa el nombre correcto del parámetro
+    
+        try {
+            // Realiza la solicitud fetch usando FormData
+            const response = await fetch(`http://${ip}/pagina-web/api/services/public/carrito.php?action=deleteDetail`, {
+                method: 'POST',
+                body: FORM,
+            });
+    
+            // Obtén la respuesta como texto y luego como JSON
+            const text = await response.text();
+            console.log('Respuesta del servidor:', text);
+    
+            // Intenta analizar la respuesta como JSON
+            const data = JSON.parse(text);
+    
+            if (data.status) {
+                setProductos((prevProductos) => prevProductos.filter((producto) => producto.id_detalle_entrega !== idDetalle));
+                alert('El producto selecionado se ha eliminado de su carrito');
+            } else {
+                alert('Error al eliminar el producto del carrito');
+                console.error('Error al eliminar el producto:', data.error || data.message);
+            }
+        } catch (error) {
+            console.error('Error en la solicitud fetch:', error);
+        }
+    };
+    
 
     const renderProductCard = ({ item }) => {
-        // const imageUrl = `http://${ip}/pagina-web/api/images/productos/${item.imagen_producto}`;
-
         return (
-            <TouchableOpacity key={item.id_producto} style={styles.card}
-                onPress={() => navigation.navigate('DetalleProducto', {
-                    id: item.id_producto,
-                    nombre: item.nombre_producto,
-                    descripcion: item.cantidad_pedido,
-                    precio: item.precio,
-                    precio_pedido: item.precio_pedido
-                })}>
+            <TouchableOpacity key={item.id_detalle_entrega} style={styles.card}
+                onPress={() => deleteProduct(item.id_detalle_entrega)} // Asegúrate de que id_detalle_entrega esté pasando correctamente
+            >
                 <Text style={styles.cardText}><Text style={styles.boldText}>{item.nombre_producto}</Text></Text>
                 <Text style={styles.cardTextDescrip}>Cantidad del pedido: {item.cantidad_pedido}</Text>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -64,40 +90,59 @@ const Carrito = () => {
             </TouchableOpacity>
         );
     };
-
+    
+    
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
         fetchProductos().finally(() => setRefreshing(false)); // Refresca los datos y luego establece refreshing en false
     }, []);
 
     return (
-        <ScrollView style={styles.scrollView}
-            persistentScrollbar={true}
-            showsVerticalScrollIndicator={false}
-            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-        >
-            <View style={styles.container}>
-                {productos.map((item) =>
-                (
-                    <View key={item.id_producto}>
-                        {renderProductCard({ item })}
-                    </View>
-                ))}
+        <View style={styles.container}>
+            <ScrollView
+                style={styles.scrollView}
+                persistentScrollbar={true}
+                showsVerticalScrollIndicator={false}
+                refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+            >
+                <Text style={styles.texto}>Para eliminar productos de su carrito, debe de tocarlo y se le eliminaran</Text>
+                <View style={styles.cardsContainer}>
+                    {productos.map((item) => (
+                        <View key={item.id_producto} style={styles.cardWrapper}>
+                            {renderProductCard({ item })}
+                        </View>
+                    ))}
+                </View>
+            </ScrollView>
+            <View style={styles.footer}>
+                <TouchableOpacity style={styles.button} onPress={() => {/* Acción del botón cerrar */}}>
+                    <Text style={styles.buttonText}>Cerrar</Text>
+                </TouchableOpacity>
             </View>
-        </ScrollView>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 20,
     },
     scrollView: {
+        flex: 1,
         backgroundColor: 'transparent',
         marginHorizontal: 20,
+    },
+    texto: {
+        fontSize: 16,
+        marginBottom: 10,
+        textAlign: 'center',
+    },
+    cardWrapper: {
+        alignItems: 'center', // Centra las tarjetas dentro de su contenedor
+    },
+    cardsContainer: {
+        alignItems: 'center', // Centra el contenedor de las tarjetas
+        paddingBottom: 20, // Añade espacio para la parte inferior del ScrollView
     },
     card: {
         backgroundColor: '#fff',
@@ -124,14 +169,23 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         color: '#555',
     },
-
-    cartButton: {
-        marginTop: 16,
+    footer: {
+        backgroundColor: '#105b57',
+        padding: 10,
+        alignItems: 'center',
+        borderRadius: 30,
+        marginRight: 20,
+        marginLeft: 20,
+    },
+    button: {
         padding: 10,
         backgroundColor: '#6200EE',
         borderRadius: 8,
         alignItems: 'center',
-        justifyContent: 'center',
+    },
+    buttonText: {
+        color: '#fff',
+        fontSize: 16,
     },
 });
 
