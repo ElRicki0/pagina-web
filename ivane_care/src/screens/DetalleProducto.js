@@ -8,7 +8,7 @@ import Modal from 'react-native-modal';
 
 import Boton2 from '../components/Button/BotonFavorito';
 
-const ip = '192.168.137.1'; // Dirección IP del servidor 
+const ip = '172.20.10.4'; // Dirección IP del servidor 
 
 const DetailProduct = ({ route }) => {
     // console.log('Route params:', route.params); // Agrega este console.log para verificar los parámetros
@@ -132,12 +132,15 @@ const DetailProduct = ({ route }) => {
             console.log('idProducto:', id);
             console.log('cantidadProducto:', ValorCarrito);
     
-            if (data.status === "1" && data.dataset) {
+            if (data.status == "1" && data.dataset) {
                 const idPedido = data.dataset; // Asegúrate de que dataset contenga el valor correcto
+                console.log(idPedido);
                 alert('Producto agregado a su carrito de compras.');
                 irACarrito(idPedido); // Pasa idPedido a la función de navegación
             } else {
+                console.log(idPedido);
                 alert('Ocurrió un error.');
+                console.error(data.message);
             }
         } catch (error) {
             console.log(error);

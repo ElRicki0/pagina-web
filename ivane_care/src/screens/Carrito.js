@@ -5,7 +5,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 
 
-const ip = '192.168.137.1'; // Dirección IP del servidor 
+const ip = '172.20.10.4'; // Dirección IP del servidor 
 
 
 const Carrito = ({ route }) => {
@@ -101,6 +101,7 @@ const Carrito = ({ route }) => {
 
             if (data.status) {
                 alert('Pedido finalizado correctamente');
+                setProductos([]); // Limpia las tarjetas de productos
             } else {
                 alert('Error al finalizar el pedido');
             }
@@ -149,22 +150,26 @@ const Carrito = ({ route }) => {
                 refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
             >
                 <Text style={styles.texto}>Para eliminar productos de su carrito, debe de tocarlo y se le eliminaran.</Text>
-                <View style={styles.cardsContainer}>
-                    {productos.map((item) => (
-                        <View key={item.id_producto} style={styles.cardWrapper}>
-                            {renderProductCard({ item })}
-                        </View>
-                    ))}
-                </View>
+                {productos.length > 0 ? (
+                    <View style={styles.cardsContainer}>
+                        {productos.map((item) => (
+                            <View key={item.id_producto} style={styles.cardWrapper}>
+                                {renderProductCard({ item })}
+                            </View>
+                        ))}
+                    </View>
+                ) : (
+                    <Text style={styles.texto}>No hay productos en su carrito</Text>
+                )}
             </ScrollView>
             <View style={styles.footer}>
                 <Text style={styles.texto}>Total a pagar : ${calcularTotal()}</Text>
-                <TouchableOpacity style={styles.button} onPress={() => { finishOrder() }}>
-                    <Text style={styles.buttonText}>Fincalizar pedido</Text>
+                <TouchableOpacity style={styles.button} onPress={finishOrder}>
+                    <Text style={styles.buttonText}>Finalizar pedido</Text>
                 </TouchableOpacity>
             </View>
         </View>
-    );
+    );    
 };
 
 const styles = StyleSheet.create({

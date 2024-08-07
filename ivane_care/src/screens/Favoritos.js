@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, RefreshCon
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 
-const ip = '192.168.137.1'; // Dirección IP del servidor 
+const ip = '172.20.10.4'; // Dirección IP del servidor 
 
 const Favorito = () => {
     const navigation = useNavigation();

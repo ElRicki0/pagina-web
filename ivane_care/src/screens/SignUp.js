@@ -7,7 +7,7 @@ import Input from '../components/Input/InputSignUp';
 
 
 const backgroundImage = require('../img/FondoSigUp.png'); // Fondo de pantalla
-const ip = '192.168.137.1'; // Dirección IP del servidor 
+const ip = '172.20.10.4'; // Dirección IP del servidor 
 
 // Nada mas es prueba para ver como mando a llamar un componente
 const handlePress = () => {
