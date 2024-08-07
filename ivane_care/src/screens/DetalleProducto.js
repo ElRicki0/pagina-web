@@ -8,7 +8,7 @@ import Modal from 'react-native-modal';
 
 import Boton2 from '../components/Button/BotonFavorito';
 
-const ip = '192.168.1.15'; // Dirección IP del servidor 
+const ip = '192.168.137.1'; // Dirección IP del servidor 
 
 const DetailProduct = ({ route }) => {
     // console.log('Route params:', route.params); // Agrega este console.log para verificar los parámetros
@@ -18,6 +18,8 @@ const DetailProduct = ({ route }) => {
     const [isModalVisible, setModalVisible] = useState(false);
     const [refreshing, setRefreshing] = useState(false);
     const [ValorCarrito, setValorCarrito] = useState('');
+    const [idPedido, setIdPedido] = useState(null); // Estado para almacenar el idPedido
+
 
     useEffect(() => {
         getProductos();
@@ -114,27 +116,26 @@ const DetailProduct = ({ route }) => {
             console.error("idProducto está indefinido");
             return;
         }
-
+    
         try {
             const form = new FormData();
             form.append('idProducto', id);
             form.append('cantidadProducto', ValorCarrito);
-
-
+    
             const response = await fetch(`http://${ip}/pagina-web/api/services/public/carrito.php?action=createDetail`, {
                 method: 'POST',
                 body: form,
             });
-
+    
             const data = await response.json();
             console.log('Response data:', data);
             console.log('idProducto:', id);
             console.log('cantidadProducto:', ValorCarrito);
-
-
-            if (data.status) {
+    
+            if (data.status === "1" && data.dataset) {
+                const idPedido = data.dataset; // Asegúrate de que dataset contenga el valor correcto
                 alert('Producto agregado a su carrito de compras.');
-                irACarrito();
+                irACarrito(idPedido); // Pasa idPedido a la función de navegación
             } else {
                 alert('Ocurrió un error.');
             }
@@ -142,14 +143,23 @@ const DetailProduct = ({ route }) => {
             console.log(error);
         }
     };
+    
+    
 
 
-
-    const irACarrito = () => {
-        const producto = { id, nombre, descripcion, precio, imagen };
+    const irACarrito = (idPedido) => {
+        if (!idPedido) {
+            console.error("idPedido está indefinido o es null");
+            return;
+        }
+    
+        const producto = { id, nombre, descripcion, precio, imagen, idPedido };
         console.log('Navegando a Carrito con producto:', JSON.stringify(producto));
-        navigation.navigate('Carrito');
+        navigation.navigate('Carrito', { idPedido }); // Pasa idPedido como parámetro de navegación
     };
+    
+    
+    
 
     const irAFavorito = () => {
         const producto = { id, nombre, descripcion, precio, imagen };

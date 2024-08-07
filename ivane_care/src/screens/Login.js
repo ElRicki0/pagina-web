@@ -11,7 +11,7 @@ const LogIn = ({ logueado, setLogueado }) => {
   const navigation = useNavigation();
   const [correo, setUsuario] = useState('');
   const [clave, setClave] = useState('');
-  const ip = '192.168.1.15';
+  const ip = '192.168.137.1';
 
 
   // Toggling modal visibility

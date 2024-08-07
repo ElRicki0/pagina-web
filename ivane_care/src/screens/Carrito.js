@@ -5,59 +5,69 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 
 
-const ip = '192.168.1.15'; // Dirección IP del servidor 
+const ip = '192.168.137.1'; // Dirección IP del servidor 
 
 
-const Carrito = () => {
+const Carrito = ({ route }) => {
+    const { idPedido } = route.params || {}; // Obtén idPedido de los parámetros de navegación
+
     const navigation = useNavigation();
     const [productos, setProductos] = useState([]);
     const [refreshing, setRefreshing] = useState(false);
 
 
+
     useEffect(() => {
-        fetchProductos();
-    }, []);
+        if (idPedido) {
+            console.log('idPedido recibido en Carrito:', idPedido);
+            fetchProductos();
+        }
+    }, [idPedido]);
 
 
     const fetchProductos = async () => {
         try {
-            const response = await fetch(`http://${ip}/pagina-web/api/services/public/carrito.php?action=readDetail`, {
+            const response = await fetch(`http://${ip}/pagina-web/api/services/public/carrito.php?action=readDetail&idPedido=${idPedido}`, {
                 method: 'GET',
             });
             const data = await response.json();
-
+    
             if (data.status && Array.isArray(data.dataset)) {
-                console.log('Productos obtenidos:', data.dataset); // Log para verificar datos
-                setProductos(data.dataset); // Asegúrate de que estás accediendo a la propiedad correcta
+                console.log('Productos obtenidos:', data.dataset); // Verifica los datos
+                setProductos(data.dataset); // Asegúrate de que el formato sea correcto
+                console.log('idPedido recibido en Carrito:', idPedido);
+
             } else {
+                alert('No tiene aún productos en su carrito');
                 console.error('Error al obtener productos del carrito:', data.message);
             }
         } catch (error) {
             console.error('Error en la solicitud fetch:', error);
         }
     };
+    
 
     const deleteProduct = async (idDetalle) => {
         console.log('ID a eliminar:', idDetalle); // Verifica que idDetalle tenga un valor
-    
+
         // Crea un nuevo objeto FormData
         const FORM = new FormData();
         FORM.append('idDetalle', idDetalle); // Usa el nombre correcto del parámetro
-    
+
         try {
             // Realiza la solicitud fetch usando FormData
             const response = await fetch(`http://${ip}/pagina-web/api/services/public/carrito.php?action=deleteDetail`, {
                 method: 'POST',
                 body: FORM,
             });
-    
+
             // Obtén la respuesta como texto y luego como JSON
             const text = await response.text();
             console.log('Respuesta del servidor:', text);
-    
+
             // Intenta analizar la respuesta como JSON
             const data = JSON.parse(text);
-    
+
             if (data.status) {
                 setProductos((prevProductos) => prevProductos.filter((producto) => producto.id_detalle_entrega !== idDetalle));
                 alert('El producto selecionado se ha eliminado de su carrito');
@@ -69,7 +79,36 @@ const Carrito = () => {
             console.error('Error en la solicitud fetch:', error);
         }
     };
-    
+
+
+    const finishOrder = async () => {
+        if (!idPedido) {
+            alert('No hay un pedido para finalizar');
+            return;
+        }
+
+        const FORM = new FormData();
+        FORM.append('idPedido', idPedido);
+
+        try {
+            const response = await fetch(`http://${ip}/pagina-web/api/services/public/carrito.php?action=finishOrder`, {
+                method: 'POST',
+                body: FORM,
+            });
+
+            const data = await response.json();
+            console.log('idPedido:', idPedido);
+
+            if (data.status) {
+                alert('Pedido finalizado correctamente');
+            } else {
+                alert('Error al finalizar el pedido');
+            }
+        } catch (error) {
+            console.error('Error en la solicitud fetch:', error);
+        }
+    };
+
 
     const renderProductCard = ({ item }) => {
         return (
@@ -90,8 +129,12 @@ const Carrito = () => {
             </TouchableOpacity>
         );
     };
-    
-    
+
+    const calcularTotal = () => {
+        return productos.reduce((total, item) => total + parseFloat(item.precio), 0).toFixed(2);
+    };
+
+
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
         fetchProductos().finally(() => setRefreshing(false)); // Refresca los datos y luego establece refreshing en false
@@ -105,7 +148,7 @@ const Carrito = () => {
                 showsVerticalScrollIndicator={false}
                 refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
             >
-                <Text style={styles.texto}>Para eliminar productos de su carrito, debe de tocarlo y se le eliminaran</Text>
+                <Text style={styles.texto}>Para eliminar productos de su carrito, debe de tocarlo y se le eliminaran.</Text>
                 <View style={styles.cardsContainer}>
                     {productos.map((item) => (
                         <View key={item.id_producto} style={styles.cardWrapper}>
@@ -115,8 +158,9 @@ const Carrito = () => {
                 </View>
             </ScrollView>
             <View style={styles.footer}>
-                <TouchableOpacity style={styles.button} onPress={() => {/* Acción del botón cerrar */}}>
-                    <Text style={styles.buttonText}>Cerrar</Text>
+                <Text style={styles.texto}>Total a pagar : ${calcularTotal()}</Text>
+                <TouchableOpacity style={styles.button} onPress={() => { finishOrder() }}>
+                    <Text style={styles.buttonText}>Fincalizar pedido</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -170,7 +214,7 @@ const styles = StyleSheet.create({
         color: '#555',
     },
     footer: {
-        backgroundColor: '#105b57',
+        backgroundColor: '#ebebeb',
         padding: 10,
         alignItems: 'center',
         borderRadius: 30,
