@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, RefreshControl } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, RefreshControl, FlatList } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -7,21 +7,85 @@ const ip = '172.20.10.4'; // Dirección IP del servidor
 
 const Historial = () => {
     const navigation = useNavigation();
-   
+    // Funcion para mostrar productos segun la base
+    const [Historial, setHistorial] = useState([]);
+
+    useEffect(() => {
+        getHistorial();
+    }, []);
+
+    // Constante para obtener los productos
+    const getHistorial = async () => {
+        try {
+            const response = await fetch(`http://${ip}/pagina-web/api/services/public/historial.php?action=readAll`, {
+                method: 'GET',
+            });
+
+            const data = await response.json();
+            if (data.status) {
+                setHistorial(data.dataset);
+                console.log(data.dataset);
+            } else {
+                console.error(data.error);
+            }
+        } catch (error) {
+            console.error('Error al obtener los datos :', error);
+        }
+    };
+
+    // constante para renderizar los item de los productos
+    const renderHistorylCard = ({ item }) => {
+        const imageUrl = `http://${ip}/pagina-web/api/images/productos/${item.imagen_producto}`;
+
+        return (
+            <View style={styles.card}
+                onPress={() => navigation.navigate('DetalleProducto', {
+                    id: item.id_producto,
+                    nombre: item.nombre_producto,
+                    direccionP: item.direccion_pedido,
+                    fecha: item.fecha_registro,
+                    imagen: item.imagen_producto
+                })}>
+                <View style={styles.cardImage}>
+                    <Image source={{ uri: imageUrl }} style={styles.productImage} />
+                </View>
+                <Text style={styles.cardText}><Text style={styles.boldText}>Uno de los productos: {item.nombre_producto}</Text></Text>
+                <Text style={styles.cardTextDescrip}>Direccion del pedido: {item.direccion_pedido}</Text>
+                <Text style={styles.cardTextDescrip}>Fecha del pedido: {item.fecha_registro}</Text>
+            </View>
+        );
+    };
+
+    // constante para refrescar la pagina 
+    const [refreshing, setRefreshing] = React.useState(false);
+
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+        setTimeout(() => {
+            getHistorial(); // Se manda a llamar de nuevo a getProductos para refrescar los datos
+            setRefreshing(false);
+        }, 2000);
+    }, []);
 
     return (
-        <ScrollView style={styles.scrollView}
-            persistentScrollbar={true}
-            showsVerticalScrollIndicator={false}
-        >
+        <View style={styles.container}>
             <View style={styles.container}>
-            <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-                <Ionicons name="arrow-back" size={60} color="#6C5FFF" />
-            </TouchableOpacity>
-            <Text style={styles.title}>Historial de compras</Text>
+                <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+                    <Ionicons name="arrow-back" size={60} color="#6C5FFF" />
+                </TouchableOpacity>
+                <Text style={styles.title}>Historial de compras</Text>
 
+                <FlatList
+                    data={Historial}
+                    renderItem={renderHistorylCard}
+                    keyExtractor={(item) => item.id_cliente}
+                    refreshControl={
+                        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+                    }
+                />
             </View>
-        </ScrollView>
+
+        </View>
     );
 };
 
