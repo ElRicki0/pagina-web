@@ -39,7 +39,7 @@ const Carrito = ({ route }) => {
 
             } else {
                 alert('No tiene aún productos en su carrito');
-                console.error('Error al obtener productos del carrito:', data.message);
+                console.log('Error al obtener productos del carrito:', data.message);
             }
         } catch (error) {
             console.error('Error en la solicitud fetch:', error);
@@ -159,7 +159,7 @@ const Carrito = ({ route }) => {
                         ))}
                     </View>
                 ) : (
-                    <Text style={styles.texto}>No hay productos en su carrito</Text>
+                    <Text style={styles.texto}></Text>
                 )}
             </ScrollView>
             <View style={styles.footer}>
