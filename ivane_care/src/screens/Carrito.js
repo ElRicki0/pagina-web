@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, RefreshControl } from 'react-native';
-import Boton from '../components/Button/Boton';
+import Boton from '../components/Button/BotonCarrito';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -164,9 +164,7 @@ const Carrito = ({ route }) => {
             </ScrollView>
             <View style={styles.footer}>
                 <Text style={styles.texto}>Total a pagar : ${calcularTotal()}</Text>
-                <TouchableOpacity style={styles.button} onPress={finishOrder}>
-                    <Text style={styles.buttonText}>Finalizar pedido</Text>
-                </TouchableOpacity>
+                <Boton textoBoton="Finalizar pedido" accionBoton={finishOrder} iconName={"cart-check"} />
             </View>
         </View>
     );    
