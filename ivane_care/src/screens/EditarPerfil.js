@@ -8,7 +8,7 @@ import Input from '../components/Input/InputPerfil';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 
-const ip = '172.20.10.4'; // Dirección IP del servidor 
+const ip = '192.168.1.3'; // Dirección IP del servidor 
 
 const EditarPerfil = ({ logueado, setLogueado }) => {
     const [Perfil, setPerfil] = useState({

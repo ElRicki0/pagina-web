@@ -17,7 +17,7 @@ export const App = () => {
   const [logueado, setLogueado] = useState(false);
 
 
-  const ip = '172.20.10.4';
+  const ip = '192.168.1.3';
 
   // Realizando constante para poder cerrar la sesion
   const sesionActiva = async () => {

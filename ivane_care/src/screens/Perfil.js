@@ -13,7 +13,7 @@ const Perfil = ({ logueado, setLogueado }) => {
 
     console.log(logueado)
 
-    const ip = '172.20.10.4';
+    const ip = '192.168.1.3';
     const navigation = useNavigation();
 
     // constante para cerar sesion (simplemente redirije al login si la accion esta completada)
@@ -59,11 +59,6 @@ const Perfil = ({ logueado, setLogueado }) => {
 
     return (
         <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}>
-
-            <TouchableOpacity style={styles.LogOutButton} onPress={toggleModal}>
-                <Icon name="logout" size={60} color="#6C5FFF" />
-            </TouchableOpacity>
-
             <ScrollView style={styles.scrollView}
                 persistentScrollbar={true}
                 contentContainerStyle={styles.scrollViewContent}
@@ -72,6 +67,7 @@ const Perfil = ({ logueado, setLogueado }) => {
                 <View style={styles.containerBoton}>
                     <Boton textoBoton="Editar" accionBoton={goToEdit} iconName={"account-edit-outline"} />
                     <Boton textoBoton="Historial" accionBoton={goToHistory} iconName={"clipboard-text-clock-outline"} />
+                    <Boton textoBoton="Cerrar sesión" accionBoton={toggleModal} iconName={"logout"} />
                 </View>
             </ScrollView>
 
@@ -92,7 +88,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    containerBoton:{
+    containerBoton: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',

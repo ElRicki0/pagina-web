@@ -5,7 +5,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 
 
-const ip = '172.20.10.4'; // Dirección IP del servidor 
+const ip = '192.168.1.3'; // Dirección IP del servidor 
 
 
 const Carrito = ({ route }) => {

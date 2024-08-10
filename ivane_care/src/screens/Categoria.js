@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native'; // Hook de navegación
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 
-const ip = '172.20.10.4'; // Dirección IP del servidor 
+const ip = '192.168.1.3'; // Dirección IP del servidor 
 
 const Categorias = () => {
 
