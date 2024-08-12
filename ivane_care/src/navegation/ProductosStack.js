@@ -6,6 +6,7 @@ import Categorias from '../screens/Categoria';
 import DetalleProducto from '../screens/DetalleProducto';
 import Carrito from '../screens/Carrito';
 import Favorito from '../screens/Favoritos';
+import ProductosMarca from '../screens/ProductosMarca';
 
 const ProductosStack = createStackNavigator();
 
@@ -39,6 +40,11 @@ const ProductosStackScreen = ({ route }) => (
     <ProductosStack.Screen
       name="Favorito"
       component={Favorito}
+      options={{ headerShown: false }}
+    />
+    <ProductosStack.Screen
+      name="ProductosMarca"
+      component={ProductosMarca}
       options={{ headerShown: false }}
     />
   </ProductosStack.Navigator>

@@ -6,9 +6,7 @@ import { SERVER } from '../../contexts/Network';
 
 
 
-const ip = '192.168.1.15'; // Dirección IP del servidor 
-
-const Marcas = () => {
+const ProductosMarca = () => {
     const navigation = useNavigation(); // Hook de navegación para cambiar entre pantallas
 
     // Funcion para mostrar marcas segun la base
@@ -44,7 +42,7 @@ const Marcas = () => {
 
         return (
             <TouchableOpacity style={styles.card}
-                onPress={() => navigation.navigate('ProductosMarca', {
+                onPress={() => navigation.navigate('DetalleProducto', {
                     id: item.id_marca,
                     nombre: item.nombre_marca,
                     descripcion: item.descripcion_marca,
@@ -76,7 +74,7 @@ const Marcas = () => {
             <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
                 <Ionicons name="arrow-back" size={60} color="#6C5FFF" />
             </TouchableOpacity>
-            <Text style={styles.title}>Marcas</Text>
+            <Text style={styles.title}>Productos por marca</Text>
             {/* Aquí puedes agregar más contenido de la pantalla */}
             <FlatList
                 data={Marcas}
@@ -148,4 +146,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Marcas;
+export default ProductosMarca;
