@@ -6,11 +6,13 @@ import { SERVER } from '../../contexts/Network';
 
 
 
-const ProductosMarca = () => {
+const ProductosMarca = ({ route }) => {
     const navigation = useNavigation(); // Hook de navegación para cambiar entre pantallas
 
     // Funcion para mostrar marcas segun la base
     const [Marcas, setMarcas] = useState([]);
+    const [Productos, setProductos] = useState([]);
+
 
 
     // Constante para obtener los marcas
@@ -31,8 +33,30 @@ const ProductosMarca = () => {
         }
     };
 
+    const getProductosM = async () => {
+        try {
+            const formData = new FormData();
+            formData.append('idMarca', id);
+
+            const response = await fetch(`${SERVER}services/public/producto.php?action=readProductosMarca`, {
+                method: 'POST',
+                body: formData,
+            });
+
+            const data = await response.json();
+            if (data.status) {
+                setProductos(data.dataset);
+                console.log(data.dataset);
+            } else {
+                console.log(data.error);
+            }
+        } catch (error) {
+            console.error('Error al obtener los productos :', error);
+        }
+    };
+
     useEffect(() => {
-        getMarcas();
+        getProductosM();
     }, []);
 
 
@@ -69,21 +93,20 @@ const ProductosMarca = () => {
         }, 2000);
     }, []);
 
+    const { id, nombre, descripcion, imagen } = route.params;
+    const imageUrl = `${SERVER}images/marcas/${imagen}`;
+
+
     return (
         <View style={styles.container}>
             <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
                 <Ionicons name="arrow-back" size={60} color="#6C5FFF" />
             </TouchableOpacity>
-            <Text style={styles.title}>Productos por marca</Text>
-            {/* Aquí puedes agregar más contenido de la pantalla */}
-            <FlatList
-                data={Marcas}
-                renderItem={renderMarkCard}
-                keyExtractor={(item) => item.id_marca.toString()}
-                refreshControl={
-                    <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-                }
-            />
+            <Text style={styles.title}>{nombre}</Text>
+            <View style={styles.imageContainer}>
+                <Image source={{ uri: imageUrl }} style={styles.markImage} />
+            </View>
+            <Text style={styles.productDescription}>{descripcion}</Text>
         </View>
     );
 }
@@ -102,7 +125,8 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 30,
         fontWeight: 'bold',
-        marginTop: 30, // Espacio adicional arriba del título
+        textAlign: 'center',
+        marginTop: 90, // Espacio adicional arriba del título
         marginBottom: 20,
     },
     card: {
@@ -123,12 +147,14 @@ const styles = StyleSheet.create({
     cardImage: {
         alignItems: 'center',
     },
-    productImage: {
-        width: 170, // Ajusta el tamaño según sea necesario
-        height: 170, // Ajusta el tamaño según sea necesario
+    markImage: {
+        width: 80, // Ajusta el tamaño según sea necesario
+        height: 80, // Ajusta el tamaño según sea necesario
         marginBottom: 10,
-        borderRadius: 10, // Opcional, para darle bordes redondeados a la imagen
+        borderRadius: 100, // Opcional, para darle bordes redondeados a la imagen
         alignItems: 'center',
+        borderColor: '#6C5FFF',
+        borderWidth: 4,
     },
     cardTitle: {
         fontSize: 18,
@@ -143,6 +169,43 @@ const styles = StyleSheet.create({
     },
     boldText: {
         fontWeight: 'bold',
+    },
+    CardContainer: {
+        backgroundColor: '#E7E7E7',
+        borderRadius: 20,
+        flexDirection: 'row',
+        width: '100%',
+    },
+    imageContainer: {
+        position: 'absolute',
+        top: 10, // Alinea el botón 20 unidades desde la parte superior
+        right: 20, // Alinea el botón 20 unidades desde la izquierda
+    },
+    productImage: {
+        width: 180,
+        height: 180,
+        marginBottom: 20,
+    },
+    detailsContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        paddingHorizontal: 10,
+    },
+    productTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginBottom: 10,
+        textAlign: 'center',
+    },
+    productDescription: {
+        fontSize: 16,
+        marginBottom: 20,
+        textAlign: 'center',
+    },
+    productPrice: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        textAlign: 'center',
     },
 });
 
