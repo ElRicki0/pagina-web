@@ -15,6 +15,10 @@ const DetailProduct = ({ route }) => {
 
     const navigation = useNavigation();
     const [Productos, setProductos] = useState([]);
+    //Comentarios
+    const [Comentarios, setComentarios] = useState([]);
+    const [estrella, setEstrella] = useState(0);
+    // Modal
     const [isModalVisible, setModalVisible] = useState(false);
     const [refreshing, setRefreshing] = useState(false);
     const [ValorCarrito, setValorCarrito] = useState('');
@@ -23,6 +27,7 @@ const DetailProduct = ({ route }) => {
 
     useEffect(() => {
         getProductos();
+        getComentarios();
     }, []);
 
     const getProductos = async () => {
@@ -32,6 +37,8 @@ const DetailProduct = ({ route }) => {
             });
 
             const data = await response.json();
+            console.log('idProducto:', id);
+
             if (data.status) {
                 setProductos(data.dataset);
             } else {
@@ -42,6 +49,56 @@ const DetailProduct = ({ route }) => {
         }
     };
 
+    const getComentarios = async () => {
+        try {
+
+            const form = new FormData();
+            form.append('idProducto2', id);
+
+            const response = await fetch(`${SERVER}services/public/producto.php?action=readComentarios`, {
+                method: 'POST',
+                body: form,
+            });
+
+            const data = await response.json();
+            console.log('idProducto:', id);
+            console.log(data);
+
+            if (data.status) {
+                setComentarios(data.dataset);
+            } else {
+                console.error(data.error);
+            }
+        } catch (error) {
+            console.error('Error al obtener los productos :', error);
+        }
+    };
+
+    // constante para renderizar los item de las categorias
+    const renderComentarios = ({ item }) => {
+        const imageUrl = `${SERVER}images/clientes/${item.imagen_cliente}`;
+    
+        return (
+            <View key={item.id_comentario} style={styles.cardComentario}>
+                <Image source={{ uri: imageUrl }} style={styles.productImageComent} />
+                <View style={styles.commentDetails}>
+                    <Text style={styles.cardText}><Text style={styles.boldText}>Cliente: </Text> {item.nombre_cliente}</Text>
+                    <Text style={styles.cardText}><Text style={styles.boldText}></Text> {item.comentario}</Text>
+                    <Text style={styles.cardText}><Text style={styles.boldText}></Text> {item.fecha_comentario}</Text>
+                    <View style={styles.estrellaContenedor}>
+                        {[...Array(5)].map((_, index) => (
+                            <Image 
+                                key={`${item.id_comentario}-${index}`}
+                                style={styles.start}
+                                source={index < item.estrella ? require('../img/EstrellaRellena.png') : require('../img/EstrellaSinRelleno.png')} 
+                            />
+                        ))}
+                    </View>
+                </View>
+            </View>
+        );
+    };
+    
     const renderProductCard = ({ item }) => {
         const imageUrl = `${SERVER}images/productos/${item.imagen_producto}`;
 
@@ -72,6 +129,7 @@ const DetailProduct = ({ route }) => {
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
         getProductos().finally(() => setRefreshing(false));
+        getComentarios();
     }, []);
 
     const SendToFavorite = async () => {
@@ -116,22 +174,22 @@ const DetailProduct = ({ route }) => {
             console.error("idProducto está indefinido");
             return;
         }
-    
+
         try {
             const form = new FormData();
             form.append('idProducto', id);
             form.append('cantidadProducto', ValorCarrito);
-    
+
             const response = await fetch(`${SERVER}services/public/carrito.php?action=createDetail`, {
                 method: 'POST',
                 body: form,
             });
-    
+
             const data = await response.json();
             console.log('Response data:', data);
             console.log('idProducto:', id);
             console.log('cantidadProducto:', ValorCarrito);
-    
+
             if (data.status == "1" && data.dataset) {
                 const idPedido = data.dataset; // Asegúrate de que dataset contenga el valor correcto
                 console.log(idPedido);
@@ -146,8 +204,8 @@ const DetailProduct = ({ route }) => {
             console.log(error);
         }
     };
-    
-    
+
+
 
 
     const irACarrito = (idPedido) => {
@@ -155,14 +213,14 @@ const DetailProduct = ({ route }) => {
             console.error("idPedido está indefinido o es null");
             return;
         }
-    
+
         const producto = { id, nombre, descripcion, precio, imagen, idPedido };
         console.log('Navegando a Carrito con producto:', JSON.stringify(producto));
         navigation.navigate('Carrito', { idPedido }); // Pasa idPedido como parámetro de navegación
     };
-    
-    
-    
+
+
+
 
     const irAFavorito = () => {
         const producto = { id, nombre, descripcion, precio, imagen };
@@ -205,6 +263,23 @@ const DetailProduct = ({ route }) => {
                                 <Boton textoBoton="" accionBoton={SendToCart} iconName="cart" />
                             </View>
                         </View>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 23, marginBottom: 23 }}>
+                            <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />
+                            <View>
+                                <Text style={{
+                                    width: 130, textAlign: 'center', fontWeight: 'bold', fontSize: 16, color: '#6C5FFF'
+                                }}>Comentarios</Text>
+                            </View>
+                            <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />
+                        </View>
+                        <FlatList
+                            data={Comentarios}
+                            renderItem={renderComentarios}
+                            keyExtractor={(item) => item.id_producto.toString()}
+                            refreshControl={
+                                <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+                            }
+                        />
                         <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 23, marginBottom: 23 }}>
                             <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />
                             <View>
@@ -297,6 +372,48 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         textAlign: 'center',
+    },
+    cardComentario: {
+        flexDirection: 'row', // Alinea los elementos en fila
+        backgroundColor: '#E7E7E7',
+        width: 375,
+        height: 220,
+        borderColor:'#543694',
+        borderWidth: 5,
+        borderRadius: 10,
+        padding: 20,
+        marginBottom: 20,
+        elevation: 3,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        alignItems: 'center',
+    },
+    productImageComent: {
+        width: 80,
+        height: 80,
+        marginRight: 20, // Añade margen a la derecha para separar la imagen del texto
+    },
+    commentDetails: {
+        flex: 1, // Toma el espacio restante en la fila
+    },
+    cardText: {
+        fontSize: 16,
+        marginBottom: 5,
+        color: '#260035',
+    },
+    estrellaContenedor: {
+        flexDirection: 'row',
+        marginTop: 5,
+    },
+    start: {
+        width: 25,
+        height: 20,
+        marginRight: 5,
     },
     card: {
         backgroundColor: '#E7E7E7',
