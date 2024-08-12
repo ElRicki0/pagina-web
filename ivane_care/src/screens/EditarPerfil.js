@@ -56,9 +56,7 @@ const EditarPerfil = ({ logueado, setLogueado }) => {
 
     return (
         <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}>
-            <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-                <Ionicons name="arrow-back" size={60} color="#6C5FFF" />
-            </TouchableOpacity>
+            <Text style={styles.title}>Editar Perfil</Text>
 
             <ScrollView style={styles.scrollView}
                 persistentScrollbar={true}
@@ -98,7 +96,6 @@ const EditarPerfil = ({ logueado, setLogueado }) => {
                     placeHolder='Telefono...'
                     style={styles.input}
                     value={Perfil.telefono_cliente}
-                    editable={false}
                 />
                 <Text style={styles.Text}>Dirección</Text>
                 <Input
@@ -117,15 +114,24 @@ const EditarPerfil = ({ logueado, setLogueado }) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        marginTop: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
-    backButton: {
-        position: 'absolute',
-        top: 50, // Alinea el botón 20 unidades desde la parte superior
-        right: 20, // Alinea el botón 20 unidades desde la izquierda
+    title: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        color: 'white',
+        marginBottom: 25,
+        marginTop: 0,
+        backgroundColor: '#0A2B32',
+        padding: 22,
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
+        textAlign: 'center',
     },
     Text: {
-        marginTop: 20,
+
         marginBottom: 10,
         marginLeft: 30,
         color: '#0B003D',

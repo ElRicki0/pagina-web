@@ -39,7 +39,7 @@ const LoginStackScreen = ({ logueado, setLogueado }) => {
         options={{ headerShown: false }}
       >
         {(props) => <PerfilScreen {...props} setLogueado={setLogueado} />}
-        </Stack.Screen>
+      </Stack.Screen>
       <Stack.Screen
         name='EditarPerfil'
         component={EditarPerfil}
@@ -48,8 +48,10 @@ const LoginStackScreen = ({ logueado, setLogueado }) => {
       <Stack.Screen
         name='Historial'
         component={Historial}
-        options={{ headerShown: false }}
+        options={{ 
+          headerShown: false }} // Mantener consistencia en las opciones
       />
+
     </Stack.Navigator>
   );
 };

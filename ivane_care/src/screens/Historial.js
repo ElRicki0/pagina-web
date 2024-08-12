@@ -69,12 +69,13 @@ const Historial = () => {
         }, 2000);
     }, []);
 
+    const goToEdit = () => {
+        navigation.navigate('Perfil');
+    };
+
     return (
         <View style={styles.container}>
             <View style={styles.container}>
-                <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-                    <Ionicons name="arrow-back" size={60} color="#6C5FFF" />
-                </TouchableOpacity>
                 <Text style={styles.title}>Historial de compras</Text>
 
                 <FlatList
@@ -93,7 +94,7 @@ const Historial = () => {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 10,
+        marginTop: 20,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -105,8 +106,14 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 30,
         fontWeight: 'bold',
-        marginTop: 70, // Espacio adicional arriba del título
-        marginBottom: 20,
+        color: 'white',
+        marginBottom: 25,
+        marginTop: -40,
+        backgroundColor: '#0A2B32',
+        padding: 22,
+        borderBottomLeftRadius:20,
+        borderBottomRightRadius:20,
+        textAlign: 'center',
     },
     card: {
         backgroundColor: '#fff',
