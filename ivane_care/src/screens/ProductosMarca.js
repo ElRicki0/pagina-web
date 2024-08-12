@@ -13,26 +13,6 @@ const ProductosMarca = ({ route }) => {
     const [Marcas, setMarcas] = useState([]);
     const [Productos, setProductos] = useState([]);
 
-
-
-    // Constante para obtener los marcas
-    const getMarcas = async () => {
-        try {
-            const response = await fetch(`${SERVER}services/public/marca.php?action=readMarcas`, {
-                method: 'GET',
-            });
-
-            const data = await response.json();
-            if (data.status) {
-                setMarcas(data.dataset);
-            } else {
-                console.error(data.error);
-            }
-        } catch (error) {
-            console.error('Error al obtener las marcas :', error);
-        }
-    };
-
     const getProductosM = async () => {
         try {
             const formData = new FormData();
@@ -61,26 +41,32 @@ const ProductosMarca = ({ route }) => {
 
 
     // constante para renderizar los item de las marcas
-    const renderMarkCard = ({ item }) => {
-        const imageUrl = `${SERVER}images/marcas/${item.imagen_marca}`;
+    const renderProductCard = ({ item }) => {
+        const imageUrl = `${SERVER}images/productos/${item.imagen_producto}`;
 
         return (
             <TouchableOpacity style={styles.card}
                 onPress={() => navigation.navigate('DetalleProducto', {
-                    id: item.id_marca,
-                    nombre: item.nombre_marca,
-                    descripcion: item.descripcion_marca,
-                    imagen: item.imagen_marca
+                    id: item.id_producto,
+                    nombre: item.nombre_producto,
+                    descripcion: item.descripcion_producto,
+                    precio: item.precio_producto,
+                    imagen: item.imagen_producto
                 })}>
                 <View style={styles.cardImage}>
                     <Image source={{ uri: imageUrl }} style={styles.productImage} />
                 </View>
-                <Text style={styles.cardText}><Text style={styles.boldText}>Nombre:</Text> {item.nombre_marca}</Text>
-                <Text style={styles.cardText}><Text style={styles.boldText}>Descripcion:</Text> {item.descripcion_marca}</Text>
+                <Text style={styles.cardText}><Text style={styles.boldText}>{item.nombre_producto}</Text></Text>
+                <Text style={styles.cardTextDescrip}>{item.descripcion_producto}</Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <View style={{ flex: 1, height: 4, borderRadius: 30, backgroundColor: '#6C5FFF', marginTop: 20, marginBottom: 10 }} />
+                </View>
+                <Text style={styles.cardText}>
+                    <Text style={styles.boldText}>$ {item.precio_producto}</Text>
+                </Text>
             </TouchableOpacity>
         );
     };
-
 
     // constante para refrescar la pagina 
     const [refreshing, setRefreshing] = React.useState(false);
@@ -88,7 +74,7 @@ const ProductosMarca = ({ route }) => {
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
         setTimeout(() => {
-            getMarcas(); // Se manda a llamar de nuevo a getProductos para refrescar los datos
+            getProductosM(); // Se manda a llamar de nuevo a getProductos para refrescar los datos
             setRefreshing(false);
         }, 2000);
     }, []);
@@ -102,12 +88,36 @@ const ProductosMarca = ({ route }) => {
             <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
                 <Ionicons name="arrow-back" size={60} color="#6C5FFF" />
             </TouchableOpacity>
-            <Text style={styles.title}>{nombre}</Text>
             <View style={styles.imageContainer}>
                 <Image source={{ uri: imageUrl }} style={styles.markImage} />
             </View>
+            <Text style={styles.title}>{nombre}</Text>
             <Text style={styles.productDescription}>{descripcion}</Text>
+
+            {Productos.length === 0 ? (
+                <Text style={styles.texto2}>No existen productos de esta marca</Text>
+            ) : (
+                <FlatList
+                    data={Productos}
+                    renderItem={({ item, index }) => {
+                        if (index % 2 === 0) {
+                            return (
+                                <View style={styles.row}>
+                                    {renderProductCard({ item })}
+                                    {index + 1 < Productos.length && renderProductCard({ item: Productos[index + 1] })}
+                                </View>
+                            );
+                        } else {
+                            return null;
+                        }
+                    }}
+                    keyExtractor={(item) => item.id_producto.toString()}
+                    refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+                    ListFooterComponent={<View style={{ height: 150 }} />} // Añade espacio al final de la lista
+                />
+            )}
         </View>
+
     );
 }
 
@@ -128,6 +138,15 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 90, // Espacio adicional arriba del título
         marginBottom: 20,
+    },
+    texto2: {
+        fontSize: 30,
+        marginBottom: 10,
+        textAlign: 'center',
+        color:'black',
+        backgroundColor: '#E8E5FF',
+        borderRadius: 20,
+        width: 300,
     },
     card: {
         backgroundColor: '#fff',
@@ -206,6 +225,9 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         textAlign: 'center',
+    },
+    FlatList: {
+        marginBottom: 90,
     },
 });
 
