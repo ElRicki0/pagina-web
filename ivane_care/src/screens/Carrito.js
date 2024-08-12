@@ -33,7 +33,7 @@ const Carrito = ({ route }) => {
                 method: 'GET',
             });
             const data = await response.json();
-    
+
             if (data.status && Array.isArray(data.dataset)) {
                 console.log('Productos obtenidos:', data.dataset); // Verifica los datos
                 setProductos(data.dataset); // Asegúrate de que el formato sea correcto
@@ -47,7 +47,7 @@ const Carrito = ({ route }) => {
             console.error('Error en la solicitud fetch:', error);
         }
     };
-    
+
 
     const deleteProduct = async (idDetalle) => {
         console.log('ID a eliminar:', idDetalle); // Verifica que idDetalle tenga un valor
@@ -151,7 +151,7 @@ const Carrito = ({ route }) => {
                 showsVerticalScrollIndicator={false}
                 refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
             >
-                <Text style={styles.texto}>Para eliminar productos de su carrito, debe de tocarlo y se le eliminaran.</Text>
+                <Text style={styles.texto}>Si desea eliminar un producto, presionelo y este sera eliminado.</Text>
                 {productos.length > 0 ? (
                     <View style={styles.cardsContainer}>
                         {productos.map((item) => (
@@ -161,7 +161,10 @@ const Carrito = ({ route }) => {
                         ))}
                     </View>
                 ) : (
-                    <Text style={styles.texto2}>No tiene productos en su carrito</Text>
+                    <View style={styles.emptyContainer}>
+                        <Image source={require('../img/NoCarrito.png')} style={styles.image} />
+                        <Text style={styles.texto3}>No tiene productos en su carrito</Text>
+                    </View>
                 )}
             </ScrollView>
             <View style={styles.footer}>
@@ -169,7 +172,7 @@ const Carrito = ({ route }) => {
                 <Boton textoBoton="Finalizar pedido" accionBoton={finishOrder} iconName={"cart-check"} />
             </View>
         </View>
-    );    
+    );
 };
 
 const styles = StyleSheet.create({
@@ -181,12 +184,26 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
         marginHorizontal: 20,
     },
+    emptyContainer: {
+        marginTop:20,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center',
+        borderRadius: 20,
+        width: 340,
+    },
+    image: {
+        width: 300,
+        height: 300,
+    },
     texto: {
-        fontSize: 16,
+        fontSize: 18,
         marginBottom: 20,
         textAlign: 'center',
         backgroundColor: '#ebebeb',
         borderRadius: 30,
+        padding: 10,
+
     },
     texto2: {
         fontSize: 20,
@@ -194,6 +211,11 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         backgroundColor: '#ebebeb',
         borderRadius: 30,
+    },
+    texto3: {
+        fontSize: 25,
+        textAlign: 'center',
+        color: 'black',
     },
     textoFooter: {
         fontSize: 18,

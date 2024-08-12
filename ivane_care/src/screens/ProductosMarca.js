@@ -95,7 +95,10 @@ const ProductosMarca = ({ route }) => {
             <Text style={styles.productDescription}>{descripcion}</Text>
 
             {Productos.length === 0 ? (
-                <Text style={styles.texto2}>No existen productos de esta marca</Text>
+                <View style={styles.emptyContainer}>
+                    <Image source={require('../img/NoMarcas.png')} style={styles.image} />
+                    <Text style={styles.texto2}>No existen productos de esta marca</Text>
+                </View>
             ) : (
                 <FlatList
                     data={Productos}
@@ -139,14 +142,20 @@ const styles = StyleSheet.create({
         marginTop: 90, // Espacio adicional arriba del título
         marginBottom: 20,
     },
-    texto2: {
-        fontSize: 30,
-        marginBottom: 10,
-        textAlign: 'center',
-        color:'black',
-        backgroundColor: '#E8E5FF',
+    emptyContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
         borderRadius: 20,
+        width: 340,
+    },
+    image: {
         width: 300,
+        height: 300,
+    },
+    texto2: {
+        fontSize: 25,
+        textAlign: 'center',
+        color: 'black',
     },
     card: {
         backgroundColor: '#fff',
