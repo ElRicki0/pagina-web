@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, FlatList, RefreshControl } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; // Hook de navegación
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { SERVER } from '../../contexts/Network';
 
 
-const ip = '192.168.1.15'; // Dirección IP del servidor 
+
+// const ip = '192.168.1.15'; // Dirección IP del servidor 
 
 const Categorias = () => {
 
@@ -18,7 +20,7 @@ const Categorias = () => {
     // Constante para obtener las categorias
     const getCategorias = async () => {
         try {
-            const response = await fetch(`http://${ip}/pagina-web/api/services/public/categoria.php?action=readCategoria`, {
+            const response = await fetch(`${SERVER}services/public/categoria.php?action=readCategoria`, {
                 method: 'GET',
             });
 
@@ -40,7 +42,7 @@ const Categorias = () => {
 
     // constante para renderizar los item de las categorias
     const renderCategoryCard = ({ item }) => {
-        const imageUrl = `http://${ip}/pagina-web/api/images/categorias/${item.imagen_categoria_producto}`;
+        const imageUrl = `${SERVER}images/categorias/${item.imagen_categoria_producto}`;
 
         return (
             <TouchableOpacity style={styles.card}>
@@ -97,7 +99,8 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 30,
         fontWeight: 'bold',
-        marginTop: 30, // Espacio adicional arriba del título
+        marginTop: 20, // Espacio adicional arriba del título
+        marginBottom:20,
     },
     card: {
         backgroundColor: '#fff',

@@ -6,6 +6,8 @@ import { Provider as PaperProvider, Button as PaperButton } from 'react-native-p
 import Boton from '../components/Button/Boton';
 import Input from '../components/Input/InputPerfil';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { SERVER } from '../../contexts/Network';
+
 
 
 const ip = '192.168.1.15'; // Dirección IP del servidor 
@@ -22,7 +24,7 @@ const EditarPerfil = ({ logueado, setLogueado }) => {
 
     const getCliente = async () => {
         try {
-            const response = await fetch(`http://${ip}/pagina-web/api/services/public/cliente.php?action=readProfile`, {
+            const response = await fetch(`${SERVER}services/public/cliente.php?action=readProfile`, {
                 method: 'GET',
             });
             const data = await response.json();

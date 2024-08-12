@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+
 // Importación de las distintas pantallas del sistema 
 import SplashScreen from './src/screens/SplashScreen';
 import MarcasScreen from './src/screens/Marcas';
@@ -9,6 +10,8 @@ import CategoriaScreen from './src/screens/Categoria';
 import SignUpScreen from './src/screens/SignUp';
 import LoginNav from './src/navegation/LogInStack';
 import BottomTab from './src/navegation/BottonTab';
+import { SERVER } from './contexts/Network' ;
+
 
 const Stack = createStackNavigator();
 
@@ -21,7 +24,7 @@ export const App = () => {
 
   // Realizando constante para poder cerrar la sesion
   const sesionActiva = async () => {
-    const url = await fetch(`http://${ip}/pagina-web/api/services/public/cliente.php?action=getUser`, {
+    const url = await fetch(`${SERVER}services/public/cliente.php?action=getUser`, {
         method: 'GET'
     });
     const data = await url.json();

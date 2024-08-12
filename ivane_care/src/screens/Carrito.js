@@ -3,9 +3,11 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, RefreshCon
 import Boton from '../components/Button/BotonCarrito';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
+import { SERVER } from '../../contexts/Network';
 
 
-const ip = '192.168.1.15'; // Dirección IP del servidor 
+
+// const ip = '192.168.1.15'; // Dirección IP del servidor 
 
 
 const Carrito = ({ route }) => {
@@ -27,7 +29,7 @@ const Carrito = ({ route }) => {
 
     const fetchProductos = async () => {
         try {
-            const response = await fetch(`http://${ip}/pagina-web/api/services/public/carrito.php?action=readDetail&idPedido=${idPedido}`, {
+            const response = await fetch(`${SERVER}services/public/carrito.php?action=readDetail&idPedido=${idPedido}`, {
                 method: 'GET',
             });
             const data = await response.json();
@@ -38,7 +40,7 @@ const Carrito = ({ route }) => {
                 console.log('idPedido recibido en Carrito:', idPedido);
 
             } else {
-                alert('No tiene aún productos en su carrito');
+                // alert('No tiene aún productos en su carrito');
                 console.log('Error al obtener productos del carrito:', data.message);
             }
         } catch (error) {
@@ -56,7 +58,7 @@ const Carrito = ({ route }) => {
 
         try {
             // Realiza la solicitud fetch usando FormData
-            const response = await fetch(`http://${ip}/pagina-web/api/services/public/carrito.php?action=deleteDetail`, {
+            const response = await fetch(`${SERVER}services/public/carrito.php?action=deleteDetail`, {
                 method: 'POST',
                 body: FORM,
             });
@@ -91,7 +93,7 @@ const Carrito = ({ route }) => {
         FORM.append('idPedido', idPedido);
 
         try {
-            const response = await fetch(`http://${ip}/pagina-web/api/services/public/carrito.php?action=finishOrder`, {
+            const response = await fetch(`${SERVER}services/public/carrito.php?action=finishOrder`, {
                 method: 'POST',
                 body: FORM,
             });
@@ -159,11 +161,11 @@ const Carrito = ({ route }) => {
                         ))}
                     </View>
                 ) : (
-                    <Text style={styles.texto}></Text>
+                    <Text style={styles.texto2}>No tiene productos en su carrito</Text>
                 )}
             </ScrollView>
             <View style={styles.footer}>
-                <Text style={styles.texto}>Total a pagar : ${calcularTotal()}</Text>
+                <Text style={styles.textoFooter}>Total a pagar : ${calcularTotal()}</Text>
                 <Boton textoBoton="Finalizar pedido" accionBoton={finishOrder} iconName={"cart-check"} />
             </View>
         </View>
@@ -181,7 +183,20 @@ const styles = StyleSheet.create({
     },
     texto: {
         fontSize: 16,
+        marginBottom: 20,
+        textAlign: 'center',
+        backgroundColor: '#ebebeb',
+        borderRadius: 30,
+    },
+    texto2: {
+        fontSize: 20,
         marginBottom: 10,
+        textAlign: 'center',
+        backgroundColor: '#ebebeb',
+        borderRadius: 30,
+    },
+    textoFooter: {
+        fontSize: 18,
         textAlign: 'center',
     },
     cardWrapper: {

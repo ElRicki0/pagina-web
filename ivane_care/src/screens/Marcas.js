@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image, FlatList, RefreshControl } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; // Hook de navegación
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { SERVER } from '../../contexts/Network';
+
 
 
 const ip = '192.168.1.15'; // Dirección IP del servidor 
@@ -16,7 +18,7 @@ const Marcas = () => {
     // Constante para obtener los marcas
     const getMarcas = async () => {
         try {
-            const response = await fetch(`http://${ip}/pagina-web/api/services/public/marca.php?action=readMarcas`, {
+            const response = await fetch(`${SERVER}services/public/marca.php?action=readMarcas`, {
                 method: 'GET',
             });
 
@@ -38,7 +40,7 @@ const Marcas = () => {
 
     // constante para renderizar los item de las marcas
     const renderMarkCard = ({ item }) => {
-        const imageUrl = `http://${ip}/pagina-web/api/images/marcas/${item.imagen_marca}`;
+        const imageUrl = `${SERVER}images/marcas/${item.imagen_marca}`;
 
         return (
             <TouchableOpacity style={styles.card}>

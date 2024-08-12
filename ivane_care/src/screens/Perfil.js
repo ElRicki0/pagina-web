@@ -5,6 +5,8 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Modal from 'react-native-modal';
 import Boton from '../components/Button/BotonPerfil';
+import { SERVER } from '../../contexts/Network';
+
 
 
 
@@ -36,7 +38,7 @@ const Perfil = ({ logueado, setLogueado }) => {
 
     //Constante de cierre de sesión
     const handleLogOut = async () => {
-        const url = `http://${ip}/pagina-web/api/services/public/cliente.php?action=logOut`;
+        const url = `${SERVER}services/public/cliente.php?action=logOut`;
         try {
             const fetchApi = await fetch(url);
             const datos = await fetchApi.json();

@@ -5,6 +5,8 @@ import Input from '../components/Input/InputLogin';
 import Boton from '../components/Button/Boton';
 import Modal from 'react-native-modal';
 import { Button as PaperButton } from 'react-native-paper';
+import { SERVER } from '../../contexts/Network';
+
 
 const LogIn = ({ logueado, setLogueado }) => {
   const [isModalVisible, setModalVisible] = useState(false);
@@ -30,7 +32,7 @@ const LogIn = ({ logueado, setLogueado }) => {
       return;
     }
 
-    const url = `http://${ip}/pagina-web/api/services/public/cliente.php?action=logIn`;
+    const url = `${SERVER}services/public/cliente.php?action=logIn`;
     const formData = new FormData();
     formData.append('correo', correo);
     formData.append('clave', clave);
@@ -56,7 +58,7 @@ const LogIn = ({ logueado, setLogueado }) => {
 
 
   const handleLogOut = async () => {
-    const url = `http://${ip}/pagina-web/api/services/public/cliente.php?action=logOut`;
+    const url = `${SERVER}services/public/cliente.php?action=logOut`;
     try {
       const fetchApi = await fetch(url);
       const datos = await fetchApi.json();

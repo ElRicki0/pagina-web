@@ -5,7 +5,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import Input from '../components/Input/InputCarrito';
 import Boton from '../components/Button/BotonCarrito';
 import Modal from 'react-native-modal';
-
+import { SERVER } from '../../contexts/Network';
 import Boton2 from '../components/Button/BotonFavorito';
 
 const ip = '192.168.1.15'; // Dirección IP del servidor 
@@ -27,7 +27,7 @@ const DetailProduct = ({ route }) => {
 
     const getProductos = async () => {
         try {
-            const response = await fetch(`http://${ip}/pagina-web/api/services/public/producto.php?action=read2Products`, {
+            const response = await fetch(`${SERVER}services/public/producto.php?action=read2Products`, {
                 method: 'GET',
             });
 
@@ -43,7 +43,7 @@ const DetailProduct = ({ route }) => {
     };
 
     const renderProductCard = ({ item }) => {
-        const imageUrl = `http://${ip}/pagina-web/api/images/productos/${item.imagen_producto}`;
+        const imageUrl = `${SERVER}images/productos/${item.imagen_producto}`;
 
         return (
             <TouchableOpacity style={styles.card}
@@ -84,7 +84,7 @@ const DetailProduct = ({ route }) => {
             const form = new FormData();
             form.append('idProducto', id);
 
-            const response = await fetch(`http://${ip}/pagina-web/api/services/public/lista_deseo.php?action=createRow`, {
+            const response = await fetch(`${SERVER}services/public/lista_deseo.php?action=createRow`, {
                 method: 'POST',
                 body: form,
             });
@@ -122,7 +122,7 @@ const DetailProduct = ({ route }) => {
             form.append('idProducto', id);
             form.append('cantidadProducto', ValorCarrito);
     
-            const response = await fetch(`http://${ip}/pagina-web/api/services/public/carrito.php?action=createDetail`, {
+            const response = await fetch(`${SERVER}services/public/carrito.php?action=createDetail`, {
                 method: 'POST',
                 body: form,
             });
@@ -172,7 +172,7 @@ const DetailProduct = ({ route }) => {
     };
 
     const { id, nombre, descripcion, precio, imagen } = route.params;
-    const imageUrl = `http://${ip}/pagina-web/api/images/productos/${imagen}`;
+    const imageUrl = `${SERVER}images/productos/${imagen}`;
 
     return (
         <>

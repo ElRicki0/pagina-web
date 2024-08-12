@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, RefreshControl, FlatList } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
+import { SERVER } from '../../contexts/Network';
+
 
 const ip = '192.168.1.15'; // Dirección IP del servidor 
 
@@ -17,7 +19,7 @@ const Historial = () => {
     // Constante para obtener los productos
     const getHistorial = async () => {
         try {
-            const response = await fetch(`http://${ip}/pagina-web/api/services/public/historial.php?action=readAll`, {
+            const response = await fetch(`${SERVER}services/public/historial.php?action=readAll`, {
                 method: 'GET',
             });
 
@@ -35,7 +37,7 @@ const Historial = () => {
 
     // constante para renderizar los item de los productos
     const renderHistorylCard = ({ item }) => {
-        const imageUrl = `http://${ip}/pagina-web/api/images/productos/${item.imagen_producto}`;
+        const imageUrl = `${SERVER}images/productos/${item.imagen_producto}`;
 
         return (
             <View style={styles.card}

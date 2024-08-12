@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, Image, ScrollView, TextInput, FlatList, Touchab
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Boton from '../components/Button/Boton'; // Se importa el componente de boton para poder usarlo 
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { SERVER } from '../../contexts/Network';
+
 
 
 const ip = '192.168.1.15'; // Dirección IP del servidor 
@@ -19,7 +21,7 @@ const HomeScreen = ({ logueado, setLogueado }) => {
 
   const getProductos = async () => {
     try {
-      const response = await fetch(`http://${ip}/pagina-web/api/services/public/producto.php?action=read8Products`, {
+      const response = await fetch(`${SERVER}services/public/producto.php?action=read8Products`, {
         method: 'GET',
       });
 
@@ -47,7 +49,7 @@ const HomeScreen = ({ logueado, setLogueado }) => {
 
   // constante para renderizar los item de los productos
   const renderProductCard = ({ item }) => {
-    const imageUrl = `http://${ip}/pagina-web/api/images/productos/${item.imagen_producto}`;
+    const imageUrl = `${SERVER}images/productos/${item.imagen_producto}`;
 
     return (
       <TouchableOpacity style={styles.card}>

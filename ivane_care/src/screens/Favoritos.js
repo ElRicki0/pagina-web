@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, RefreshControl } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
+import { SERVER } from '../../contexts/Network';
+
 
 const ip = '192.168.1.15'; // Dirección IP del servidor 
 
@@ -17,7 +19,7 @@ const Favorito = () => {
 
     const fetchProductos = async () => {
         try {
-            const response = await fetch(`http://${ip}/pagina-web/api/services/public/lista_deseo.php?action=readOne`, {
+            const response = await fetch(`${SERVER}services/public/lista_deseo.php?action=readOne`, {
                 method: 'GET',
             });
             const data = await response.json();
@@ -33,7 +35,7 @@ const Favorito = () => {
     };
 
     const renderProductCard = ({ item }) => {
-        const imageUrl = `http://${ip}/pagina-web/api/images/productos/${item.imagen_producto}`;
+        const imageUrl = `${SERVER}images/productos/${item.imagen_producto}`;
 
         return (
             <TouchableOpacity  key={item.id_producto} style={styles.card}

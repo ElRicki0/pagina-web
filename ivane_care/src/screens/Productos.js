@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ImageBackground, ScrollView, TouchableOpacity, 
 import { useNavigation } from '@react-navigation/native';
 import Boton from '../components/Button/Boton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; // Importa el paquete de iconos
+import { SERVER } from '../../contexts/Network';
 
 
 const ip = '192.168.1.15'; // Dirección IP del servidor 
@@ -22,7 +23,7 @@ const Productos = () => {
   // Constante para obtener los productos
   const getProductos = async () => {
     try {
-      const response = await fetch(`http://${ip}/pagina-web/api/services/public/producto.php?action=readAll`, {
+      const response = await fetch(`${SERVER}services/public/producto.php?action=readAll`, {
         method: 'GET',
       });
 
