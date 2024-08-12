@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 
-export default function Input({ placeHolder, value, clave, onChangeText }) {
+export default function Input({ placeHolder, value, clave, onChangeText, setState }) {
 
     return (
         <TextInput
@@ -10,6 +10,7 @@ export default function Input({ placeHolder, value, clave, onChangeText }) {
             placeholderTextColor={'#000'}
             secureTextEntry={clave}
             onChangeText={onChangeText}
+            editable={setState}
         />
 
     );

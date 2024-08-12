@@ -47,55 +47,45 @@ const EditarPerfil = () => {
         }
     };
 
-    // const updateCliente = async () => {
-    //     try {
+    const UpdateProfile = async () => {
+        try {
 
-    //         fro
+            // Si todos los campos son válidos, proceder con la creación del usuario
+            //Creamos el forms que mandara los datos a la api
+            const form = new FormData();
+            form.append('nombreCliente', nombre);
+            form.append('apellidoCliente', apellido);
+            form.append('direccionCliente', residencia);
+            form.append('aliasCliente', alias);
+            form.append('telefonoCliente', telefono);
 
-    //         const response = await fetch(`${SERVER}services/public/cliente.php?action=readProfile`, {
-    //             method: 'GET',
-    //         });
-    //         const data = await response.json();
-    //         if (data.status === 1 && data.dataset) {
-    //             setPerfil(data.dataset);
-    //             console.log(data.dataset);
-    //         } else {
-    //             console.error(data.error);
-    //         }
-    //     } catch (error) {
-    //         console.error('Error al obtener los datos de su cuenta :', error);
-    //     }
-    // };
+
+            const response = await fetch(`${SERVER}services/public/cliente.php?action=editProfileMobile`, {
+                method: 'POST',
+                body: form,
+            });
+
+            const data = await response.json();
+            console.log(form);
+
+            if (data.status) {
+                console.log('Tu cuenta se ha actualizado exitosamente');
+                Alert.alert('Éxito', 'Perfil actualizado correctamente');
+            } else {
+                console.log('Sorry');
+                console.log('Error:', data.error || 'Ocurrió un error desconocido'); // Muestra el error proporcionado por la API
+            }
+        } catch (error) {
+            console.log(error);
+            Alert.alert('Error', 'Error al actualizar el perfil');
+        }
+    }
 
 
     useEffect(() => {
-        const getCliente = async () => {
-            try {
-                const response = await fetch(`${SERVER}services/public/cliente.php?action=readProfile`, {
-                    method: 'GET',
-                });
-                const data = await response.json();
-                if (data.status === 1 && data.dataset) {
-                    const profileData = data.dataset;
-                    setName(profileData.nombre_cliente);
-                    setApellido(profileData.apellido_cliente);
-                    setTelefono(profileData.telefono_cliente);
-                    setResidencia(profileData.residencia_cliente);
-                    setAlias(profileData.alias_cliente);
-                    setCorreo(profileData.correo_cliente);
-                    setPerfil(profileData);
-                    console.log(data.dataset);
-                } else {
-                    console.error(data.error);
-                }
-            } catch (error) {
-                console.error('Error al obtener los datos de su cuenta :', error);
-            }
-        };
-        
         getCliente();
     }, []); // Solo se ejecuta al montar el componente
-    
+
 
     const navigation = useNavigation();
 
@@ -111,6 +101,7 @@ const EditarPerfil = () => {
     return (
         <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}>
             <Text style={styles.title}>Editar Perfil</Text>
+            <Text style={styles.texto}>El correo no es editable.</Text>
 
             <ScrollView style={styles.scrollView}
                 persistentScrollbar={true}
@@ -137,6 +128,7 @@ const EditarPerfil = () => {
                     style={styles.input}
                     value={correo}
                     onChangeText={setCorreo}
+                    setState={false}
                 />
                 <Text style={styles.Text}>Usuario</Text>
                 <Input
@@ -160,7 +152,7 @@ const EditarPerfil = () => {
                     onChangeText={setResidencia}
                 />
                 <View style={styles.containerBoton}>
-                    <Boton textoBoton="Guardar" accionBoton={goToEdit} iconName={"account-edit-outline"} />
+                    <Boton textoBoton="Guardar" accionBoton={UpdateProfile} iconName={"account-edit-outline"} />
                 </View>
             </ScrollView>
         </ImageBackground>
@@ -172,6 +164,18 @@ const styles = StyleSheet.create({
         marginTop: 20,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    texto: {
+        fontSize: 15,
+        marginBottom: 20,
+        textAlign: 'center',
+        backgroundColor: '#ebebeb',
+        borderRadius: 20,
+        width: 340,
+        marginLeft: 30,
+        padding: 20,
+        justifyContent:'center',
+        alignItems:'center',
     },
     title: {
         fontSize: 30,
@@ -231,6 +235,8 @@ const styles = StyleSheet.create({
     scrollView: {
         flex: 1,
         alignSelf: 'center',
+        textAlign: 'center',
+        alignContent: 'center',
     },
     scrollViewContent: {
         flexGrow: 1,

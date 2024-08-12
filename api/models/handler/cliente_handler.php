@@ -83,6 +83,16 @@ class ClienteHandler
         return Database::executeRow($sql, $params);
     }
 
+
+    public function editProfileMobile()
+    {
+        $sql = 'UPDATE tb_clientes
+                SET nombre_cliente = ?, apellido_cliente = ?,  telefono_cliente = ?,  residencia_cliente = ?, alias_cliente = ?
+                WHERE id_cliente = ?';
+        $params = array($this->nombre, $this->apellido, $this->telefono, $this->direccion, $this->alias,  $_SESSION['idCliente']);
+        return Database::executeRow($sql, $params);
+    }
+
     public function changeStatus()
     {
         $sql = 'UPDATE tb_clientes

@@ -203,7 +203,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#ebebeb',
         borderRadius: 30,
         padding: 10,
-
     },
     texto2: {
         fontSize: 20,
