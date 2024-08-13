@@ -140,6 +140,23 @@ class ComentarioHandler
         }
     }
 
+    public function createCommentMobile()
+    {
+        // Verifica si el cliente ha comprado el producto
+        if ($this->verifyPurchase()) {
+            // Inserta un nuevo comentario en la tabla tb_comentarios
+            $sql = 'INSERT INTO tb_comentarios(estrella, comentario, id_producto, id_cliente, estado_comentario)
+                VALUES(?, ?, ?, ?, ?)';
+            // Parámetros para la consulta: estrella, comentario, id_producto, id_cliente, estado_comentario
+            $params = array($this->estrella, $this->comentario, $this->producto, $_SESSION['idCliente'], 0);
+            // Ejecuta la consulta y retorna el resultado
+            return Database::executeRow($sql, $params);
+        } else {
+            // Si no ha comprado el producto, retorna false
+            return false;
+        }
+    }
+
 
     // Generar gráfica
     public function ProductosmasComentados()

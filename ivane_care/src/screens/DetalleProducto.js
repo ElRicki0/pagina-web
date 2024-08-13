@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity, RefreshControl } from 'react-native';
+import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity, RefreshControl, TextInput, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Input from '../components/Input/InputCarrito';
@@ -17,7 +17,9 @@ const DetailProduct = ({ route }) => {
     const [Productos, setProductos] = useState([]);
     //Comentarios
     const [Comentarios, setComentarios] = useState([]);
+    const [ComentarioInput, setComentarioInput] = useState([]);
     const [estrella, setEstrella] = useState(0);
+
     // Modal
     const [isModalVisible, setModalVisible] = useState(false);
     const [refreshing, setRefreshing] = useState(false);
@@ -27,7 +29,6 @@ const DetailProduct = ({ route }) => {
 
     useEffect(() => {
         getProductos();
-        getComentarios();
     }, []);
 
     const getProductos = async () => {
@@ -77,7 +78,7 @@ const DetailProduct = ({ route }) => {
     // constante para renderizar los item de las categorias
     const renderComentarios = ({ item }) => {
         const imageUrl = `${SERVER}images/clientes/${item.imagen_cliente}`;
-    
+
         return (
             <View key={item.id_comentario} style={styles.cardComentario}>
                 <Image source={{ uri: imageUrl }} style={styles.productImageComent} />
@@ -87,10 +88,10 @@ const DetailProduct = ({ route }) => {
                     <Text style={styles.cardText}><Text style={styles.boldText}></Text> {item.fecha_comentario}</Text>
                     <View style={styles.estrellaContenedor}>
                         {[...Array(5)].map((_, index) => (
-                            <Image 
+                            <Image
                                 key={`${item.id_comentario}-${index}`}
                                 style={styles.start}
-                                source={index < item.estrella ? require('../img/EstrellaRellena.png') : require('../img/EstrellaSinRelleno.png')} 
+                                source={index < item.estrella ? require('../img/EstrellaRellena.png') : require('../img/EstrellaSinRelleno.png')}
                             />
                         ))}
                     </View>
@@ -98,7 +99,7 @@ const DetailProduct = ({ route }) => {
             </View>
         );
     };
-    
+
     const renderProductCard = ({ item }) => {
         const imageUrl = `${SERVER}images/productos/${item.imagen_producto}`;
 
@@ -165,6 +166,37 @@ const DetailProduct = ({ route }) => {
         }
     };
 
+    const sendToComentario = async () => {
+        if (!id) {
+            console.error("idProducto2 está indefinido");
+            return;
+        }
+
+        try {
+            const form = new FormData();
+            form.append('idProducto2', id);
+            form.append('comentario', ComentarioInput);
+            form.append('estrella', estrella);
+
+            const response = await fetch(`${SERVER}services/public/comentario.php?action=createCommentMobile`, {
+                method: 'POST',
+                body: form,
+            });
+
+            const data = await response.json();
+
+            if (data.status) {
+                Alert.alert('Comentario enviado');
+                setComentarioInput('');  // Limpiar el input después de enviar
+                setEstrella(0);  // Restablecer la calificación
+                getComentarios();  // Actualizar la lista de comentarios
+            } else {
+                alert('Ocurrió un error.');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
 
     // Función para que funcione el carrito 
@@ -206,6 +238,9 @@ const DetailProduct = ({ route }) => {
     };
 
 
+    const handleRatingPress = (estrella) => {
+        setEstrella(estrella);
+    };
 
 
     const irACarrito = (idPedido) => {
@@ -262,6 +297,28 @@ const DetailProduct = ({ route }) => {
                                 />
                                 <Boton textoBoton="" accionBoton={SendToCart} iconName="cart" />
                             </View>
+                        </View>
+                        <View style={styles.detailsContainer}>
+                            <Text style={styles.comentTitle}>Tu puntuacion sobre este producto</Text>
+                            <View style={styles.estrellaContenedor}>
+                                {[...Array(5)].map((_, index) => (
+                                    <TouchableOpacity key={index} onPress={() => handleRatingPress(index + 1)}>
+                                        <Image
+                                            key={index}
+                                            style={styles.start}
+                                            source={index < estrella ? require('../img/EstrellaRellena.png') : require('../img/EstrellaSinRelleno.png')}
+                                        />
+                                    </TouchableOpacity>
+                                ))}
+                            </View>
+                            <TextInput
+                                style={styles.input}
+                                onChangeText={setComentarioInput}
+                                value={ComentarioInput}
+                                placeholder="Escriba su comentario"
+                                keyboardType="text"
+                            />
+                            <Boton2 textoBoton="" accionBoton={sendToComentario} iconName="heart-circle" />
                         </View>
                         <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 23, marginBottom: 23 }}>
                             <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />
@@ -327,6 +384,14 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: 20,
     },
+    input: {
+        height: 80,
+        margin: 12,
+        borderWidth: 2,
+        padding: 10,
+        borderColor: '#543694',
+        borderWidth: 2,
+    },
     CardContainer: {
         backgroundColor: '#E7E7E7',
         borderRadius: 20,
@@ -363,6 +428,14 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         textAlign: 'center',
     },
+    comentTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginBottom: 10,
+        marginTop: 20,
+        color: 'purple',
+        textAlign: 'center',
+    },
     productDescription: {
         fontSize: 16,
         marginBottom: 20,
@@ -378,7 +451,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#E7E7E7',
         width: 375,
         height: 220,
-        borderColor:'#543694',
+        borderColor: '#543694',
         borderWidth: 5,
         borderRadius: 10,
         padding: 20,
@@ -411,8 +484,8 @@ const styles = StyleSheet.create({
         marginTop: 5,
     },
     start: {
-        width: 25,
-        height: 20,
+        width: 30,
+        height: 30,
         marginRight: 5,
     },
     card: {
