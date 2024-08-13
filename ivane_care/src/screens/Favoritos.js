@@ -76,7 +76,7 @@ const Favorito = () => {
              <View style={styles.container}>
                 {productos.length === 0 ? (
                     <View style={styles.emptyContainer}>
-                        <Image source={require('../img/NoHistorial.png')} style={styles.image} />
+                        <Image source={require('../img/NoFavorito.png')} style={styles.image} />
                         <Text style={styles.texto3}>No tiene productos favoritos</Text>
                     </View>
                 ) : (
