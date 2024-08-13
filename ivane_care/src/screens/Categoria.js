@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, FlatList, RefreshControl } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image, FlatList, RefreshControl } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; // Hook de navegación
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { SERVER } from '../../contexts/Network';
@@ -9,7 +9,6 @@ import { SERVER } from '../../contexts/Network';
 // const ip = '192.168.1.15'; // Dirección IP del servidor 
 
 const Categorias = () => {
-
     const navigation = useNavigation(); // Hook de navegación para cambiar entre pantallas
 
 
@@ -23,6 +22,7 @@ const Categorias = () => {
             const response = await fetch(`${SERVER}services/public/categoria.php?action=readCategoria`, {
                 method: 'GET',
             });
+
 
             const data = await response.json();
             if (data.status) {
@@ -39,7 +39,6 @@ const Categorias = () => {
         getCategorias();
     }, []);
 
-
     // constante para renderizar los item de las categorias
     const renderCategoryCard = ({ item }) => {
         const imageUrl = `${SERVER}images/categorias/${item.imagen_categoria_producto}`;
@@ -54,6 +53,7 @@ const Categorias = () => {
             </TouchableOpacity>
         );
     };
+
 
     // constante para refrescar la pagina 
     const [refreshing, setRefreshing] = React.useState(false);
@@ -85,6 +85,7 @@ const Categorias = () => {
     );
 }
 
+
 const styles = StyleSheet.create({
     container: {
         marginTop: 10,
@@ -100,7 +101,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: 'bold',
         marginTop: 20, // Espacio adicional arriba del título
-        marginBottom:20,
+        marginBottom: 20,
     },
     card: {
         backgroundColor: '#fff',

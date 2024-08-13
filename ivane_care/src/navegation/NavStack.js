@@ -4,6 +4,7 @@ import SplashScreen from '../screens/SplashScreen';
 import Productos from '../screens/Productos';
 import Perfil from '../screens/Perfil';
 import Marcas from '../screens/Marcas';
+import Categorias from '../screens/Categorias';
 
 const Stack = createStackNavigator();
 
@@ -29,6 +30,11 @@ const NavStack = () => {
       <Stack.Screen
         name='Marcas'
         component={Marcas}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name='Categorias'
+        component={Categorias}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
