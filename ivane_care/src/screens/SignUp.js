@@ -11,12 +11,6 @@ import { SERVER } from '../../contexts/Network';
 const backgroundImage = require('../img/FondoSigUp.png'); // Fondo de pantalla
 const ip = '192.168.1.15'; // Dirección IP del servidor 
 
-// Nada mas es prueba para ver como mando a llamar un componente
-const handlePress = () => {
-    // Función que maneja el onPress del botón
-    console.log('Botón presionado');
-};
-
 
 const SignUp = () => {
     const navigation = useNavigation();

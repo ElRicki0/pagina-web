@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView, Alert, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Alert, TouchableOpacity, ImageBackground, RefreshControl} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Modal from 'react-native-modal';
 import { Provider as PaperProvider, Button as PaperButton } from 'react-native-paper';
 import Boton from '../components/Button/Boton';
 import Input from '../components/Input/InputPerfil';
+import { TextInputMask } from 'react-native-masked-text'; // Dependencia para el texto de telefono, esto es para poder utilizar una maskara de dijitos
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { SERVER } from '../../contexts/Network';
 
@@ -89,11 +90,16 @@ const EditarPerfil = () => {
 
     const navigation = useNavigation();
 
-    // constante para cerar sesion (simplemente redirije al login si la accion esta completada)
-    const goToEdit = () => {
-        navigation.navigate('LoginStackScreen', { screen: 'Perfil' })
-    }
+     // constante para refrescar la pagina 
+     const [refreshing, setRefreshing] = React.useState(false);
 
+     const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+        setTimeout(() => {
+            getCliente(); // Se manda a llamar de nuevo a getProductos para refrescar los datos
+            setRefreshing(false);
+        }, 2000);
+    }, []);
 
     // Definir la ruta de la imagen de fondo con require
     const backgroundImage = require('../img/Fondo.png');
@@ -107,6 +113,9 @@ const EditarPerfil = () => {
                 persistentScrollbar={true}
                 contentContainerStyle={styles.scrollViewContent}
                 showsVerticalScrollIndicator={false}
+                refreshControl={
+                    <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+                }
             >
                 <Text style={styles.Text}>Nombre</Text>
                 <Input
@@ -138,12 +147,18 @@ const EditarPerfil = () => {
                     onChangeText={setAlias}
                 />
                 <Text style={styles.Text}>Telefono</Text>
-                <Input
-                    placeHolder='Telefono...'
-                    style={styles.input}
-                    value={telefono}
-                    onChangeText={setTelefono}
-                />
+                <TextInputMask
+                            type={'custom'}
+                            options={{
+                                mask: '9999-9999'
+                            }}
+                            style={styles.inputMask}
+                            value={telefono}
+                            onChangeText={setTelefono}
+                            keyboardType="numeric"
+                            placeholder='0000-0000'
+                            placeholderTextColor='#000'
+                        />
                 <Text style={styles.Text}>Dirección</Text>
                 <Input
                     placeHolder='Direccion...'

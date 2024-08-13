@@ -11,6 +11,8 @@ import Boton2 from '../components/Button/BotonFavorito';
 const ip = '192.168.1.15'; // Dirección IP del servidor 
 
 const DetailProduct = ({ route }) => {
+
+    const { id, nombre, descripcion, precio, imagen } = route.params;
     // console.log('Route params:', route.params); // Agrega este console.log para verificar los parámetros
 
     const navigation = useNavigation();
@@ -36,6 +38,7 @@ const DetailProduct = ({ route }) => {
 
     useEffect(() => {
         getProductos();
+        getComentarios();
     }, []);
 
     const getProductos = async () => {
@@ -45,7 +48,6 @@ const DetailProduct = ({ route }) => {
             });
 
             const data = await response.json();
-            console.log('idProducto:', id);
 
             if (data.status) {
                 setProductos(data.dataset);
@@ -53,13 +55,12 @@ const DetailProduct = ({ route }) => {
                 console.error(data.error);
             }
         } catch (error) {
-            console.error('Error al obtener los productos :', error);
+            console.error('Error al obtener los productos:', error);
         }
     };
 
     const getComentarios = async () => {
         try {
-
             const form = new FormData();
             form.append('idProducto2', id);
 
@@ -69,8 +70,6 @@ const DetailProduct = ({ route }) => {
             });
 
             const data = await response.json();
-            console.log('idProducto:', id);
-            console.log(data);
 
             if (data.status) {
                 setComentarios(data.dataset);
@@ -78,33 +77,47 @@ const DetailProduct = ({ route }) => {
                 console.error(data.error);
             }
         } catch (error) {
-            console.error('Error al obtener los productos :', error);
+            console.error('Error al obtener los comentarios:', error);
         }
     };
 
     // constante para renderizar los item de las categorias
     const renderComentarios = ({ item }) => {
+        console.log('Rendering comentario:', item); // Imprime los datos del comentario
+        // Asegúrate de que la URL de la imagen esté correctamente construida
         const imageUrl = `${SERVER}images/clientes/${item.imagen_cliente}`;
 
-        return (
-            <View key={item.id_comentario} style={styles.cardComentario}>
-                <Image source={{ uri: imageUrl }} style={styles.productImageComent} />
-                <View style={styles.commentDetails}>
-                    <Text style={styles.cardTextComent}><Text style={styles.boldText}>Cliente: </Text> {item.nombre_cliente}</Text>
-                    <Text style={styles.cardTextComent}><Text style={styles.boldText}></Text> {item.comentario}</Text>
-                    <Text style={styles.cardTextComent}><Text style={styles.boldText}></Text> {item.fecha_comentario}</Text>
-                    <View style={styles.estrellaContenedor}>
-                        {[...Array(5)].map((_, index) => (
-                            <Image
-                                key={`${item.id_comentario}-${index}`}
-                                style={styles.start}
-                                source={index < item.estrella ? require('../img/EstrellaRellena.png') : require('../img/EstrellaSinRelleno.png')}
-                            />
-                        ))}
+        // Manejo de errores en caso de problemas con el renderizado
+        try {
+            return (
+                <View key={item.id_comentario} style={styles.cardComentario}>
+                    <Image source={{ uri: imageUrl }} style={styles.productImageComent} />
+                    <View style={styles.commentDetails}>
+                        <Text style={styles.cardTextComent}>
+                            <Text style={styles.boldText}>Cliente: </Text> {item.nombre_cliente}
+                        </Text>
+                        <Text style={styles.cardTextComent}>
+                            <Text style={styles.boldText}></Text> {item.comentario}
+                        </Text>
+                        <Text style={styles.cardTextComent}>
+                            <Text style={styles.boldText}></Text> {item.fecha_comentario}
+                        </Text>
+                        <View style={styles.estrellaContenedor}>
+                            {[...Array(5)].map((_, index) => (
+                                <Image
+                                    key={`${item.id_comentario}-${index}`} // Clave única para cada estrella
+                                    style={styles.start}
+                                    source={index < item.estrella ? require('../img/EstrellaRellena.png') : require('../img/EstrellaSinRelleno.png')}
+                                />
+                            ))}
+                        </View>
                     </View>
                 </View>
-            </View>
-        );
+            );
+        } catch (error) {
+            console.error('Error al renderizar comentario:', error);
+            return null; // O algún valor alternativo para manejar el error
+        }
     };
 
     const renderProductCard = ({ item }) => {
@@ -174,6 +187,10 @@ const DetailProduct = ({ route }) => {
     };
 
     const sendToComentario = async () => {
+        if (!id) {
+            console.error("idProducto está indefinido");
+            return;
+        }
         const formData = new FormData();
         formData.append('id_producto', id);
         formData.append('comentario', ComentarioInput);
@@ -272,7 +289,6 @@ const DetailProduct = ({ route }) => {
         navigation.navigate('Favorito', { producto });
     };
 
-    const { id, nombre, descripcion, precio, imagen } = route.params;
     const imageUrl = `${SERVER}images/productos/${imagen}`;
 
     return (
@@ -338,13 +354,11 @@ const DetailProduct = ({ route }) => {
                             <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />
                         </View>
                         <FlatList
-                            data={Comentarios}
+                            data={Comentarios} // Asegúrate de que `comentarios` sea el array de datos correcto
                             renderItem={renderComentarios}
-                            keyExtractor={(item) => item.id_producto.toString()}
-                            refreshControl={
-                                <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-                            }
+                            keyExtractor={item => item.id_comentario} // Usa `id_comentario` como clave única
                         />
+
                         <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 23, marginBottom: 23 }}>
                             <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />
                             <View>
@@ -453,7 +467,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 10,
         marginTop: 20,
-        color: 'purple',
+        color: '#6C5FFF',
         textAlign: 'center',
     },
     productDescription: {
@@ -485,18 +499,20 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         alignItems: 'center',
-        justifyContent:'center'
+        justifyContent: 'center',
+        alignContent: 'center',
     },
     productImageComent: {
         width: 80,
         height: 80,
         marginRight: 20, // Añade margen a la derecha para separar la imagen del texto
+        marginLeft: 40,
     },
     cardTextComent: {
         fontSize: 16,
         marginBottom: 5,
         color: '#260035',
-        textAlign:'left'
+        textAlign: 'left'
     },
     estrellaContenedor: {
         flexDirection: 'row',
@@ -571,14 +587,14 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     closeButton: {
-        color:'white',
+        color: 'white',
         backgroundColor: '#6C5FFF',
         padding: 10,
         borderRadius: 5,
     },
     buttonText: {
         color: '#fff',
-        fontSize:20,
+        fontSize: 20,
     },
 });
 
