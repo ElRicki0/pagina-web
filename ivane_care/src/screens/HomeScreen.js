@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, TextInput, FlatList, TouchableOpacity, RefreshControl } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, TextInput, FlatList, TouchableOpacity, RefreshControl, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Boton from '../components/Button/Boton'; // Se importa el componente de boton para poder usarlo 
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -44,7 +44,7 @@ const HomeScreen = ({ logueado, setLogueado }) => {
     setTimeout(() => {
       getProductos(); // Se manda a llamar de nuevo a getProductos para refrescar los datos
       setRefreshing(false);
-    }, 2000);
+    }, 200);
   }, []);
 
   // constante para renderizar los item de los productos
@@ -68,15 +68,38 @@ const HomeScreen = ({ logueado, setLogueado }) => {
     );
   };
 
-
-
-  // Estado, para la barra de busqueda 
+  // Estado, para la barra de búsqueda 
   const [searchQuery, setSearchQuery] = useState('');
 
-  const handleSearch = (text) => {
-    setSearchQuery(text);
-    // Aquí podrías implementar la lógica para filtrar o buscar según 'text'
-  };
+  const Buscador = async () => {
+    if (!searchQuery) {
+      alert('Debe de rellenar los campos.');
+      return;
+    }
+    try {
+      const form = new FormData();
+      form.append('search', searchQuery);
+
+      const response = await fetch(`${SERVER}services/public/producto.php?action=searchRows`, {
+        method: 'POST',
+        body: form,
+      });
+
+      const data = await response.json();
+      console.log(data)
+      console.log('search', searchQuery)
+
+      if (data.status) {
+        setSearchQuery(data.dataset);
+        Alert.alert('Exito' , 'Producto encontrado');
+      } else {
+        console.log(data.error);
+        Alert.alert('Error' , 'No hay coincidencias');
+      }
+    } catch (error) {
+      console.error('Error al obtener los productos :', error);
+    }
+  }
 
   return (
     <ScrollView
@@ -87,13 +110,16 @@ const HomeScreen = ({ logueado, setLogueado }) => {
     >
       <View style={styles.container}>
         <View style={styles.containerSearch}>
-          <Icon name="magnify" size={30} color="#0A2B32" style={styles.searchIcon} />
           <TextInput
             style={[styles.input, { color: '#155A68' }]}
             placeholder="Buscar..."
-            onChangeText={handleSearch}
+            onChangeText={setSearchQuery}
             value={searchQuery}
           />
+          <TouchableOpacity style={styles.button} onPress={Buscador}>
+
+            <Icon name="magnify" size={30} color="#0A2B32" style={styles.searchIcon} /> 
+          </TouchableOpacity>
         </View>
         <Image source={require('../img/Portadita.png')} style={styles.image} />
       </View>
