@@ -6,7 +6,7 @@ import { SERVER } from '../../contexts/Network';
 
 
 
-const ProductosCategoria = ({ route }) => {
+const productosCategoria = ({ route }) => {
     const navigation = useNavigation(); // Hook de navegación para cambiar entre pantallas
 
     // Funcion para mostrar categoria segun la base
@@ -18,7 +18,7 @@ const ProductosCategoria = ({ route }) => {
             const formData = new FormData();
             formData.append('idCategoria', id);
 
-            const response = await fetch(`${SERVER}services/public/producto.php?action=readProductosCategorias`, {
+            const response = await fetch(`${SERVER}services/public/producto.php?action=readProductosCategoria`, {
                 method: 'POST',
                 body: formData,
             });
@@ -36,7 +36,7 @@ const ProductosCategoria = ({ route }) => {
     };
 
     useEffect(() => {
-        getProductosM();
+        getProductosC();
     }, []);
 
 
@@ -74,7 +74,7 @@ const ProductosCategoria = ({ route }) => {
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
         setTimeout(() => {
-            getProductosM(); // Se manda a llamar de nuevo a getProductos para refrescar los datos
+            getProductosC(); // Se manda a llamar de nuevo a getProductos para refrescar los datos
             setRefreshing(false);
         }, 2000);
     }, []);
@@ -96,7 +96,7 @@ const ProductosCategoria = ({ route }) => {
 
             {Productos.length === 0 ? (
                 <View style={styles.emptyContainer}>
-                    <Image source={require('../img/NoCategorias.png')} style={styles.image} />
+                    <Image source={require('../img/NoMarcas.png')} style={styles.image} />
                     <Text style={styles.texto2}>No existen productos de esta categoria</Text>
                 </View>
             ) : (
@@ -240,4 +240,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ProductosCategorias;
+export default productosCategoria;

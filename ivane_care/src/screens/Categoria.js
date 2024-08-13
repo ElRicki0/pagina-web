@@ -44,7 +44,10 @@ const Categorias = () => {
         const imageUrl = `${SERVER}images/categorias/${item.imagen_categoria_producto}`;
 
         return (
-            <TouchableOpacity style={styles.card}>
+            <TouchableOpacity style={styles.card}
+                onPress={() => navigation.navigate('productosCategoria',{
+                    imagen: item.imagen_categoria_producto
+                })}>
                 <View style={styles.cardImage}>
                     <Image source={{ uri: imageUrl }} style={styles.productImage} />
                 </View>
