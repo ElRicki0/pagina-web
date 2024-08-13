@@ -483,8 +483,9 @@ const styles = StyleSheet.create({
     cardComentario: {
         flexDirection: 'row', // Alinea los elementos en fila
         backgroundColor: '#E7E7E7',
-        width: 388,
-        height: 200,
+        width: '100%', // Ajusta el ancho al 100% del contenedor
+        maxWidth: 388, // Limita el ancho máximo
+        height: 'auto', // Ajusta la altura automáticamente
         borderColor: '#543694',
         borderWidth: 5,
         borderRadius: 10,
@@ -506,13 +507,15 @@ const styles = StyleSheet.create({
         width: 80,
         height: 80,
         marginRight: 20, // Añade margen a la derecha para separar la imagen del texto
-        marginLeft: 40,
+        marginLeft: 60,
     },
     cardTextComent: {
         fontSize: 16,
         marginBottom: 5,
+        marginRight: 60,
         color: '#260035',
-        textAlign: 'left'
+        textAlign: 'left',
+        flexShrink: 1, // Permite que el texto se ajuste dentro del contenedor
     },
     estrellaContenedor: {
         flexDirection: 'row',
