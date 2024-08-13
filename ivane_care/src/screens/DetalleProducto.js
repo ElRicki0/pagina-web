@@ -22,6 +22,13 @@ const DetailProduct = ({ route }) => {
 
     // Modal
     const [isModalVisible, setModalVisible] = useState(false);
+    // Modal para comentarios
+    const [isSecondModalVisible, setSecondModalVisible] = useState(false);
+
+    const toggleSecondModal = () => {
+        setSecondModalVisible(!isSecondModalVisible);
+    };
+
     const [refreshing, setRefreshing] = useState(false);
     const [ValorCarrito, setValorCarrito] = useState('');
     const [idPedido, setIdPedido] = useState(null); // Estado para almacenar el idPedido
@@ -83,9 +90,9 @@ const DetailProduct = ({ route }) => {
             <View key={item.id_comentario} style={styles.cardComentario}>
                 <Image source={{ uri: imageUrl }} style={styles.productImageComent} />
                 <View style={styles.commentDetails}>
-                    <Text style={styles.cardText}><Text style={styles.boldText}>Cliente: </Text> {item.nombre_cliente}</Text>
-                    <Text style={styles.cardText}><Text style={styles.boldText}></Text> {item.comentario}</Text>
-                    <Text style={styles.cardText}><Text style={styles.boldText}></Text> {item.fecha_comentario}</Text>
+                    <Text style={styles.cardTextComent}><Text style={styles.boldText}>Cliente: </Text> {item.nombre_cliente}</Text>
+                    <Text style={styles.cardTextComent}><Text style={styles.boldText}></Text> {item.comentario}</Text>
+                    <Text style={styles.cardTextComent}><Text style={styles.boldText}></Text> {item.fecha_comentario}</Text>
                     <View style={styles.estrellaContenedor}>
                         {[...Array(5)].map((_, index) => (
                             <Image
@@ -167,36 +174,37 @@ const DetailProduct = ({ route }) => {
     };
 
     const sendToComentario = async () => {
-        if (!id) {
-            console.error("idProducto2 está indefinido");
-            return;
-        }
+        const formData = new FormData();
+        formData.append('id_producto', id);
+        formData.append('comentario', ComentarioInput);
+        formData.append('estrella', estrella);
 
+        const response = await fetch(`${SERVER}services/public/comentario.php?action=createCommentMobile`, {
+            method: 'POST',
+            body: formData,
+        });
+
+        const responseText = await response.text(); // Cambia response.json() por response.text()
+        console.log('Respuesta del servidor:', responseText);
+
+        // Intentar parsear la respuesta como JSON si parece ser JSON
         try {
-            const form = new FormData();
-            form.append('idProducto2', id);
-            form.append('comentario', ComentarioInput);
-            form.append('estrella', estrella);
-
-            const response = await fetch(`${SERVER}services/public/comentario.php?action=createCommentMobile`, {
-                method: 'POST',
-                body: form,
-            });
-
-            const data = await response.json();
-
+            const data = JSON.parse(responseText);
             if (data.status) {
-                Alert.alert('Comentario enviado');
+                toggleSecondModal();
                 setComentarioInput('');  // Limpiar el input después de enviar
                 setEstrella(0);  // Restablecer la calificación
                 getComentarios();  // Actualizar la lista de comentarios
             } else {
-                alert('Ocurrió un error.');
+                Alert.alert('Error', 'Ocurrió un error al enviar el comentario.');
+                console.error(data.message); // Añadido para ayudar a identificar el error exacto
             }
         } catch (error) {
-            console.log(error);
+            console.error('Error al parsear JSON:', error);
         }
+
     };
+
 
 
     // Función para que funcione el carrito 
@@ -318,7 +326,7 @@ const DetailProduct = ({ route }) => {
                                 placeholder="Escriba su comentario"
                                 keyboardType="text"
                             />
-                            <Boton2 textoBoton="" accionBoton={sendToComentario} iconName="heart-circle" />
+                            <Boton textoBoton="" accionBoton={sendToComentario} iconName="plus-box" />
                         </View>
                         <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 23, marginBottom: 23 }}>
                             <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />
@@ -365,10 +373,22 @@ const DetailProduct = ({ route }) => {
                 refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
             />
 
+
+            {/* Primer Modal (Para favoritos)*/}
             <Modal isVisible={isModalVisible}>
                 <View style={styles.modalContent}>
                     <Text style={styles.modalTitle}>Producto agregado</Text>
                     <Text style={styles.modalMessage}>Producto agregado a su lista de deseos</Text>
+                </View>
+            </Modal>
+            {/* Segundo Modal (Para comentarios)*/}
+            <Modal isVisible={isSecondModalVisible}>
+                <View style={styles.modalContent}>
+                    <Text style={styles.modalTitle}>Comentario agregado</Text>
+                    <Text style={styles.modalMessage}>Comentario enviado, espere a que uno de nuestros administradores verifique su comentario</Text>
+                    <TouchableOpacity onPress={toggleSecondModal} style={styles.closeButton}>
+                        <Text style={styles.buttonText}>Cerrar</Text>
+                    </TouchableOpacity>
                 </View>
             </Modal>
         </>
@@ -449,8 +469,8 @@ const styles = StyleSheet.create({
     cardComentario: {
         flexDirection: 'row', // Alinea los elementos en fila
         backgroundColor: '#E7E7E7',
-        width: 375,
-        height: 220,
+        width: 388,
+        height: 200,
         borderColor: '#543694',
         borderWidth: 5,
         borderRadius: 10,
@@ -460,24 +480,23 @@ const styles = StyleSheet.create({
         shadowColor: '#000',
         shadowOffset: {
             width: 0,
-            height: 2,
+            height: 6,
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         alignItems: 'center',
+        justifyContent:'center'
     },
     productImageComent: {
         width: 80,
         height: 80,
         marginRight: 20, // Añade margen a la derecha para separar la imagen del texto
     },
-    commentDetails: {
-        flex: 1, // Toma el espacio restante en la fila
-    },
-    cardText: {
+    cardTextComent: {
         fontSize: 16,
         marginBottom: 5,
         color: '#260035',
+        textAlign:'left'
     },
     estrellaContenedor: {
         flexDirection: 'row',
@@ -550,6 +569,16 @@ const styles = StyleSheet.create({
     },
     modalButton: {
         marginTop: 10,
+    },
+    closeButton: {
+        color:'white',
+        backgroundColor: '#6C5FFF',
+        padding: 10,
+        borderRadius: 5,
+    },
+    buttonText: {
+        color: '#fff',
+        fontSize:20,
     },
 });
 
