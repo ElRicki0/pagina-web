@@ -73,8 +73,19 @@ const Favorito = () => {
             showsVerticalScrollIndicator={false}
             refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
         >
-            <View style={styles.container}>
-                {productos.map((item) => renderProductCard({ item }))}
+             <View style={styles.container}>
+                {productos.length === 0 ? (
+                    <View style={styles.emptyContainer}>
+                        <Image source={require('../img/NoHistorial.png')} style={styles.image} />
+                        <Text style={styles.texto3}>No tiene productos favoritos</Text>
+                    </View>
+                ) : (
+                    <FlatList
+                        data={productos}
+                        renderItem={renderProductCard}
+                        keyExtractor={(item) => item.id_producto.toString()}
+                    />
+                )}
             </View>
         </ScrollView>
     );
@@ -134,6 +145,25 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    
+    // Estilo para la imagen al no tener favoritos
+    texto3: {
+        fontSize: 25,
+        textAlign: 'center',
+        color: 'black',
+    },
+    image: {
+        width: 300,
+        height: 300,
+    },
+    emptyContainer: {
+        marginTop:20,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center',
+        borderRadius: 20,
+        width: 340,
     },
 });
 

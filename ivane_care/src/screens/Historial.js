@@ -28,7 +28,7 @@ const Historial = () => {
                 setHistorial(data.dataset);
                 console.log(data.dataset);
             } else {
-                console.error(data.error);
+                console.log(data.error);
             }
         } catch (error) {
             console.error('Error al obtener los datos :', error);
@@ -69,15 +69,16 @@ const Historial = () => {
         }, 2000);
     }, []);
 
-    const goToEdit = () => {
-        navigation.navigate('Perfil');
-    };
 
     return (
         <View style={styles.container}>
-            <View style={styles.container}>
-                <Text style={styles.title}>Historial de compras</Text>
-
+            <Text style={styles.title}>Historial de compras</Text>
+            {Historial.length === 0 ? (
+                <View style={styles.emptyContainer}>
+                    <Image source={require('../img/NoHistorial.png')} style={styles.image} />
+                    <Text style={styles.texto3}>No tiene historial de compras</Text>
+                </View>
+            ) : (
                 <FlatList
                     data={Historial}
                     renderItem={renderHistorylCard}
@@ -86,8 +87,7 @@ const Historial = () => {
                         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                     }
                 />
-            </View>
-
+            )}
         </View>
     );
 };
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'white',
         marginBottom: 25,
-        marginTop: -40,
+        marginTop: -20,
         backgroundColor: '#0A2B32',
         padding: 22,
         borderBottomLeftRadius:20,
@@ -153,6 +153,24 @@ const styles = StyleSheet.create({
     },
     boldText: {
         fontWeight: 'bold',
+    },
+    // Estilo para la imagen al no tener historial
+    texto3: {
+        fontSize: 25,
+        textAlign: 'center',
+        color: 'black',
+    },
+    image: {
+        width: 300,
+        height: 300,
+    },
+    emptyContainer: {
+        marginTop:20,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center',
+        borderRadius: 20,
+        width: 340,
     },
 });
 
