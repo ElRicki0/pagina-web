@@ -508,6 +508,7 @@ const styles = StyleSheet.create({
         height: 80,
         marginRight: 20, // Añade margen a la derecha para separar la imagen del texto
         marginLeft: 60,
+        borderRadius: 10,
     },
     cardTextComent: {
         fontSize: 16,
