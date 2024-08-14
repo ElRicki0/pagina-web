@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         justifyContent: 'center',
         alignItems: 'center',
+        flex: 1,
     },
     backButton: {
         position: 'absolute',

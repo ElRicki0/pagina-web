@@ -22,8 +22,6 @@ const Categorias = () => {
             const response = await fetch(`${SERVER}services/public/categoria.php?action=readCategoria`, {
                 method: 'GET',
             });
-
-
             const data = await response.json();
             if (data.status) {
                 setCategorias(data.dataset);
@@ -46,6 +44,9 @@ const Categorias = () => {
         return (
             <TouchableOpacity style={styles.card}
                 onPress={() => navigation.navigate('productosCategoria',{
+                    id: item.id_categoria_producto,
+                    nombre: item.nombre_categoria_producto,
+                    descripcion: item.descripcion_categoria_producto,
                     imagen: item.imagen_categoria_producto
                 })}>
                 <View style={styles.cardImage}>
@@ -94,6 +95,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         justifyContent: 'center',
         alignItems: 'center',
+        flex: 1,
     },
     backButton: {
         position: 'absolute',
@@ -103,7 +105,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 30,
         fontWeight: 'bold',
-        marginTop: 20, // Espacio adicional arriba del título
+        marginTop: 30, // Espacio adicional arriba del título
         marginBottom: 20,
     },
     card: {
@@ -125,8 +127,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     productImage: {
-        width: 190, // Ajusta el tamaño según sea necesario
-        height: 150, // Ajusta el tamaño según sea necesario
+        width: 170, // Ajusta el tamaño según sea necesario
+        height: 170, // Ajusta el tamaño según sea necesario
         marginBottom: 10,
         borderRadius: 10, // Opcional, para darle bordes redondeados a la imagen
         alignItems: 'center',

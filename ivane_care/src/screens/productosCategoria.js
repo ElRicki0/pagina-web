@@ -6,7 +6,7 @@ import { SERVER } from '../../contexts/Network';
 
 
 
-const productosCategoria = ({ route }) => {
+const ProductosCategoria = ({ route }) => {
     const navigation = useNavigation(); // Hook de navegación para cambiar entre pantallas
 
     // Funcion para mostrar categoria segun la base
@@ -240,4 +240,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default productosCategoria;
+export default ProductosCategoria;
