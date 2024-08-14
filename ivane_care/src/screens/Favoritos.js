@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, RefreshControl } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, RefreshControl, FlatList } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { SERVER } from '../../contexts/Network';
@@ -27,7 +27,7 @@ const Favorito = () => {
             if (data.status && Array.isArray(data.dataset)) {
                 setProductos(data.dataset); // Asegúrate de que estás accediendo a la propiedad correcta
             } else {
-                console.error('Error al obtener productos favoritos:', data.message);
+                console.log('Error al obtener productos favoritos:', data.message);
             }
         } catch (error) {
             console.error('Error en la solicitud fetch:', error);
