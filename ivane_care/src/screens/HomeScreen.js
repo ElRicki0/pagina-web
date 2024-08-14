@@ -98,12 +98,12 @@ const HomeScreen = ({ logueado, setLogueado }) => {
         <View style={styles.cardImage}>
           <Image source={{ uri: imageUrl }} style={styles.productImage} />
         </View>
-        <Text style={styles.cardText}><Text style={styles.boldText}>{item.nombre_producto}</Text></Text>
-        <Text style={styles.cardTextDescrip}>{item.descripcion_producto}</Text>
+        <Text style={styles.cardTextBusqueda}><Text style={styles.boldText}>{item.nombre_producto}</Text></Text>
+        <Text style={styles.cardTextDescripBusqueda}>{item.descripcion_producto}</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <View style={{ flex: 1, height: 4, borderRadius: 30, backgroundColor: '#6C5FFF', marginTop: 20, marginBottom: 10 }} />
         </View>
-        <Text style={styles.cardText}>
+        <Text style={styles.cardTextBusqueda}>
           <Text style={styles.boldText}>$ {item.precio_producto}</Text>
         </Text>
       </TouchableOpacity>
@@ -315,32 +315,34 @@ const styles = StyleSheet.create({
   // estilo de cards prueba base
   cardBusqueda: {
     backgroundColor: '#E7E7E7',
-    width: 155, // Añadido para limitar el ancho de la tarjeta
+    width: 145, // Añadido para limitar el ancho de la tarjeta
     height: 430,
     borderRadius: 10,
-    padding: 20,
+    padding: 10,
     marginBottom: 20,
-    elevation: 3,
-    shadowColor: '#000',
+    margin:5,
+    elevation: 10,
+    shadowColor: '#5f0e4a',
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 10,
     },
-    shadowOpacity: 0.25,
+    shadowOpacity: 0.2,
     shadowRadius: 3.84,
   },
   cardImage: {
     alignItems: 'center',
   },
-  cardText: {
+  cardTextBusqueda: {
     fontSize: 16,
     marginBottom: 5,
     color: '#260035',
-    textAlign: 'center',
+    textAlign:'center',
   },
-  cardTextDescrip: {
+  cardTextDescripBusqueda: {
     fontSize: 13,
     flexWrap: 'wrap', // Permite que el texto se ajuste a múltiples líneas si es necesario
+    textAlign: 'justify',
   },
   boldText: {
     fontWeight: 'bold',
