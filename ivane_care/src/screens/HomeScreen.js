@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, TextInput, FlatList, TouchableOpacity, RefreshControl, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Boton from '../components/Button/Boton'; // Se importa el componente de boton para poder usarlo 
-import Ionicons from '@expo/vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native'; // Se importa la dependencia de navegacion
 import Modal from 'react-native-modal';
-import { SERVER } from '../../contexts/Network';
-
-
-
-const ip = '192.168.1.15'; // Dirección IP del servidor 
+import { SERVER } from '../../contexts/Network'; // Constante de red para utilizar la API
 
 const HomeScreen = ({ logueado, setLogueado }) => {
 
@@ -22,6 +17,8 @@ const HomeScreen = ({ logueado, setLogueado }) => {
     setModalVisible(!isModalVisible);
   };
 
+  //Constante de navegación
+  const navigation = useNavigation();
 
   // constante para refrescar la pagina 
   const [refreshing, setRefreshing] = React.useState(false);
@@ -36,6 +33,7 @@ const HomeScreen = ({ logueado, setLogueado }) => {
   }, []);
 
 
+  // Constante para obtener los productos, en este caso aca  solo se obtienen 8 productos
   const getProductos = async () => {
     try {
       const response = await fetch(`${SERVER}services/public/producto.php?action=read8Products`, {
@@ -54,6 +52,7 @@ const HomeScreen = ({ logueado, setLogueado }) => {
   };
 
 
+  // Constante para poder recargar la pagina
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
     setTimeout(() => {
@@ -67,7 +66,14 @@ const HomeScreen = ({ logueado, setLogueado }) => {
     const imageUrl = `${SERVER}images/productos/${item.imagen_producto}`;
 
     return (
-      <TouchableOpacity style={styles.card}>
+      <TouchableOpacity style={styles.card}
+        onPress={() => navigation.navigate('DetalleProducto', {
+          id: item.id_producto,
+          nombre: item.nombre_producto,
+          descripcion: item.descripcion_producto,
+          precio: item.precio_producto,
+          imagen: item.imagen_producto
+        })}>
         <View style={styles.cardImage}>
           <Image source={{ uri: imageUrl }} style={styles.productImage} />
         </View>
@@ -94,7 +100,14 @@ const HomeScreen = ({ logueado, setLogueado }) => {
 
     const imageUrl = `${SERVER}images/productos/${item.imagen_producto}`;
     return (
-      <TouchableOpacity style={styles.cardBusqueda}>
+      <TouchableOpacity style={styles.cardBusqueda}
+        onPress={() => navigation.navigate('DetalleProducto', {
+          id: item.id_producto,
+          nombre: item.nombre_producto,
+          descripcion: item.descripcion_producto,
+          precio: item.precio_producto,
+          imagen: item.imagen_producto
+        })}>
         <View style={styles.cardImage}>
           <Image source={{ uri: imageUrl }} style={styles.productImage} />
         </View>
@@ -320,7 +333,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     marginBottom: 20,
-    margin:5,
+    margin: 5,
     elevation: 10,
     shadowColor: '#5f0e4a',
     shadowOffset: {
@@ -337,7 +350,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 5,
     color: '#260035',
-    textAlign:'center',
+    textAlign: 'center',
   },
   cardTextDescripBusqueda: {
     fontSize: 13,

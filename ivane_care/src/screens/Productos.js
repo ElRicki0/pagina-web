@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ImageBackground, ScrollView, TouchableOpacity, Image, FlatList, RefreshControl } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Boton from '../components/Button/Boton';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; // Importa el paquete de iconos
 import { SERVER } from '../../contexts/Network';
 
 
