@@ -191,6 +191,23 @@ const DetailProduct = ({ route }) => {
             console.error("idProducto está indefinido");
             return;
         }
+        if (!ComentarioInput || !estrella) {
+            alert('Debe de rellenar tanto las estrellas como el campo de comentario.');
+            return;
+        }
+
+        // Validar que ComentarioInput sea una cadena de texto y no esté vacío
+        if (typeof ComentarioInput !== 'string' || !ComentarioInput.trim()) {
+            alert('Debe de rellenar el campo de comentario.');
+            return;
+        }
+
+
+        // Validar que al menos una estrella está seleccionada
+        if (!estrella || estrella <= 0) {
+            alert('Debe de marcar al menos una estrella.');
+            return;
+        }
         const formData = new FormData();
         formData.append('id_producto', id);
         formData.append('comentario', ComentarioInput);
@@ -213,8 +230,8 @@ const DetailProduct = ({ route }) => {
                 setEstrella(0);  // Restablecer la calificación
                 getComentarios();  // Actualizar la lista de comentarios
             } else {
-                Alert.alert('Error', 'Ocurrió un error al enviar el comentario.');
-                console.error(data.message); // Añadido para ayudar a identificar el error exacto
+                Alert.alert('Alerta', 'Primero debe de comprar el producto');
+                console.log(data.message); // Añadido para ayudar a identificar el error exacto
             }
         } catch (error) {
             console.error('Error al parsear JSON:', error);
@@ -342,7 +359,7 @@ const DetailProduct = ({ route }) => {
                                 placeholder="Escriba su comentario"
                                 keyboardType="text"
                             />
-                            <Boton textoBoton="" accionBoton={sendToComentario} iconName="plus-box" />
+                            <Boton textoBoton="" accionBoton={sendToComentario} iconName="comment" />
                         </View>
                         <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 23, marginBottom: 23 }}>
                             <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />

@@ -26,7 +26,7 @@ const Historial = () => {
             const data = await response.json();
             if (data.status) {
                 setHistorial(data.dataset);
-                console.log(data.dataset);
+                console.log('Datos recibidos ',data.dataset);
             } else {
                 console.log(data.error);
             }
