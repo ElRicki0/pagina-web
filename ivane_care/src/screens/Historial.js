@@ -26,7 +26,7 @@ const Historial = () => {
             const data = await response.json();
             if (data.status) {
                 setHistorial(data.dataset);
-                console.log('Datos recibidos ',data.dataset);
+                console.log('Datos recibidos ', data.dataset);
             } else {
                 console.log(data.error);
             }
@@ -82,7 +82,7 @@ const Historial = () => {
                 <FlatList
                     data={Historial}
                     renderItem={renderHistorylCard}
-                    keyExtractor={(item) => item.id_cliente}
+                    keyExtractor={(item) => item.id_pedido.toString()} // Ajusta esto si 'id_pedido' es único
                     refreshControl={
                         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                     }
@@ -111,8 +111,8 @@ const styles = StyleSheet.create({
         marginTop: -20,
         backgroundColor: '#0A2B32',
         padding: 22,
-        borderBottomLeftRadius:20,
-        borderBottomRightRadius:20,
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
         textAlign: 'center',
     },
     card: {
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
         height: 300,
     },
     emptyContainer: {
-        marginTop:20,
+        marginTop: 20,
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'center',

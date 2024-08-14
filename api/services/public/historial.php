@@ -30,15 +30,6 @@ if (isset($_GET['action'])) {
         }
     } else {
         $result['error'] = 'Acción no disponible dentro de la sesión';
-
-        // Se compara la acción a realizar cuando un cliente no ha iniciado sesión.
-        // switch ($_GET['action']) {
-        //     case 'readOne':
-        //         $result['error'] = 'Debe iniciar sesión para visualizar lista de deseos ';
-        //         break;
-        //     default:
-        //         $result['error'] = 'Acción no disponible fuera de la sesión';
-        // }
     }
 
     // Se obtiene la excepción del servidor de base de datos por si ocurrió un problema.
