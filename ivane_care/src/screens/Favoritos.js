@@ -68,27 +68,23 @@ const Favorito = () => {
     }, []);
 
     return (
-        <ScrollView style={styles.scrollView}
-            persistentScrollbar={true}
-            showsVerticalScrollIndicator={false}
-            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-        >
-             <View style={styles.container}>
-                {productos.length === 0 ? (
-                    <View style={styles.emptyContainer}>
-                        <Image source={require('../img/NoFavorito.png')} style={styles.image} />
-                        <Text style={styles.texto3}>No tiene productos favoritos</Text>
-                    </View>
-                ) : (
-                    <FlatList
-                        data={productos}
-                        renderItem={renderProductCard}
-                        keyExtractor={(item) => item.id_producto.toString()}
-                    />
-                )}
-            </View>
-        </ScrollView>
+        <View style={styles.container}>
+            {productos.length === 0 ? (
+                <View style={styles.emptyContainer}>
+                    <Image source={require('../img/NoFavorito.png')} style={styles.image} />
+                    <Text style={styles.texto3}>No tiene productos favoritos</Text>
+                </View>
+            ) : (
+                <FlatList
+                    data={productos}
+                    renderItem={renderProductCard}
+                    keyExtractor={(item) => item.id_producto.toString()}
+                    refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+                />
+            )}
+        </View>
     );
+    
 };
 
 const styles = StyleSheet.create({
