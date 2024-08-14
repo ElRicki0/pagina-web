@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image, ScrollView, TextInput, FlatList, Touchab
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Boton from '../components/Button/Boton'; // Se importa el componente de boton para poder usarlo 
 import Ionicons from '@expo/vector-icons/Ionicons';
+import Modal from 'react-native-modal';
 import { SERVER } from '../../contexts/Network';
 
 
@@ -11,8 +12,24 @@ const ip = '192.168.1.15'; // Dirección IP del servidor
 
 const HomeScreen = ({ logueado, setLogueado }) => {
 
-  // Funcion para mostrar productos segun la base
+  // Constante para mostrar productos segun la base
   const [ProductosL, setProductosL] = useState([]);
+
+  // FConstante para modal de buscador
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const toggleSecondModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+
+
+  // constante para refrescar la pagina 
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  // Constante para la barra de búsqueda 
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+
 
   useEffect(() => {
     getProductos();
@@ -36,8 +53,6 @@ const HomeScreen = ({ logueado, setLogueado }) => {
     }
   };
 
-  // constante para refrescar la pagina 
-  const [refreshing, setRefreshing] = React.useState(false);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
@@ -68,12 +83,36 @@ const HomeScreen = ({ logueado, setLogueado }) => {
     );
   };
 
-  // Estado, para la barra de búsqueda 
-  const [searchQuery, setSearchQuery] = useState('');
+  // constante para renderizar los item de los productos
+  const renderProductBuscador = ({ item }) => {
+    if (!item) {
+      Alert.alert('Error', 'El producto no está disponible.');
+      return null;
+    }
+
+    console.log('Item en renderProductCard:', item);
+
+    const imageUrl = `${SERVER}images/productos/${item.imagen_producto}`;
+    return (
+      <TouchableOpacity style={styles.cardBusqueda}>
+        <View style={styles.cardImage}>
+          <Image source={{ uri: imageUrl }} style={styles.productImage} />
+        </View>
+        <Text style={styles.cardText}><Text style={styles.boldText}>{item.nombre_producto}</Text></Text>
+        <Text style={styles.cardTextDescrip}>{item.descripcion_producto}</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <View style={{ flex: 1, height: 4, borderRadius: 30, backgroundColor: '#6C5FFF', marginTop: 20, marginBottom: 10 }} />
+        </View>
+        <Text style={styles.cardText}>
+          <Text style={styles.boldText}>$ {item.precio_producto}</Text>
+        </Text>
+      </TouchableOpacity>
+    );
+  };
 
   const Buscador = async () => {
-    if (!searchQuery) {
-      alert('Debe de rellenar los campos.');
+    if (!searchQuery.trim()) {
+      Alert.alert('Advertencia', 'Debe de rellenar los campos.');
       return;
     }
     try {
@@ -85,22 +124,23 @@ const HomeScreen = ({ logueado, setLogueado }) => {
         body: form,
       });
 
-      const data = await response.json();
-      console.log(data)
-      console.log('search', searchQuery)
+      console.log('searchResults:', searchResults);
 
+      const data = await response.json();
       if (data.status) {
-        setSearchQuery(data.dataset);
-        Alert.alert('Exito' , 'Producto encontrado');
+        // Verifica la estructura de los datos
+        console.log('Resultados de búsqueda recibidos:', data.dataset);
+        setSearchResults(data.dataset);
+        toggleSecondModal(); // Mostrar el modal con los resultados
       } else {
         console.log(data.error);
-        Alert.alert('Error' , 'No hay coincidencias');
+        Alert.alert('Error', 'No hay coincidencias');
+        setSearchResults([]); // Limpiar resultados de búsqueda
       }
     } catch (error) {
-      console.error('Error al obtener los productos :', error);
+      console.error('Error al obtener los productos:', error);
     }
-  }
-
+  };
   return (
     <ScrollView
       style={styles.scrollView}
@@ -118,7 +158,7 @@ const HomeScreen = ({ logueado, setLogueado }) => {
           />
           <TouchableOpacity style={styles.button} onPress={Buscador}>
 
-            <Icon name="magnify" size={30} color="#0A2B32" style={styles.searchIcon} /> 
+            <Icon name="magnify" size={30} color="#0A2B32" style={styles.searchIcon} />
           </TouchableOpacity>
         </View>
         <Image source={require('../img/Portadita.png')} style={styles.image} />
@@ -140,6 +180,36 @@ const HomeScreen = ({ logueado, setLogueado }) => {
           </View>
         ) : null
       ))}
+      <Modal isVisible={isModalVisible} onBackdropPress={toggleSecondModal}>
+        <View style={styles.modalContent}>
+          <Text style={styles.modalTitle}>Resultados de Búsqueda</Text>
+          {searchResults.length > 0 ? (
+            <FlatList
+              data={searchResults}
+              renderItem={({ item, index }) => {
+                // Verifica si el índice es par para crear una fila
+                if (index % 2 === 0) {
+                  return (
+                    <View style={styles.row} key={item.id_producto.toString()}>
+                      {renderProductBuscador({ item })}
+                      {index + 1 < searchResults.length && renderProductBuscador({ item: searchResults[index + 1] })}
+                    </View>
+                  );
+                }
+                return null;
+              }}
+              keyExtractor={(item) => item.id_producto.toString()}
+              numColumns={1} // Solo se utiliza para controlar el FlatList, pero no afecta la disposición
+            />
+          ) : (
+            <Text>No se encontraron productos.</Text>
+          )}
+          <TouchableOpacity onPress={toggleSecondModal} style={styles.closeButton}>
+            <Text style={styles.buttonText}>Cerrar</Text>
+          </TouchableOpacity>
+        </View>
+      </Modal>
+
     </ScrollView>
   );
 };
@@ -240,5 +310,80 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 20, // Espacio entre las filas
+  },
+  // Estilo card de busqueda 
+  // estilo de cards prueba base
+  cardBusqueda: {
+    backgroundColor: '#E7E7E7',
+    width: 155, // Añadido para limitar el ancho de la tarjeta
+    height: 430,
+    borderRadius: 10,
+    padding: 20,
+    marginBottom: 20,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+  },
+  cardImage: {
+    alignItems: 'center',
+  },
+  cardText: {
+    fontSize: 16,
+    marginBottom: 5,
+    color: '#260035',
+    textAlign: 'center',
+  },
+  cardTextDescrip: {
+    fontSize: 13,
+    flexWrap: 'wrap', // Permite que el texto se ajuste a múltiples líneas si es necesario
+  },
+  boldText: {
+    fontWeight: 'bold',
+  },
+  productImage: {
+    width: 150, // Ajusta el tamaño según sea necesario
+    height: 150, // Ajusta el tamaño según sea necesario
+    marginBottom: 10,
+    borderRadius: 10, // Opcional, para darle bordes redondeados a la imagen
+    alignItems: 'center',
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20, // Espacio entre las filas
+  },
+
+  // Estilo del modal para alerta
+  modalContent: {
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 10,
+  },
+  closeButton: {
+    marginTop: 20,
+    padding: 10,
+    backgroundColor: '#6C5FFF',
+    borderRadius: 5,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
   },
 });
