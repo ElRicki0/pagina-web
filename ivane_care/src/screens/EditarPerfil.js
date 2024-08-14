@@ -24,6 +24,7 @@ const EditarPerfil = () => {
     const [alias, setAlias] = useState('');
     const [correo, setCorreo] = useState('');
 
+    //Accion para tomar los valores del cliente
     const getCliente = async () => {
         try {
             const response = await fetch(`${SERVER}services/public/cliente.php?action=readProfile`, {
@@ -48,7 +49,44 @@ const EditarPerfil = () => {
         }
     };
 
+    //Accion para tomar actualizar datos del cliente
     const UpdateProfile = async () => {
+        const regex = /^[A-Za-z\s]+$/;
+
+        //Validando nombre
+        if (nombre.length < 4) {
+            Alert.alert('Nombre inválido', 'El nombre debe tener al menos 4 caracteres.');
+            return;
+        }
+
+        if (!regex.test(nombre)) {
+            Alert.alert('Nombre inválido', 'El nombre solo debe contener letras.');
+            return false;
+        }
+
+        //Validando apellido
+        if (apellido.length < 4) {
+            Alert.alert('Apellido inválido','El apellido debe tener al menos 4 caracteres.');
+            return;
+        }
+
+        if (!regex.test(apellido)) {
+            Alert.alert('Apellido inválido', 'El nombre solo debe contener letras.');
+            return false;
+        }
+
+        //Validando alias
+        if (alias.length < 6) {
+            alert('El alias debe tener al menos una lonjitud de 6 caracteres');
+            return;
+        }
+
+        //Validando telefono
+        if (!/^[267]\d{3}-\d{4}$/.test(telefono)) {
+            alert('El teléfono debe tener el formato (2, 6, 7)###-####');
+            return;
+        }
+
         try {
 
             // Si todos los campos son válidos, proceder con la creación del usuario
@@ -70,6 +108,7 @@ const EditarPerfil = () => {
             console.log(form);
 
             if (data.status) {
+                //Muestra una alerta de exito
                 console.log('Tu cuenta se ha actualizado exitosamente');
                 Alert.alert('Éxito', 'Perfil actualizado correctamente');
             } else {
@@ -96,7 +135,7 @@ const EditarPerfil = () => {
      const onRefresh = React.useCallback(() => {
         setRefreshing(true);
         setTimeout(() => {
-            getCliente(); // Se manda a llamar de nuevo a getProductos para refrescar los datos
+            getCliente(); // Se manda a llamar de nuevo a getCliente para refrescar los datos
             setRefreshing(false);
         }, 2000);
     }, []);
