@@ -7,7 +7,7 @@
     <title>Productos</title>
     <!--Script para ponerle icono a la pagina-->
     <link rel="icon" href="../../resources/img/iconos/loguito.ico">
-    <!--Enlace para mandar a llamar propiedad de boostrap.css-->
+    <!--Enlace para mandar a llamar propiedad de bootstrap.css-->
     <link rel="stylesheet" href="../../resources/css/css_boostrap.css">
     <!--Enlace para mandar a llamar el css-->
     <link rel="stylesheet" href="../../resources/css/index.css">
@@ -139,9 +139,14 @@
                 <p class="fs-2 fw-medium text-center">Top 5 "Productos más vendidos"</p>
                 <canvas id="chart1"></canvas>
             </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 ms-4 grafica ">
+                <p class="fs-2 fw-medium text-center">Top 5 "Productos más vendidos"</p>
+                <canvas id="chart3"></canvas>
+            </div>
         </div>
         <!-- Importación de la librería para generar los gráficos. Para más información https://www.chartjs.org/ -->
         <script type="text/javascript" src="../../resources/js/chart.umd.min.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     </main>
 
     <footer class="test ">
@@ -177,7 +182,7 @@
                                 class="form-control" required>
                         </div>
                         <div class="col-sm-12 col-md-6">
-                            <label for="cantidadProducto" class="form-label">cantidads</label>
+                            <label for="cantidadProducto" class="form-label">cantidad</label>
                             <input id="cantidadProducto" type="number" name="cantidadProducto" min="1" step="1"
                                 class="form-control" required>
                         </div>

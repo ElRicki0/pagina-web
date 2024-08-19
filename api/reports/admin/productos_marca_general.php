@@ -16,8 +16,8 @@ if ($dataMarcas = $marca->readAll()) {
     // Se establece un color de relleno para los encabezados.
     $pdf->setFillColor(0, 21, 26);
     // Se establece la fuente para los encabezados.
-    $pdf->setFont('Times', 'B', 11);
-    $pdf->SetTextColor(237, 237, 237);
+    $pdf->setFont('Times', 'B', 18);
+    $pdf->SetTextColor(223, 223, 223);
     // Se imprimen las celdas con los encabezados.
     $pdf->cell(120, 10, 'Nombre del producto    ', 1, 0, 'C', 1);
     $pdf->cell(40, 10, 'Precio (US$)', 1, 0, 'C', 1);
@@ -26,11 +26,13 @@ if ($dataMarcas = $marca->readAll()) {
     // Se establece un color de relleno para mostrar el nombre de la categoría.
     $pdf->setFillColor(0, 21, 26);
     // Se establece la fuente para los datos de los productos.
-    $pdf->setFont('Times', '', 14);
+    $pdf->setFont('Times', 'B', 18);
 
     // Se recorren los registros fila por fila.
     foreach ($dataMarcas as $rowMarca) {
         // Se imprime una celda con el nombre de la categoría.
+        $pdf->SetTextColor(223, 223, 223);
+        $pdf->setFont('Times', 'B', 20);
         $pdf->cell(190, 12, $pdf->encodeString('Nombre de la marca: ' . $rowMarca['nombre_marca']), 1, 1, 'C', 1);
         // Se instancia el módelo Producto para procesar los datos.
         $producto = new ProductoData;
@@ -40,12 +42,17 @@ if ($dataMarcas = $marca->readAll()) {
             if ($dataProductos = $producto->productosMarca()) {
                 // Se recorren los registros fila por fila.
                 foreach ($dataProductos as $rowProducto) {
+                    $pdf->SetTextColor(10, 10, 10);
+                    $pdf->setFont('Times', 'B', 16);
                     // Se imprimen las celdas con los datos de los productos.
                     $pdf->cell(120, 10, $pdf->encodeString($rowProducto['nombre_producto']), 1, 0);
                     $pdf->cell(40, 10, $rowProducto['precio_producto'], 1, 0);
                     $pdf->cell(30, 10, $rowProducto['cantidad_producto'], 1, 1);
                 }
             } else {
+                $pdf->SetTextColor(10, 10, 10);
+                $pdf->setFont('Times', 'B', 16);
+
                 $pdf->cell(190, 10, $pdf->encodeString('No hay productos para la marca'), 1, 1);
             }
         } else {

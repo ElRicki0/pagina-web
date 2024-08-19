@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, FlatList, RefreshControl } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image, FlatList, RefreshControl } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; // Hook de navegación
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { SERVER } from '../../contexts/Network';
 
 
-const ip = '192.168.137.1'; // Dirección IP del servidor 
+
+// const ip = '192.168.1.15'; // Dirección IP del servidor 
 
 const Categorias = () => {
-
     const navigation = useNavigation(); // Hook de navegación para cambiar entre pantallas
 
 
@@ -18,10 +19,9 @@ const Categorias = () => {
     // Constante para obtener las categorias
     const getCategorias = async () => {
         try {
-            const response = await fetch(`http://${ip}/pagina-web/api/services/public/categoria.php?action=readCategoria`, {
+            const response = await fetch(`${SERVER}services/public/categoria.php?action=readCategoria`, {
                 method: 'GET',
             });
-
             const data = await response.json();
             if (data.status) {
                 setCategorias(data.dataset);
@@ -37,13 +37,18 @@ const Categorias = () => {
         getCategorias();
     }, []);
 
-
     // constante para renderizar los item de las categorias
     const renderCategoryCard = ({ item }) => {
-        const imageUrl = `http://${ip}/pagina-web/api/images/categorias/${item.imagen_categoria_producto}`;
+        const imageUrl = `${SERVER}images/categorias/${item.imagen_categoria_producto}`;
 
         return (
-            <TouchableOpacity style={styles.card}>
+            <TouchableOpacity style={styles.card}
+                onPress={() => navigation.navigate('productosCategoria',{
+                    id: item.id_categoria_producto,
+                    nombre: item.nombre_categoria_producto,
+                    descripcion: item.descripcion_categoria_producto,
+                    imagen: item.imagen_categoria_producto
+                })}>
                 <View style={styles.cardImage}>
                     <Image source={{ uri: imageUrl }} style={styles.productImage} />
                 </View>
@@ -52,6 +57,7 @@ const Categorias = () => {
             </TouchableOpacity>
         );
     };
+
 
     // constante para refrescar la pagina 
     const [refreshing, setRefreshing] = React.useState(false);
@@ -83,11 +89,13 @@ const Categorias = () => {
     );
 }
 
+
 const styles = StyleSheet.create({
     container: {
         marginTop: 10,
         justifyContent: 'center',
         alignItems: 'center',
+        flex: 1,
     },
     backButton: {
         position: 'absolute',
@@ -98,6 +106,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: 'bold',
         marginTop: 30, // Espacio adicional arriba del título
+        marginBottom: 20,
     },
     card: {
         backgroundColor: '#fff',
@@ -118,8 +127,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     productImage: {
-        width: 190, // Ajusta el tamaño según sea necesario
-        height: 150, // Ajusta el tamaño según sea necesario
+        width: 170, // Ajusta el tamaño según sea necesario
+        height: 170, // Ajusta el tamaño según sea necesario
         marginBottom: 10,
         borderRadius: 10, // Opcional, para darle bordes redondeados a la imagen
         alignItems: 'center',

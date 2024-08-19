@@ -36,6 +36,25 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Primero, debe de comprar el producto';
                 }
                 break;
+            case 'createCommentMobile':
+                $_POST = Validator::validateForm($_POST);
+                // Verificar si el cliente ha comprado el producto antes de permitir la valoración
+                if (
+                    !$comentario->setComentario($_POST['comentario']) or
+                    !$comentario->setProducto($_POST['id_producto']) or
+                    !$comentario->setEstrella($_POST['estrella'])
+                ) {
+                    $result['error'] = $comentario->getDataError();
+                } elseif ($comentario->createCommentMobile()) {
+                    $result['status'] = 1;
+                    $result['cliente'] = $_SESSION['idCliente'];
+                    $result['producto'] = $_SESSION['producto'];
+                    $result['detalle'] = $_SESSION['idDetalle'];
+                    $result['message'] = 'Comentario agregado, espere a que un administrador lo acepte';
+                } else {
+                    $result['error'] = 'Primero, debe de comprar el producto';
+                }
+                break;
             default:
                 $result['error'] = 'Error fatal';
                 break;

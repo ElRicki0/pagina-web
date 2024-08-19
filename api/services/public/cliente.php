@@ -60,6 +60,24 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Ocurrió un problema al modificar el perfil';
                 }
                 break;
+                case 'editProfileMobile':
+                    $_POST = Validator::validateForm($_POST);
+                    if (
+                        !$cliente->setNombre($_POST['nombreCliente']) or
+                        !$cliente->setApellido($_POST['apellidoCliente']) or
+                        !$cliente->setTelefono($_POST['telefonoCliente']) or
+                        !$cliente->setDireccion($_POST['direccionCliente']) or
+                        !$cliente->setAlias($_POST['aliasCliente'])     
+                    ) {
+                        $result['error'] = $cliente->getDataError();
+                    } elseif ($cliente->editProfileMobile()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Perfil modificado correctamente';
+                        $_SESSION['aliasCliente'] = $_POST['aliasCliente'];
+                    } else {
+                        $result['error'] = 'Ocurrió un problema al modificar el perfil';
+                    }
+                    break;
                 // Acciones para el ingreso de configuraciones de contraseña para el cambio de esta.
             case 'changePassword':
                 $_POST = Validator::validateForm($_POST);

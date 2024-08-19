@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadTemplate();
     // Llamada a la función para llenar la tabla con los registros existentes.
     fillTable();
-    // graficoPastelCategoriasVendidas();
+    // gráficoPastelCategoriasVendidas();
     graficoLinealCategoriasVendidas();
 });
 
@@ -188,7 +188,7 @@ const graficoLinealCategoriasVendidas = async () => {
     const DATA = await fetchData(CATEGORIA_API, 'categoriasMasVendidas');
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
     if (DATA.status) {
-        // Se declaran los arreglos para guardar los datos a graficar.
+        // Se declaran los arreglos para guardar los datos a gráfica.
         let categorias = [];
         let cantidadesVendidas = [];
         // Se recorre el conjunto de registros fila por fila a través del objeto row.

@@ -16,8 +16,8 @@ if ($dataCategorias = $categoria->readAll()) {
     // Se establece un color de relleno para los encabezados.
     $pdf->setFillColor(0, 21, 26);
     // Se establece la fuente para los encabezados.
-    $pdf->setFont('Times', 'B', 11);
-    $pdf->SetTextColor(237, 237, 237);
+    $pdf->setFont('Times', 'B', 18);
+    $pdf->SetTextColor(223, 223, 223);
     // Se imprimen las celdas con los encabezados.
     $pdf->cell(120, 10, 'Nombre del producto    ', 1, 0, 'C', 1);
     $pdf->cell(40, 10, 'Precio (US$)', 1, 0, 'C', 1);
@@ -30,6 +30,8 @@ if ($dataCategorias = $categoria->readAll()) {
 
     // Se recorren los registros fila por fila.
     foreach ($dataCategorias as $rowCategoria) {
+        $pdf->SetTextColor(223, 223, 223);
+        $pdf->setFont('Times', 'B', 20);
         // Se imprime una celda con el nombre de la categoría.
         $pdf->cell(190, 12, $pdf->encodeString('Nombre de la categoria: ' . $rowCategoria['nombre_categoria_producto']), 1, 1, 'C', 1);
         // Se instancia el módelo Producto para procesar los datos.
@@ -40,12 +42,16 @@ if ($dataCategorias = $categoria->readAll()) {
             if ($dataProductos = $producto->productosCategoria()) {
                 // Se recorren los registros fila por fila.
                 foreach ($dataProductos as $rowProducto) {
+                    $pdf->SetTextColor(10, 10, 10);
+                    $pdf->setFont('Times', 'B', 16);
                     // Se imprimen las celdas con los datos de los productos.
                     $pdf->cell(120, 10, $pdf->encodeString($rowProducto['nombre_producto']), 1, 0);
                     $pdf->cell(40, 10, $rowProducto['precio_producto'], 1, 0);
                     $pdf->cell(30, 10, $rowProducto['cantidad_producto'], 1, 1);
                 }
             } else {
+                $pdf->SetTextColor(10, 10, 10);
+                $pdf->setFont('Times', 'B', 16);
                 $pdf->cell(190, 10, $pdf->encodeString('No hay productos para la categoria'), 1, 1);
             }
         } else {
@@ -53,6 +59,8 @@ if ($dataCategorias = $categoria->readAll()) {
         }
     }
 } else {
+    $pdf->SetTextColor(10, 10, 10);
+    $pdf->setFont('Times', 'B', 16);
     $pdf->cell(0, 10, $pdf->encodeString('No hay categorias para mostrar'), 1, 1);
 }
 // Se llama implícitamente al método footer() y se envía el documento al navegador web.

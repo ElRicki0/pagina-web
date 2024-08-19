@@ -201,7 +201,7 @@ const graficoLinealMarcassVendidas = async () => {
     const DATA = await fetchData(MARCA_API, 'marcasMasVendidas');
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
     if (DATA.status) {
-        // Se declaran los arreglos para guardar los datos a graficar.
+        // Se declaran los arreglos para guardar los datos a gráfica.
         let marcas = [];
         let cantidadesVendidas = [];
         // Se recorre el conjunto de registros fila por fila a través del objeto row.

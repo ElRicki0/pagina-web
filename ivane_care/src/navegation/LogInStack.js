@@ -4,6 +4,7 @@ import LoginScreen from '../screens/Login';
 import SignUpScreen from '../screens/SignUp';
 import PerfilScreen from '../screens/Perfil';
 import EditarPerfil from '../screens/EditarPerfil';
+import Historial from '../screens/Historial';
 import SplashScreen from '../screens/SplashScreen';
 import BottomTab from '../navegation/BottonTab';
 
@@ -38,12 +39,19 @@ const LoginStackScreen = ({ logueado, setLogueado }) => {
         options={{ headerShown: false }}
       >
         {(props) => <PerfilScreen {...props} setLogueado={setLogueado} />}
-        </Stack.Screen>
+      </Stack.Screen>
       <Stack.Screen
         name='EditarPerfil'
         component={EditarPerfil}
         options={{ headerShown: false }}
       />
+      <Stack.Screen
+        name='Historial'
+        component={Historial}
+        options={{ 
+          headerShown: false }} // Mantener consistencia en las opciones
+      />
+
     </Stack.Navigator>
   );
 };

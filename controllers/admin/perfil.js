@@ -19,7 +19,7 @@ vanillaTextMask.maskInput({
     mask: [/\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
 });
 
-// Llamada a la función para establecer la mascara del campo teléfono emergenci.
+// Llamada a la función para establecer la mascara del campo teléfono emergencia.
 vanillaTextMask.maskInput({
     inputElement: document.getElementById('telefonoEmerAdministrador'),
     mask: [/\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
@@ -73,7 +73,7 @@ PROFILE_FORM.addEventListener('submit', async (event) => {
     }
 });
 
-// Mètodo del evento para cuando se envía el formulario de cambiar contraseña.
+// Método del evento para cuando se envía el formulario de cambiar contraseña.
 PASSWORD_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
@@ -93,7 +93,7 @@ PASSWORD_FORM.addEventListener('submit', async (event) => {
 });
 
 /*
-*   Función para preparar el formulario al momento de cambiar la constraseña.
+*   Función para preparar el formulario al momento de cambiar la contraseña.
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 */

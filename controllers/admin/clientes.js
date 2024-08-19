@@ -258,7 +258,7 @@ const graficoLinealClientesCompras = async () => {
     const DATA = await fetchData(CLIENTE_API, 'ClientesMasCompras');
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
     if (DATA.status) {
-        // Se declaran los arreglos para guardar los datos a graficar.
+        // Se declaran los arreglos para guardar los datos a gráfica.
         let cliente = [];
         let cantidadesCompras = [];
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
@@ -287,7 +287,7 @@ const graficoBarrasClientesEstado = async () => {
     const DATA = await fetchData(CLIENTE_API, 'GraficaUsuariosEstados');
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
     if (DATA.status) {
-        // Se declaran los arreglos para guardar los datos a graficar.
+        // Se declaran los arreglos para guardar los datos a gráfica.
         let estado = [];
         let cantidad = [];
         // Se recorre el conjunto de registros fila por fila a través del objeto row.

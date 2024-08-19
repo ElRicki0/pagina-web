@@ -4,16 +4,12 @@ import { useNavigation } from '@react-navigation/native';
 import { TextInputMask } from 'react-native-masked-text'; // Dependencia para el texto de telefono, esto es para poder utilizar una maskara de dijitos
 import Boton from '../components/Button/Boton';
 import Input from '../components/Input/InputSignUp';
+import { SERVER } from '../../contexts/Network';
+
 
 
 const backgroundImage = require('../img/FondoSigUp.png'); // Fondo de pantalla
-const ip = '192.168.137.1'; // Dirección IP del servidor 
-
-// Nada mas es prueba para ver como mando a llamar un componente
-const handlePress = () => {
-    // Función que maneja el onPress del botón
-    console.log('Botón presionado');
-};
+const ip = '192.168.1.15'; // Dirección IP del servidor 
 
 
 const SignUp = () => {
@@ -94,7 +90,7 @@ const SignUp = () => {
         }
 
         try {
-            const url = `http://${ip}/pagina-web/api/services/public/cliente.php?action=signUpMovil`;
+            const url = `${SERVER}services/public/cliente.php?action=signUpMovil`;
 
 
             // Se crea un nuevo objeto de "FormData" y se agrega los datos

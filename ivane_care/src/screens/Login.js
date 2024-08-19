@@ -3,39 +3,36 @@ import { View, StyleSheet, Text, TouchableOpacity, ImageBackground, Alert } from
 import { useNavigation } from '@react-navigation/native';
 import Input from '../components/Input/InputLogin';
 import Boton from '../components/Button/Boton';
-// Se importan dependencias para modals de alertas
 import Modal from 'react-native-modal';
-import { Provider as PaperProvider, Button as PaperButton } from 'react-native-paper';
+import { Button as PaperButton } from 'react-native-paper';
+import { SERVER } from '../../contexts/Network';
 
 
 const LogIn = ({ logueado, setLogueado }) => {
-
-  // Constante para ocultar modal hasta que se mande a llamar la accion
   const [isModalVisible, setModalVisible] = useState(false);
+  const navigation = useNavigation();
+  const [correo, setUsuario] = useState('');
+  const [clave, setClave] = useState('');
+  const ip = '192.168.1.15';
+
+
+  // Toggling modal visibility
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
 
-  const navigation = useNavigation();
-
-  // constante iniciar sesión (simplemente redirije al home si la accion esta completada)
   const goToHome = () => {
-    navigation.navigate('BottomTab')
-  }
+    navigation.navigate('BottomTab');
+  };
 
-
-  const [correo, setUsuario] = useState('');
-  const [clave, setClave] = useState('');
-  const ip = '192.168.137.1';
-
+  // Trigger the modal to show
   const handelLogin = async () => {
-
     if (!correo || !clave) {
       alert('Todos los campos son obligatorios.');
       return;
     }
 
-    const url = `http://${ip}/pagina-web/api/services/public/cliente.php?action=logIn`;
+    const url = `${SERVER}services/public/cliente.php?action=logIn`;
     const formData = new FormData();
     formData.append('correo', correo);
     formData.append('clave', clave);
@@ -48,11 +45,9 @@ const LogIn = ({ logueado, setLogueado }) => {
       const datos = await fetchApi.json();
 
       if (datos.status) {
-        // Muestra una alerta de éxito
         setLogueado(!logueado);
-        toggleModal(); // Muestra el modal;
+        setModalVisible(true); // Muestra el modal
       } else {
-        // Muestra una alerta de error de sesión
         Alert.alert('Error de sesión', datos.error);
       }
     } catch (error) {
@@ -61,14 +56,15 @@ const LogIn = ({ logueado, setLogueado }) => {
     }
   };
 
+
   const handleLogOut = async () => {
-    const url = `http://${ip}/pagina-web/api/services/public/cliente.php?action=logOut`;
+    const url = `${SERVER}services/public/cliente.php?action=logOut`;
     try {
       const fetchApi = await fetch(url);
       const datos = await fetchApi.json();
       if (datos.status) {
         Alert.alert('Sesión cerrada', 'Has cerrado sesión correctamente.');
-        setLogueado(false); // Actualiza el estado de logueado
+        setLogueado(false);
       } else {
         Alert.alert('Error al cerrar sesión', datos.error);
       }
@@ -94,7 +90,7 @@ const LogIn = ({ logueado, setLogueado }) => {
           placeHolder='contraseña...'
           setValor={clave}
           setTextChange={setClave}
-          clave={true} // Esto asegura que sea campo de contraseña
+          clave={true}
         />
         <TouchableOpacity>
           <Text style={styles.forgotPassword}>¿Olvidaste tu contraseña?</Text>
@@ -109,7 +105,7 @@ const LogIn = ({ logueado, setLogueado }) => {
           <Text style={styles.signUp}>cerrar</Text>
         </TouchableOpacity>
       </View>
-      <Modal isVisible={isModalVisible}>
+      <Modal isVisible={isModalVisible} onBackdropPress={() => setModalVisible(false)}>
         <View style={styles.modalContent}>
           <Text style={styles.modalTitle}>¡Bienvenido!</Text>
           <Text style={styles.modalMessage}>Inicio de sesión exitoso</Text>
@@ -118,6 +114,7 @@ const LogIn = ({ logueado, setLogueado }) => {
           </PaperButton>
         </View>
       </Modal>
+
     </ImageBackground>
   );
 };
@@ -162,23 +159,23 @@ const styles = StyleSheet.create({
   },
   // Estilo del modal para alerta
   modalContent: {
-    backgroundColor: 'white',
-    padding: 20,
-    borderRadius: 10,
-    alignItems: 'center',
-  },
-  modalTitle: {
-    fontSize: 25,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  modalMessage: {
-    fontSize: 16,
-    marginBottom: 20,
-  },
-  modalButton: {
-    marginTop: 10,
-  },
+        backgroundColor: 'white',
+        padding: 20,
+        borderRadius: 10,
+        alignItems: 'center',
+    },
+    modalTitle: {
+        fontSize: 25,
+        fontWeight: 'bold',
+        marginBottom: 10,
+    },
+    modalMessage: {
+        fontSize: 16,
+        marginBottom: 20,
+    },
+    modalButton: {
+        marginTop: 10,
+    },
 });
 
 export default LogIn;
