@@ -6,6 +6,7 @@ import PerfilScreen from '../screens/Perfil';
 import EditarPerfil from '../screens/EditarPerfil';
 import Historial from '../screens/Historial';
 import SplashScreen from '../screens/SplashScreen';
+import RecupClave1 from '../screens/RecupClave1';
 import BottomTab from '../navegation/BottonTab';
 
 const Stack = createStackNavigator();
@@ -48,10 +49,17 @@ const LoginStackScreen = ({ logueado, setLogueado }) => {
       <Stack.Screen
         name='Historial'
         component={Historial}
-        options={{ 
-          headerShown: false }} // Mantener consistencia en las opciones
+        options={{
+          headerShown: false
+        }} // Mantener consistencia en las opciones
       />
-
+      <Stack.Screen
+        name='RecupClave1'
+        component={RecupClave1}
+        options={{
+          headerShown: false
+        }} 
+      />
     </Stack.Navigator>
   );
 };

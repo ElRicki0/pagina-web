@@ -25,6 +25,10 @@ const LogIn = ({ logueado, setLogueado }) => {
     navigation.navigate('BottomTab');
   };
 
+  const gotoRecup = () => {
+    navigation.navigate('RecupClave1');
+  };
+
   // Trigger the modal to show
   const handelLogin = async () => {
     if (!correo || !clave) {
@@ -57,22 +61,22 @@ const LogIn = ({ logueado, setLogueado }) => {
   };
 
 
-  const handleLogOut = async () => {
-    const url = `${SERVER}services/public/cliente.php?action=logOut`;
-    try {
-      const fetchApi = await fetch(url);
-      const datos = await fetchApi.json();
-      if (datos.status) {
-        Alert.alert('Sesión cerrada', 'Has cerrado sesión correctamente.');
-        setLogueado(false);
-      } else {
-        Alert.alert('Error al cerrar sesión', datos.error);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      Alert.alert('Error', 'No se pudo conectar con el servidor.');
-    }
-  };
+  // const handleLogOut = async () => {
+  //   const url = `${SERVER}services/public/cliente.php?action=logOut`;
+  //   try {
+  //     const fetchApi = await fetch(url);
+  //     const datos = await fetchApi.json();
+  //     if (datos.status) {
+  //       Alert.alert('Sesión cerrada', 'Has cerrado sesión correctamente.');
+  //       setLogueado(false);
+  //     } else {
+  //       Alert.alert('Error al cerrar sesión', datos.error);
+  //     }
+  //   } catch (error) {
+  //     console.error('Error:', error);
+  //     Alert.alert('Error', 'No se pudo conectar con el servidor.');
+  //   }
+  // };
 
   const backgroundImage = require('../img/FondoLogIn.png');
 
@@ -93,7 +97,7 @@ const LogIn = ({ logueado, setLogueado }) => {
           clave={true}
         />
         <TouchableOpacity>
-          <Text style={styles.forgotPassword}>¿Olvidaste tu contraseña?</Text>
+          <Text style={styles.forgotPassword} onPress={gotoRecup}>¿Olvidaste tu contraseña?</Text>
         </TouchableOpacity>
         <View style={styles.containerBoton}>
           <Boton textoBoton="Iniciar Sesión" accionBoton={handelLogin} />
