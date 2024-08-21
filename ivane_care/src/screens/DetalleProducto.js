@@ -339,6 +339,7 @@ const DetailProduct = ({ route }) => {
                                 <Boton textoBoton="" accionBoton={SendToCart} iconName="cart" />
                             </View>
                         </View>
+                        {/* Contenedor para los comentarios)*/}
                         <View style={styles.detailsContainer}>
                             <Text style={styles.comentTitle}>Tu puntuacion sobre este producto</Text>
                             <View style={styles.estrellaContenedor}>
@@ -375,7 +376,7 @@ const DetailProduct = ({ route }) => {
                             renderItem={renderComentarios}
                             keyExtractor={item => item.id_comentario} // Usa `id_comentario` como clave única
                         />
-
+                        {/* Contenedor de los dos productos que se muestran)*/}
                         <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 23, marginBottom: 23 }}>
                             <View style={{ flex: 1, height: 1, backgroundColor: '#6C5FFF' }} />
                             <View>
