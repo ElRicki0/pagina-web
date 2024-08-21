@@ -305,6 +305,10 @@ const DetailProduct = ({ route }) => {
 
         navigation.navigate('Favorito', { producto });
     };
+    //Constante para regresar a la pantalla de productos
+    const gotoProduct = () => {
+        navigation.navigate('Productos', { screen: 'Productos' })
+    }
 
     const imageUrl = `${SERVER}images/productos/${imagen}`;
 

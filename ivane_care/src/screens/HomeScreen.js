@@ -27,10 +27,32 @@ const HomeScreen = ({ logueado, setLogueado }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
+  const [alias, setAlias] = useState('');
 
   useEffect(() => {
     getProductos();
+    getCliente();
   }, []);
+
+
+  //Accion para tomar los valores del cliente
+  const getCliente = async () => {
+    try {
+      const response = await fetch(`${SERVER}services/public/cliente.php?action=readProfile`, {
+        method: 'GET',
+      });
+      const data = await response.json();
+      if (data.status === 1 && data.dataset) {
+        const profileData = data.dataset;
+        setAlias(profileData.alias_cliente);
+        console.log(data.dataset);
+      } else {
+        console.error(data.error);
+      }
+    } catch (error) {
+      console.error('Error al obtener los datos de su cuenta :', error);
+    }
+  };
 
 
   // Constante para obtener los productos, en este caso aca  solo se obtienen 8 productos
@@ -165,6 +187,11 @@ const HomeScreen = ({ logueado, setLogueado }) => {
       showsVerticalScrollIndicator={false} // Oculta el indicador de desplazamiento vertical
     >
       <View style={styles.container}>
+        {/* Muestra el nombre y apellido del cliente */}
+        <View style={styles.texto}>
+          <Text style={styles.textoa}>¡Bienvenido!, {alias} </Text>
+          <Text style={styles.textoN}>¿Qué haremos ahora?</Text>
+        </View>
         <View style={styles.containerSearch}>
           <TextInput
             style={[styles.input, { color: '#155A68' }]}
@@ -247,6 +274,19 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 10,
     textTransform: 'uppercase',
+  },
+  texto: {
+    textAlign: 'center',
+    borderRadius: 30,
+  },
+  textoa: {
+    fontSize: 20,
+    color: '#124a29',
+    fontWeight: 'bold', // Agrega esta línea para el texto en negrita
+  },
+  textoN:{
+    fontSize: 14,
+    marginBottom: 20,
   },
   input: {
     flex: 1,
