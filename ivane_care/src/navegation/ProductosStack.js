@@ -8,6 +8,7 @@ import Carrito from '../screens/Carrito';
 import Favorito from '../screens/Favoritos';
 import ProductosMarca from '../screens/ProductosMarca';
 import productosCategoria from '../screens/productosCategoria';
+import HomeScreen from '../screens/HomeScreen';
 
 
 const ProductosStack = createStackNavigator();
@@ -49,9 +50,14 @@ const ProductosStackScreen = ({ route }) => (
       component={ProductosMarca}
       options={{ headerShown: false }}
     />
-     <ProductosStack.Screen
+    <ProductosStack.Screen
       name="productosCategoria"
       component={productosCategoria}
+      options={{ headerShown: false }}
+    />
+    <ProductosStack.Screen
+      name="HomeScreen"
+      component={HomeScreen}
       options={{ headerShown: false }}
     />
   </ProductosStack.Navigator>

@@ -6,29 +6,34 @@ import CarritoScreen from '../screens/Carrito';
 import FavoritoScreen from '../screens/Favoritos';
 import PerfilScreen from '../screens/Perfil';
 import ProductosStackScreen from '../navegation/ProductosStack';
-
 import LoginStackScreen from '../navegation/LogInStack';
 
 const Tab = createBottomTabNavigator();
 
-const  
-BottomTab = ({ setLogueado, logueado }) => {
+const BottomTab = ({ setLogueado, logueado }) => {
   return (
     <Tab.Navigator
-      initialRouteName='HomeScreen' screenOptions={({ route }) => ({
+      initialRouteName='HomeScreen'
+      screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => {
           let iconName;
 
-          if (route.name === 'HomeScreen') {
-            iconName = 'home';
-          } else if (route.name === 'ProductosScreen') {
-            iconName = 'store';
-          } else if (route.name === 'CarritoScreen') {
-            iconName = 'cart';
-          } else if (route.name === 'FavoritoScreen') {
-            iconName = 'heart';
-          } else if (route.name === 'PerfilScreen') {
-            iconName = 'account-circle';
+          switch (route.name) {
+            case 'HomeScreen':
+              iconName = 'home';
+              break;
+            case 'ProductosScreen':
+              iconName = 'store';
+              break;
+            case 'CarritoScreen':
+              iconName = 'cart';
+              break;
+            case 'FavoritoScreen':
+              iconName = 'heart';
+              break;
+            case 'PerfilScreen':
+              iconName = 'account-circle';
+              break;
           }
 
           return <Icon name={iconName} size={size} color={color} />;
@@ -60,24 +65,21 @@ BottomTab = ({ setLogueado, logueado }) => {
         options={{
           title: 'Inicio',
         }}
-        // initialParams={{ logueado, setLogueado }}
       />
-
       <Tab.Screen
         name="ProductosScreen"
         component={ProductosStackScreen}
         options={{
           title: 'Productos',
         }}
-        // initialParams={{ logueado, setLogueado }}
       />
       <Tab.Screen
         name="LoginStackScreen"
         component={LoginStackScreen}
-        options={({route}) => ({
-          tabBarButton:() => null,
-          headerShown: false
-        })}
+        options={{
+          tabBarButton: () => null,
+          headerShown: false,
+        }}
       />
       <Tab.Screen
         name="CarritoScreen"
@@ -85,7 +87,6 @@ BottomTab = ({ setLogueado, logueado }) => {
         options={{
           title: 'Carrito',
         }}
-        // initialParams={{ logueado, setLogueado }}
       />
       <Tab.Screen
         name="FavoritoScreen"
@@ -93,7 +94,6 @@ BottomTab = ({ setLogueado, logueado }) => {
         options={{
           title: 'Favoritos',
         }}
-        // initialParams={{ logueado, setLogueado }}
       />
       <Tab.Screen
         name="PerfilScreen"
@@ -101,9 +101,9 @@ BottomTab = ({ setLogueado, logueado }) => {
           title: 'Perfil',
         }}>
         {props => <PerfilScreen {...props} setLogueado={setLogueado} logueado={logueado} />}
-        </Tab.Screen>
+      </Tab.Screen>
     </Tab.Navigator>
   );
-}
+};
 
 export default BottomTab;

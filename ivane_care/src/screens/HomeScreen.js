@@ -67,12 +67,15 @@ const HomeScreen = ({ logueado, setLogueado }) => {
 
     return (
       <TouchableOpacity style={styles.card}
-        onPress={() => navigation.navigate('DetalleProducto', {
-          id: item.id_producto,
-          nombre: item.nombre_producto,
-          descripcion: item.descripcion_producto,
-          precio: item.precio_producto,
-          imagen: item.imagen_producto
+        onPress={() => navigation.navigate('ProductosScreen', {
+          screen: 'DetalleProducto',  // Navega dentro del stack de Productos
+          params: {
+            id: item.id_producto,
+            nombre: item.nombre_producto,
+            descripcion: item.descripcion_producto,
+            precio: item.precio_producto,
+            imagen: item.imagen_producto
+          }
         })}>
         <View style={styles.cardImage}>
           <Image source={{ uri: imageUrl }} style={styles.productImage} />

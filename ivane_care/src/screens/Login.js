@@ -101,9 +101,6 @@ const LogIn = ({ logueado, setLogueado }) => {
         <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
           <Text style={styles.signUp}>crear cuenta</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleLogOut}>
-          <Text style={styles.signUp}>cerrar</Text>
-        </TouchableOpacity>
       </View>
       <Modal isVisible={isModalVisible} onBackdropPress={() => setModalVisible(false)}>
         <View style={styles.modalContent}>

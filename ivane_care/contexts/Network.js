@@ -7,4 +7,4 @@
 
 //export const SERVER = "http://192.168.137.1:80//pagina-web/api/"; // Colegio L
 
-export const SERVER = "http://10.10.0.168:80//pagina-web/api/"; // Colegio L
+export const SERVER = "http://192.168.56.1:80//pagina-web/api/"; // Colegio L
