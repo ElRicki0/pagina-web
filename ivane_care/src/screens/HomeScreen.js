@@ -79,6 +79,7 @@ const HomeScreen = ({ logueado, setLogueado }) => {
     setRefreshing(true);
     setTimeout(() => {
       getProductos(); // Se manda a llamar de nuevo a getProductos para refrescar los datos
+      getCliente();
       setRefreshing(false);
     }, 200);
   }, []);
@@ -196,7 +197,10 @@ const HomeScreen = ({ logueado, setLogueado }) => {
           <TextInput
             style={[styles.input, { color: '#155A68' }]}
             placeholder="Buscar..."
-            onChangeText={setSearchQuery}
+            onChangeText={(text) => {
+              console.log('Texto ingresado:', text); // Agrega esta línea
+              setSearchQuery(text);
+            }}
             value={searchQuery}
           />
           <TouchableOpacity style={styles.button} onPress={Buscador}>
@@ -284,7 +288,7 @@ const styles = StyleSheet.create({
     color: '#124a29',
     fontWeight: 'bold', // Agrega esta línea para el texto en negrita
   },
-  textoN:{
+  textoN: {
     fontSize: 14,
     marginBottom: 20,
   },

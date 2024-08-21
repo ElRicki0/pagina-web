@@ -319,7 +319,7 @@ const DetailProduct = ({ route }) => {
                 ListHeaderComponent={
                     <>
                         <View style={styles.container}>
-                            <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+                            <TouchableOpacity style={styles.backButton} onPress={gotoProduct}>
                                 <Ionicons name="arrow-back" size={60} color="#6C5FFF" />
                             </TouchableOpacity>
                             <View style={styles.CardContainer}>
