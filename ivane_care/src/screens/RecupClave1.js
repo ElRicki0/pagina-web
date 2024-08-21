@@ -14,6 +14,7 @@ const RecupClave1 = () => {
 
     return (
         <View style={styles.container}>
+            <Text style={styles.title}>Recuperación de contraseña</Text>
             <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
                 <Ionicons name="arrow-back" size={60} color="#6C5FFF" />
             </TouchableOpacity>
@@ -25,16 +26,26 @@ const RecupClave1 = () => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        flexDirection: 'row',
-        alignContent: 'center',
-        justifyContent:'center',
-        alignItems: 'center'
+        marginTop: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     backButton: {
         position: 'absolute',
         top: 20, // Alinea el botón 20 unidades desde la parte superior
         left: 20, // Alinea el botón 20 unidades desde la izquierda
+    },
+    title: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        color: 'white',
+        marginBottom: 25,
+        marginTop: 0,
+        backgroundColor: '#0A2B32',
+        padding: 30,
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
+        textAlign: 'center',
     },
 });
 
