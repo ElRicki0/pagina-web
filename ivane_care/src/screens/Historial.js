@@ -37,6 +37,7 @@ const Historial = () => {
 
     // constante para renderizar los item de los productos
     const renderHistorylCard = ({ item }) => {
+        console.log('ID del pedido:', item.id_pedido); // Verifica la unicidad de las claves aquí
         const imageUrl = `${SERVER}images/productos/${item.imagen_producto}`;
 
         return (
@@ -51,7 +52,7 @@ const Historial = () => {
                 <View style={styles.cardImage}>
                     <Image source={{ uri: imageUrl }} style={styles.productImage} />
                 </View>
-                <Text style={styles.cardText}><Text style={styles.boldText}>Uno de los productos: {item.nombre_producto}</Text></Text>
+                <Text style={styles.cardText}><Text style={styles.boldText}>Producto: {item.nombre_producto}</Text></Text>
                 <Text style={styles.cardTextDescrip}>Direccion del pedido: {item.direccion_pedido}</Text>
                 <Text style={styles.cardTextDescrip}>Fecha del pedido: {item.fecha_registro}</Text>
             </View>
@@ -82,10 +83,11 @@ const Historial = () => {
                 <FlatList
                     data={Historial}
                     renderItem={renderHistorylCard}
-                    keyExtractor={(item) => item.id_pedido.toString()} // Ajusta esto si 'id_pedido' es único
+                    keyExtractor={(item, index) => `${item.id_pedido}-${index}`} // Combinando id_pedido con índice
                     refreshControl={
                         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                     }
+                    ListFooterComponent={<View style={{ height: 150 }} />} // Añade espacio al final de la lista
                 />
             )}
         </View>
