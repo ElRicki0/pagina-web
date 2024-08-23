@@ -1,4 +1,4 @@
-USE ivaneDB
+USE ivaneDB;
 
  -- Procedimiento almacenado de estado------
 DROP PROCEDURE IF EXISTS cambiar_estado_cliente;

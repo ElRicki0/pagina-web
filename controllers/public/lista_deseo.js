@@ -18,9 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Método del evento para cuando el documento ha cargado.
 const fillTable = async (form = null) => {
-    // Llamada a la función para mostrar el encabezado y pie del documento.
-    loadTemplate();
-
     // Petición para obtener las categorías disponibles.
     const DATA = await fetchData(LISTA_API, 'readOne');
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -47,6 +44,9 @@ const fillTable = async (form = null) => {
                                 <p class="card-text">${row.descripcion_producto}</p>
                                 <h6 class="card-subtitle mb-2 text-body-secondary">$${row.precio_producto}</h6>
                                 <div class="text-end">
+                                <button class="btn btn-outline-danger" onclick="openDelete(${row.id_lista_deseo})">
+                                        <img id="" src="../../resources/img/iconos/papelera.png" class="">
+                                    </button>
                                     <button class="btn btn-outline-success" >
                                         <a href="producto.html?id=${row.id_producto}" class="card-button text-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" fill="#000000"
@@ -55,9 +55,7 @@ const fillTable = async (form = null) => {
                                                 d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
                                         </svg>
                                     </button>
-                                    <button class="btn btn-outline-danger" onclick="openDelete(${row.id_lista_deseo})">
-                                        <img id="" src="../../resources/img/iconos/papelera.png" class="">
-                                    </button>
+                                    
                                 </div>
                             </div>
                         </div>
