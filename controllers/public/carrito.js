@@ -35,6 +35,7 @@ const load = async () => {
     FORM.append('idProducto', PEDIDO);
     // Petición para solicitar los datos del producto seleccionado.
     const DATA = await fetchData(CARRITO_API, 'readDetail', FORM);
+    console.log(DATA); // Agrega esta línea para ver la estructura de DATA
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
         // LIMPIAR ZONA DONDE CARGARAN LOS DATOS

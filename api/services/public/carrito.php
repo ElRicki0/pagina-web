@@ -62,6 +62,7 @@ if (isset($_GET['action'])) {
                     $result['error'] = $carrito->getDataError();
                 } else if ($carrito->deleteDetail()) {
                     $result['status'] = "1";
+                    $result['message'] = 'Producto eliminado de su carrito';
                 }
                 break;
 /*            case 'deleteOrder':

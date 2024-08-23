@@ -103,25 +103,28 @@ class CarritoHandler
     public function readDetail()
     {
         $sql = 'SELECT dp.id_detalle_entrega, dp.precio_pedido,
-        p.nombre_producto, dp.cantidad_pedido, ROUND(dp.cantidad_pedido * dp.precio_pedido, 2) as precio 
-        FROM tb_pedidos pe 
-        JOIN tb_detalles_pedidos dp ON pe.id_pedido = dp.id_pedido 
-        JOIN tb_productos p ON dp.id_producto = p.id_producto 
-        WHERE pe.id_pedido = ? AND dp.estado_pedido = ?';
-        $params = array($_SESSION['idPedido'], 0);
+       p.nombre_producto, dp.cantidad_pedido, 
+       ROUND(dp.cantidad_pedido * dp.precio_pedido, 2) AS precio 
+FROM tb_pedidos pe 
+JOIN tb_detalles_pedidos dp ON pe.id_pedido = dp.id_pedido 
+JOIN tb_productos p ON dp.id_producto = p.id_producto 
+WHERE pe.id_pedido = ?';
+        $params = array($_SESSION['idPedido']);
         return Database::getRows($sql, $params);
     }
+
+
 
     // Método para finalizar un pedido por parte del cliente.
     public function finishOrder()
     {
-        $this->estado = 'Finalizado';
+        $estado = 'Finalizado';
         $sql = 'UPDATE tb_pedidos
-                SET estado_pedido = ?
-                WHERE id_pedido = ?';
-        $params = array($this->estado, $_SESSION['idPedido']);
+            SET estado_pedido = ?
+            WHERE id_pedido = ?';
+        $params = array($estado, $_SESSION['idPedido']);
         $exec = Database::executeRow($sql, $params);
-        // cambiando el estado de los items del carrito
+        // Cambiar el estado de los detalles del carrito (si es necesario)
         if (!$this->finishDetail()) {
             $exec = false;
         }
@@ -132,8 +135,8 @@ class CarritoHandler
     public function finishDetail()
     {
         // estado de detalle comprado
-        $estado = 2;
-        $sql = 'UPDATE tb_detalles_pedidos
+        $estado = 'Finalizado';
+        $sql = 'UPDATE tb_pedidos
                 SET estado_pedido = ?
                 WHERE id_pedido = ?';
         $params = array($estado, $_SESSION['idPedido']);
@@ -153,9 +156,14 @@ class CarritoHandler
     // Método para eliminar un producto que se encuentra en el carrito de compras.
     public function deleteDetail()
     {
-        $sql = 'UPDATE tb_detalles_pedidos SET estado_pedido = ?
-                WHERE id_detalle_entrega = ?';
-        $params = array(2, $this->id);
+        $sql = 'UPDATE tb_pedidos 
+                SET estado_pedido = ?
+                WHERE id_pedido = (
+                SELECT id_pedido
+                FROM tb_detalles_pedidos
+                WHERE id_detalle_entrega = ?
+            )';
+        $params = array("Anulado", $this->id);
         return Database::executeRow($sql, $params);
     }
 }
