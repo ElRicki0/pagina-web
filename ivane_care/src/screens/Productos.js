@@ -5,7 +5,7 @@ import Boton from '../components/Button/Boton';
 import { SERVER } from '../../contexts/Network';
 
 
-const ip = '192.168.1.15'; // Dirección IP del servidor 
+// const ip = '192.168.1.15'; // Dirección IP del servidor 
 
 const Productos = () => {
 
@@ -40,7 +40,7 @@ const Productos = () => {
 
   // constante para renderizar los item de los productos
   const renderProductCard = ({ item }) => {
-    const imageUrl = `http://${ip}/pagina-web/api/images/productos/${item.imagen_producto}`;
+    const imageUrl = `${SERVER}images/productos/${item.imagen_producto}`;
 
     return (
       <TouchableOpacity style={styles.card}
