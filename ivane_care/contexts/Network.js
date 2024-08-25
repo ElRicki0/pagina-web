@@ -3,7 +3,10 @@
 
 
 // export const SERVER = "http://192.168.137.1:80//pagina-web/api/";   // Colegio F
-export const SERVER = "http://192.168.1.15:80//pagina-web/api/"; // Leandro
+// export const SERVER = "http://192.168.1.15:80//pagina-web/api/"; // Leandro
+
+
+export const SERVER = "http://34.28.80.203//pagina-web/api/"; // Leandro
 
 //export const SERVER = "http://192.168.137.1:80//pagina-web/api/"; // Colegio L
 

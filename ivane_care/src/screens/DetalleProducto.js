@@ -74,7 +74,8 @@ const DetailProduct = ({ route }) => {
             if (data.status) {
                 setComentarios(data.dataset);
             } else {
-                console.error(data.error);
+                console.log(data.error);
+                alert(data.error)
             }
         } catch (error) {
             console.error('Error al obtener los comentarios:', error);

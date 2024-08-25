@@ -56,7 +56,7 @@ const SignUp = () => {
         }
 
         if (apellido.length < 4) {
-            Alert.alert('Apellido inválido','El apellido debe tener al menos 4 caracteres.');
+            Alert.alert('Apellido inválido', 'El apellido debe tener al menos 4 caracteres.');
             return;
         }
 
@@ -81,7 +81,7 @@ const SignUp = () => {
             Alert.alert('Correo inválido', 'Ingrese un correo electrónico válido.');
             return;
         }
-        
+
 
 
         if (!clavesCoinciden) {
@@ -120,7 +120,8 @@ const SignUp = () => {
             } else {
                 console.error(responseData);
                 alert('Se ha creado su cuenta con exito');
-                goToLogin();            }
+                goToLogin();
+            }
         } catch (error) {
             console.error('Error al enviar la solucitud: ', error);
             alert('Error al enviar la solicitud');
