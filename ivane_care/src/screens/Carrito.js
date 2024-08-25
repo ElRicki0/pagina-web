@@ -27,6 +27,8 @@ const Carrito = ({ route }) => {
     }, [idPedido]);
 
 
+
+    //Funcion para obtener los productos que estan en el carrito
     const fetchProductos = async () => {
         try {
             const response = await fetch(`${SERVER}services/public/carrito.php?action=readDetail&idPedido=${idPedido}`, {
@@ -49,6 +51,8 @@ const Carrito = ({ route }) => {
     };
 
 
+    
+    //Funcion para eliminar un  producto del carrito
     const deleteProduct = async (idDetalle) => {
         console.log('ID a eliminar:', idDetalle); // Verifica que idDetalle tenga un valor
 
@@ -83,6 +87,7 @@ const Carrito = ({ route }) => {
     };
 
 
+    //Funcion para finalizar el pedido
     const finishOrder = async () => {
         if (!idPedido) {
             alert('No hay un pedido para finalizar');
@@ -113,10 +118,11 @@ const Carrito = ({ route }) => {
     };
 
 
+    //Funcion que muestra los productos en el carrito
     const renderProductCard = ({ item }) => {
         return (
             <TouchableOpacity key={item.id_detalle_entrega} style={styles.card}
-                onPress={() => deleteProduct(item.id_detalle_entrega)} // Asegúrate de que id_detalle_entrega esté pasando correctamente
+                onPress={() => deleteProduct(item.id_detalle_entrega)}
             >
                 <Text style={styles.cardText}><Text style={styles.boldText}>{item.nombre_producto}</Text></Text>
                 <Text style={styles.cardTextDescrip}>Cantidad del pedido: {item.cantidad_pedido}</Text>
@@ -185,7 +191,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
     },
     emptyContainer: {
-        marginTop:20,
+        marginTop: 20,
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'center',

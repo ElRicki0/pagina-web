@@ -250,6 +250,11 @@ const DetailProduct = ({ route }) => {
             return;
         }
 
+        if (!ValorCarrito) {
+            alert('Debe de rellenar el valor de la cantidad de productos que desea.');
+            return;
+        }
+
         try {
             const form = new FormData();
             form.append('idProducto', id);
