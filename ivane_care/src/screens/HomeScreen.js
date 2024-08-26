@@ -190,7 +190,7 @@ const HomeScreen = ({ logueado, setLogueado }) => {
       <View style={styles.container}>
         {/* Muestra el nombre y apellido del cliente */}
         <View style={styles.texto}>
-          <Text style={styles.textoa}>¡Bienvenido!, {alias} </Text>
+          <Text style={styles.textoa}>¡Bienvenido/a!, {alias} </Text>
           <Text style={styles.textoN}>¿Qué haremos ahora?</Text>
         </View>
         <View style={styles.containerSearch}>

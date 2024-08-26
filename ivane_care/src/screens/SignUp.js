@@ -29,6 +29,8 @@ const SignUp = () => {
     const [alias, setAlias] = useState('');
     const [direccion, setDireccion] = useState('');
     const [correo, setCorreo] = useState('');
+    const [pregunta, setPregunta] = useState('');
+    const [respuesta, setRespuesta] = useState('');
     const [clave, setClave] = useState('');
     const [claveConfirmar, setClaveConfirmar] = useState('');
     const [clavesCoinciden, setClavesCoinciden] = useState(true); // Nuevo estado
@@ -42,7 +44,7 @@ const SignUp = () => {
     // Logica para crear un nuevo cliente
     const handelagregarCliente = async () => {
 
-        if (!nombre || !apellido || !telefono || !alias || !direccion || !correo || !clave || !claveConfirmar) {
+        if (!nombre || !apellido || !telefono || !alias || !direccion || !correo || !clave || !claveConfirmar || !pregunta || !respuesta) {
             alert('Todos los campos son obligatorios.');
             return;
         }
@@ -82,8 +84,6 @@ const SignUp = () => {
             return;
         }
 
-
-
         if (!clavesCoinciden) {
             alert('Las contraseñas no coinciden.');
             return;
@@ -101,6 +101,8 @@ const SignUp = () => {
             formData.append('direccionCliente', direccion);
             formData.append('telefonoCliente', telefono);
             formData.append('aliasCliente', alias);
+            formData.append('preguntaCliente', pregunta);
+            formData.append('respuestaCliente', respuesta);
             formData.append('claveCliente', clave);
             formData.append('confirmarClave', claveConfirmar);
 
@@ -118,7 +120,7 @@ const SignUp = () => {
             if (responseData === 'success') {
                 console.log('Cliente agregado exitosamente');
             } else {
-                console.error(responseData);
+                console.log(responseData);
                 alert('Se ha creado su cuenta con exito');
                 goToLogin();
             }
@@ -135,6 +137,9 @@ const SignUp = () => {
         setAlias('');
         setClave('');
         setClaveConfirmar('');
+        // Agregando sets para la preginta y respuesta de metodo de recuperación de contraseña
+        setPregunta('');
+        setRespuesta('');
     }
 
     return (
@@ -213,6 +218,22 @@ const SignUp = () => {
                             setTextChange={setClaveConfirmar}
                             clave={true} // Esto asegura que sea campo de contraseña
                         />
+                        <Text style={styles.texto}>Por motivimos de medida de metodo de recuperación de contraseña, le solicitamos llene los siguientes campos.</Text>
+                        <Text style={styles.Text}>Pregunta de seguridad</Text>
+                        <Input
+                            placeHolder='Pregunta...'
+                            style={styles.input}
+                            setValor={pregunta}
+                            setTextChange={setPregunta}
+                        />
+                        <Text style={styles.Text}>Respuesta de seguridad</Text>
+                        <Input
+                            placeHolder='Respuesta...'
+                            style={styles.input}
+                            setValor={respuesta}
+                            setTextChange={setRespuesta}
+                        />
+                        <Text style={styles.texto}>Se realiza de esta forma para que solo usted como usuario conozca tanto la pregunta como la respuesta de su cuenta.</Text>
                         <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
                             <Text style={styles.signUp}>Ya tienes una cuenta?</Text>
                         </TouchableOpacity>
@@ -232,6 +253,18 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'col',
+    },
+    texto: {
+        fontSize: 15,
+        marginBottom: 20,
+        marginTop: 20,
+        textAlign: 'center',
+        backgroundColor: '#ebebeb',
+        borderRadius: 20,
+        width: 340,
+        padding: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     containerTittle: {
         marginVertical: 20,

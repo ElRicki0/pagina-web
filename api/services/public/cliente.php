@@ -166,6 +166,8 @@ if (isset($_GET['action'])) {
                     !$cliente->setDireccion($_POST['direccionCliente']) or
                     !$cliente->setTelefono($_POST['telefonoCliente']) or
                     !$cliente->setAlias($_POST['aliasCliente']) or
+                    !$cliente->setPregunta($_POST['preguntaCliente']) or
+                    !$cliente->setRespuesta($_POST['respuestaCliente']) or
                     !$cliente->setClave($_POST['claveCliente'])
                 ) {
                     $result['error'] = $cliente->getDataError();
