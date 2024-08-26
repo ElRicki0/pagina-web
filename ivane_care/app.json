@@ -16,12 +16,18 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/logoApp.pngaaa",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.jere_31.ivane_care"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d4b3a4d9-5d75-4841-bdbd-14e5c68dda52"
+      }
     }
   }
 }
