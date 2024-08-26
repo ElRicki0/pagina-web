@@ -13,11 +13,11 @@ const RecupClave2 = () => {
 
     const navigation = useNavigation(); // Hook de navegación para cambiar entre pantallas
 
-    const [valorInsertado, setValor] = useState('');
+    const [respuesta, setRespuesta] = useState('');
     const route = useRoute(); // Hook para acceder a los parámetros de la ruta
     // Accede a los parámetros
     const { id_cliente, nombre_cliente, alias_cliente, pregunta_seguridad, respuesta_seguridad } = route.params || {};
-    
+
     // Muestra los parámetros en la consola
     console.log('Parámetros recibidos en RecupClave2:', {
         id_cliente,
@@ -27,64 +27,41 @@ const RecupClave2 = () => {
         respuesta_seguridad
     });
 
-    const goToLogin = () => {
-        navigation.navigate('LoginScreen')
-    }
-
-    // Accion para verificar que exitan los datos ingresados 
-    const VerifyValues = async () => {
-
-        if (valorInsertado.length < 6) {
-            alert('El alias debe tener al menos una lonjitud de 6 caracteres');
-            return;
+    // Función para verificar la respuesta de seguridad
+    const VerifyResponse = () => {
+        if (respuesta.trim() === respuesta_seguridad) {
+            // Respuesta correcta
+            console.log('Respuesta correcta');
+            Alert.alert('Correcto', 'Respuesta correcta. Puede proceder a la recuperación de contraseña.');
+            // Aquí puedes navegar a la siguiente pantalla o realizar otra acción
+            //navigation.navigate('SiguientePantalla', { id_cliente }); // Reemplaza 'SiguientePantalla' con el nombre de la siguiente pantalla
+        } else {
+            // Respuesta incorrecta
+            console.log('Respuesta incorrecta');
+            Alert.alert('Incorrecto', 'La respuesta de seguridad es incorrecta. Inténtelo de nuevo.');
         }
-
-        try {
-            const url = `${SERVER}services/public/cliente.php?action=searchUser`;
-
-            // Se crea un nuevo objeto de "FormData" y se agregan los datos
-            const formData = new FormData();
-            formData.append('search', valorInsertado);
-
-            // Se realiza la petición HTTP
-            const response = await fetch(url, {
-                method: 'POST',
-                body: formData
-            });
-            // Analiza la respuesta
-            const responseData = await response.text();
-            console.log(responseData);
-
-            if (responseData === 'success') {
-                console.log('Cliente encontrado');
-            } else {
-                console.log(responseData);
-            }
-        } catch (error) {
-            console.error('Error al enviar la solicitud: ', error);
-            Alert.alert('Error', 'No hay coincidencias');
-        }
-        // Limpia los campos después de la búsqueda
-        setValor('');
-    }
+    };
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Recuperación de contraseña 2</Text>
+            <Text style={styles.title}>Recuperación de contraseña </Text>
             <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
                 <Ionicons name="arrow-back" size={60} color="#6C5FFF" />
             </TouchableOpacity>
             <Image source={require('../img/RecupClave1.png')} style={styles.image} />
-            <Text style={styles.texto}>Porfavor, coloque su usuario al que desea recuperar su contraseña</Text>
+            <Text style={styles.texto}>
+                Porfavor, responda a la pregunta :
+                "{pregunta_seguridad}"
+            </Text>
 
             <Input // Input para colocar el valor de correo o de alias de un usuario
-                placeHolder='Usuario...'
+                placeHolder='Respuesta...'
                 style={styles.input}
-                setValor={valorInsertado}
-                setTextChange={setValor}
+                setValor={respuesta}
+                setTextChange={setRespuesta}
             />
             <View style={styles.containerBoton}>
-                <Boton textoBoton="Siguiente" accionBoton={VerifyValues} />
+                <Boton textoBoton="Siguiente" accionBoton={VerifyResponse} />
             </View>
         </View>
     );
