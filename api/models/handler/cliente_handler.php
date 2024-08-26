@@ -64,6 +64,9 @@ class ClienteHandler
                 SET pass_cliente = ?
                 WHERE id_cliente = ?';
         $params = array($this->clave, $this->id);
+        // Agrega depuración aquí
+        error_log("Ejecutando consulta: " . $sql);
+        error_log("Parámetros: " . print_r($params, true));
         return Database::executeRow($sql, $params);
     }
 

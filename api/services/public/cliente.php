@@ -180,7 +180,7 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Ocurrió un problema al registrar la cuenta';
                 }
                 break;
-            // Esta funcion es para la aplicacion movil, funciona nada mas para verificar los datos del cliente segun el correo o el alias 
+                // Esta funcion es para la aplicacion movil, funciona nada mas para verificar los datos del cliente segun el correo o el alias 
             case 'searchUser':
                 if (!Validator::validateSearch($_POST['search'])) {
                     $result['error'] = Validator::getSearchError();
@@ -191,6 +191,33 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'No hay coincidencias';
                 }
                 break;
+                // Acciones para el ingreso de configuraciones de contraseña para el cambio de esta en la aplicacion movil.
+                case 'changePasswordMovil':
+                    $_POST = Validator::validateForm($_POST);
+                
+                    // Agrega depuración aquí
+                    error_log("Datos POST recibidos: " . print_r($_POST, true));
+                
+                    if (isset($_POST['claveNueva']) && isset($_POST['confirmarClave']) && isset($_POST['id_cliente'])) {
+                        if ($_POST['claveNueva'] != $_POST['confirmarClave']) {
+                            $result['error'] = 'Confirmación de contraseña diferente';
+                        } elseif (strlen($_POST['claveNueva']) < 8) {
+                            $result['error'] = 'La contraseña debe tener al menos 8 caracteres';
+                        } else {
+                            $cliente->setClave($_POST['claveNueva']);
+                            $cliente->setId($_POST['id_cliente']); // Asegúrate de tener un método para establecer el ID del cliente
+                
+                            if ($cliente->changePassword()) {
+                                $result['status'] = 1;
+                                $result['message'] = 'Contraseña cambiada correctamente';
+                            } else {
+                                $result['error'] = 'Ocurrió un problema al cambiar la contraseña';
+                            }
+                        }
+                    } else {
+                        $result['error'] = 'Datos insuficientes';
+                    }
+                    break;                
             default:
                 $result['error'] = 'Acción no disponible fuera de la sesión';
         }
