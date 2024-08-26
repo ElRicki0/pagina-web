@@ -9,48 +9,31 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 
 
-const RecupClave2 = () => {
+const RecupClave3 = () => {
 
     const navigation = useNavigation(); // Hook de navegación para cambiar entre pantallas
 
     const [respuesta, setRespuesta] = useState('');
     const route = useRoute(); // Hook para acceder a los parámetros de la ruta
     // Accede a los parámetros
-    const { id_cliente, nombre_cliente, alias_cliente, pregunta_seguridad, respuesta_seguridad } = route.params || {};
+    const { id_cliente } = route.params || {};
 
     // Muestra los parámetros en la consola
-    console.log('Parámetros recibidos en RecupClave2:', {
+    console.log('Parámetros recibidos en RecupClave3:', {
         id_cliente,
-        nombre_cliente,
-        alias_cliente,
-        pregunta_seguridad,
-        respuesta_seguridad
     });
 
-    // Función para verificar la respuesta de seguridad
-    const VerifyResponse = () => {
-        if (respuesta.trim() === respuesta_seguridad) {
-            // Respuesta correcta
-            console.log('Respuesta correcta');
-            Alert.alert('Correcto', 'Respuesta correcta. Puede proceder a la recuperación de contraseña.');
-            navigation.navigate('RecupClave3', { id_cliente }); 
-        } else {
-            // Respuesta incorrecta
-            console.log('Respuesta incorrecta');
-            Alert.alert('Incorrecto', 'La respuesta de seguridad es incorrecta. Inténtelo de nuevo.');
-        }
-    };
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Recuperación de contraseña </Text>
+            <Text style={styles.title}>Recuperación de contraseña</Text>
             <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
                 <Ionicons name="arrow-back" size={60} color="#6C5FFF" />
             </TouchableOpacity>
             <Image source={require('../img/RecupClave1.png')} style={styles.image} />
             <Text style={styles.texto}>
                 Porfavor, responda a la pregunta :
-                "{pregunta_seguridad}"
+                "{id_cliente}"
             </Text>
 
             <Input // Input para colocar el valor de correo o de alias de un usuario
@@ -60,7 +43,7 @@ const RecupClave2 = () => {
                 setTextChange={setRespuesta}
             />
             <View style={styles.containerBoton}>
-                <Boton textoBoton="Siguiente" accionBoton={VerifyResponse} />
+                <Boton textoBoton="Siguiente" />
             </View>
         </View>
     );
@@ -107,5 +90,5 @@ const styles = StyleSheet.create({
     },
 });
 
-export default RecupClave2;
+export default RecupClave3;
 
