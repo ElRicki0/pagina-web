@@ -112,6 +112,34 @@ class ClienteData extends ClienteHandler
         }
     }
 
+    public function setPregunta($value, $min = 2, $max = 50)
+    {
+        if (!Validator::validateString($value)) {
+            $this->data_error = 'La pregunta contiene caracteres prohibidos';
+            return false;
+        } elseif(Validator::validateLength($value, $min, $max)) {
+            $this->pregunta = $value;
+            return true;
+        } else {
+            $this->data_error = 'La pregunta debe tener una longitud entre ' . $min . ' y ' . $max;
+            return false;
+        }
+    }
+
+    public function setRespuesta($value, $min = 2, $max = 50)
+    {
+        if (!Validator::validateString($value)) {
+            $this->data_error = 'La Respuesta contiene caracteres prohibidos';
+            return false;
+        } elseif(Validator::validateLength($value, $min, $max)) {
+            $this->respuesta = $value;
+            return true;
+        } else {
+            $this->data_error = 'La respuesta debe tener una longitud entre ' . $min . ' y ' . $max;
+            return false;
+        }
+    }
+
     public function setClave($value)
     {
         if (Validator::validatePassword($value)) {
