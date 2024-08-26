@@ -19,7 +19,7 @@ class ClienteHandler
     protected $clave = null;
     protected $imagen = null;
     protected $estado = null;
-    
+
     protected $pregunta = null;
     protected $respuesta = null;
 
@@ -135,6 +135,24 @@ class ClienteHandler
         return Database::getRows($sql, $params);
     }
 
+    // Esta funcion es para la aplicacion movil, funciona nada mas para verificar los datos del cliente segun el correo o el alias 
+    public function validatorRecup1()
+    {
+        $value = Validator::getSearchValue();
+        $sql = 'SELECT 
+                id_cliente, 
+                nombre_cliente, 
+				alias_cliente, 
+                pregunta_seguridad,
+                respuesta_seguridad
+            FROM 
+                tb_clientes
+            WHERE 
+				alias_cliente = ?';
+        $params = array($value);
+        return Database::getRows($sql, $params);
+    }
+
     public function createRow()
     {
         // Inserta el nuevo cliente en tb_clientes
@@ -166,7 +184,7 @@ class ClienteHandler
     {
         $sql = 'INSERT INTO tb_clientes(nombre_cliente, apellido_cliente, alias_cliente, correo_cliente, telefono_cliente, residencia_cliente, pass_cliente, estado_cliente, imagen_cliente, pregunta_seguridad, respuesta_seguridad)
                 VALUES(?, ?, ?, ?, ?, ?, ?, true, ?, ?, ?)';
-        $params = array($this->nombre, $this->apellido, $this->alias, $this->correo, $this->telefono, $this->direccion, $this->clave, $this->imagen , $this->pregunta, $this->respuesta);
+        $params = array($this->nombre, $this->apellido, $this->alias, $this->correo, $this->telefono, $this->direccion, $this->clave, $this->imagen, $this->pregunta, $this->respuesta);
         return Database::executeRow($sql, $params);
     }
 
