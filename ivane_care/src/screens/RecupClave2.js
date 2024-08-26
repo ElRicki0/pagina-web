@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ImageBackground, ScrollView, TouchableOpacity, Alert, Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { TextInputMask } from 'react-native-masked-text'; // Dependencia para el texto de telefono, esto es para poder utilizar una maskara de dijitos
 import Boton from '../components/Button/Boton';
 import Input from '../components/Input/InputSignUp';
@@ -9,15 +9,26 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 
 
-const RecupClave1 = () => {
+const RecupClave2 = () => {
 
     const navigation = useNavigation(); // Hook de navegación para cambiar entre pantallas
 
     const [valorInsertado, setValor] = useState('');
+    const route = useRoute(); // Hook para acceder a los parámetros de la ruta
+    // Accede a los parámetros
+    const { id_cliente, nombre_cliente, alias_cliente, pregunta_seguridad, respuesta_seguridad } = route.params || {};
+    
+    // Muestra los parámetros en la consola
+    console.log('Parámetros recibidos en RecupClave2:', {
+        id_cliente,
+        nombre_cliente,
+        alias_cliente,
+        pregunta_seguridad,
+        respuesta_seguridad
+    });
 
-
-    const gotoRecup2 = () => {
-        navigation.navigate('RecupClave2')
+    const goToLogin = () => {
+        navigation.navigate('LoginScreen')
     }
 
     // Accion para verificar que exitan los datos ingresados 
@@ -40,24 +51,14 @@ const RecupClave1 = () => {
                 method: 'POST',
                 body: formData
             });
-
-            const responseData = await response.json(); 
+            // Analiza la respuesta
+            const responseData = await response.text();
             console.log(responseData);
 
-            if (responseData.status === 1 && responseData.dataset.length > 0) {
-                Alert.alert('Excelente', 'Cliente encontrado.');
-                const cliente = responseData.dataset[0];
-                // Navegando a la pantalla RecupClave2 y pasa los datos del cliente
-                navigation.navigate('RecupClave2', {
-                    id_cliente: cliente.id_cliente,
-                    nombre_cliente: cliente.nombre_cliente,
-                    alias_cliente: cliente.alias_cliente,
-                    pregunta_seguridad: cliente.pregunta_seguridad,
-                    respuesta_seguridad: cliente.respuesta_seguridad
-                });
+            if (responseData === 'success') {
+                console.log('Cliente encontrado');
             } else {
-                console.log(responseData.message);
-                Alert.alert('Error', 'No se encontró el cliente.');
+                console.log(responseData);
             }
         } catch (error) {
             console.error('Error al enviar la solicitud: ', error);
@@ -69,7 +70,7 @@ const RecupClave1 = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Recuperación de contraseña</Text>
+            <Text style={styles.title}>Recuperación de contraseña 2</Text>
             <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
                 <Ionicons name="arrow-back" size={60} color="#6C5FFF" />
             </TouchableOpacity>
@@ -130,5 +131,5 @@ const styles = StyleSheet.create({
     },
 });
 
-export default RecupClave1;
+export default RecupClave2;
 
